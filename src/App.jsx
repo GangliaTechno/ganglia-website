@@ -3,16 +3,16 @@ import "./App.css";
 // import { Route, Router } from 'lucide-react'
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { AboutUs } from "./Components/AboutUs";
-import Blog from "./Components/Blog";
-import ContactUs from "./Components/ContactUs";
-import Footer from "./Components/Footer";
-import { Home } from "./Components/HomePage/Home";
-import OurTeam from "./Components/HomePage/OurTeam";
-import NavBar from "./Components/NavBar";
-import { OurProducts } from "./Components/OurProducts";
-import OurServices from "./Components/OurServices";
-import ProductDetail from "./Components/ProductDetail";
+import { AboutUs } from "./components/AboutUs";
+import Blog from "./components/Blog";
+import ContactUs from "./components/ContactUs";
+import Footer from "./components/Footer";
+import { Home } from "./components/HomePage/Home";
+import OurTeam from "./components/HomePage/OurTeam";
+import NavBar from "./components/NavBar";
+import { OurProducts } from "./components/OurProducts";
+import OurServices from "./components/OurServices";
+import ProductDetail from "./components/ProductDetail";
 
 function App() {
   return (
