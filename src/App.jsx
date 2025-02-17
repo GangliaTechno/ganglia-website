@@ -9,7 +9,7 @@ import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import { Home } from "./components/HomePage/Home";
 import OurTeam from "./components/HomePage/OurTeam";
-import NavBar from "./components/NavBar";
+import { NavBar } from "./components/NavBar";
 import { OurProducts } from "./components/OurProducts";
 import OurServices from "./components/OurServices";
 import ProductDetail from "./components/ProductDetail";
