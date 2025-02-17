@@ -7,7 +7,7 @@ import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import Home from "./components/HomePage/Home";
 import OurTeam from "./components/HomePage/OurTeam";
-import Navbar from "./Components/NavBar";
+import Navbar from "./components/Navbar";
 import OurProducts from "./components/OurProducts";
 import OurServices from "./components/OurServices";
 import ProductDetail from "./components/ProductDetail";
