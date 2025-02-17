@@ -1,0 +1,429 @@
+{
+    "home": {
+        "logo":"/assets/images/GANGLIA LOGO BLACK.png",
+        "landingPageBg":"https://images.pexels.com/photos/7723686/pexels-photo-7723686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "companyName": "Ganglia Technologies",
+        "heroTagline": "Unsatisfied with existing technology!",
+        "description": "Ganglia Technologies revolutionizes AI-driven healthcare solutions, making innovation accessible, efficient, and future-ready for your business.",
+        "ourStory": "Founded with the vision to innovate and simplify complex industries, Ganglia Technologies has grown into a leader in healthcare technology and AI-driven solutions. Our journey began with a passion for making technology more accessible, and today, we’re proud to deliver products that improve lives and enhance business operations.",
+        "sections": [
+            "Explore Our Products",
+            "Our Services",
+            "Contact Us"
+        ],
+        "whoAreWeBG":"/assets/images/whoarewe.jpeg",
+        "whoAreWe": "At Ganglia Technologies, we are a team focused on creating innovative and affordable solutions in healthcare and technology. We combine AI and engineering to develop products that improve lives and make operations more efficient. Our goal is to make advanced technology accessible and impactful for everyone.",
+        "joinUs": "Join us as we continue our journey to make advanced solutions accessible and affordable for everyone."
+    },
+
+    "footer": {
+        "subhead": "Get in Touch",
+        "subtagline": "Don’t miss any updates!"
+    },
+
+    "logo": {
+        "titlePrimary": "GANGLIA",
+        "titleSecondary": "TECHNOLOGIES PVT. LTD."
+    },
+    "teamHeader":"Meet Our Team",
+    "ourTeamDescription": "At Ganglia Technologies, our strength lies in our people. Led by seasoned professionals in engineering, AI, and healthcare, our leadership team drives innovation and excellence. With a dedicated workforce of 50+ experts, we are committed to developing, refining, and delivering high-impact solutions that make a difference.",
+
+    "ourTeam": [
+        {
+            "name": "Dr Jayaraj Mymbilly Balakrishnan",
+            "image": "/assets/images/chairman.jpg",
+            "position": "Director",
+            "linkedIn":"https://www.linkedin.com/in/dr-jayaraj-mymbilly-balakrishnan-71a15b6/"
+        },
+        {
+            "name": "Dr Dasharathraj K Shetty",
+            "image": "/assets/images/md.jpg",
+            "position": "Director",
+            "linkedIn":"https://www.linkedin.com/in/dasharathraj/"
+        },
+        {
+            "name": "Dr Sandeep S Shenoy",
+            "image": "/assets/images/director.jpg",
+            "position": "Director",
+            "linkedIn":""
+        },
+        {
+            "name": "Dr Balakrishna S Maddodi",
+            "image": "/assets/images/vice_chairman.jpg",
+            "position": "Director",
+            "linkedIn":"https://www.linkedin.com/in/dr-balakrishna-srinivas-maddodi-68874218/"
+        },
+        {
+            "name": "Namesh Malarout",
+            "image": "/assets/images/ceo.png",
+            "position": "Chief Executive Officer (CEO)",
+            "linkedIn":"https://www.linkedin.com/in/namesh-malarout-97375697/"
+        },
+        {
+            "name": "Shreepathy Ranga Bhatta",
+            "image": "/assets/images/CFO.jpg",
+            "position": "Board Member",
+            "linkedIn":"https://www.linkedin.com/in/shreepathy-ranga-bhatta-862a2b24a/"
+        },
+        {
+            "name": "Anusha Pai",
+            "image": "/assets/images/CMO-.png",
+            "position": "Board Member",
+            "linkedIn":"https://www.linkedin.com/in/anusha-pai-013b0213/"
+        }
+    ],
+
+    "SubteamTitle":"Our Employees",
+
+    "teamImages":[
+        "/assets/images/whoarewe.jpeg",
+        "/assets/images/group1.JPG",
+        "/assets/images/group2.jpeg"
+    ],
+
+    "teamDescriptions":[
+        "Our team thrives on creativity and collaboration, bringing diverse skills together to drive innovation. Each member contributes unique expertise, from problem-solving to design thinking, ensuring that we stay ahead of industry trends. We believe in open communication and continuous learning, creating an environment where ideas flourish and challenges turn into opportunities.",
+        "We are a dynamic group of professionals committed to delivering high-quality results. Our team embraces change and adapts quickly to new challenges, ensuring that we consistently exceed expectations. With a strong focus on efficiency and teamwork, we leverage each other's strengths to achieve our goals.",
+        "Our team is dedicated to understanding and meeting our clients' needs with excellence. Passionate about our work, we go the extra mile to provide solutions that make a real impact. With a customer-first mindset, we value integrity, responsiveness, and continuous improvement in everything we do."
+        
+    ],
+
+    "aboutUs": {
+        "heroTag": "Finding Inspiration in Every Turn",
+        "heroDescription": "We are a team of doctors, engineers, management professionals, and students from across MAHE who came together to solve the problems faced by various sectors of India. With a shared vision, we combine our expertise to develop effective and affordable solutions.",
+        "visionStatement": "To be the most preferred cost-effective medical device developer and automation solution provider by 2032.",
+        "missionStatement": "We leverage engineering, AI, and medical expertise to develop affordable, high-quality solutions that improve lives and streamline operations for businesses and institutions.",
+        "commitmentToQuality": [
+            "17+ patents filed across biomedical and AI applications",
+            "Government-backed Seed Fund Grant recipient",
+            "Certified for excellence in product design"
+        ],
+        "links": [
+            "Meet Our Team",
+            "Explore Our Innovations"
+        ],
+        "ourApproach": "At Ganglia Technologies, we combine engineering, AI, and medical expertise to create affordable, high-quality solutions that enhance lives and streamline operations for businesses and institutions."
+    },
+
+    "processes": [
+        {
+            "title": "🔬 Research-Driven Innovation",
+            "description": "We collaborate with medical experts, engineers, and AI specialists to develop patented, cutting-edge solutions.",
+            "imgurl": "/assets/images/research.png"
+        },
+        {
+            "title": "🎯 User-Centric Design",
+            "description": "Every product is optimized for efficiency, affordability, and real-world usability.",
+            "imgurl": "/assets/images/target.png"
+        },
+        {
+            "title": "✔️ Rigorous Testing",
+            "description": "Our prototypes undergo extensive testing to meet global healthcare and industry standards.",
+            "imgurl": "/assets/images/testing.png"
+        }
+    ],
+
+    "milestoneDescription": "We are proud of our achievements in innovation and excellence. From securing patents to winning industry awards, our work is making a real impact. Here are some of our key milestones:",
+
+    "awardsAndRecognition": [
+    {
+        "year": 2024,
+        "title": "Certificate of Excellence in Product Design",
+        "organization": "Elets Startup Awards",
+        "description": "Recognized for innovation in smart medical devices",
+        "imgurl": "/assets/images/award6.png",
+        "certificateUrl":"https://placehold.co/500x300"
+    },
+    {
+        "year": 2024,
+        "title": "14 Patents Secured",
+        "organization": "Ganglia Technologies",
+        "description": "Official patents for our novel AI and medical innovations",
+        "imgurl": "/assets/images/award2.png",
+        "certificateUrl":"https://placehold.co/500x700"
+    },
+    {
+        "year": 2023,
+        "title": "Winner, Great Indian Entrepreneurship, Business Design & Startup Award",
+        "description": "Honored for pioneering AI-driven and medical solutions",
+        "imgurl": "/assets/images/award5.png",
+        "certificateUrl":"https://media.licdn.com/dms/image/v2/D4D22AQGuhhNhigiWaQ/feedshare-shrink_800/feedshare-shrink_800/0/1699028451152?e=2147483647&v=beta&t=-z865IG86DVNYDvR3Ym-11q-2bBKXDCWs16G9SKCPqI"
+    },
+    {
+        "year": 2023,
+        "title": "Selected for Singapore-India Hackathon",
+        "description": "One of 12 best startups from India for AI-based travel solutions",
+        "imgurl": "/assets/images/award1.png",
+        "certificateUrl":"https://media.licdn.com/dms/image/v2/D4D22AQGoETz6tFJ_cg/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1687106014878?e=2147483647&v=beta&t=fz0e-BKYyKPDj1H7OhakkhYwHLA8QPhkabKZJonZd2g"
+    },
+    {
+        "year": 2023,
+        "title": "Recipient of Startup India Seed Fund Grant",
+        "description": "Recognized and funded by Startup India Initiative for a cost-effective smart video-laryngoscope",
+        "imgurl": "/assets/images/award3.png",
+        "certificateUrl":"https://media.licdn.com/dms/image/v2/D5622AQEiZe3xE4QHxw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1685962438378?e=2147483647&v=beta&t=Dan89xY8dnzXXeIFhBJmnZUTV_buUdjf22GWSBR_xBY"
+    },
+    {
+        "year": 2024,
+        "title": "Certificate of Appreciation - MAHE Research Day",
+        "description": "Best stall in medical computing and Inteligence theme of collaborate section of MAHE research day 2024",
+        "imgurl": "/assets/images/award6.png",
+        "certificateUrl":"/assets/images/MAHE research day.jpeg"
+    }
+],
+
+    "team": {
+        "leadership": [
+            {
+                "name": "Dr. Dasharathraj K. Shetty",
+                "role": "Managing Director",
+                "expertise": "AI, Data Science & Software Development",
+                "background": "Associate Professor, Data Science & Computer Applications, MIT",
+                "qualifications": [
+                    "BE (CSE)",
+                    "MBA (Finance)",
+                    "MPhil (Management)",
+                    "MTech (CSE)",
+                    "Ph.D. (CSE)"
+                ]
+            },
+            {
+                "name": "Dr. Jayaraj Mymbilly Balakrishnan",
+                "role": "Director & Mentor",
+                "expertise": "Emergency Medicine & Biomedical Engineering",
+                "background": "Professor & Head, Emergency Medicine, KMC Manipal",
+                "qualifications": [
+                    "MBBS",
+                    "MD"
+                ]
+            },
+            {
+                "name": "Dr. Sandeep S. Shenoy",
+                "role": "Director & Mentor",
+                "expertise": "Business Strategy, Finance & Technology Innovation",
+                "background": "Professor & Head, Dept. of Commerce, MAHE",
+                "qualifications": [
+                    "BE (Civil)",
+                    "MFM",
+                    "MPhil (Mgmt)"
+                ]
+            }
+        ],
+        "teamSize": "50+ Employees",
+        "focusAreas": [
+            "Biomedical Research & Development",
+            "AI & Software Engineering",
+            "Product Design & Prototyping",
+            "Regulatory Compliance & Testing",
+            "Business Development & Strategy"
+        ]
+    },
+
+    "ourProducts": "Explore our innovative solutions designed to enhance everyday life by integrating cutting-edge technology, affordability, and user-friendly design. From revolutionizing medical procedures to making travel planning smarter, our products are crafted to bring efficiency, accessibility, and convenience to your world.",
+
+    "products": [
+        {
+            "name": "Laryngoscope",
+            "description": "The Smart, Affordable Solution",
+            "details": " hello Ganglia Technologies' patented smart video-laryngoscope is designed to provide cutting-edge airway management at an affordable cost. Our device integrates advanced imaging, continuous oxygenation, and user-friendly features, making it the most accessible and efficient solution for medical professionals.",
+            "whyChooseUs": "Traditional video-laryngoscopes cost ₹7+ lakhs, making them inaccessible to many hospitals, especially in rural areas. Our affordable, high-quality alternative aims to bridge this gap, priced at just ₹1.5–2 lakhs.",
+            "image": "/assets/images/laryngoscope.png",
+            "keyFeatures": [
+                {
+                    "title": "Multiple Wide-Angle Cameras for Clearer Visualization",
+                    "details": [
+                        "Equipped with multiple high-resolution cameras for superior airway visualization.",
+                        "Real-time video streaming to monitors, phones, or computers for remote monitoring and collaboration."
+                    ]
+                },
+                {
+                    "title": "Built-in Oxygen Tube for Continuous Oxygenation",
+                    "details": [
+                        "Traditional laryngoscopes interrupt oxygen supply, increasing patient risk.",
+                        "Our device ensures uninterrupted oxygen flow, improving patient safety and comfort."
+                    ]
+                },
+                {
+                    "title": "Lightweight & Ergonomic Design",
+                    "details": [
+                        "Significantly lighter than other video-laryngoscopes.",
+                        "Ergonomic handle & controls for better grip and maneuverability."
+                    ]
+                },
+                {
+                    "title": " Movable Tip for Trauma-Free Intubation",
+                    "details": [
+                        "A precision-controlled movable tip (tongue) to gently manipulate the epiglottis, reducing patient discomfort.",
+                        "Controlled by a joystick, ensuring a smoother intubation process."
+                    ]
+                },
+                {
+                    "title": "Ease of Use – No Doctor Needed for Basic Use",
+                    "details": [
+                        "Designed for intuitive operation, enabling trained nurses to handle basic intubation procedures.",
+                        "Remote viewing capability allows doctors to supervise from a distance."
+                    ]
+                }
+            ],
+            "targetAudience": [
+                "Hospitals & Clinics",
+                "Medical Colleges & Research Institutions",
+                "Government Healthcare Initiatives"
+            ],
+            "table": [
+                {
+                    "feature": "Price",
+                    "ourAdvantages": "₹1.5–2 Lakhs",
+                    "Competitors": "₹7+ Lakhs"
+                },
+                {
+                    "feature": "Multiple Cameras",
+                    "ourAdvantages": "✅ Yes",
+                    "Competitors": "❌ No"
+                },
+                {
+                    "feature": "Continuous Oxygenation",
+                    "ourAdvantages": "✅ Yes",
+                    "Competitors": "❌ No"
+                },
+                {
+                    "feature": "Remote Viewing",
+                    "ourAdvantages": "✅ Yes",
+                    "Competitors": "❌ No"
+                },
+                {
+                    "feature": "Movable Tip",
+                    "ourAdvantages": "✅ Yes",
+                    "Competitors": "❌ No"
+                },
+                {
+                    "feature": "Usable by Nurses",
+                    "ourAdvantages": "✅ Yes",
+                    "Competitors": "❌ No"
+                }
+            ]
+        },
+        {
+            "name": "TripMacha AI",
+            "description": "Smart Travel Planning",
+            "details": "TripMacha is an AI-powered travel assistant designed for short-distance travel planning, offering personalized itineraries, real-time optimization, and eco-friendly suggestions.",
+            "whyChooseUs": "Most travel platforms overload users with information, leading to decision fatigue and inefficient planning. TripMacha simplifies the process with smart automation and real-time AI-driven recommendations.",
+            "image": "/assets/images/trip.jpg",
+            "keyFeatures": [
+                {
+                    "title": "Instant Personalized Itineraries",
+                    "details": [
+                        "AI generates tailored travel plans based on your preferences, schedule, and budget.",
+                        "Takes into account local attractions, food, and hidden gems.",
+                        "Adjusts plans based on weather, traffic, and store timings."
+                    ]
+                },
+                {
+                    "title": "Designed for Short Trips (Under 70 km)",
+                    "details": [
+                        "Focuses on quick getaways and local travel, a neglected segment in the travel industry.",
+                        "Perfect for weekend trips, one-day outings, and business travelers."
+                    ]
+                },
+                {
+                    "title": "Eco-Friendly Travel Choices",
+                    "details": [
+                        "Recommends sustainable travel options, including public transport and eco-friendly hotels.",
+                        "Promotes GI-tagged products and traditional cuisines, supporting local economies."
+                    ]
+                }
+            ],
+            "targetAudience": [
+                "Frequent Travelers",
+                "Business Professionals",
+                "Sustainable Tourism Advocates",
+                "Government & Tourism Boards"
+            ],
+            "table": [
+                {
+                    "feature": "Short-Trip Focus    ",
+                    "ourAdvantages": "✅ Yes",
+                    "Competitors": "❌ No"
+                },
+                {
+                    "feature": "AI-Powered Personalization",
+                    "ourAdvantages": "✅ Yes",
+                    "Competitors": "❌ No"
+                },
+                {
+                    "feature": "Real-Time Optimization",
+                    "ourAdvantages": "✅ Yes",
+                    "Competitors": "❌ No"
+                },
+                {
+                    "feature": "Sustainable Travel Options",
+                    "ourAdvantages": "✅ Yes",
+                    "Competitors": "❌ No"
+                },
+                {
+                    "feature": "Local Experience Discovery",
+                    "ourAdvantages": "✅ Yes",
+                    "Competitors": "❌ No"
+                }
+            ]
+        }
+    ],
+
+    "servicesPage":{
+        "heroTitle":"Custom AI & Software Development",
+        "heroSubtitle":"Ganglia Technologies provides cutting-edge software solutions across multiple domains:"
+    },
+
+    "services": [
+        {
+            "title": "Healthcare Tech",
+            "subtitle": "Smart medical devices, telemedicine platforms, and patient data management",
+            "image": "/assets/images/medicle.jpg",
+            "description": "We specialize in smart medical devices, with our flagship video-laryngoscope enhancing intubation safety and efficiency for medical professionals. Our expertise in hospital automation enables AI-powered patient monitoring, scheduling, and diagnostics, streamlining operations and improving patient care. Additionally, we develop secure telemedicine and remote healthcare platforms, facilitating virtual consultations and expanding access to quality healthcare beyond traditional clinical settings."
+        },
+        {
+            "title": "AI-Powered Applications",
+            "subtitle": "Intelligent automation, machine learning, and NLP models",
+            "image": "/assets/images/ai.jpg",
+            "description": "We specialize in developing custom AI and machine learning models, delivering tailored solutions for predictive analytics, automation, and intelligent decision-making. Our expertise extends to natural language processing (NLP), enabling the creation of advanced chatbots, voice assistants, and automated support systems that enhance user interaction. Additionally, we provide cutting-edge computer vision and image recognition technologies, including AI-powered medical imaging, facial recognition, and security solutions, ensuring precision, efficiency, and reliability across industries."
+        },
+        {
+            "title": "Enterprise Software",
+            "subtitle": "Scalable business solutions tailored to client needs",
+            "image": "/assets/images/enterprise.jpg",
+            "description": "We provide end-to-end software solutions, developing custom software for hospitals, corporations, and public sector enterprises to enhance efficiency and scalability. Our expertise in data management & analytics helps businesses optimize business intelligence, reporting, and automation with AI-driven insights. Additionally, we specialize in custom ERP & CRM development, delivering enterprise-level business automation and workflow management solutions tailored to specific organizational needs."
+        },
+        {
+            "title": "Cloud & Data Solutions",
+            "subtitle": "Secure cloud computing, data analysis, and AI-driven insights",
+            "image": "/assets/images/cloud.png",
+            "description": "We provide secure cloud computing & storage solutions, ensuring scalability and flexibility for businesses and healthcare institutions. Our expertise in data integration & AI-driven insights enables organizations to transform big data into actionable intelligence, enhancing decision-making and operational efficiency. Additionally, we prioritize cybersecurity & compliance, offering end-to-end data protection to safeguard sensitive medical and business information, ensuring security and regulatory adherence."
+        },
+        {
+            "title": "Consulting & Custom Development",
+            "subtitle": "AI Strategy & Automation for Business Growth",
+            "image": "/assets/images/consultancy.jpeg",
+            "description": "We offer business AI strategy consulting, helping organizations optimize AI adoption, workflow automation, and digital transformation to stay ahead in a competitive landscape. Our expertise in custom software & AI model development enables us to create B2B-specific automation and analytics tools tailored to industry needs. Additionally, we specialize in process optimization & AI integration, leveraging AI-driven solutions to improve efficiency, reduce costs, and scale operations seamlessly."
+        }
+    ],
+
+    "contact": {
+        "headquarters": "Manipal, Karnataka, India",
+        "phone": "(+91) 81097 82903",
+        "email": "director@ganglia.in",
+        "website": "www.ganglia.in"
+    },
+
+    "contactUs": {
+        "title": "GANGLIA TECHNOLOGIES PRIVATE LTD.",
+        "subtitle": "Send Us a Message",
+        "note": "We'd love to hear from you! Whether it's inquiries, feedback, or your own stories of how our AI and software solutions helped, please fill out the form below. Each message is valued, and we promise to respond with dedication and care.",
+        "address": [
+            "Manipal Government of Karnataka Bioincubator, III Floor,MAHE Advanced Research Centre Behind MMMC,",
+            "Manipal, Karnataka 576104.",
+            "CIN: U73100KA2022PTC164385",
+            "TAN: BLRG29581G"
+        ],
+        "footNote": "Closed on Sundays and Public Holidays"
+    }
+}
