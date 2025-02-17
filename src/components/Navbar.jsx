@@ -18,7 +18,7 @@ const aboutDropdown = [
   { name: "Our Team", path: "/ourteam" },
 ];
 
-export default function NavBar() {
+function NavBar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -38,7 +38,6 @@ export default function NavBar() {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex text-lg relative">
-          
           {tabs.map((tab) => (
             <div key={tab.name} className="relative group">
               <Link
@@ -49,7 +48,12 @@ export default function NavBar() {
                 onMouseLeave={() => setIsDropdownOpen(false)}
               >
                 <span className="relative z-10">{tab.name}</span>
-                {tab.hasDropdown && <FontAwesomeIcon icon={faCaretDown} className="relative z-10 pl-2"/>}
+                {tab.hasDropdown && (
+                  <FontAwesomeIcon
+                    icon={faCaretDown}
+                    className="relative z-10 pl-2"
+                  />
+                )}
                 {selected === tab.name && (
                   <motion.span
                     layoutId="pill-tab"
@@ -57,7 +61,7 @@ export default function NavBar() {
                     className="absolute inset-0 z-0 bg-gray-400 rounded-md"
                   ></motion.span>
                 )}
-              </Link    >
+              </Link>
 
               {/* Dropdown for About Us */}
               {tab.hasDropdown && isDropdownOpen && (
@@ -128,3 +132,5 @@ export default function NavBar() {
     </nav>
   );
 }
+
+export default NavBar;
