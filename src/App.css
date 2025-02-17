@@ -7,5 +7,28 @@
     font-family: 'Helvetica', sans-serif;
   }
 
+  .typewriter {
+    border-right: 0.1em solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  
+  
 
   

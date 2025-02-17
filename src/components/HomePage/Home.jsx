@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import content from "../../../content.json";
@@ -100,7 +100,8 @@ const OverlayCopy = ({ tagline, heading, description }) => {
         {/* <h3 className="text-[27px] -mt-1  pl-2 font-semibold">{content.logo.titleSecondary}</h3> */}
       </div>
       <p className="text-xl md:text-4xl mb-6 md:mb-16 mt-6 font-bold max-w-2xl mx-auto">
-        {tagline}
+        {/* {tagline} */}
+        <Typewriter text={tagline}/>
       </p>
       <p className="text-md md:text-xl lg:text-2xl max-w-4/6 indent-10 mx-auto">
          {content.home.description}
@@ -126,7 +127,7 @@ const OverlayCopy = ({ tagline, heading, description }) => {
   );
 };
 
-const ExampleContent = () => (
+const HomeContent = () => (
   <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
     <h1 className="col-span-1 text-5xl font-bold md:col-span-4 my-auto">
       Our Story
@@ -147,6 +148,10 @@ const ExampleContent = () => (
   </div>
 );
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="flex flex-col gap-2">
       <div className="bg-white">
@@ -156,7 +161,7 @@ const Home = () => {
           tagline={content.home.heroTagline}
           description={content.home.description}
         >
-          <ExampleContent />
+          <HomeContent />
         </TextParallaxContent>
       </div>
       <WhoAreWe />
@@ -167,3 +172,17 @@ const Home = () => {
 };
 
 export default Home;
+
+function Typewriter({ text }) {
+  const charCount = text.length;
+  const animationDuration = `${charCount * 0.05}s`; // 0.05s per character
+
+  return (
+    <span
+      className="typewriter"
+      style={{ animation: `typing ${animationDuration} steps(${charCount}, end) forwards, blink 0.75s step-end infinite` }}
+    >
+      {text}
+    </span>
+  );
+}
