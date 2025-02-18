@@ -1,7 +1,7 @@
 {
     "home": {
         "logo":"/assets/images/GANGLIA LOGO BLACK.png",
-        "landingPageBg":"https://images.pexels.com/photos/7723686/pexels-photo-7723686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "landingPageBg":"/assets/images/Abstract_background_17.jpg",
         "companyName": "Ganglia Technologies",
         "heroTagline": "Unsatisfied with existing technology!",
         "description": "Ganglia Technologies revolutionizes AI-driven healthcare solutions, making innovation accessible, efficient, and future-ready for your business.",
@@ -227,7 +227,7 @@
             "description": "The Smart, Affordable Solution",
             "details": " hello Ganglia Technologies' patented smart video-laryngoscope is designed to provide cutting-edge airway management at an affordable cost. Our device integrates advanced imaging, continuous oxygenation, and user-friendly features, making it the most accessible and efficient solution for medical professionals.",
             "whyChooseUs": "Traditional video-laryngoscopes cost ₹7+ lakhs, making them inaccessible to many hospitals, especially in rural areas. Our affordable, high-quality alternative aims to bridge this gap, priced at just ₹1.5–2 lakhs.",
-            "image": "/assets/images/laryngoscope1.jpg",
+            "image": "/assets/images/laryngoscope.jpg",
             "keyFeatures": [
                 {
                     "title": "Multiple Wide-Angle Cameras for Clearer Visualization",
@@ -308,7 +308,7 @@
             "description": "Smart Travel Planning",
             "details": "TripMacha is an AI-powered travel assistant designed for short-distance travel planning, offering personalized itineraries, real-time optimization, and eco-friendly suggestions.",
             "whyChooseUs": "Most travel platforms overload users with information, leading to decision fatigue and inefficient planning. TripMacha simplifies the process with smart automation and real-time AI-driven recommendations.",
-            "image": "/assets/images/trip.jpg",
+            "image": "/assets/images/tripmacha.jpeg",
             "keyFeatures": [
                 {
                     "title": "Instant Personalized Itineraries",
@@ -379,31 +379,43 @@
             "title": "Healthcare Tech",
             "subtitle": "Smart medical devices, telemedicine platforms, and patient data management",
             "image": "/assets/images/medicle.jpg",
-            "description": "We specialize in smart medical devices, with our flagship video-laryngoscope enhancing intubation safety and efficiency for medical professionals. Our expertise in hospital automation enables AI-powered patient monitoring, scheduling, and diagnostics, streamlining operations and improving patient care. Additionally, we develop secure telemedicine and remote healthcare platforms, facilitating virtual consultations and expanding access to quality healthcare beyond traditional clinical settings."
+            "description": "We specialize in smart medical devices, including our video-laryngoscope for safer intubation. Our hospital automation solutions use AI for patient monitoring, scheduling, and diagnostics. We also develop secure telemedicine platforms, enabling virtual care and expanding healthcare access."
         },
         {
             "title": "AI-Powered Applications",
             "subtitle": "Intelligent automation, machine learning, and NLP models",
             "image": "/assets/images/ai.jpg",
-            "description": "We specialize in developing custom AI and machine learning models, delivering tailored solutions for predictive analytics, automation, and intelligent decision-making. Our expertise extends to natural language processing (NLP), enabling the creation of advanced chatbots, voice assistants, and automated support systems that enhance user interaction. Additionally, we provide cutting-edge computer vision and image recognition technologies, including AI-powered medical imaging, facial recognition, and security solutions, ensuring precision, efficiency, and reliability across industries."
+            "description": "We build custom AI and machine learning solutions for predictive analytics, automation, and intelligent decision-making. Our expertise spans NLP for chatbots and voice assistants, and computer vision for medical imaging, facial recognition, and security solutions."
         },
         {
             "title": "Enterprise Software",
             "subtitle": "Scalable business solutions tailored to client needs",
             "image": "/assets/images/enterprise.jpg",
-            "description": "We provide end-to-end software solutions, developing custom software for hospitals, corporations, and public sector enterprises to enhance efficiency and scalability. Our expertise in data management & analytics helps businesses optimize business intelligence, reporting, and automation with AI-driven insights. Additionally, we specialize in custom ERP & CRM development, delivering enterprise-level business automation and workflow management solutions tailored to specific organizational needs."
-        },
-        {
-            "title": "Cloud & Data Solutions",
-            "subtitle": "Secure cloud computing, data analysis, and AI-driven insights",
-            "image": "/assets/images/cloud.png",
-            "description": "We provide secure cloud computing & storage solutions, ensuring scalability and flexibility for businesses and healthcare institutions. Our expertise in data integration & AI-driven insights enables organizations to transform big data into actionable intelligence, enhancing decision-making and operational efficiency. Additionally, we prioritize cybersecurity & compliance, offering end-to-end data protection to safeguard sensitive medical and business information, ensuring security and regulatory adherence."
+            "description": "We deliver end-to-end software solutions, building custom platforms for hospitals, corporations, and public sector enterprises. Our expertise includes AI-driven data analytics for business intelligence and automation, along with custom ERP and CRM systems for enterprise-level workflow management."
         },
         {
             "title": "Consulting & Custom Development",
             "subtitle": "AI Strategy & Automation for Business Growth",
             "image": "/assets/images/consultancy.jpeg",
-            "description": "We offer business AI strategy consulting, helping organizations optimize AI adoption, workflow automation, and digital transformation to stay ahead in a competitive landscape. Our expertise in custom software & AI model development enables us to create B2B-specific automation and analytics tools tailored to industry needs. Additionally, we specialize in process optimization & AI integration, leveraging AI-driven solutions to improve efficiency, reduce costs, and scale operations seamlessly."
+            "description": "We provide business AI strategy consulting to drive digital transformation through workflow automation and AI adoption. Our expertise in custom AI models and B2B software solutions delivers tailored analytics and automation tools. We also optimize processes with AI integration, enhancing efficiency, cutting costs, and scaling operations."
+        },
+        {
+            "title": "AI-Powered Applications",
+            "subtitle": "Intelligent automation, machine learning, and NLP models",
+            "image": "/assets/images/ai.jpg",
+            "description": "We build custom AI and machine learning solutions for predictive analytics, automation, and intelligent decision-making. Our expertise spans NLP for chatbots and voice assistants, and computer vision for medical imaging, facial recognition, and security solutions."
+        },
+        {
+            "title": "Cloud & Data Solutions",
+            "subtitle": "Secure cloud computing, data analysis, and AI-driven insights",
+            "image": "/assets/images/cloud.png",
+            "description": "We provide secure cloud computing and storage solutions, ensuring scalability for businesses and healthcare institutions. Our AI-driven data integration turns big data into actionable insights, boosting decision-making and efficiency. We also offer end-to-end cybersecurity solutions, safeguarding sensitive information and ensuring compliance."
+        },
+        {
+            "title": "Consulting & Custom Development",
+            "subtitle": "AI Strategy & Automation for Business Growth",
+            "image": "/assets/images/consultancy.jpeg",
+            "description": "We provide business AI strategy consulting to drive digital transformation through workflow automation and AI adoption. Our expertise in custom AI models and B2B software solutions delivers tailored analytics and automation tools. We also optimize processes with AI integration, enhancing efficiency, cutting costs, and scaling operations."
         }
     ],
 
