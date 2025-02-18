@@ -80,7 +80,7 @@ const OurServices = () => {
                             <motion.p
                                 className="text-gray-600 opacity-0 transition-all duration-500"
                                 variants={{
-                                    hidden: { opacity: 0, height: 0 },
+        hidden: { opacity: window.innerWidth < 768 ? 1 : 0, height: window.innerWidth < 768 ? "auto" : 0 },
                                     visible: { opacity: 1, height: "auto" }
                                 }}
                                 transition={{ duration: 0.6, ease: "easeInOut" }}

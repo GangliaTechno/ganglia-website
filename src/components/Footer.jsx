@@ -22,7 +22,7 @@ const Footer = () => {
                         <h3 className="font-bold text-xl mb-4">Company</h3>
                         <div className="ml-2">
                             {/* <p><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></p> */}
-                            <p><Link to="/about" onClick={() => setIsOpen(false)}>About Us</Link></p>
+                            {/* <p><Link to="/about" onClick={() => setIsOpen(false)}>About Us</Link></p> */}
                             <p><Link to="/ourteam" onClick={() => setIsOpen(false)}>Our team</Link></p>
                             {/* <p><Link to="/">Blog</Link></p> */}
                             <p><Link to="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link></p>

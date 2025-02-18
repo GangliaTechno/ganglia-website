@@ -378,44 +378,26 @@
         {
             "title": "Healthcare Tech",
             "subtitle": "Smart medical devices, telemedicine platforms, and patient data management",
-            "image": "/assets/images/medicle.jpg",
+            "image": "/assets/images/Healthcare Tech.jpg",
             "description": "We specialize in smart medical devices, including our video-laryngoscope for safer intubation. Our hospital automation solutions use AI for patient monitoring, scheduling, and diagnostics. We also develop secure telemedicine platforms, enabling virtual care and expanding healthcare access."
         },
         {
-            "title": "AI-Powered Applications",
-            "subtitle": "Intelligent automation, machine learning, and NLP models",
-            "image": "/assets/images/ai.jpg",
-            "description": "We build custom AI and machine learning solutions for predictive analytics, automation, and intelligent decision-making. Our expertise spans NLP for chatbots and voice assistants, and computer vision for medical imaging, facial recognition, and security solutions."
-        },
-        {
-            "title": "Enterprise Software",
+            "title": "Medical Enterprise Software",
             "subtitle": "Scalable business solutions tailored to client needs",
-            "image": "/assets/images/enterprise.jpg",
+            "image": "/assets/images/Enterprise Software.jpg",
             "description": "We deliver end-to-end software solutions, building custom platforms for hospitals, corporations, and public sector enterprises. Our expertise includes AI-driven data analytics for business intelligence and automation, along with custom ERP and CRM systems for enterprise-level workflow management."
         },
         {
             "title": "Consulting & Custom Development",
             "subtitle": "AI Strategy & Automation for Business Growth",
-            "image": "/assets/images/consultancy.jpeg",
+            "image": "/assets/images/Consulting and Custom Development.jpg",
             "description": "We provide business AI strategy consulting to drive digital transformation through workflow automation and AI adoption. Our expertise in custom AI models and B2B software solutions delivers tailored analytics and automation tools. We also optimize processes with AI integration, enhancing efficiency, cutting costs, and scaling operations."
         },
         {
             "title": "AI-Powered Applications",
             "subtitle": "Intelligent automation, machine learning, and NLP models",
-            "image": "/assets/images/ai.jpg",
+            "image": "/assets/images/AI Powered Applications.jpg",
             "description": "We build custom AI and machine learning solutions for predictive analytics, automation, and intelligent decision-making. Our expertise spans NLP for chatbots and voice assistants, and computer vision for medical imaging, facial recognition, and security solutions."
-        },
-        {
-            "title": "Cloud & Data Solutions",
-            "subtitle": "Secure cloud computing, data analysis, and AI-driven insights",
-            "image": "/assets/images/cloud.png",
-            "description": "We provide secure cloud computing and storage solutions, ensuring scalability for businesses and healthcare institutions. Our AI-driven data integration turns big data into actionable insights, boosting decision-making and efficiency. We also offer end-to-end cybersecurity solutions, safeguarding sensitive information and ensuring compliance."
-        },
-        {
-            "title": "Consulting & Custom Development",
-            "subtitle": "AI Strategy & Automation for Business Growth",
-            "image": "/assets/images/consultancy.jpeg",
-            "description": "We provide business AI strategy consulting to drive digital transformation through workflow automation and AI adoption. Our expertise in custom AI models and B2B software solutions delivers tailored analytics and automation tools. We also optimize processes with AI integration, enhancing efficiency, cutting costs, and scaling operations."
         }
     ],
 
