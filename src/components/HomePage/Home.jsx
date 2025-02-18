@@ -106,17 +106,17 @@ const OverlayCopy = ({ tagline, heading, description }) => {
       <p className="text-md md:text-xl lg:text-2xl max-w-4/6 indent-10 mx-auto">
          {content.home.description}
       </p>
-      <div className="flex mx-auto">
+      <div className="md:flex mx-auto w-3/4 md:w-auto gap-6 mt-10">
         <Link
           to="/services"
-          className="  rounded-md mt-10 border border-white hover:bg-gray-400 px-6 py-3 text-lg text-white transition-colors hover:scale-105  group flex items-center justify-center no-underline"
+          className="rounded-md border border-white hover:bg-gray-400 px-6 py-3 text-lg text-white transition-colors hover:scale-105  group flex items-center justify-center no-underline mb-4"
         >
           Our Services
           <FiArrowUpRight className="inline transition-transform duration-300 group-hover:rotate-45" />
         </Link>
         <Link
           to="/ourproducts"
-          className=" ml-6 rounded-md mt-10  border border-white bg-black  px-6 py-3 text-lg text-white transition-colors hover:scale-105  group flex items-center justify-center no-underline"
+          className="rounded-md border border-white bg-black  px-6 py-3 text-lg text-white transition-colors hover:scale-105  group flex items-center justify-center no-underline mb-4"
         >
           Our Products
           <FiArrowUpRight className="inline transition-transform duration-300 group-hover:rotate-45" />
