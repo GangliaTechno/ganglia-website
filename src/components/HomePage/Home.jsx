@@ -108,7 +108,7 @@ const OverlayCopy = ({ tagline, heading, description }) => {
       </p>
       <div className="md:flex mx-auto w-3/4 md:w-auto gap-6 mt-10">
         <Link
-          to="/services"
+          to="/ourservices"
           className="rounded-md border border-white hover:bg-gray-400 px-6 py-3 text-lg text-white transition-colors hover:scale-105  group flex items-center justify-center no-underline mb-4"
         >
           Our Services

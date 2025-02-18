@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 const tabs = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/about", hasDropdown: true },
-  { name: "Services", path: "/services" },
+  { name: "Services", path: "/ourservices" },
   { name: "Our Products", path: "/ourproducts" },
   { name: "Contact", path: "/contact" },
 ];
@@ -25,8 +25,10 @@ const Navbar = () => {
   const [selected, setSelected] = useState("");
 
   useEffect(() => {
+    if(!location.pathname.toString().startsWith("/product-detail")) {
     const currentTab = tabs.find((tab) => tab.path === location.pathname);
     setSelected(currentTab ? currentTab.name : "About Us");
+    }
   }, [location.pathname]);
 
   return (
@@ -76,7 +78,7 @@ const Navbar = () => {
                       to={item.path}
                       className="block px-4 py-2 hover:bg-gray-400 hover:to-indigo-600 "
                       onClick={() => {
-                        setSelected("About Us");
+                        // setSelected("About Us");
                         setIsDropdownOpen(false);
                       }}
                     >
