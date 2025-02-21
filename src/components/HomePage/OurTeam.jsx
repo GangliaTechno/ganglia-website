@@ -67,14 +67,14 @@ const OurTeam = ({ context }) => {
             </h2>
           </div>
           <div className="flex flex-wrap lg:flex-nowrap md:w-[90%] mx-auto gap-x-10">
-          <div className="relative w-full max-w-3xl h-100 flex justify-center mx-auto p-2">
+          <div className="relative w-full max-w-3xl flex justify-center mx-auto p-2 md:h-96">
             {/* Image Transition */}
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentIndex}
                 src={images[currentIndex]}
                 alt={`Slide ${currentIndex + 1}`}
-                className="w-full h-full object-cover rounded-lg shadow-lg"
+                className=" object-cover rounded-lg shadow-lg"
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
@@ -96,7 +96,7 @@ const OurTeam = ({ context }) => {
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
-          <div className="w-full my-auto">
+          <div className=" my-auto">
             <p className="p-4 md:text-xl lg:text-xl max-w-3xl bg-gray-100 rounded-md shadow-lg">{content.teamDescriptions[currentIndex]}</p>
           </div>
           </div>

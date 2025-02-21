@@ -33,7 +33,7 @@ const OurProducts = () => {
         </div>
       </div>
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 min-w-3/4 md:min-w-2xl max-w-3xl  mx-auto relative -top-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 min-w-3/4 md:min-w-2xl max-w-3xl mx-auto relative -top-16 gap-4">
         {content.products.map((product, index) => (
           <div
             key={index}
