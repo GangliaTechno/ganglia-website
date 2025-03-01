@@ -73,7 +73,7 @@
         }
     ],
 
-    "SubteamTitle":"Our Employees",
+    "SubteamTitle":"Capturing Our Journey",
 
     "teamImages":[
         "/assets/images/whoarewe.jpeg",
@@ -86,6 +86,41 @@
         "We are a dynamic group of professionals committed to delivering high-quality results. Our team embraces change and adapts quickly to new challenges, ensuring that we consistently exceed expectations. With a strong focus on efficiency and teamwork, we leverage each other's strengths to achieve our goals.",
         "Our team is dedicated to understanding and meeting our clients' needs with excellence. Passionate about our work, we go the extra mile to provide solutions that make a real impact. With a customer-first mindset, we value integrity, responsiveness, and continuous improvement in everything we do."
         
+    ],
+
+    "employeeSectionheader":"Our Interns",
+    "ourEmployees": [
+        {
+            "name": "lorem impsum",
+            "image": "https://placehold.co/500x600"
+        },{
+            "name": "lorem impsum",
+            "image": "https://placehold.co/500x600"
+        },{
+            "name": "lorem impsum",
+            "image": "https://placehold.co/500x600"
+        },{
+            "name": "lorem impsum",
+            "image": "https://placehold.co/500x600"
+        },{
+            "name": "lorem impsum",
+            "image": "https://placehold.co/500x600"
+        },{
+            "name": "lorem impsum",
+            "image": "https://placehold.co/500x600"
+        },{
+            "name": "lorem impsum",
+            "image": "https://placehold.co/500x600"
+        },{
+            "name": "lorem impsum",
+            "image": "https://placehold.co/500x600"
+        },{
+            "name": "lorem impsum",
+            "image": "https://placehold.co/500x600"
+        },{
+            "name": "lorem impsum",
+            "image": "https://placehold.co/500x600"
+        }
     ],
 
     "aboutUs": {

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from "framer-motion";
 import content from '../../content.json'
+import { Link } from 'lucide-react';
 
 const OurServices = () => {
     useEffect(() => {
@@ -33,63 +34,65 @@ const OurServices = () => {
             <div className='relative w-5/6 mx-auto pb-1'>
                 <div className="flex flex-wrap justify-center relative -top-16">
                     {content.services.map((service, index) => (
+                        <a href='/contact'>
                         <motion.div
-                        key={index}
-                        className="bg-white text-gray-800 shadow-lg rounded-lg border border-gray-200 overflow-hidden mb-12 flex flex-col md:flex-row justify-between transition duration-300 hover:bg-gray-100"
-                        style={{ width: "100%", maxWidth: "1200px" }}
-                        whileHover="visible"
-                        initial="hidden"
-                        animate="hidden"
-                        variants={{
-                            hidden: { opacity: 1 },
-                            visible: { opacity: 1 }
-                        }}
-                    >
-                        {/* Image Section */}
-                        <div className={`w-full md:w-70 h-64 flex items-center justify-center transition duration-300 my-auto ${index % 2 === 1 ? 'md:order-last' : ''}`}>
-                            <img src={service.image} alt={service.title} className="w-full h-full" />
-                        </div>
-                    
-                        {/* Text Section */}
-                        <motion.div
-                            className="p-6 md:w-2/3 max-w-4xl text-gray-800 flex flex-col transition-all duration-500 mx-auto"
+                            key={index}
+                            className="bg-white text-gray-800 shadow-lg rounded-lg border border-gray-200 overflow-hidden mb-12 flex flex-col md:flex-row justify-between transition duration-300 hover:bg-gray-100"
+                            style={{ width: "100%", maxWidth: "1200px" }}
+                            whileHover="visible"
+                            initial="hidden"
+                            animate="hidden"
+                            variants={{
+                                hidden: { opacity: 1 },
+                                visible: { opacity: 1 }
+                            }}
                         >
-                            {/* Title */}
-                            <motion.h3
-                                className="text-3xl font-bold text-gray-800 mb-4 transition-all duration-500"
-                                variants={{
-                                    hidden: { fontSize: "2rem", marginTop: 34 },
-                                    visible: { fontSize: "1.8rem", marginTop: 4 }
-                                }}
+                            {/* Image Section */}
+                            <div className={`w-full md:w-70 h-64 flex items-center justify-center transition duration-300 my-auto ${index % 2 === 1 ? 'md:order-last' : ''}`}>
+                                <img src={service.image} alt={service.title} className="w-full h-full" />
+                            </div>
+
+                            {/* Text Section */}
+                            <motion.div
+                                className="p-6 md:w-2/3 max-w-4xl text-gray-800 flex flex-col transition-all duration-500 mx-auto"
                             >
-                                {service.title}
-                            </motion.h3>
-                    
-                            {/* Subtitle */}
-                            <motion.p
-                                className="text-lg text-gray-700 mb-2 transition-all duration-500"
-                                variants={{
-                                    hidden: { fontSize: "1.2rem" },
-                                    visible: { fontSize: "1rem" }
-                                }}
-                            >
-                                {service.subtitle}
-                            </motion.p>
-                    
-                            {/* Description (Now Appears on Whole Card Hover, Including Image) */}
-                            <motion.p
-                                className="text-gray-600 opacity-0 transition-all duration-500"
-                                variants={{
-        hidden: { opacity: window.innerWidth < 768 ? 1 : 0, height: window.innerWidth < 768 ? "auto" : 0 },
-                                    visible: { opacity: 1, height: "auto" }
-                                }}
-                                transition={{ duration: 0.6, ease: "easeInOut" }}
-                            >
-                                {service.description}
-                            </motion.p>
+                                {/* Title */}
+                                <motion.h3
+                                    className="text-3xl font-bold text-gray-800 mb-4 transition-all duration-500"
+                                    variants={{
+                                        hidden: { fontSize: "2rem", marginTop: 34 },
+                                        visible: { fontSize: "1.8rem", marginTop: 4 }
+                                    }}
+                                >
+                                    {service.title}
+                                </motion.h3>
+
+                                {/* Subtitle */}
+                                <motion.p
+                                    className="text-lg text-gray-700 mb-2 transition-all duration-500"
+                                    variants={{
+                                        hidden: { fontSize: "1.2rem" },
+                                        visible: { fontSize: "1rem" }
+                                    }}
+                                >
+                                    {service.subtitle}
+                                </motion.p>
+
+                                {/* Description (Now Appears on Whole Card Hover, Including Image) */}
+                                <motion.p
+                                    className="text-gray-600 opacity-0 transition-all duration-500"
+                                    variants={{
+                                        hidden: { opacity: window.innerWidth < 1024 ? 1 : 0, height: window.innerWidth < 1024 ? "auto" : 0 },
+                                        visible: { opacity: 1, height: "auto" }
+                                    }}
+                                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                                >
+                                    {service.description}
+                                </motion.p>
+                            </motion.div>
                         </motion.div>
-                    </motion.div>
-                        
+                        </a>
+
 
                     ))}
                 </div>
