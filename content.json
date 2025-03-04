@@ -1,7 +1,7 @@
 {
     "home": {
-        "logo":"/assets/images/GANGLIA LOGO BLACK.png",
-        "landingPageBg":"/assets/images/Abstract_background_17.jpg",
+        "logo": "/assets/images/GANGLIA LOGO BLACK.png",
+        "landingPageBg": "/assets/images/Abstract_background_17.jpg",
         "companyName": "Ganglia Technologies",
         "heroTagline": "Unsatisfied with existing technology!",
         "description": "Ganglia Technologies revolutionizes AI-driven healthcare solutions, making innovation accessible, efficient, and future-ready for your business.",
@@ -11,118 +11,118 @@
             "Our Services",
             "Contact Us"
         ],
-        "whoAreWeBG":"/assets/images/whoarewe.jpeg",
+        "whoAreWeBG": "/assets/images/whoarewe.jpeg",
         "whoAreWe": "At Ganglia Technologies, we are a team focused on creating innovative and affordable solutions in healthcare and technology. We combine AI and engineering to develop products that improve lives and make operations more efficient. Our goal is to make advanced technology accessible and impactful for everyone.",
         "joinUs": "Join us as we continue our journey to make advanced solutions accessible and affordable for everyone."
     },
-
     "footer": {
         "subhead": "Get in Touch",
         "subtagline": "Don’t miss any updates!"
     },
-
     "logo": {
         "titlePrimary": "GANGLIA",
         "titleSecondary": "TECHNOLOGIES PVT. LTD."
     },
-    "teamHeader":"Meet Our Team",
+    "teamHeader": "Meet Our Team",
     "ourTeamDescription": "At Ganglia Technologies, our strength lies in our people. Led by seasoned professionals in engineering, AI, and healthcare, our leadership team drives innovation and excellence. With a dedicated workforce of 50+ experts, we are committed to developing, refining, and delivering high-impact solutions that make a difference.",
-
     "ourTeam": [
         {
             "name": "Dr Jayaraj Mymbilly Balakrishnan",
             "image": "/assets/images/chairman.jpg",
             "position": "Director",
-            "linkedIn":"https://www.linkedin.com/in/dr-jayaraj-mymbilly-balakrishnan-71a15b6/"
+            "linkedIn": "https://www.linkedin.com/in/dr-jayaraj-mymbilly-balakrishnan-71a15b6/"
         },
         {
             "name": "Dr Dasharathraj K Shetty",
             "image": "/assets/images/md.jpg",
             "position": "Director",
-            "linkedIn":"https://www.linkedin.com/in/dasharathraj/"
+            "linkedIn": "https://www.linkedin.com/in/dasharathraj/"
         },
         {
             "name": "Dr Sandeep S Shenoy",
             "image": "/assets/images/director.jpg",
             "position": "Director",
-            "linkedIn":""
+            "linkedIn": ""
         },
         {
             "name": "Dr Balakrishna S Maddodi",
             "image": "/assets/images/vice_chairman.jpg",
             "position": "Director",
-            "linkedIn":"https://www.linkedin.com/in/dr-balakrishna-srinivas-maddodi-68874218/"
+            "linkedIn": "https://www.linkedin.com/in/dr-balakrishna-srinivas-maddodi-68874218/"
         },
         {
             "name": "Namesh Malarout",
             "image": "/assets/images/ceo.png",
             "position": "Chief Executive Officer (CEO)",
-            "linkedIn":"https://www.linkedin.com/in/namesh-malarout-97375697/"
+            "linkedIn": "https://www.linkedin.com/in/namesh-malarout-97375697/"
         },
         {
             "name": "Shreepathy Ranga Bhatta",
             "image": "/assets/images/CFO.jpg",
             "position": "Board Member",
-            "linkedIn":"https://www.linkedin.com/in/shreepathy-ranga-bhatta-862a2b24a/"
+            "linkedIn": "https://www.linkedin.com/in/shreepathy-ranga-bhatta-862a2b24a/"
         },
         {
             "name": "Anusha Pai",
             "image": "/assets/images/Anusha-mam.png",
             "position": "Board Member",
-            "linkedIn":"https://www.linkedin.com/in/anusha-pai-013b0213/"
+            "linkedIn": "https://www.linkedin.com/in/anusha-pai-013b0213/"
         }
     ],
-
-    "SubteamTitle":"Capturing Our Journey",
-
-    "teamImages":[
+    "SubteamTitle": "Capturing Our Journey",
+    "teamImages": [
         "/assets/images/whoarewe.jpeg",
         "/assets/images/group1.JPG",
         "/assets/images/group2.jpeg"
     ],
-
-    "teamDescriptions":[
+    "teamDescriptions": [
         "Our team thrives on creativity and collaboration, bringing diverse skills together to drive innovation. Each member contributes unique expertise, from problem-solving to design thinking, ensuring that we stay ahead of industry trends. We believe in open communication and continuous learning, creating an environment where ideas flourish and challenges turn into opportunities.",
         "We are a dynamic group of professionals committed to delivering high-quality results. Our team embraces change and adapts quickly to new challenges, ensuring that we consistently exceed expectations. With a strong focus on efficiency and teamwork, we leverage each other's strengths to achieve our goals.",
         "Our team is dedicated to understanding and meeting our clients' needs with excellence. Passionate about our work, we go the extra mile to provide solutions that make a real impact. With a customer-first mindset, we value integrity, responsiveness, and continuous improvement in everything we do."
-        
     ],
-
-    "employeeSectionheader":"Our Interns",
+    "employeeSectionheader": "Our Interns",
     "ourEmployees": [
         {
             "name": "lorem impsum",
             "image": "https://placehold.co/500x600"
-        },{
+        },
+        {
             "name": "lorem impsum",
             "image": "https://placehold.co/500x600"
-        },{
+        },
+        {
             "name": "lorem impsum",
             "image": "https://placehold.co/500x600"
-        },{
+        },
+        {
             "name": "lorem impsum",
             "image": "https://placehold.co/500x600"
-        },{
+        },
+        {
             "name": "lorem impsum",
             "image": "https://placehold.co/500x600"
-        },{
+        },
+        {
             "name": "lorem impsum",
             "image": "https://placehold.co/500x600"
-        },{
+        },
+        {
             "name": "lorem impsum",
             "image": "https://placehold.co/500x600"
-        },{
+        },
+        {
             "name": "lorem impsum",
             "image": "https://placehold.co/500x600"
-        },{
+        },
+        {
             "name": "lorem impsum",
             "image": "https://placehold.co/500x600"
-        },{
+        },
+        {
             "name": "lorem impsum",
             "image": "https://placehold.co/500x600"
         }
     ],
-
     "aboutUs": {
         "heroTag": "Finding Inspiration in Every Turn",
         "heroDescription": "We are a team of doctors, engineers, management professionals, and students from across MAHE who came together to solve the problems faced by various sectors of India. With a shared vision, we combine our expertise to develop effective and affordable solutions.",
@@ -139,7 +139,6 @@
         ],
         "ourApproach": "At Ganglia Technologies, we combine engineering, AI, and medical expertise to create affordable, high-quality solutions that enhance lives and streamline operations for businesses and institutions."
     },
-
     "processes": [
         {
             "title": "🔬 Research-Driven Innovation",
@@ -157,56 +156,53 @@
             "imgurl": "/assets/images/testing.png"
         }
     ],
-
     "milestoneDescription": "We are proud of our achievements in innovation and excellence. From securing patents to winning industry awards, our work is making a real impact. Here are some of our key milestones:",
-
     "awardsAndRecognition": [
-    {
-        "year": 2024,
-        "title": "Certificate of Excellence in Product Design",
-        "organization": "Elets Startup Awards",
-        "description": "Recognized for innovation in smart medical devices",
-        "imgurl": "/assets/images/award6.png",
-        "certificateUrl":"https://placehold.co/500x300"
-    },
-    {
-        "year": 2024,
-        "title": "14 Patents Secured",
-        "organization": "Ganglia Technologies",
-        "description": "Official patents for our novel AI and medical innovations",
-        "imgurl": "/assets/images/award2.png",
-        "certificateUrl":"https://placehold.co/500x700"
-    },
-    {
-        "year": 2023,
-        "title": "Winner, Great Indian Entrepreneurship, Business Design & Startup Award",
-        "description": "Honored for pioneering AI-driven and medical solutions",
-        "imgurl": "/assets/images/award5.png",
-        "certificateUrl":"https://media.licdn.com/dms/image/v2/D4D22AQGuhhNhigiWaQ/feedshare-shrink_800/feedshare-shrink_800/0/1699028451152?e=2147483647&v=beta&t=-z865IG86DVNYDvR3Ym-11q-2bBKXDCWs16G9SKCPqI"
-    },
-    {
-        "year": 2023,
-        "title": "Selected for Singapore-India Hackathon",
-        "description": "One of 12 best startups from India for AI-based travel solutions",
-        "imgurl": "/assets/images/award1.png",
-        "certificateUrl":"https://media.licdn.com/dms/image/v2/D4D22AQGoETz6tFJ_cg/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1687106014878?e=2147483647&v=beta&t=fz0e-BKYyKPDj1H7OhakkhYwHLA8QPhkabKZJonZd2g"
-    },
-    {
-        "year": 2023,
-        "title": "Recipient of Startup India Seed Fund Grant",
-        "description": "Recognized and funded by Startup India Initiative for a cost-effective smart video-laryngoscope",
-        "imgurl": "/assets/images/award3.png",
-        "certificateUrl":"https://media.licdn.com/dms/image/v2/D5622AQEiZe3xE4QHxw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1685962438378?e=2147483647&v=beta&t=Dan89xY8dnzXXeIFhBJmnZUTV_buUdjf22GWSBR_xBY"
-    },
-    {
-        "year": 2024,
-        "title": "Certificate of Appreciation - MAHE Research Day",
-        "description": "Best stall in medical computing and Inteligence theme of collaborate section of MAHE research day 2024",
-        "imgurl": "/assets/images/award6.png",
-        "certificateUrl":"/assets/images/MAHE research day.jpeg"
-    }
-],
-
+        {
+            "year": 2024,
+            "title": "Certificate of Excellence in Product Design",
+            "organization": "Elets Startup Awards",
+            "description": "Recognized for innovation in smart medical devices",
+            "imgurl": "/assets/images/award6.png",
+            "certificateUrl": "https://placehold.co/500x300"
+        },
+        {
+            "year": 2024,
+            "title": "14 Patents Secured",
+            "organization": "Ganglia Technologies",
+            "description": "Official patents for our novel AI and medical innovations",
+            "imgurl": "/assets/images/award2.png",
+            "certificateUrl": "https://placehold.co/500x700"
+        },
+        {
+            "year": 2023,
+            "title": "Winner, Great Indian Entrepreneurship, Business Design & Startup Award",
+            "description": "Honored for pioneering AI-driven and medical solutions",
+            "imgurl": "/assets/images/award5.png",
+            "certificateUrl": "https://media.licdn.com/dms/image/v2/D4D22AQGuhhNhigiWaQ/feedshare-shrink_800/feedshare-shrink_800/0/1699028451152?e=2147483647&v=beta&t=-z865IG86DVNYDvR3Ym-11q-2bBKXDCWs16G9SKCPqI"
+        },
+        {
+            "year": 2023,
+            "title": "Selected for Singapore-India Hackathon",
+            "description": "One of 12 best startups from India for AI-based travel solutions",
+            "imgurl": "/assets/images/award1.png",
+            "certificateUrl": "https://media.licdn.com/dms/image/v2/D4D22AQGoETz6tFJ_cg/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1687106014878?e=2147483647&v=beta&t=fz0e-BKYyKPDj1H7OhakkhYwHLA8QPhkabKZJonZd2g"
+        },
+        {
+            "year": 2023,
+            "title": "Recipient of Startup India Seed Fund Grant",
+            "description": "Recognized and funded by Startup India Initiative for a cost-effective smart video-laryngoscope",
+            "imgurl": "/assets/images/award3.png",
+            "certificateUrl": "https://media.licdn.com/dms/image/v2/D5622AQEiZe3xE4QHxw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1685962438378?e=2147483647&v=beta&t=Dan89xY8dnzXXeIFhBJmnZUTV_buUdjf22GWSBR_xBY"
+        },
+        {
+            "year": 2024,
+            "title": "Certificate of Appreciation - MAHE Research Day",
+            "description": "Best stall in medical computing and Inteligence theme of collaborate section of MAHE research day 2024",
+            "imgurl": "/assets/images/award6.png",
+            "certificateUrl": "/assets/images/MAHE research day.jpeg"
+        }
+    ],
     "team": {
         "leadership": [
             {
@@ -253,17 +249,15 @@
             "Business Development & Strategy"
         ]
     },
-
     "ourProducts": "Explore our innovative solutions designed to enhance everyday life by integrating cutting-edge technology, affordability, and user-friendly design. From revolutionizing medical procedures to making travel planning smarter, our products are crafted to bring efficiency, accessibility, and convenience to your world.",
-
     "products": [
         {
             "name": "Laryngoscope",
             "description": "The Smart, Affordable Solution",
             "details": "Ganglia Technologies' patented smart video-laryngoscope is designed to provide cutting-edge airway management at an affordable cost. Our device integrates advanced imaging, continuous oxygenation, and user-friendly features, making it the most accessible and efficient solution for medical professionals.",
             "whyChooseUs": "Traditional video-laryngoscopes cost ₹7+ lakhs, making them inaccessible to many hospitals, especially in rural areas. Our affordable, high-quality alternative aims to bridge this gap, priced at just ₹1.5–2 lakhs.",
-            "image": "/assets/images/laryngoscope.jpg",
-            "keyFeatures": [
+            "image": "/assets/images/laryngoscopes.jpeg",
+            "keyFeatures(this field is not in use)": [
                 {
                     "title": "Multiple Wide-Angle Cameras for Clearer Visualization",
                     "details": [
@@ -305,7 +299,7 @@
                 "Medical Colleges & Research Institutions",
                 "Government Healthcare Initiatives"
             ],
-            "table": [
+            "table(this field is not in use)": [
                 {
                     "feature": "Price",
                     "ourAdvantages": "₹1.5–2 Lakhs",
@@ -336,6 +330,38 @@
                     "ourAdvantages": "✅ Yes",
                     "Competitors": "❌ No"
                 }
+            ],
+            "timelineData": [
+                {
+                    "id": 1,
+                    "image":"/assets/images/a-a-removebg-preview.png",
+                    "title": "Ease of Use – No Doctor Needed for Basic Use",
+                    "description": "Designed for intuitive operation, enabling trained nurses to handle basic intubation procedures. Remote viewing capability allows doctors to supervise from a distance."
+                },
+                {
+                    "id": 2,
+                    "image":"/assets/images/d-a-removebg-preview.png",
+                    "title": "Lightweight & Ergonomic Design",
+                    "description":"Significantly lighter than other video-laryngoscopes.Ergonomic handle & controls for better grip and maneuverability."
+                },
+                {
+                    "id": 3,
+                    "image":"/assets/images/g-a-removebg-preview.png",
+                    "title": "Multiple Wide-Angle Cameras for Clearer Visualization",
+                    "description": "Equipped with multiple high-resolution cameras for superior airway visualization. Real-time video streaming to monitors, phones, or computers for remote monitoring and collaboration."
+                },
+                {
+                    "id": 4,
+                    "image":"/assets/images/i-a-removebg-preview.png",
+                    "title": "Built-in Oxygen Tube for Continuous Oxygenation",
+                    "description": "Traditional laryngoscopes interrupt oxygen supply, increasing patient risk. Our device ensures uninterrupted oxygen flow, improving patient safety and comfort."
+                },
+                {
+                    "id": 5,
+                    "image":"/assets/images/l-a-removebg-preview.png",
+                    "title": "Movable Tip for Trauma-Free Intubation",
+                    "description": "A precision-controlled movable tip (tongue) to gently manipulate the epiglottis, reducing patient discomfort. Controlled by a joystick, ensuring a smoother intubation process."
+                }
             ]
         },
         {
@@ -343,7 +369,7 @@
             "description": "Smart Travel Planning",
             "details": "TripMacha is an AI-powered travel assistant designed for short-distance travel planning, offering personalized itineraries, real-time optimization, and eco-friendly suggestions.",
             "whyChooseUs": "Most travel platforms overload users with information, leading to decision fatigue and inefficient planning. TripMacha simplifies the process with smart automation and real-time AI-driven recommendations.",
-            "image": "/assets/images/tripmacha.jpeg",
+            "image": "/assets/images/Trip_Macha.jpeg",
             "keyFeatures": [
                 {
                     "title": "Instant Personalized Itineraries",
@@ -403,12 +429,10 @@
             ]
         }
     ],
-
-    "servicesPage":{
-        "heroTitle":"Custom AI & Software Development",
-        "heroSubtitle":"Ganglia Technologies provides cutting-edge software solutions across multiple domains:"
+    "servicesPage": {
+        "heroTitle": "Custom AI & Software Development",
+        "heroSubtitle": "Ganglia Technologies provides cutting-edge software solutions across multiple domains:"
     },
-
     "services": [
         {
             "title": "Healthcare Tech",
@@ -435,14 +459,12 @@
             "description": "We build custom AI and machine learning solutions for predictive analytics, automation, and intelligent decision-making. Our expertise spans NLP for chatbots and voice assistants, and computer vision for medical imaging, facial recognition, and security solutions."
         }
     ],
-
     "contact": {
         "headquarters": "Manipal, Karnataka, India",
         "phone": "(+91) 81097 82903",
         "email": "director@ganglia.in",
         "website": "www.ganglia.in"
     },
-
     "contactUs": {
         "title": "GANGLIA TECHNOLOGIES PRIVATE LTD.",
         "subtitle": "Send Us a Message",

@@ -47,7 +47,7 @@ const OurProducts = () => {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-center"
+                className="w-full h-50 object-center"
               />
             </div>
 
