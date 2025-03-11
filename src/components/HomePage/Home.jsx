@@ -166,7 +166,7 @@ const Home = () => {
       </div>
       <WhoAreWe />
 
-      <OurTeam context="home" />
+      <OurTeam/>
     </div>
   );
 };

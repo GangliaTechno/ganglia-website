@@ -83,44 +83,76 @@
     "employeeSectionheader": "Our Interns",
     "ourEmployees": [
         {
-            "name": "lorem impsum",
-            "image": "https://placehold.co/500x600"
+            "name": "Noel Veigas",
+            "image": "/assets/images/Noel.jpeg"
         },
         {
-            "name": "lorem impsum",
-            "image": "https://placehold.co/500x600"
+            "name": "Staissy",
+            "image": "/assets/images/Staissy.jpeg"
         },
         {
-            "name": "lorem impsum",
-            "image": "https://placehold.co/500x600"
+            "name": "Tamil",
+            "image": "/assets/images/tamil.jpeg"
         },
         {
-            "name": "lorem impsum",
-            "image": "https://placehold.co/500x600"
+            "name": "Goutham Srinivas",
+            "image": "/assets/images/Goutham.jpeg"
         },
         {
-            "name": "lorem impsum",
-            "image": "https://placehold.co/500x600"
+            "name": "Aman",
+            "image": "/assets/images/Aldrine.jpeg"
         },
         {
-            "name": "lorem impsum",
-            "image": "https://placehold.co/500x600"
+            "name": "Anish",
+            "image": "/assets/images/Anish.jpeg"
         },
         {
-            "name": "lorem impsum",
-            "image": "https://placehold.co/500x600"
+            "name": "Aakankxa Modha",
+            "image": "/assets/images/Akanksha.jpeg"
         },
         {
-            "name": "lorem impsum",
-            "image": "https://placehold.co/500x600"
+            "name": "Ankit",
+            "image": "/assets/images/Ankit.jpeg"
         },
         {
-            "name": "lorem impsum",
-            "image": "https://placehold.co/500x600"
+            "name": "G Ananya",
+            "image": "/assets/images/G Ananya.jpeg"
         },
         {
-            "name": "lorem impsum",
-            "image": "https://placehold.co/500x600"
+            "name": "Nisha ",
+            "image": "/assets/images/Nisha.jpeg"
+        },
+        {
+            "name": "Reshma Bhat",
+            "image": "/assets/images/Reshma.jpeg"
+        },
+        {
+            "name": "Mohammed Riza",
+            "image": "/assets/images/Riza.jpeg"
+        },
+        {
+            "name": "Vamshi Y Ameen",
+            "image": "/assets/images/Vamshi.jpeg"
+        },
+        {
+            "name": "Shashank",
+            "image": "/assets/images/Shashank.jpeg"
+        },
+        {
+            "name": "Shreyas",
+            "image": "/assets/images/Shreyas.jpeg"
+        },
+        {
+            "name": "Rutvika",
+            "image": "/assets/images/Rutvika.png"
+        },
+        {
+            "name": "Suchita",
+            "image": "/assets/images/Suchita.jpeg"
+        },
+        {
+            "name": "Sanjana",
+            "image": "/assets/images/Sanjana.jpeg"
         }
     ],
     "aboutUs": {
@@ -342,7 +374,7 @@
                     "id": 2,
                     "image":"/assets/images/d-a-removebg-preview.png",
                     "title": "Lightweight & Ergonomic Design",
-                    "description":"Significantly lighter than other video-laryngoscopes.Ergonomic handle & controls for better grip and maneuverability."
+                    "description":"Significantly lighter than other video-laryngoscopes. Ergonomic handle & controls for better grip and maneuverability." 
                 },
                 {
                     "id": 3,
@@ -352,7 +384,7 @@
                 },
                 {
                     "id": 4,
-                    "image":"/assets/images/i-a-removebg-preview.png",
+                    "image":"/assets/images/tube-removebg-preview.png",
                     "title": "Built-in Oxygen Tube for Continuous Oxygenation",
                     "description": "Traditional laryngoscopes interrupt oxygen supply, increasing patient risk. Our device ensures uninterrupted oxygen flow, improving patient safety and comfort."
                 },

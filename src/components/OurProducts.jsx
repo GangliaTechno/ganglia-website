@@ -53,7 +53,7 @@ const OurProducts = () => {
 
             {/* Content Section - Takes 1/3 height */}
             <div className="h-2/4 p-4 flex flex-col justify-center text-center">
-              <h3 className="text-xl font-semibold mb-5">{product.name}</h3>
+              <h3 className="text-2xl font-semibold mb-5">{product.name}</h3>
               <p className="text-gray-900  italic text-base">
                 {product.description}
               </p>

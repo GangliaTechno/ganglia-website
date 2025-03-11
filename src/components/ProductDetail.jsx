@@ -19,7 +19,7 @@ const ProductDetail = () => {
         style={{ backgroundImage: "url('/assets/images/productBg.jpg')" }}>
 
         {/* Image Section */}
-        <div className="h-96 mx-auto md:mx-10">
+        <div className="w-full md:w-1/2 mx-auto md:mx-10">
           <img src={product.image} alt={product.name} className="w-full h-full object-center rounded-xl" />
         </div>
 
@@ -28,7 +28,7 @@ const ProductDetail = () => {
           <h1 className="mb-5 text-3xl text-gray-800 font-semibold">
             {product.name} - <span className="italic text-xl text-gray-800">{product.description}</span>
           </h1>
-          <p className="text-base text-gray-700">
+          <p className="text-lg text-gray-700">
             {product.details}
           </p>
         </div>

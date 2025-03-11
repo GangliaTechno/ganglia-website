@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import OurProducts from "./components/OurProducts";
 import OurServices from "./components/OurServices";
 import ProductDetail from "./components/ProductDetail";
+import { OurInternTeam } from "./components/OurInternTeam";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/ourteam" element={<OurTeam />} />
+            <Route path="/our-intern-team" element={<OurInternTeam />} />
             <Route path="/product-detail/:title" element={<ProductDetail />} />
           </Routes>
         </div>

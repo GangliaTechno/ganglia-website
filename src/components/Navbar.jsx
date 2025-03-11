@@ -15,7 +15,8 @@ const tabs = [
 
 const aboutDropdown = [
   { name: "Our Company", path: "/about" },
-  { name: "Our Team", path: "/ourteam" },
+  { name: "Our Leadership Team", path: "/ourteam" },
+  { name: "Our Intern Team", path: "/our-intern-team" }
 ];
 
 const Navbar = () => {
@@ -68,7 +69,7 @@ const Navbar = () => {
               {/* Dropdown for About Us */}
               {tab.hasDropdown && isDropdownOpen && (
                 <div
-                  className="absolute left-0 w-44 mt-0.5 bg-white shadow-lg rounded border border-gray-600 text-base"
+                  className="absolute left-0 w-48 mt-0.5 bg-white shadow-lg rounded border border-gray-600 text-base"
                   onMouseEnter={() => setIsDropdownOpen(true)}
                   onMouseLeave={() => setIsDropdownOpen(false)}
                 >
