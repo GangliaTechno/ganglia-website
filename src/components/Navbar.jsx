@@ -9,14 +9,14 @@ const tabs = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/about", hasDropdown: true },
   { name: "Services", path: "/ourservices" },
-  { name: "Our Products", path: "/ourproducts" },
+  // { name: "Our Products", path: "/ourproducts" },
   { name: "Contact", path: "/contact" },
 ];
 
 const aboutDropdown = [
   { name: "Our Company", path: "/about" },
   { name: "Our Leadership Team", path: "/ourteam" },
-  { name: "Our Intern Team", path: "/our-intern-team" }
+  { name: "Our Intern Team", path: "/our-intern-team" },
 ];
 
 const Navbar = () => {
@@ -26,9 +26,9 @@ const Navbar = () => {
   const [selected, setSelected] = useState("");
 
   useEffect(() => {
-    if(!location.pathname.toString().startsWith("/product-detail")) {
-    const currentTab = tabs.find((tab) => tab.path === location.pathname);
-    setSelected(currentTab ? currentTab.name : "About Us");
+    if (!location.pathname.toString().startsWith("/product-detail")) {
+      const currentTab = tabs.find((tab) => tab.path === location.pathname);
+      setSelected(currentTab ? currentTab.name : "About Us");
     }
   }, [location.pathname]);
 

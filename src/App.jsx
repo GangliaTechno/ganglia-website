@@ -8,10 +8,9 @@ import Footer from "./components/Footer";
 import Home from "./components/HomePage/Home";
 import OurTeam from "./components/HomePage/OurTeam";
 import Navbar from "./components/Navbar";
-import OurProducts from "./components/OurProducts";
+import { OurInternTeam } from "./components/OurInternTeam";
 import OurServices from "./components/OurServices";
 import ProductDetail from "./components/ProductDetail";
-import { OurInternTeam } from "./components/OurInternTeam";
 
 function App() {
   return (
@@ -25,7 +24,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/ourservices" element={<OurServices />} />
-            <Route path="/ourproducts" element={<OurProducts />} />
+            {/* <Route path="/ourproducts" element={<OurProducts />} /> */}
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/ourteam" element={<OurTeam />} />
