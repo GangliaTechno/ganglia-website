@@ -114,13 +114,13 @@ const OverlayCopy = ({ tagline, heading, description }) => {
           Our Services
           <FiArrowUpRight className="inline transition-transform duration-300 group-hover:rotate-45" />
         </Link>
-        <Link
+        {/* <Link
           to="/ourproducts"
           className="rounded-md border border-white bg-black  px-6 py-3 text-lg text-white transition-colors hover:scale-105  group flex items-center justify-center no-underline mb-4"
         >
           Our Products
           <FiArrowUpRight className="inline transition-transform duration-300 group-hover:rotate-45" />
-        </Link>
+        </Link> */}
       </div>
 
     </motion.div>
