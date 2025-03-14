@@ -33,7 +33,7 @@ const Footer = () => {
                         <h3 className="font-bold text-xl mb-4">Our Services</h3>
                         <div className="ml-2">
                             <p><Link to="/ourservices" onClick={() => setIsOpen(false)}>Services</Link></p>
-                            <p><Link to="/ourproducts">Our products</Link></p>
+                            {/* <p><Link to="/ourproducts">Our products</Link></p> */}
                         </div>
                     </div>
 
