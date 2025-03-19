@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import content from "../../../content.json";
 import OurTeam from "./OurTeam";
 import WhoAreWe from "./WhoAreWe";
+import VantaNetBackground from "../VantaNetBackground";
 
 
 const IMG_PADDING = 0;
@@ -60,8 +61,12 @@ const StickyImage = ({ imgUrl }) => {
       ref={targetRef}
       className="sticky z-0 overflow-hidden "
     >
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-500/40  to-black/80">
+  <VantaNetBackground />
+</div>
+
       <motion.div
-        className="absolute inset-0 bg-neutral-950/70"
+        className="absolute inset-0 bg-neutral-950/10"
         style={{ opacity }}
       />
       {/* <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent top-0 left-0 sm:w-1/4 w-3/4 h-full" /> */}
@@ -81,12 +86,13 @@ const OverlayCopy = ({ tagline, heading, description }) => {
 
   return (
     <motion.div
+      initial={{ opacity: 0, y: 50 }}
       style={{
         y,
         opacity,
       }}
       ref={targetRef}
-      className="absolute left-0 top-0 flex h-screen w-full flex-col items-start pl-4 justify-center text-white overflow-x-clip text-center"
+      className="absolute left-0 top-0 flex h-screen w-full flex-col items-start pl-4 justify-center text-white overflow-x-clip text-center transition-all duration-1500"
     >
 
       <div className="w-full">
@@ -101,28 +107,32 @@ const OverlayCopy = ({ tagline, heading, description }) => {
       </div>
       <p className="text-xl md:text-4xl mb-6 md:mb-16 mt-6 font-bold max-w-2xl mx-auto">
         {/* {tagline} */}
-        <Typewriter text={tagline}/>
+        <Typewriter text={tagline} />
       </p>
       <p className="text-md md:text-xl lg:text-2xl max-w-4/6 indent-10 mx-auto">
-         {content.home.description}
+        {content.home.description}
       </p>
-      <div className="md:flex mx-auto w-3/4 md:w-auto gap-6 mt-10">
+      <div className="md:flex mx-auto w-3/4 md:w-auto gap-10 mt-10">
+        {/* <motion.div>
+          <Link
+            to="/ourservices"
+            className="rounded-md border border-white hover:bg-gray-400 px-6 py-3 text-lg text-white transition-colors hover:scale-105  group flex items-center justify-center no-underline mb-4"
+          >
+            Our Services
+            <FiArrowUpRight className="inline transition-transform duration-300 group-hover:rotate-45" />
+          </Link>
+        </motion.div>
+
+        <motion.div>
         <Link
-          to="/ourservices"
-          className="rounded-md border border-white hover:bg-gray-400 px-6 py-3 text-lg text-white transition-colors hover:scale-105  group flex items-center justify-center no-underline mb-4"
-        >
-          Our Services
-          <FiArrowUpRight className="inline transition-transform duration-300 group-hover:rotate-45" />
-        </Link>
-        {/* <Link
           to="/ourproducts"
           className="rounded-md border border-white bg-black  px-6 py-3 text-lg text-white transition-colors hover:scale-105  group flex items-center justify-center no-underline mb-4"
         >
           Our Products
           <FiArrowUpRight className="inline transition-transform duration-300 group-hover:rotate-45" />
-        </Link> */}
+        </Link>
+        </motion.div> */}
       </div>
-
     </motion.div>
   );
 };
@@ -156,7 +166,7 @@ const Home = () => {
     <div className="flex flex-col gap-2">
       <div className="bg-white">
         <TextParallaxContent
-          imgUrl={content.home.landingPageBg}
+          // imgUrl={content.home.landingPageBg}
           heading={content.home.companyName}
           tagline={content.home.heroTagline}
           description={content.home.description}
@@ -166,7 +176,7 @@ const Home = () => {
       </div>
       <WhoAreWe />
 
-      <OurTeam/>
+      <OurTeam />
     </div>
   );
 };
