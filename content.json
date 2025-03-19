@@ -12,7 +12,7 @@
             "Contact Us"
         ],
         "whoAreWeBG": "/assets/images/whoarewe.jpeg",
-        "whoAreWe": "At Ganglia Technologies, we are a team focused on creating innovative and affordable solutions in healthcare and technology. We combine AI and engineering to develop products that improve lives and make operations more efficient. Our goal is to make advanced technology accessible and impactful for everyone.",
+        "whoAreWe": "We are a team focused on creating innovative and affordable solutions in healthcare and technology. We combine AI and engineering to develop products that improve lives and make operations more efficient. Our goal is to make advanced technology accessible and impactful for everyone.",
         "joinUs": "Join us as we continue our journey to make advanced solutions accessible and affordable for everyone."
     },
     "footer": {
@@ -24,7 +24,7 @@
         "titleSecondary": "TECHNOLOGIES PVT. LTD."
     },
     "teamHeader": "Meet Our Team",
-    "ourTeamDescription": "At Ganglia Technologies, our strength lies in our people. Led by seasoned professionals in engineering, AI, and healthcare, our leadership team drives innovation and excellence. With a dedicated workforce of 50+ experts, we are committed to developing, refining, and delivering high-impact solutions that make a difference.",
+    "ourTeamDescription": "Our strength lies in our people. Led by seasoned professionals in engineering, AI, and healthcare, our leadership team drives innovation and excellence. With a dedicated workforce of 50+ experts, we are committed to developing, refining, and delivering high-impact solutions that make a difference.",
     "ourTeam": [
         {
             "name": "Dr Jayaraj Mymbilly Balakrishnan",
@@ -173,17 +173,17 @@
     },
     "processes": [
         {
-            "title": "🔬 Research-Driven Innovation",
+            "title": "Research-Driven Innovation",
             "description": "We collaborate with medical experts, engineers, and AI specialists to develop patented, cutting-edge solutions.",
             "imgurl": "/assets/images/research.png"
         },
         {
-            "title": "🎯 User-Centric Design",
+            "title": "User-Centric Design",
             "description": "Every product is optimized for efficiency, affordability, and real-world usability.",
             "imgurl": "/assets/images/target.png"
         },
         {
-            "title": "✔️ Rigorous Testing",
+            "title": "Rigorous Testing",
             "description": "Our prototypes undergo extensive testing to meet global healthcare and industry standards.",
             "imgurl": "/assets/images/testing.png"
         }
