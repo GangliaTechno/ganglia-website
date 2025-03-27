@@ -29,26 +29,26 @@
         {
             "name": "Dr Jayaraj Mymbilly Balakrishnan",
             "image": "/assets/images/chairman.jpg",
-            "position": "Director",
+            "position": "Co-founder",
             "linkedIn": "https://www.linkedin.com/in/dr-jayaraj-mymbilly-balakrishnan-71a15b6/"
         },
         {
             "name": "Dr Dasharathraj K Shetty",
             "image": "/assets/images/md.jpg",
-            "position": "Director",
+            "position": "Co-founder",
             "linkedIn": "https://www.linkedin.com/in/dasharathraj/"
+        },
+        {
+            "name": "Dr Balakrishna S Maddodi",
+            "image": "/assets/images/vice_chairman.jpg",
+            "position": "Co-founder",
+            "linkedIn": "https://www.linkedin.com/in/dr-balakrishna-srinivas-maddodi-68874218/"
         },
         {
             "name": "Dr Sandeep S Shenoy",
             "image": "/assets/images/director.jpg",
             "position": "Director",
             "linkedIn": ""
-        },
-        {
-            "name": "Dr Balakrishna S Maddodi",
-            "image": "/assets/images/vice_chairman.jpg",
-            "position": "Director",
-            "linkedIn": "https://www.linkedin.com/in/dr-balakrishna-srinivas-maddodi-68874218/"
         },
         {
             "name": "Namesh Malarout",
@@ -67,6 +67,12 @@
             "image": "/assets/images/Anusha-mam.png",
             "position": "Board Member",
             "linkedIn": "https://www.linkedin.com/in/anusha-pai-013b0213/"
+        },
+        {
+            "name": "Dr. Manu Sudhi",
+            "image": "/assets/images/manu sudhi.png",
+            "position": "Mentor",
+            "linkedIn": "https://www.linkedin.com/in/dr-manu-sudhi-609296167/"
         }
     ],
     "SubteamTitle": "Capturing Our Journey",

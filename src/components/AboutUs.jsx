@@ -18,7 +18,7 @@ const AboutUs = () => {
           <div className="p-2 my-auto text-white">
             <h1 className="text-4xl lg:text-5xl md:text-5xl font-bold text-center mb-4 pt-10">
               {" "}
-              About Us .
+              About Us
             </h1>
             <h1 className="text-2xl lg:text-3xl md:text-3xl font-bold text-center mb-4">
               {content.aboutUs.heroTag}

@@ -59,7 +59,7 @@ const OurTeam = () => {
       </section>
 
       {/* Image slider section */}
-      <section className="py-12 w-[90%] mx-auto shadow-lg rounded-xl p-6 border-t border-gray-200 bg-gray-50 mb-10">
+      {/* <section className="py-12 w-[90%] mx-auto shadow-lg rounded-xl p-6 border-t border-gray-200 bg-gray-50 mb-10">
         <div className="p-4 items-center lg:ml-10">
           <h2 className="text-4xl font-bold text-gray-800 mb-8 ml-4">
             {content.SubteamTitle}
@@ -67,7 +67,7 @@ const OurTeam = () => {
         </div>
         <div className="flex flex-wrap lg:flex-nowrap md:w-[90%] mx-auto gap-x-10">
           <div className="relative w-full max-w-3xl flex justify-center mx-auto p-2 md:h-96">
-            {/* Image Transition */}
+            //Image Transition
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentIndex}
@@ -81,7 +81,7 @@ const OurTeam = () => {
               />
             </AnimatePresence>
 
-            {/* Navigation Buttons */}
+            // Navigation Buttons
             <button
               className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-200"
               onClick={prevSlide}
@@ -99,7 +99,7 @@ const OurTeam = () => {
             <p className="p-4 md:text-xl lg:text-xl max-w-3xl bg-gray-100 rounded-md shadow-lg">{content.teamDescriptions[currentIndex]}</p>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
