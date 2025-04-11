@@ -89,7 +89,111 @@
     "employeeSectionheader": "Our Interns",
     "ourEmployees": [
         {
-            "name": "Noel Veigas",
+            "name": "Mr. Prithvi Tilwani",
+            "image": "/assets/images/pritvi.png"
+        },
+        {
+            "name": "Mr. Tarush Sharma",
+            "image": "/assets/images/Tarush.png"
+        },
+        {
+            "name": "Mr. Aditya Harlake",
+            "image": "/assets/images/Aditya.png"
+        },
+        {
+            "name": "Mr. Sarthak Shastri",
+            "image": "/assets/images/Sarthak.png"
+        },
+        {
+            "name": "Mr. Vikas R Shetty",
+            "image": "/assets/images/vikas.jpeg"
+        },
+        {
+            "name": "Mr. Mohammed Fazil Husen",
+            "image": "/assets/images/faz.png"
+        },
+        {
+            "name": "Mr. Ritesh kamath",
+            "image": "/assets/images/IMG-20240721-WA0016_edited.png"
+        },
+        {
+            "name": "Mr. Arka Basumatay",
+            "image": "/assets/images/IMG_5489_edited.png"
+        },
+        {
+            "name": "Mr. Shreyank Srinivasan Harisha",
+            "image": "/assets/images/Shreyank Srinivasan Harisha_edited.png"
+        },
+        {
+            "name": "Mr. Nikhil Hegde",
+            "image": "/assets/images/Nikhil Hegde.png"
+        },
+        {
+            "name": "Mr. Vishwas S",
+            "image": "/assets/images/Vishwas_edited.png"
+        },
+        {
+            "name": "Mr. Tejas",
+            "image": "/assets/images/Tejas_edited_edited.png"
+        },
+        {
+            "name": "Mr. Satyam Tiwari",
+            "image": "/assets/images/satyam_edited.jpg"
+        },
+        {
+            "name": "Mr. Prajwal Shetty",
+            "image": "/assets/images/Prajwal.png"
+        },
+        {
+            "name": "Mr. Ashton Castelino",
+            "image": "/assets/images/Ashton_edited.jpg"
+        },
+        {
+            "name": "Ms. Anusha Devadiga",
+            "image": "/assets/images/anusha_edited.png"
+        },
+        {
+            "name": "Ms. Amisha S",
+            "image": "/assets/images/Amisha S_edited.png"
+        },
+        {
+            "name": "Mr. Abhinav Raj",
+            "image": "/assets/images/IMG-20240516-WA0000_edited.jpg"
+        },
+        {
+            "name": "Mr. Varun Baxkla",
+            "image": "/assets/images/IMG-20240429-WA0016.jpg"
+        },
+        {
+            "name": "Mr. Chirantan",
+            "image": "/assets/images/chirantan.jpg"
+        },
+        {
+            "name": "Ms. Sanjana M C",
+            "image": "/assets/images/Sanjana_edited_edited.png"
+        },
+        {
+            "name": "Mr. Rohan Kamath",
+            "image": "/assets/images/Rohan_edited.png"
+        },
+        {
+            "name": "Mr. Ritik Shah",
+            "image": "/assets/images/Ritik.jpg"
+        },
+        {
+            "name": "Mr. Jebon Tarun Lewis",
+            "image": "/assets/images/jebon.png"
+        },
+        {
+            "name": "Ms. Pooja R",
+            "image": "/assets/images/pooja.jpeg"
+        },
+        {
+            "name": "Mr. Rakesh Devadiga",
+            "image": "/assets/images/Rakesh_edited.png"
+        },
+        {
+            "name": "Mr. Noel Veigas",
             "image": "/assets/images/Noel.jpeg"
         },
         {
@@ -97,7 +201,7 @@
             "image": "/assets/images/Staissy.jpeg"
         },
         {
-            "name": "Tamil",
+            "name": "Tamil Eniyan T",
             "image": "/assets/images/tamil.jpeg"
         },
         {
@@ -107,28 +211,7 @@
         {
             "name": "Aman",
             "image": "/assets/images/Aldrine.jpeg"
-        },
-        {
-            "name": "Anish",
-            "image": "/assets/images/Anish.jpeg"
-        },
-        {
-            "name": "Aakankxa Modha",
-            "image": "/assets/images/Akanksha.jpeg"
-        },
-        {
-            "name": "Ankit",
-            "image": "/assets/images/Ankit.jpeg"
-        },
-        {
-            "name": "G Ananya",
-            "image": "/assets/images/G Ananya.jpeg"
-        },
-        {
-            "name": "Nisha ",
-            "image": "/assets/images/Nisha.jpeg"
-        },
-        {
+        },{
             "name": "Reshma Bhat",
             "image": "/assets/images/Reshma.jpeg"
         },
@@ -147,6 +230,26 @@
         {
             "name": "Shreyas",
             "image": "/assets/images/Shreyas.jpeg"
+        },
+        {
+            "name": "Anish",
+            "image": "/assets/images/Anish.jpeg"
+        },
+        {
+            "name": "Aakankxa Modha",
+            "image": "/assets/images/Akanksha.jpeg"
+        },
+        {
+            "name": "Ankit",
+            "image": "/assets/images/Ankit.jpeg"
+        },
+        {
+            "name": "G Ananya",
+            "image": "/assets/images/G Ananya.jpeg"
+        },
+        {
+            "name": "Nisha Shetty",
+            "image": "/assets/images/Nisha.jpeg"
         },
         {
             "name": "Rutvika",
