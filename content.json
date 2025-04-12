@@ -71,7 +71,7 @@
         {
             "name": "Dr. Manu Sudhi",
             "image": "/assets/images/manu sudhi.png",
-            "position": "Director",
+            "position": "Mentor",
             "linkedIn": "https://www.linkedin.com/in/dr-manu-sudhi-609296167/"
         }
     ],
@@ -90,178 +90,228 @@
     "ourEmployees": [
         {
             "name": "Mr. Prithvi Tilwani",
-            "image": "/assets/images/pritvi.png"
+            "image": "/assets/images/pritvi.png",
+            "duration": "Former Intern (Management) - Founding Team"
         },
         {
             "name": "Mr. Tarush Sharma",
-            "image": "/assets/images/Tarush.png"
+            "image": "/assets/images/Tarush.png",
+            "duration": "Former Intern (Electronics) - Founding Team"
         },
         {
             "name": "Mr. Aditya Harlake",
-            "image": "/assets/images/Aditya.png"
+            "image": "/assets/images/Aditya.png",
+            "duration": "Former Intern (Electronics) - Founding Team"
         },
         {
             "name": "Mr. Sarthak Shastri",
-            "image": "/assets/images/Sarthak.png"
+            "image": "/assets/images/Sarthak.png",
+            "duration": "Former Intern (AI/ML) - Founding Team"
         },
         {
             "name": "Mr. Vikas R Shetty",
-            "image": "/assets/images/vikas.jpeg"
+            "image": "/assets/images/vikas.jpeg",
+            "duration": "Former Software Engineer (Intern) - June 2023 to June 2024"
         },
         {
             "name": "Mr. Mohammed Fazil Husen",
-            "image": "/assets/images/faz.png"
+            "image": "/assets/images/faz.png",
+            "duration": "Software Engineer (Intern) - June 2024 to August 2024"
         },
         {
             "name": "Mr. Ritesh kamath",
-            "image": "/assets/images/IMG-20240721-WA0016_edited.png"
+            "image": "/assets/images/IMG-20240721-WA0016_edited.png",
+            "duration": "Software Engineer (Intern) - June 2024 to Present"
         },
         {
             "name": "Mr. Arka Basumatay",
-            "image": "/assets/images/IMG_5489_edited.png"
+            "image": "/assets/images/IMG_5489_edited.png",
+            "duration": "Design Engineer (Intern) - June 2023 to Present"
+        },
+        {
+            "name": "Mr. Ankit Shetty",
+            "image": "/assets/images/",
+            "duration": "Software Engineer (Intern) - August 2023 to May 2024"
         },
         {
             "name": "Mr. Shreyank Srinivasan Harisha",
-            "image": "/assets/images/Shreyank Srinivasan Harisha_edited.png"
+            "image": "/assets/images/Shreyank Srinivasan Harisha_edited.png",
+            "duration": "Former Software Engineer Intern (AI/ML) - June 2024 to July 2024"
         },
         {
             "name": "Mr. Nikhil Hegde",
-            "image": "/assets/images/Nikhil Hegde.png"
+            "image": "/assets/images/Nikhil Hegde.png",
+            "duration": "Former Software Engineer (Intern) - December 2023 to July 2024"
         },
         {
             "name": "Mr. Vishwas S",
-            "image": "/assets/images/Vishwas_edited.png"
+            "image": "/assets/images/Vishwas_edited.png",
+            "duration": "Former Design Engineer (Intern) - January 2024 to April 2024"
         },
         {
             "name": "Mr. Tejas",
-            "image": "/assets/images/Tejas_edited_edited.png"
+            "image": "/assets/images/Tejas_edited_edited.png",
+            "duration": "Former Software Engineer (Intern) - January 2024 to May 2024"
         },
         {
             "name": "Mr. Satyam Tiwari",
-            "image": "/assets/images/satyam_edited.jpg"
+            "image": "/assets/images/satyam_edited.jpg",
+            "duration": "Former Software Engineer (Intern) - January 2024 to May 2024"
         },
         {
             "name": "Mr. Prajwal Shetty",
-            "image": "/assets/images/Prajwal.png"
+            "image": "/assets/images/Prajwal.png",
+            "duration": "Former Software Engineer (Intern) - January 2024 to May 2024"
         },
         {
             "name": "Mr. Ashton Castelino",
-            "image": "/assets/images/Ashton_edited.jpg"
+            "image": "/assets/images/Ashton_edited.jpg",
+            "duration": "Former Software Engineer (Intern) - January 2024 to May 2024"
         },
         {
             "name": "Ms. Anusha Devadiga",
-            "image": "/assets/images/anusha_edited.png"
+            "image": "/assets/images/anusha_edited.png",
+            "duration": "Former Software Engineer (Intern) - January 2024 to May 2024"
         },
         {
             "name": "Ms. Amisha S",
-            "image": "/assets/images/Amisha S_edited.png"
+            "image": "/assets/images/Amisha S_edited.png",
+            "duration": "Former Software Engineer (Intern) - January 2024 to May 2024"
         },
         {
             "name": "Mr. Abhinav Raj",
-            "image": "/assets/images/IMG-20240516-WA0000_edited.jpg"
+            "image": "/assets/images/IMG-20240516-WA0000_edited.jpg",
+            "duration": "Former Software Engineer (Intern) - January 2024 to May 2024"
         },
         {
             "name": "Mr. Varun Baxkla",
-            "image": "/assets/images/IMG-20240429-WA0016.jpg"
+            "image": "/assets/images/IMG-20240429-WA0016.jpg",
+            "duration": "Former Software Engineer (Intern) - January 2024 to May 2024"
         },
         {
             "name": "Mr. Chirantan",
-            "image": "/assets/images/chirantan.jpg"
+            "image": "/assets/images/chirantan.jpg",
+            "duration": "Former Software Engineer (Intern) - January 2024 to May 2024"
         },
         {
             "name": "Ms. Sanjana M C",
-            "image": "/assets/images/Sanjana_edited_edited.png"
+            "image": "/assets/images/Sanjana_edited_edited.png",
+            "duration": "Former Software Engineer (Intern) - June 2023 to July 2023"
         },
         {
             "name": "Mr. Rohan Kamath",
-            "image": "/assets/images/Rohan_edited.png"
+            "image": "/assets/images/Rohan_edited.png",
+            "duration": "Former Software Engineer (Intern) - June 2023 to July 2023"
         },
         {
             "name": "Mr. Ritik Shah",
-            "image": "/assets/images/Ritik.jpg"
+            "image": "/assets/images/Ritik.jpg",
+            "duration": "Former Software Engineer (Intern) - June 2023 to July 2023"
         },
         {
             "name": "Mr. Jebon Tarun Lewis",
-            "image": "/assets/images/jebon.png"
+            "image": "/assets/images/jebon.png",
+            "duration": "Former Software Engineer (Intern) - June 2023 to July 2023"
         },
         {
             "name": "Ms. Pooja R",
-            "image": "/assets/images/pooja.jpeg"
+            "image": "/assets/images/pooja.jpeg",
+            "duration": "Former Software Engineer (Intern) - June 2023 to July 2023"
         },
         {
             "name": "Mr. Rakesh Devadiga",
-            "image": "/assets/images/Rakesh_edited.png"
+            "image": "/assets/images/Rakesh_edited.png",
+            "duration": "Former Software Engineer (Intern) - June 2023 to July 2023"
         },
         {
             "name": "Mr. Noel Veigas",
-            "image": "/assets/images/Noel.jpeg"
+            "image": "/assets/images/Noel_edited.png",
+            "duration": "Software Engineer (Intern) - June 2023 to present"
         },
         {
             "name": "Staissy",
-            "image": "/assets/images/Staissy.jpeg"
+            "image": "/assets/images/Staissy.jpeg",
+            "duration": "Software Engineer (Intern) - June 2024 to present"
         },
         {
             "name": "Tamil Eniyan T",
-            "image": "/assets/images/tamil.jpeg"
-        },
-        {
-            "name": "Goutham Srinivas",
-            "image": "/assets/images/Goutham.jpeg"
+            "image": "/assets/images/tamil.jpeg",
+            "duration": "Software Engineer (Intern) - Jan 2024 to present"
         },
         {
             "name": "Aman",
-            "image": "/assets/images/Aldrine.jpeg"
-        },{
+            "image": "/assets/images/Aldrine.jpeg",
+            "duration": "Software Engineer (Intern) - October 2024 to present"
+        },
+        {
+            "name": "Goutham Srinivas",
+            "image": "/assets/images/Goutham.jpeg",
+            "duration": "Software Engineer (Intern) - December 2024 to present"
+        },
+        {
             "name": "Reshma Bhat",
-            "image": "/assets/images/Reshma.jpeg"
+            "image": "/assets/images/Reshma.jpeg",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         },
         {
             "name": "Mohammed Riza",
-            "image": "/assets/images/Riza.jpeg"
+            "image": "/assets/images/Riza.jpeg",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         },
         {
             "name": "Vamshi Y Ameen",
-            "image": "/assets/images/Vamshi.jpeg"
+            "image": "/assets/images/Vamshi.jpeg",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         },
         {
             "name": "Shashank",
-            "image": "/assets/images/Shashank.jpeg"
+            "image": "/assets/images/Shashank.jpeg",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         },
         {
             "name": "Shreyas",
-            "image": "/assets/images/Shreyas.jpeg"
+            "image": "/assets/images/Shreyas.jpeg",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         },
         {
             "name": "Anish",
-            "image": "/assets/images/Anish.jpeg"
+            "image": "/assets/images/Anish.jpeg",
+            "duration": "Software Engineer (Intern) - June 2024 to present"
         },
         {
             "name": "Aakankxa Modha",
-            "image": "/assets/images/Akanksha.jpeg"
+            "image": "/assets/images/Akanksha.jpeg",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         },
         {
             "name": "Ankit",
-            "image": "/assets/images/Ankit.jpeg"
+            "image": "/assets/images/Ankit.jpeg",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         },
         {
             "name": "G Ananya",
-            "image": "/assets/images/G Ananya.jpeg"
+            "image": "/assets/images/G Ananya.jpeg",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         },
         {
             "name": "Nisha Shetty",
-            "image": "/assets/images/Nisha.jpeg"
+            "image": "/assets/images/Nisha.jpeg",
+            "duration": "Software Engineer (Intern) - June 2024 to March 2025"
         },
         {
             "name": "Rutvika",
-            "image": "/assets/images/Rutvika.png"
+            "image": "/assets/images/Rutvika.png",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         },
         {
             "name": "Suchita",
-            "image": "/assets/images/Suchita.jpeg"
+            "image": "/assets/images/Suchita.jpeg",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         },
         {
             "name": "Sanjana",
-            "image": "/assets/images/Sanjana.jpeg"
+            "image": "/assets/images/Sanjana.jpeg",
+            "duration": "Software Engineer (Intern) - January 2025 to present"
         }
     ],
     "aboutUs": {

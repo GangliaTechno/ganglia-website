@@ -30,6 +30,9 @@ export const OurInternTeam = () => {
                             <h3 className="text-lg font-semibold text-gray-700">
                                 {member.name}
                             </h3>
+                            <h3 className="text-sm mt-2 text-gray-700">
+                                {member.duration}
+                            </h3>
                         </div>
                     ))}
                 </div>
