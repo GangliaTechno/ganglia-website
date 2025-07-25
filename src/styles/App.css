@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/thebabydino/fonts@latest/satoshi.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Satoshi", sans-serif;
+  overflow-x: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.hero-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/generated-image2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  max-width: 1200px;
+}
+
+.hero-text {
+  max-width: 600px;
+  margin-bottom: 100px;
+}
+
+.hero-title {
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 50px;
+  letter-spacing: -1px;
+}
+
+.hero-title .existing {
+  color: #fff;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  font-weight: 300;
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+.learn-more-btn {
+  background: #fef155;
+  color: #000;
+  border: none;
+  padding: 18px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.learn-more-btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(254, 241, 85, 0.3);
+}
+
+.supporter-band {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  backface-visibility: visible;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.supporter-track {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scrollLeft 40s linear infinite;
+}
+
+.supporter-logo {
+  display: inline-block;
+  margin: 0 40px;
+  height: 80px;
+  width: auto;
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
+  margin-top: 5px;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Advanced Glitch Effects */
+.hero-title .unsatisfied {
+  color: #fef155;
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.unsatisfied-glitch {
+  color: #fef155;
+  position: relative;
+  display: inline-block;
+}
+
+.unsatisfied-glitch.is-glitching {
+  animation: textFlicker 0.15s infinite alternate;
+}
+
+.glitch-letter {
+  display: inline-block;
+  position: relative;
+  transition: opacity 50ms ease;
+}
+
+.glitch-letter.invisible {
+  opacity: 0 !important;
+}
+
+.glitch-letter:nth-child(odd) {
+  animation-delay: 50ms;
+}
+
+.glitch-letter:nth-child(even) {
+  animation-delay: 100ms;
+}
+
+@keyframes textFlicker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsive for Hero Content */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 0 30px;
+    margin-top: 80px; /* Add margin to account for fixed navbar */
+  }
+
+  .hero-title {
+    font-size: 48px;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 0 20px;
+    margin-top: 120px; /* More margin for stacked mobile navbar */
+  }
+
+  .hero-title {
+    font-size: 40px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .learn-more-btn {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+}

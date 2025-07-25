@@ -1,0 +1,563 @@
+.footer {
+  position: relative;
+  background: url("../assets/footerbg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  padding: 60px 0;
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+  min-height: 400px;
+}
+
+.footer-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* This allows clicks to pass through to footer content */
+  z-index: 1;
+}
+
+/* Gradient overlay that covers top half and fades to reveal background image */
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #000426 0%,
+    #000426 20%,
+    rgba(0, 4, 38, 0.8) 40%,
+    rgba(0, 4, 38, 0.4) 60%,
+    rgba(0, 4, 38, 0.1) 80%,
+    rgba(0, 4, 38, 0) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.network-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Canvas doesn't block interactions */
+  z-index: 3; /* Above background and gradient but below brightness overlay */
+}
+
+.brightness-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(100, 149, 237, 0) 0%,
+    rgba(100, 149, 237, 0) 100%
+  );
+  transition: all 0.3s ease;
+  z-index: 4; /* Above canvas */
+}
+
+.footer-content {
+  position: relative;
+  z-index: 10; /* Higher z-index to ensure content is interactive */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-start; /* Changed from space-between to flex-start */
+  align-items: flex-start;
+  gap: 80px; /* Increased gap for better spacing */
+}
+
+.footer-left {
+  flex: 0 0 auto;
+}
+
+.footer-logo img {
+  width: 200px;
+  height: auto;
+  filter: brightness(1.1);
+  transition: all 0.3s ease;
+}
+
+.footer-logo:hover img {
+  filter: brightness(1.3) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+  transform: scale(1.05);
+}
+
+.footer-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-left: -40px; /* Move content slightly left */
+}
+
+.headquarters h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.headquarters p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 4px 0;
+  transition: color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Added for better readability */
+}
+
+.headquarters:hover p {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.footer-contact {
+  display: flex;
+  gap: 60px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-2px);
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(100, 149, 237, 0.2);
+  border-radius: 8px;
+  color: #6495ed;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px); /* Added glassmorphism effect */
+}
+
+.contact-item:hover .contact-icon {
+  background: rgba(100, 149, 237, 0.4);
+  box-shadow: 0 0 20px rgba(100, 149, 237, 0.3);
+  transform: scale(1.1);
+}
+
+.contact-details h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Added for better readability */
+}
+
+.contact-details p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Added for better readability */
+}
+
+.contact-item:hover .contact-details p {
+  color: #6495ed;
+}
+
+.footer-right {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 80px; /* Add gap between company links and newsletter */
+  align-items: flex-start;
+}
+
+.company-links {
+  flex: 0 0 auto;
+}
+
+.company-links h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.company-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.company-links li {
+  margin-bottom: 12px;
+}
+
+.company-links a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Added for better readability */
+}
+
+.company-links a::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6495ed, #4169e1);
+  transition: width 0.3s ease;
+}
+
+.company-links a:hover {
+  color: #6495ed;
+  text-shadow: 0 0 10px rgba(100, 149, 237, 0.5);
+  padding-left: 25px;
+}
+
+.company-links a:hover::before {
+  width: 15px;
+}
+
+.footer-newsletter {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+}
+
+.footer-newsletter h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.contact-btn {
+  background: linear-gradient(135deg, #6495ed 0%, #4169e1 50%, #1e3a8a 100%);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(100, 149, 237, 0.3);
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  backdrop-filter: blur(10px); /* Added glassmorphism effect */
+}
+
+.contact-btn:hover {
+  background: linear-gradient(135deg, #4169e1 0%, #1e3a8a 50%, #1e40af 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(100, 149, 237, 0.5);
+}
+
+.contact-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(100, 149, 237, 0.3);
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.social-icon:hover {
+  background: rgba(100, 149, 237, 0.3);
+  color: #ffffff;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 8px 25px rgba(100, 149, 237, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer {
+    background-attachment: scroll; /* Fixed attachment can cause issues on mobile */
+  }
+
+  .footer-content {
+    gap: 40px;
+  }
+
+  .footer-right {
+    gap: 40px;
+  }
+
+  .footer-contact {
+    gap: 30px;
+  }
+
+  .footer-logo img {
+    width: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 0;
+    background-attachment: scroll;
+  }
+
+  .footer-content {
+    gap: 15px;
+    padding: 0 10px;
+    flex-direction: column; /* Stack vertically on mobile */
+  }
+
+  .footer-center {
+    margin-left: 0; /* Reset left margin on mobile */
+  }
+
+  .footer-right {
+    flex-direction: row; /* Keep horizontal layout on mobile */
+    gap: 20px; /* Reduced gap for mobile */
+    justify-content: space-between; /* Distribute space between company and newsletter */
+    padding-left: 15px; /* Add left padding to move content right */
+  }
+
+  .footer-left {
+    display: none;
+  }
+
+  .headquarters h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .headquarters p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .footer-contact {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .contact-item {
+    flex: 1;
+    min-width: 140px;
+    max-width: 160px;
+  }
+
+  .contact-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .contact-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .contact-details h4 {
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .contact-details p {
+    font-size: 11px;
+    word-break: break-all;
+  }
+
+  .company-links {
+    flex: 0 0 auto;
+    min-width: 120px; /* Ensure minimum width for company section */
+  }
+
+  .company-links h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .company-links a {
+    font-size: 12px;
+  }
+
+  .company-links li {
+    margin-bottom: 6px;
+  }
+
+  .footer-newsletter {
+    flex: 0 0 auto;
+    min-width: 140px; /* Ensure minimum width for newsletter section */
+    margin-left: 20px; /* Increased from 10px to move more to the right */
+  }
+
+  .footer-newsletter h3 {
+    font-size: 18px;
+    margin-bottom: 18px;
+    margin-left: 8px; /* Move the newsletter title to the right */
+  }
+
+  .contact-btn {
+    padding: 8px 16px;
+    font-size: 11px;
+    margin-bottom: 20px;
+    width: 100%; /* Make button full width of its container */
+    max-width: 140px; /* Limit maximum width */
+    margin-left: 15px; /* Increased from 5px to move button more to the right */
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .social-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .social-icons {
+    gap: 8px;
+    margin-left: 15px; /* Increased from 5px to move social icons more to the right */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 0;
+    background-attachment: scroll;
+  }
+
+  .footer-content {
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .footer-right {
+    flex-direction: row; /* Keep horizontal layout even on smallest screens */
+    gap: 15px;
+    justify-content: space-between;
+    padding-left: 20px; /* Increase left padding for smaller screens */
+  }
+
+  .company-links {
+    flex: 0 0 auto;
+    min-width: 100px;
+  }
+
+  .footer-newsletter {
+    flex: 0 0 auto;
+    min-width: 120px;
+    margin-left: 25px; /* Increased from 15px to move more to the right */
+  }
+
+  .footer-logo img {
+    width: 100px;
+  }
+
+  .headquarters h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .headquarters p {
+    font-size: 12px;
+  }
+
+  .footer-contact {
+    gap: 15px;
+  }
+
+  .contact-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .contact-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .contact-details h4 {
+    font-size: 13px;
+  }
+
+  .contact-details p {
+    font-size: 12px;
+  }
+
+  .company-links h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .company-links a {
+    font-size: 12px;
+  }
+
+  .company-links li {
+    margin-bottom: 6px;
+  }
+
+  .footer-newsletter h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-left: 12px; /* Increased from 8px to move title more to the right */
+  }
+
+  .contact-btn {
+    padding: 8px 20px;
+    font-size: 12px;
+    margin-bottom: 15px;
+    margin-left: 18px; /* Increased from 8px to move button more to the right */
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .social-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .social-icons {
+    gap: 10px;
+    margin-left: 18px; /* Increased from 8px to move social icons more to the right */
+  }
+}

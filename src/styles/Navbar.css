@@ -1,0 +1,221 @@
+/* Navbar.css - Complete navbar styling with z-index fix */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999; /* Increased z-index to ensure it stays above all content */
+  background: transparent;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  z-index: 10000; /* Ensure logo stays on top */
+}
+
+.logo-image {
+  height: 115px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  z-index: 10000; /* Ensure nav links stay on top */
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #fef155;
+}
+
+.get-started-btn {
+  background: #fef155;
+  color: #000;
+  border: none;
+  padding: 18px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+  z-index: 10000; /* Ensure button stays on top */
+  position: relative; /* Add relative positioning for z-index to work */
+}
+
+.get-started-btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(254, 241, 85, 0.3);
+}
+
+/* Hide desktop navbar on mobile */
+.navbar-desktop-hidden {
+  display: none;
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 10001;
+  position: relative;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.hamburger-line.active:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-line.active:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.active:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mobile-nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.mobile-nav-links a:hover {
+  color: #fef155;
+}
+
+.mobile-get-started {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 16px;
+}
+
+/* Mobile Responsive Navbar */
+@media (max-width: 768px) {
+  /* Show hamburger menu on mobile */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  /* Mobile navbar hide/show behavior */
+  .navbar-visible {
+    transform: translateY(0);
+    z-index: 9999; /* Ensure mobile visible state has highest z-index */
+  }
+
+  .navbar-hidden {
+    transform: translateY(-100%);
+    z-index: 9999; /* Ensure mobile hidden state has highest z-index */
+  }
+
+  .navbar {
+    padding: 20px 30px;
+    backdrop-filter: blur(10px);
+    z-index: 9999; /* Maintain highest z-index on mobile */
+  }
+
+  .logo-image {
+    height: 80px; /* Reduce logo size slightly on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 15px 20px;
+    z-index: 9999; /* Maintain highest z-index on small mobile */
+  }
+
+  .logo-image {
+    height: 60px; /* Further reduce logo size on small screens */
+  }
+
+  .mobile-nav-links a {
+    font-size: 18px;
+  }
+
+  .mobile-nav-links {
+    gap: 25px;
+  }
+}
+
+/* Desktop - navbar always visible with highest z-index */
+@media (min-width: 769px) {
+  .navbar {
+    transform: translateY(0) !important;
+    z-index: 9999; /* Ensure desktop navbar stays on top of everything */
+  }
+
+  /* Hide hamburger menu on desktop */
+  .hamburger-menu {
+    display: none !important;
+  }
+
+  /* Show desktop navbar on desktop */
+  .navbar-desktop-hidden {
+    display: flex !important;
+  }
+}
