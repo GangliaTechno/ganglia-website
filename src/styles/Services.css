@@ -1,0 +1,353 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.services-section {
+  position: relative;
+  width: 100%;
+  min-height: auto; /* Changed from 900px to auto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 0 80px 0;
+  z-index: 1;
+  overflow: hidden;
+  /* Enhanced performance optimizations */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.services-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../assets/servicesbg.png") center 15%/120% no-repeat;
+  opacity: 1;
+  z-index: 0;
+  will-change: transform;
+}
+
+.services-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0px;
+  margin-top: 75px;
+}
+
+.services-heading {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 80px;
+  letter-spacing: -1px;
+  margin-top: 20px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 60px 60px;
+}
+
+.service-card {
+  background: linear-gradient(90deg, #037ce2 0%, #1c243f 100%);
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(3, 124, 226, 0.15);
+  display: flex;
+  align-items: center;
+  padding: 48px 36px;
+  min-height: 260px;
+  position: relative;
+  cursor: pointer;
+  /* Enhanced performance for animations */
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(90deg, #1a8ef5 0%, #2a3654 100%);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.service-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 24px;
+  margin-right: 40px;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-img {
+  transform: scale(1.05);
+}
+
+.service-info {
+  flex: 1;
+}
+
+.service-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  background: linear-gradient(90deg, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+}
+
+.service-card:hover .service-title {
+  background: linear-gradient(90deg, #0255a5 0%, #131d3d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.service-desc {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.service-card:hover .service-desc {
+  color: #f0f8ff;
+}
+
+.top-row {
+  margin-bottom: 60px;
+}
+
+.bottom-row {
+  margin-bottom: 0;
+}
+
+.service-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.service-card.reverse .service-info {
+  margin-left: 0;
+  margin-right: 40px;
+}
+
+.service-card.reverse .service-img {
+  margin-right: 0;
+  margin-left: 40px;
+}
+
+/* Improved Scroll-Responsive Animation Styles */
+.scroll-responsive-card {
+  /* Remove CSS transitions to let JavaScript handle all animation */
+  transition: none !important;
+  will-change: transform, opacity;
+  /* Initial state - cards start from corners */
+  transform: translate(-60vw, -60vh) scale(0.6) rotate(-8deg);
+  opacity: 0.3;
+  /* Ensure smooth rendering */
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  /* Force hardware acceleration */
+  backface-visibility: hidden;
+  /* Ensure proper stacking context */
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .services-section {
+    min-height: auto; /* Ensure no fixed height */
+    padding: 60px 0 40px 0; /* Reduced padding */
+  }
+
+  .services-bg {
+    /* Mobile: Zoom out more while keeping top position moved up */
+    background: url("../assets/servicesbg.png") center -5%/140% no-repeat;
+  }
+
+  .services-container {
+    margin-top: 20px; /* Reduced margin */
+  }
+
+  .services-grid {
+    /* Keep 2x2 grid on mobile */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    /* Stack content vertically and make cards smaller */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 16px;
+    min-height: 200px;
+    border-radius: 20px;
+    /* Ensure proper animation inheritance */
+    position: relative;
+    z-index: 1;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+  }
+
+  .service-card.reverse {
+    flex-direction: column;
+  }
+
+  .service-card.reverse .service-info {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .service-card.reverse .service-img {
+    margin-left: 0;
+    margin-bottom: 12px;
+  }
+
+  .service-img {
+    width: 60px;
+    height: 60px;
+    margin-right: 0;
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+
+  .service-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .top-row {
+    margin-bottom: 20px;
+  }
+
+  .services-heading {
+    font-size: 32px;
+    margin-bottom: 30px; /* Reduced margin */
+  }
+
+  /* Mobile scroll-responsive adjustments */
+  .scroll-responsive-card {
+    transition: none !important;
+    transform: translate(-40vw, -40vh) scale(0.7) rotate(-6deg);
+    opacity: 0.4;
+    /* Ensure all cards are properly positioned for animation */
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-section {
+    padding: 40px 0 30px 0; /* Further reduced padding */
+  }
+
+  .services-bg {
+    /* Very small screens: Even more zoom out with top position moved up */
+    background: url("../assets/servicesbg.png") center -3%/160% no-repeat;
+  }
+
+  .services-container {
+    padding: 0 15px;
+    margin-top: 15px; /* Reduced margin */
+  }
+
+  .services-grid {
+    gap: 15px;
+  }
+
+  .service-card {
+    padding: 16px 12px;
+    min-height: 180px;
+    border-radius: 16px;
+  }
+
+  .services-heading {
+    font-size: 26px;
+    margin-bottom: 20px; /* Reduced margin */
+  }
+
+  .service-title {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .service-desc {
+    font-size: 12px;
+  }
+
+  .service-img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+  .service-card:hover {
+    transform: translateY(-3px) scale(1.01) !important;
+  }
+
+  /* Further reduced movement on mobile */
+  .scroll-responsive-card {
+    transition: none !important;
+    transform: translate(-30vw, -30vh) scale(0.75) rotate(-4deg);
+    opacity: 0.5;
+    /* Enhanced animation support for small screens */
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    z-index: 1;
+    /* Ensure proper layering */
+    position: relative;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-section {
+    padding: 30px 0 20px 0; /* Minimal padding */
+  }
+
+  .services-container {
+    margin-top: 10px; /* Minimal margin */
+  }
+
+  .services-heading {
+    margin-bottom: 15px; /* Minimal margin */
+  }
+}
+
+@media (max-width: 360px) {
+  .services-section {
+    padding: 25px 0 15px 0; /* Extra minimal padding */
+  }
+
+  .services-heading {
+    font-size: 24px;
+    margin-bottom: 12px; /* Extra minimal margin */
+  }
+}

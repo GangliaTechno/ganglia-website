@@ -1,0 +1,1385 @@
+/* OurStory.css - Enhanced with Tech Milestones */
+
+/* Keyframes for animations */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tech Milestones Animations */
+@keyframes circuitPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes dataFlow {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+}
+
+@keyframes holoBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes nodeGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px #60a5fa;
+  }
+  50% {
+    box-shadow: 0 0 20px #60a5fa, 0 0 30px #60a5fa;
+  }
+}
+
+@keyframes spineGlow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes statusBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes gridShimmer {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+/* Main container styles */
+.aboutus-container {
+  min-height: 100vh;
+  background: #000426;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Loading container */
+.loading-container {
+  min-height: 100vh;
+  background: #000426;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* Stars background */
+.aboutus-stars-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.aboutus-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: #60a5fa;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 4s infinite;
+}
+
+/* Content wrapper */
+.aboutus-content-wrapper {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 2rem 0 2rem;
+}
+
+/* Header styles */
+.aboutus-header {
+  text-align: left;
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+}
+
+.aboutus-main-title {
+  font-size: 48px;
+  font-weight: 400;
+  margin: 0;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.aboutus-company-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1;
+}
+
+.aboutus-company-title .ganglia-highlight {
+  color: #fef155;
+}
+
+/* Slide elements */
+.slide-element {
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+.slide-element.visible {
+  opacity: 1;
+}
+
+.slide-up {
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-up.visible {
+  transform: translateY(0);
+}
+
+.slide-down {
+  transform: translateY(-50px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-down.visible {
+  transform: translateY(0);
+}
+
+.slide-left {
+  transform: translateX(-100px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-left.visible {
+  transform: translateX(0);
+}
+
+.slide-right {
+  transform: translateX(100px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-right.visible {
+  transform: translateX(0);
+}
+
+/* Stacking container */
+.stacking-container {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.stacking-card {
+  position: relative;
+  background: rgba(37, 99, 235, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #60a5fa;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Text styles */
+.section-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e5e7eb;
+  margin: 0;
+}
+
+.section-text-with-margin {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e5e7eb;
+  margin-bottom: 1.5rem;
+}
+
+/* List styles */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #e5e7eb;
+}
+
+.feature-list-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.feature-list-item:last-child {
+  margin-bottom: 0;
+}
+
+.feature-list-item-large {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.feature-list-item-large:last-child {
+  margin-bottom: 0;
+}
+
+.feature-bullet {
+  color: #60a5fa;
+  margin-right: 1rem;
+  margin-top: 0.2rem;
+  font-size: 18px;
+}
+
+/* Hero image section - Full width */
+.hero-image-section {
+  margin: 3rem 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  text-align: center;
+  background: #000426;
+}
+
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-overlay-text {
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  padding: 0 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Ganglia story section - Full width */
+.ganglia-story-section {
+  background: #e5e7eb;
+  margin: 3rem 0;
+  padding: 3rem 2rem;
+  text-align: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.story-subtitle {
+  font-size: 24px;
+  color: #6b7280;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.story-title {
+  font-size: 36px;
+  font-weight: 400;
+  color: #1f2937;
+  margin: 0;
+}
+
+.ganglia-text {
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Philosophy section - NO ANIMATIONS */
+.philosophy-section {
+  margin-bottom: 3rem;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.philosophy-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4rem;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+/* Mission cards - Exact styling from images */
+.mission-cards-container {
+  margin-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.mission-card {
+  background: #ffffff;
+  color: #1f2937;
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  transform: none;
+  transition: none;
+  min-height: 280px;
+}
+
+.mission-card-content {
+  max-width: 75%;
+  padding-right: 2rem;
+}
+
+.mission-card-content-right {
+  max-width: 75%;
+  margin-left: auto;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.mission-quote {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.4;
+  margin-bottom: 2.5rem;
+  font-style: normal;
+}
+
+.mission-description {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 400;
+}
+
+.mission-description-center {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+}
+
+.mission-title {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+}
+
+.mission-title-left {
+  position: absolute;
+  bottom: 3rem;
+  left: 3rem;
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+}
+
+/* Values section - No particle effects */
+.values-section {
+  margin-bottom: 3rem;
+}
+
+.values-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 3rem;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.value-card {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3);
+  position: relative;
+}
+
+.value-card-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.value-card-description {
+  color: #e5e7eb;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Broader Impact Section - WITH particle effects */
+.broader-impact-section {
+  margin-bottom: 3rem;
+}
+
+.broader-impact-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.broader-impact-content {
+  background: rgba(30, 58, 138, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.broader-impact-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e5e7eb;
+  margin-bottom: 1.5rem;
+}
+
+.broader-impact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  color: #e5e7eb;
+}
+
+.broader-impact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.broader-impact-item:last-child {
+  margin-bottom: 0;
+}
+
+.broader-impact-conclusion {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e5e7eb;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Tech Milestones Timeline Styles */
+.tech-milestones-wrapper {
+  position: relative;
+  background: #000426;
+  margin: 4rem 0;
+  padding: 4rem 0;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+/* Header section */
+.tech-milestones-header {
+  text-align: left;
+  margin-bottom: 4rem;
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tech-milestones-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.tech-milestones-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 40px;
+  background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+  border-radius: 2px;
+}
+
+.tech-title-underline {
+  height: 2px;
+  width: 200px;
+  background: linear-gradient(90deg, #60a5fa 0%, transparent 100%);
+  margin-left: 1rem;
+}
+
+/* Timeline container */
+.tech-timeline-container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 2rem 4rem;
+  height: 80vh;
+  overflow: hidden;
+}
+
+/* Circuit board background */
+.circuit-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.4;
+}
+
+.circuit-node {
+  position: absolute;
+  background: #60a5fa;
+  border-radius: 50%;
+  animation: circuitPulse 3s infinite ease-in-out;
+}
+
+.circuit-traces {
+  position: absolute;
+  inset: 0;
+}
+
+.trace {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #374151 20%,
+    #60a5fa 50%,
+    #374151 80%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+.trace-1 {
+  left: -2px;
+  animation: dataFlow 10s infinite linear;
+}
+
+.trace-2 {
+  left: -2px;
+  animation: dataFlow 15s infinite linear;
+  animation-delay: 3s;
+}
+
+.trace-3 {
+  left: -2px;
+  animation: dataFlow 12s infinite linear;
+  animation-delay: 6s;
+}
+
+/* Central spine - horizontal line */
+.timeline-spine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 3px;
+  background: #1e3a8a;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.spine-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #60a5fa 20%,
+    #2563eb 50%,
+    #1e40af 80%,
+    transparent 100%
+  );
+  animation: spineGlow 4s infinite ease-in-out;
+  filter: blur(1px);
+}
+
+/* Milestones container - horizontal layout */
+.tech-milestones-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Individual milestone card - positioned absolutely with staggered heights */
+.tech-milestone-card {
+  position: absolute;
+  width: 240px;
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Staggered positioning for horizontal timeline - adjusted for better fit */
+.tech-milestone-card:nth-child(1) {
+  left: 2%;
+  top: 8%;
+}
+
+.tech-milestone-card:nth-child(2) {
+  left: 14%;
+  bottom: 8%;
+}
+
+.tech-milestone-card:nth-child(3) {
+  left: 26%;
+  top: 12%;
+}
+
+.tech-milestone-card:nth-child(4) {
+  left: 38%;
+  bottom: 12%;
+}
+
+.tech-milestone-card:nth-child(5) {
+  left: 50%;
+  top: 10%;
+}
+
+.tech-milestone-card:nth-child(6) {
+  left: 62%;
+  bottom: 10%;
+}
+
+.tech-milestone-card:nth-child(7) {
+  left: 74%;
+  top: 15%;
+}
+
+.tech-milestone-card:nth-child(8) {
+  left: 82%;
+  bottom: 15%;
+}
+
+.tech-milestone-card.visible {
+  opacity: 1;
+  animation: cardSlideIn 0.8s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+.tech-milestone-card.hovered {
+  z-index: 10;
+}
+
+/* Glass morphism card - smaller for better fit */
+.card-glass {
+  position: relative;
+  background: rgba(30, 58, 138, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.tech-milestone-card.hovered .card-glass {
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4), 0 0 40px rgba(96, 165, 250, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Holographic border effect */
+.holo-border {
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(96, 165, 250, 0.3),
+    transparent,
+    rgba(139, 92, 246, 0.3),
+    transparent
+  );
+  background-size: 300% 300%;
+  animation: holoBorder 3s ease infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tech-milestone-card.hovered .holo-border {
+  opacity: 1;
+}
+
+/* Card header */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.milestone-icon {
+  font-size: 24px;
+  filter: grayscale(1) brightness(1.2);
+}
+
+.milestone-date {
+  color: #60a5fa;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(96, 165, 250, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+/* Card content - adjusted sizes */
+.milestone-title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.milestone-description {
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+/* Tech grid overlay */
+.tech-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(96, 165, 250, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: gridShimmer 4s infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* Status indicator */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 10px;
+  color: #4ade80;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: statusBlink 2s infinite ease-in-out;
+}
+
+/* Timeline connector - vertical connectors to horizontal spine */
+.timeline-connector {
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
+/* Timeline connector - shorter for compact layout */
+.connector-line {
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(180deg, #60a5fa 0%, #1e3a8a 100%);
+  position: relative;
+  margin: 0 auto;
+}
+
+.tech-milestone-card:nth-child(even) .connector-line {
+  background: linear-gradient(180deg, #1e3a8a 0%, #60a5fa 100%);
+}
+
+/* Connectors for cards above the spine */
+.tech-milestone-card:nth-child(odd) .timeline-connector {
+  bottom: -30px;
+}
+
+/* Connectors for cards below the spine */
+.tech-milestone-card:nth-child(even) .timeline-connector {
+  top: -30px;
+}
+
+.connector-node {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #60a5fa;
+  border: 2px solid #000426;
+  border-radius: 50%;
+  animation: nodeGlow 2s infinite ease-in-out;
+}
+
+.tech-milestone-card:nth-child(odd) .connector-node {
+  bottom: -6px;
+}
+
+.tech-milestone-card:nth-child(even) .connector-node {
+  top: -6px;
+}
+
+.connector-line {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #1e3a8a 0%, #60a5fa 100%);
+  position: relative;
+}
+
+.tech-milestone-card.right .connector-line {
+  background: linear-gradient(90deg, #60a5fa 0%, #1e3a8a 100%);
+}
+
+.connector-node {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #60a5fa;
+  border: 2px solid #000426;
+  border-radius: 50%;
+  animation: nodeGlow 2s infinite ease-in-out;
+}
+
+.tech-milestone-card.left .connector-node {
+  right: -6px;
+}
+
+.tech-milestone-card.right .connector-node {
+  left: -6px;
+}
+
+.node-pulse {
+  position: absolute;
+  inset: -4px;
+  border: 2px solid rgba(96, 165, 250, 0.4);
+  border-radius: 50%;
+  animation: circuitPulse 2s infinite ease-in-out;
+}
+
+/* Data streams */
+.data-streams {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.stream {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #60a5fa 20%,
+    transparent 40%,
+    #2563eb 60%,
+    transparent 80%,
+    #1e40af 100%
+  );
+  opacity: 0.2;
+}
+
+.stream-1 {
+  left: 20%;
+  animation: dataFlow 15s infinite linear;
+}
+
+.stream-2 {
+  right: 20%;
+  animation: dataFlow 18s infinite linear reverse;
+  animation-delay: 3s;
+}
+
+/* Data streams - adjusted for horizontal layout */
+.data-streams {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.stream {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #60a5fa 20%,
+    transparent 40%,
+    #2563eb 60%,
+    transparent 80%,
+    #1e40af 100%
+  );
+  opacity: 0.2;
+}
+
+.stream-1 {
+  left: -3px;
+  animation: dataFlow 18s infinite linear;
+  animation-delay: 2s;
+}
+
+.stream-2 {
+  left: -3px;
+  animation: dataFlow 20s infinite linear reverse;
+  animation-delay: 8s;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .aboutus-content-wrapper {
+    padding: 100px 1rem 0 1rem;
+  }
+
+  .aboutus-main-title,
+  .aboutus-company-title {
+    font-size: 32px;
+  }
+
+  .philosophy-title,
+  .values-title {
+    font-size: 28px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .story-title {
+    font-size: 28px;
+  }
+
+  .ganglia-text {
+    font-size: 28px;
+  }
+
+  .stacking-card {
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .mission-card {
+    padding: 2rem;
+    min-height: auto;
+  }
+
+  .mission-cards-container {
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .mission-card-content,
+  .mission-card-content-right {
+    max-width: 100%;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .mission-title,
+  .mission-title-left {
+    position: static;
+    font-size: 24px;
+    margin-top: 2rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .value-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .value-card-title {
+    font-size: 20px;
+  }
+
+  .hero-overlay-text {
+    font-size: 20px;
+  }
+
+  .ganglia-story-section {
+    padding: 2rem 1rem;
+  }
+
+  /* Tech Milestones Mobile */
+  .tech-milestones-wrapper {
+    margin: 2rem 0;
+    padding: 2rem 0;
+  }
+
+  .tech-milestones-header {
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .tech-milestones-title {
+    font-size: 28px;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .tech-milestones-title::before {
+    display: none;
+  }
+
+  .tech-title-underline {
+    margin: 0 auto;
+    width: 150px;
+  }
+
+  .tech-timeline-container {
+    padding: 1rem;
+    height: auto;
+    overflow: visible;
+  }
+
+  .tech-milestones-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .tech-milestone-card {
+    position: relative !important;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .tech-milestone-card:nth-child(n) {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .timeline-spine {
+    left: 2rem;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    height: 100%;
+    transform: none;
+  }
+
+  .spine-glow {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      #60a5fa 20%,
+      #2563eb 50%,
+      #1e40af 80%,
+      transparent 100%
+    );
+  }
+
+  .timeline-connector {
+    display: none;
+  }
+
+  .card-glass {
+    padding: 1.5rem;
+  }
+
+  .milestone-title {
+    font-size: 16px;
+  }
+
+  .milestone-description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutus-content-wrapper {
+    padding: 80px 1rem 0 1rem;
+  }
+
+  .aboutus-main-title,
+  .aboutus-company-title {
+    font-size: 24px;
+  }
+
+  .philosophy-title,
+  .values-title {
+    font-size: 24px;
+  }
+
+  .story-title {
+    font-size: 24px;
+  }
+
+  .ganglia-text {
+    font-size: 24px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .mission-quote {
+    font-size: 18px;
+  }
+
+  .mission-title,
+  .mission-title-left {
+    font-size: 20px;
+  }
+
+  .value-card-title {
+    font-size: 18px;
+  }
+
+  .stacking-card {
+    padding: 1.5rem;
+  }
+
+  .mission-card {
+    padding: 1.5rem;
+  }
+
+  .tech-milestones-title {
+    font-size: 24px;
+  }
+
+  .tech-milestone-card {
+    max-width: 320px;
+  }
+
+  .card-glass {
+    padding: 1.25rem;
+  }
+
+  .milestone-icon {
+    font-size: 20px;
+  }
+
+  .milestone-date {
+    font-size: 11px;
+    padding: 0.2rem 0.6rem;
+  }
+}

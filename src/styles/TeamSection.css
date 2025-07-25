@@ -1,0 +1,385 @@
+.team-section {
+  width: 100%;
+  min-height: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1; /* Low z-index to stay below navbar */
+}
+
+.team-background {
+  width: 100%;
+  min-height: auto;
+  background-image: url("../assets/teambg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1; /* Low z-index to stay below navbar */
+}
+
+.team-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  position: relative;
+  z-index: 2; /* Higher than background but still below navbar */
+}
+
+.team-header {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.team-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+}
+
+.team-title {
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  justify-items: center;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 280px;
+  height: 400px;
+  overflow: hidden;
+  position: relative; /* Add relative positioning */
+  z-index: 3; /* Ensure cards stay below navbar but above content */
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  z-index: 4; /* Slight increase on hover but still below navbar */
+}
+
+.team-image-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  z-index: 1; /* Keep images at low z-index */
+}
+
+.team-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* CRITICAL: Team member image styles */
+.team-member-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  transition: transform 0.3s ease;
+  display: block;
+  z-index: 1; /* Keep images at low z-index */
+}
+
+.team-image-container:hover .team-member-image {
+  transform: scale(1.05);
+}
+
+.placeholder-content {
+  color: #64748b;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.linkedin-btn {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  background: #0077b5;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+  z-index: 5; /* Higher than image but still below navbar */
+}
+
+.linkedin-btn:hover {
+  background: #005885;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 119, 181, 0.4);
+}
+
+.linkedin-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.team-info {
+  padding: 12px;
+  text-align: center;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.team-name {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.team-role {
+  color: #60a5fa;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .team-content {
+    padding: 60px 30px;
+  }
+
+  .team-title {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .team-content {
+    padding: 50px 20px;
+  }
+
+  .team-title {
+    font-size: 36px;
+  }
+
+  .team-card {
+    max-width: 240px;
+    height: 350px;
+  }
+
+  .team-image-container {
+    height: 250px;
+  }
+
+  .team-info {
+    height: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .team-content {
+    padding: 30px 10px 20px 10px;
+  }
+
+  .team-title {
+    font-size: 28px;
+  }
+
+  .team-header {
+    margin-bottom: 20px;
+  }
+
+  .team-card {
+    max-width: none;
+    width: 100%;
+    height: 140px;
+    border-radius: 12px;
+    z-index: 3; /* Maintain lower z-index on mobile */
+  }
+
+  .team-card:hover {
+    z-index: 4; /* Slight increase on hover but still below navbar */
+  }
+
+  .team-image-container {
+    height: 80px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* MOBILE: Ensure images still fit perfectly */
+  .team-member-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0;
+    z-index: 1; /* Keep images at low z-index */
+  }
+
+  .team-image-placeholder {
+    border-radius: 0;
+  }
+
+  .team-info {
+    padding: 6px 4px;
+    height: 60px;
+  }
+
+  .team-name {
+    font-size: 10px;
+    margin: 0 0 2px 0;
+    line-height: 1.2;
+  }
+
+  .team-role {
+    font-size: 8px;
+  }
+
+  .linkedin-btn {
+    width: 20px;
+    height: 20px;
+    bottom: 5px;
+    left: 5px;
+    border-radius: 4px;
+    z-index: 5; /* Higher than image but still below navbar */
+  }
+
+  .linkedin-btn svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .placeholder-content {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-content {
+    padding: 20px 10px 15px 10px;
+  }
+
+  .team-card {
+    height: 120px;
+    z-index: 3; /* Maintain lower z-index */
+  }
+
+  .team-card:hover {
+    z-index: 4; /* Slight increase on hover but still below navbar */
+  }
+
+  .team-image-container {
+    height: 70px;
+  }
+
+  /* EXTRA SMALL MOBILE: Perfect image fitting */
+  .team-member-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1; /* Keep images at low z-index */
+  }
+
+  .team-info {
+    height: 50px;
+  }
+
+  .team-name {
+    font-size: 9px;
+  }
+
+  .team-role {
+    font-size: 7px;
+  }
+}
+
+/* Animation for smooth entrance */
+.team-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.team-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.team-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.team-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.team-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.team-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.team-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.team-card:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.team-card:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

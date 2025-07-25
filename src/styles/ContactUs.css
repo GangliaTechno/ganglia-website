@@ -1,0 +1,344 @@
+/* ContactUs.css with unique class names */
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+/* Full viewport background wrapper - UNIQUE CLASS NAME */
+.ganglia-contact-page-wrapper {
+  background-color: #000426 !important;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Add a content wrapper to ensure proper layering */
+.ganglia-contact-content-wrapper {
+  position: relative;
+  z-index: 1;
+  background-color: #000426;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Container - UNIQUE CLASS NAME */
+.ganglia-contact-container {
+  padding: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+  min-height: 100vh;
+  padding-top: 120px; /* Account for navbar */
+  margin-top: 100px;
+  margin-bottom: -100px;
+  position: relative;
+}
+
+/* Heading */
+.ganglia-contact-container h1 {
+  font-size: 3.5rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+.ganglia-contact-highlight {
+  color: #3796ea;
+  font-weight: bold;
+}
+
+/* Form & Info Section */
+.ganglia-form-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 3rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Contact Form */
+.ganglia-contact-form {
+  flex: 1.8;
+  min-width: 400px;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  min-height: 540px;
+}
+
+.ganglia-contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+
+/* Input Field Layout */
+.ganglia-form-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.ganglia-form-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 1.5rem;
+  min-width: 200px;
+}
+
+.ganglia-form-field-full-width {
+  width: 100%;
+  flex: none;
+}
+
+.ganglia-form-field label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: white;
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  font-size: 1rem;
+}
+
+/* Input Styles */
+.ganglia-contact-form input,
+.ganglia-contact-form select,
+.ganglia-contact-form textarea {
+  padding: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #4a4a5d;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  font-family: Arial, sans-serif;
+  outline: none;
+}
+
+.ganglia-contact-form input:focus,
+.ganglia-contact-form select:focus,
+.ganglia-contact-form textarea:focus {
+  background-color: #5a5a70;
+  transform: scale(1.02);
+  box-shadow: 0 0 0 2px #3796ea;
+}
+
+.ganglia-contact-form input::placeholder,
+.ganglia-contact-form textarea::placeholder {
+  color: #bbb;
+}
+
+/* Select Arrow */
+.ganglia-contact-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'6'%20viewBox%3D'0%200%2010%206'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M0%200l5%206%205-6z'%20fill%3D'%23fff'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 10px;
+  cursor: pointer;
+}
+
+.ganglia-contact-form select option {
+  background-color: #4a4a5d;
+  color: white;
+}
+
+/* Textarea */
+.ganglia-contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: Arial, sans-serif;
+}
+
+/* Submit Button */
+.ganglia-contact-form button {
+  background: linear-gradient(to right, #037ee5, #02467f);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.ganglia-contact-form button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #02467f, #037ee5);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.ganglia-contact-form button:active {
+  transform: scale(0.98);
+}
+
+/* Info Section */
+.ganglia-contact-info {
+  flex: 1.2;
+  min-width: 250px;
+  font-size: 1.05rem;
+  color: #d6d6d6;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem; /* Add bottom padding to prevent overlap */
+  line-height: 1.8;
+  animation: ganglia-fadeIn 0.8s ease-in-out;
+  font-family: Arial, sans-serif;
+}
+
+.ganglia-contact-info h3 {
+  font-size: 1.3rem;
+  border-bottom: 2px solid white;
+  padding-bottom: 0.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: white;
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+.ganglia-contact-info h3:first-child {
+  margin-top: 0;
+}
+
+.ganglia-contact-info p {
+  margin-bottom: 0.5rem;
+}
+
+/* Working Hours Table */
+.ganglia-working-hours {
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem; /* Add bottom margin to ensure Saturday shows */
+  width: 100%;
+}
+
+.ganglia-working-hours td {
+  padding: 2px 8px;
+  font-size: 1rem;
+  color: #e4e4e4;
+  line-height: 1.3;
+}
+
+.ganglia-working-hours td:first-child {
+  font-weight: 500;
+  width: 40%;
+}
+
+/* Fade animation */
+@keyframes ganglia-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ganglia-contact-container {
+    padding: 2rem 1rem;
+    padding-top: 120px; /* Increased to prevent overlap */
+    padding-bottom: 3rem; /* Add bottom padding */
+    margin-top: 0; /* Removed the 100px margin */
+  }
+
+  .ganglia-contact-container h1 {
+    font-size: 2.5rem;
+    margin-top: 0; /* Remove any top margin from heading */
+    margin-bottom: 1.5rem; /* Slightly reduce bottom margin */
+  }
+
+  .ganglia-form-section {
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 2rem; /* Reduced from 3rem */
+  }
+
+  .ganglia-contact-form,
+  .ganglia-contact-info {
+    width: 100%;
+    min-width: unset;
+    max-width: none;
+  }
+
+  .ganglia-contact-form {
+    height: auto;
+    min-height: auto;
+  }
+
+  .ganglia-form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .ganglia-form-field {
+    margin-top: 0.75rem; /* Reduced from 1rem */
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .ganglia-contact-container {
+    padding: 1rem;
+    padding-top: 110px; /* Increased to prevent overlap */
+    padding-bottom: 2rem; /* Add bottom padding */
+    margin-top: 0;
+  }
+
+  .ganglia-contact-container h1 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .ganglia-form-section {
+    margin-top: 1.5rem;
+  }
+
+  .ganglia-form-field {
+    margin-top: 0.6rem; /* Reduced spacing between fields */
+  }
+
+  .ganglia-contact-form input,
+  .ganglia-contact-form select,
+  .ganglia-contact-form textarea {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .ganglia-contact-form button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .ganglia-contact-info {
+    font-size: 1rem;
+    padding-bottom: 3rem; /* Increase bottom padding for mobile */
+  }
+
+  .ganglia-contact-info h3 {
+    font-size: 1.2rem;
+  }
+}
