@@ -1,12 +1,15 @@
+/* Import Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @import url("https://cdn.jsdelivr.net/gh/thebabydino/fonts@latest/satoshi.css");
 
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body Styles */
 body {
   font-family: "Satoshi", sans-serif;
   overflow-x: hidden;
@@ -14,11 +17,13 @@ body {
   color: #fff;
 }
 
+/* App Container */
 .App {
   width: 100%;
   min-height: 100vh;
 }
 
+/* Hero Container */
 .hero-container {
   position: relative;
   min-height: 100vh;
@@ -26,6 +31,7 @@ body {
   overflow: hidden;
 }
 
+/* Background Image */
 .background-image {
   position: absolute;
   top: 0;
@@ -39,6 +45,7 @@ body {
   z-index: 0;
 }
 
+/* Canvas Container */
 .canvas-container {
   position: absolute;
   top: 0;
@@ -49,6 +56,7 @@ body {
   pointer-events: none;
 }
 
+/* Content Overlay */
 .content-overlay {
   position: relative;
   z-index: 2;
@@ -57,6 +65,7 @@ body {
   flex-direction: column;
 }
 
+/* Hero Content */
 .hero-content {
   flex: 1;
   display: flex;
@@ -70,6 +79,7 @@ body {
   margin-bottom: 100px;
 }
 
+/* Hero Typography */
 .hero-title {
   font-size: 72px;
   font-weight: 600;
@@ -90,6 +100,7 @@ body {
   margin-bottom: 40px;
 }
 
+/* Learn More Button */
 .learn-more-btn {
   background: #fef155;
   color: #000;
@@ -109,36 +120,80 @@ body {
   box-shadow: 0 10px 30px rgba(254, 241, 85, 0.3);
 }
 
+/* SUPPORTER BAND STYLES - REDUCED BOTTOM SPACE */
 .supporter-band {
   position: absolute;
-  bottom: 0;
+  bottom: -10px; /* Move up by 10px to reduce space */
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 170px; /* Reduced from 180px to 170px */
   backface-visibility: visible;
   overflow: hidden;
   white-space: nowrap;
   box-sizing: border-box;
   z-index: 2;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  margin: 0 !important; /* Ensure no margin */
+  padding: 0 !important; /* Ensure no padding */
 }
 
 .supporter-track {
   display: inline-block;
-  padding-left: 100%;
-  animation: scrollLeft 40s linear infinite;
+  padding-left: 0%;
+  animation: scrollRightToLeft 25s linear infinite;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 !important; /* Remove any margin */
+  padding-top: 0 !important; /* Remove top padding */
+  padding-bottom: 0 !important; /* Remove bottom padding */
 }
 
-.supporter-logo {
+/* Base logo styles - INCREASED SPACING FOR BIGGER LOGOS */
+.supporter-band .supporter-logo {
   display: inline-block;
-  margin: 0 40px;
-  height: 80px;
-  width: auto;
+  margin: 0 50px;
   vertical-align: middle;
   filter: brightness(0) invert(1);
-  margin-top: 5px;
+  object-fit: contain !important;
+  object-position: center !important;
+  transition: transform 0.3s ease;
 }
 
-@keyframes scrollLeft {
+.supporter-band .supporter-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Individual logo controls - ALL LOGOS MUCH BIGGER */
+.supporter-band .supporter-track .supporter-logo.supporter-logo-1 {
+  height: 190px !important; /* Reduced slightly to fit better */
+  width: 290px !important;
+}
+
+.supporter-band .supporter-track .supporter-logo.supporter-logo-2 {
+  height: 240px !important; /* Reduced slightly to fit better */
+  width: 580px !important;
+}
+
+.supporter-band .supporter-track .supporter-logo.supporter-logo-3 {
+  height: 220px !important; /* Reduced slightly to fit better */
+  width: 390px !important;
+}
+
+.supporter-band .supporter-track .supporter-logo.supporter-logo-4 {
+  height: 110px !important; /* Reduced slightly to fit better */
+  width: 230px !important;
+}
+
+.supporter-band .supporter-track .supporter-logo.supporter-logo-5 {
+  height: 240px !important; /* Reduced slightly to fit better */
+  width: 390px !important;
+}
+
+/* RIGHT TO LEFT Animation - IMMEDIATE START */
+@keyframes scrollRightToLeft {
   0% {
     transform: translateX(0%);
   }
@@ -147,7 +202,7 @@ body {
   }
 }
 
-/* Advanced Glitch Effects */
+/* Glitch Effects */
 .hero-title .unsatisfied {
   color: #fef155;
   position: relative;
@@ -183,6 +238,7 @@ body {
   animation-delay: 100ms;
 }
 
+/* Glitch Animation */
 @keyframes textFlicker {
   0% {
     opacity: 1;
@@ -195,11 +251,11 @@ body {
   }
 }
 
-/* Mobile Responsive for Hero Content */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
   .hero-content {
     padding: 0 30px;
-    margin-top: 80px; /* Add margin to account for fixed navbar */
+    margin-top: 80px;
   }
 
   .hero-title {
@@ -209,12 +265,52 @@ body {
   .hero-subtitle {
     font-size: 18px;
   }
+
+  /* Mobile supporter band - BIGGER LOGOS */
+  .supporter-band {
+    height: 190px; /* Further increased to accommodate much bigger logos 2 and 3 */
+    bottom: -5px; /* Move up slightly */
+  }
+
+  .supporter-band .supporter-logo {
+    margin: 0 40px; /* Increased spacing for bigger logos */
+  }
+
+  .supporter-band .supporter-track .supporter-logo.supporter-logo-1 {
+    height: 120px !important; /* Significantly increased */
+    width: 240px !important;
+  }
+
+  .supporter-band .supporter-track .supporter-logo.supporter-logo-2 {
+    height: 160px !important; /* Further increased for maximum visibility */
+    width: 640px !important;
+  }
+
+  .supporter-band .supporter-track .supporter-logo.supporter-logo-3 {
+    height: 160px !important; /* Further increased for maximum visibility */
+    width: 320px !important;
+  }
+
+  .supporter-band .supporter-track .supporter-logo.supporter-logo-4 {
+    height: 120px !important; /* Significantly increased */
+    width: 240px !important;
+  }
+
+  .supporter-band .supporter-track .supporter-logo.supporter-logo-5 {
+    height: 120px !important; /* Significantly increased */
+    width: 240px !important;
+  }
+
+  .supporter-track {
+    animation: scrollRightToLeft 15s linear infinite;
+    padding-left: 0%;
+  }
 }
 
 @media (max-width: 480px) {
   .hero-content {
     padding: 0 20px;
-    margin-top: 120px; /* More margin for stacked mobile navbar */
+    margin-top: 120px;
   }
 
   .hero-title {
@@ -228,5 +324,45 @@ body {
   .learn-more-btn {
     padding: 14px 28px;
     font-size: 14px;
+  }
+
+  /* Mobile small supporter band - BIGGER LOGOS */
+  .supporter-band {
+    height: 170px; /* Further increased to accommodate much bigger logos 2 and 3 */
+    bottom: -5px; /* Move up slightly */
+  }
+
+  .supporter-band .supporter-logo {
+    margin: 0 30px; /* Increased spacing */
+  }
+
+  .supporter-band .supporter-track .supporter-logo.supporter-logo-1 {
+    height: 100px !important; /* Significantly increased */
+    width: 200px !important;
+  }
+
+  .supporter-band .supporter-track .supporter-logo.supporter-logo-2 {
+    height: 140px !important; /* Further increased for maximum visibility */
+    width: 560px !important;
+  }
+
+  .supporter-band .supporter-track .supporter-logo.supporter-logo-3 {
+    height: 140px !important; /* Further increased for maximum visibility */
+    width: 280px !important;
+  }
+
+  .supporter-band .supporter-track .supporter-logo.supporter-logo-4 {
+    height: 100px !important; /* Significantly increased */
+    width: 200px !important;
+  }
+
+  .supporter-band .supporter-track .supporter-logo.supporter-logo-5 {
+    height: 100px !important; /* Significantly increased */
+    width: 200px !important;
+  }
+
+  .supporter-track {
+    animation: scrollRightToLeft 15s linear infinite;
+    padding-left: 0%;
   }
 }

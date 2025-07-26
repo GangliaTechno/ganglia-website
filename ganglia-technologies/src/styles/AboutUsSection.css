@@ -189,13 +189,13 @@
 }
 
 .know-more-btn {
-  background: linear-gradient(135deg, #0c4689, #357abd);
-  color: white;
+  background-color: #fef155;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 16px 40px;
   font-size: 16px;
   font-weight: 600;
-  border-radius: 50px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-bottom: 30px;

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/CertificationsSection.css';
 
-import dpiitImg from '../assets/DPIIT.png';
-import gokImg from '../assets/gok.png';
+import dpiitImg from '../assets/dpiitw.png';
+import gokImg from '../assets/gokw.png';
 import dunImg from '../assets/dun.png';
 
 const CertificationsSection = () => {

@@ -1,16 +1,34 @@
-/* Navbar.css - Complete navbar styling with z-index fix */
+/* Navbar.css - Complete navbar styling with blur effects */
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 60px;
+  padding: 20px 60px;
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 9999; /* Increased z-index to ensure it stays above all content */
+  z-index: 9999;
   background: transparent;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light blur effect when scrolled on any page */
+.navbar-blur-scrolled {
+  background: rgba(0, 4, 38, 0.4);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Navbar hide/show behavior for all devices */
+.navbar-visible {
+  transform: translateY(0);
+  z-index: 9999;
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+  z-index: 9999;
 }
 
 .navbar-right {
@@ -22,19 +40,20 @@
 .logo {
   display: flex;
   align-items: center;
-  z-index: 10000; /* Ensure logo stays on top */
+  z-index: 10000;
 }
 
 .logo-image {
   height: 115px;
   width: auto;
+  transition: all 0.3s ease;
 }
 
 .nav-links {
   display: flex;
   gap: 40px;
   list-style: none;
-  z-index: 10000; /* Ensure nav links stay on top */
+  z-index: 10000;
 }
 
 .nav-links a {
@@ -42,11 +61,173 @@
   text-decoration: none;
   font-weight: 400;
   font-size: 16px;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .nav-links a:hover {
   color: #fef155;
+}
+
+/* Dropdown Styles */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-container:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Updated dropdown menu with better spacing and separators */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 4, 38, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 400px;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  z-index: 10001;
+  margin-top: 10px;
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Updated dropdown section with increased gap between major sections */
+.dropdown-section {
+  display: flex;
+  flex-direction: column;
+  gap: 35px; /* Increased gap between major sections */
+}
+
+.dropdown-category {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  position: relative;
+  padding-bottom: 17px;
+  margin-bottom: 18px;
+}
+
+/* Add separator line after each major category except the last one */
+.dropdown-category:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.dropdown-category:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.2) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.category-header {
+  font-weight: 600;
+  color: #fef155 !important;
+  min-width: 120px;
+  text-decoration: none !important;
+  position: relative;
+}
+
+/* Reduced gap between items within the same subsection */
+.dropdown-subsection {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 8px !important; /* Reduced from 15px to 8px for closer grouping */
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Make sure dropdown items work well in horizontal layout */
+.dropdown-subsection .dropdown-item {
+  white-space: nowrap;
+  min-width: auto;
+  margin-right: 4px; /* Small additional spacing */
+}
+
+.dropdown-item {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(254, 241, 85, 0.1);
+  color: #fef155;
+  transform: translateX(5px);
+}
+
+.dropdown-item.highlighted {
+  color: #ffffff;
+  text-decoration: none !important;
+}
+
+/* Prevent hover effects on category headers */
+.category-header:hover {
+  background: none !important;
+  transform: none !important;
+}
+
+.navbar-right {
+  position: relative;
+  z-index: 10000;
+}
+
+/* Add a subtle hover effect */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background-color: #fef155;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .get-started-btn {
@@ -60,8 +241,8 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: "Inter", sans-serif;
-  z-index: 10000; /* Ensure button stays on top */
-  position: relative; /* Add relative positioning for z-index to work */
+  z-index: 10000;
+  position: relative;
 }
 
 .get-started-btn:hover {
@@ -82,6 +263,7 @@
   cursor: pointer;
   z-index: 10001;
   position: relative;
+  padding: 10px;
 }
 
 .hamburger-line {
@@ -89,7 +271,7 @@
   height: 3px;
   background-color: #fff;
   margin: 3px 0;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   border-radius: 2px;
 }
 
@@ -112,8 +294,8 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 4, 38, 0.95);
+  backdrop-filter: blur(15px);
   z-index: 10000;
   display: flex;
   align-items: center;
@@ -141,11 +323,13 @@
   text-decoration: none;
   font-size: 20px;
   font-weight: 400;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .mobile-nav-links a:hover {
   color: #fef155;
+  transform: translateY(-2px);
 }
 
 .mobile-get-started {
@@ -161,36 +345,30 @@
     display: flex;
   }
 
-  /* Mobile navbar hide/show behavior */
-  .navbar-visible {
-    transform: translateY(0);
-    z-index: 9999; /* Ensure mobile visible state has highest z-index */
-  }
-
-  .navbar-hidden {
-    transform: translateY(-100%);
-    z-index: 9999; /* Ensure mobile hidden state has highest z-index */
-  }
-
   .navbar {
-    padding: 20px 30px;
-    backdrop-filter: blur(10px);
-    z-index: 9999; /* Maintain highest z-index on mobile */
+    padding: 15px 30px;
+    z-index: 9999;
+  }
+
+  /* Light blur effect on mobile when scrolled */
+  .navbar-blur-scrolled {
+    background: rgba(0, 4, 38, 0.5);
+    backdrop-filter: blur(4px);
   }
 
   .logo-image {
-    height: 80px; /* Reduce logo size slightly on mobile */
+    height: 80px;
   }
 }
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 15px 20px;
-    z-index: 9999; /* Maintain highest z-index on small mobile */
+    padding: 12px 20px;
+    z-index: 9999;
   }
 
   .logo-image {
-    height: 60px; /* Further reduce logo size on small screens */
+    height: 60px;
   }
 
   .mobile-nav-links a {
@@ -200,15 +378,16 @@
   .mobile-nav-links {
     gap: 25px;
   }
+
+  /* Light blur effect on small screens when scrolled */
+  .navbar-blur-scrolled {
+    background: rgba(0, 4, 38, 0.6);
+    backdrop-filter: blur(3px);
+  }
 }
 
-/* Desktop - navbar always visible with highest z-index */
+/* Desktop and Mobile - navbar retractable behavior */
 @media (min-width: 769px) {
-  .navbar {
-    transform: translateY(0) !important;
-    z-index: 9999; /* Ensure desktop navbar stays on top of everything */
-  }
-
   /* Hide hamburger menu on desktop */
   .hamburger-menu {
     display: none !important;
@@ -217,5 +396,29 @@
   /* Show desktop navbar on desktop */
   .navbar-desktop-hidden {
     display: flex !important;
+  }
+
+  /* Enhanced but light blur effects for desktop */
+  .navbar-blur-scrolled {
+    background: rgba(0, 4, 38, 0.35);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Smooth transition for logo size when navbar has light blur */
+.navbar-blur-scrolled .logo-image {
+  height: 100px;
+}
+
+@media (max-width: 768px) {
+  .navbar-blur-scrolled .logo-image {
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-blur-scrolled .logo-image {
+    height: 55px;
   }
 }

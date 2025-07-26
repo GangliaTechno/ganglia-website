@@ -121,8 +121,8 @@
 }
 
 .certification-badge {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   border-radius: 0%;
   display: flex;
   align-items: center;
@@ -283,6 +283,8 @@
     color: #60a5fa;
   }
 }
+
+/* Default certification image size */
 .certification-image {
   width: 150px;
   height: 150px;
@@ -292,6 +294,18 @@
   z-index: 2;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Larger images for cards 1 and 2 to match card 3 size */
+.certification-card:nth-child(1) .certification-image {
+  width: 260px;
+  height: 260px;
+}
+
+.certification-card:nth-child(2) .certification-image {
+  width: 220px;
+  height: 220px;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .certifications-grid {
@@ -308,11 +322,27 @@
   .certifications-section {
     padding: 40px 0 60px 0;
   }
+
   .certification-image {
     width: 120%; /* Significantly increased */
     height: 120%; /* Significantly increased */
     max-width: 180px; /* Larger max constraint */
     max-height: 180px; /* Larger max constraint */
+  }
+
+  /* Larger images for cards 1 and 2 on mobile */
+  .certification-card:nth-child(1) .certification-image {
+    width: 220%; /* Extra large for card 1 */
+    height: 220%;
+    max-width: 280px;
+    max-height: 280px;
+  }
+
+  .certification-card:nth-child(2) .certification-image {
+    width: 180%; /* Even larger for card 2 */
+    height: 180%;
+    max-width: 240px;
+    max-height: 240px;
   }
 
   .certifications-title {
@@ -356,12 +386,29 @@
   .certifications-section {
     padding: 30px 0 40px 0;
   }
+
   .certification-image {
     width: 140%; /* Much larger */
     height: 140%; /* Much larger */
     max-width: 160px; /* Increased max size */
     max-height: 160px; /* Increased max size */
   }
+
+  /* Even larger images for cards 1 and 2 on small mobile */
+  .certification-card:nth-child(1) .certification-image {
+    width: 240%; /* Extra large for card 1 */
+    height: 240%;
+    max-width: 260px;
+    max-height: 260px;
+  }
+
+  .certification-card:nth-child(2) .certification-image {
+    width: 200%; /* Much larger for card 2 */
+    height: 200%;
+    max-width: 220px;
+    max-height: 220px;
+  }
+
   .certifications-container {
     padding: 0 10px;
   }
@@ -440,12 +487,29 @@
     font-size: 30px;
     min-height: 35px;
   }
+
   .certification-image {
     width: 130%; /* Much larger than before */
     height: 130%; /* Much larger than before */
     max-width: 140px; /* Larger max size */
     max-height: 140px; /* Larger max size */
   }
+
+  /* Maintain larger size for cards 1 and 2 on extra small screens */
+  .certification-card:nth-child(1) .certification-image {
+    width: 220%; /* Extra large for card 1 */
+    height: 220%;
+    max-width: 240px;
+    max-height: 240px;
+  }
+
+  .certification-card:nth-child(2) .certification-image {
+    width: 190%; /* Larger for card 2 */
+    height: 190%;
+    max-width: 200px;
+    max-height: 200px;
+  }
+
   .certification-stat-label {
     font-size: 8px;
   }

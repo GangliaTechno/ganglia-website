@@ -27,7 +27,7 @@
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color: var(--dark-bg);
-  background-color: var(--dark-bg);
+
   line-height: 1.6;
   scroll-behavior: smooth;
 }
@@ -63,7 +63,7 @@
 /* Hero Section */
 .careers-hero {
   position: relative;
-  background: linear-gradient(135deg, #000426 0%, #001122 50%, #000426 100%);
+  background: url("../assets/careerbg.jpg") center 25%/110% no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -167,35 +167,24 @@
 }
 
 .careers-apply-btn {
-  display: inline-block;
-  padding: 15px 35px;
-  border-radius: 30px;
+  background: #fef155;
+  color: #000;
+  border: none;
+  padding: 18px 36px;
+  font-size: 16px;
   font-weight: 600;
-  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1.1rem;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.careers-apply-btn.primary {
-  background: var(--gradient-primary);
-  color: white;
-  box-shadow: var(--shadow-medium);
-}
-
-.careers-apply-btn.primary:hover {
+.careers-apply-btn:hover {
+  background: #ffffff;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-heavy);
-}
-
-.careers-apply-btn.secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-}
-
-.careers-apply-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(254, 241, 85, 0.4);
 }
 
 .careers-hero-stats {
@@ -423,20 +412,23 @@
 }
 
 .careers-job-apply-btn {
-  padding: 10px 20px;
-  background: var(--gradient-primary);
-  color: white;
+  background: #3fa8ff;
+  color: #000;
   border: none;
-  border-radius: 20px;
+  padding: 12px 26px;
+  font-size: 16px;
   font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: inherit;
+  font-family: "Inter", sans-serif;
 }
 
 .careers-job-apply-btn:hover {
+  background: #ffffff; /* Change to white on hover */
+  color: #000; /* Keep text black for readability */
   transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Internship Section Base Styles */
@@ -470,11 +462,11 @@
   justify-content: center;
   gap: 20px;
   background: white;
-  padding: 30px 60px;
-  border-radius: 8px;
-  max-width: 1200px;
-  width: 90%;
-  margin: 0 auto;
+  padding: 0px 60px;
+  border-radius: 0; /* Remove border radius for full width */
+  width: 100%; /* Full width instead of 90% */
+  max-width: none; /* Remove max-width constraint */
+  margin: 0; /* Remove auto margins */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -492,6 +484,20 @@
   -webkit-text-fill-color: transparent;
   margin: 0;
   letter-spacing: 1px;
+}
+.careers-internship-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: white;
+  padding: 45px 50px; /* Increased from 30px to make it thicker */
+  border-radius: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  min-height: 140px; /* Add minimum height for consistency */
 }
 
 .careers-internship-content {
@@ -668,24 +674,25 @@
   font-size: 0.9rem;
   color: var(--light-text);
 }
-
 .careers-date-button {
-  background: #d3d3d3;
-  color: #1a1b3a;
-  padding: 15px 30px;
+  background: #fef155;
+  color: #000;
   border: none;
-  border-radius: 25px;
-  font-size: 1.2rem;
+  padding: 18px 36px;
+  font-size: 16px;
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: inherit;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0 4px 15px rgba(254, 241, 85, 0.4);
 }
 
 .careers-date-button:hover {
+  background: #ffffff; /* Change to white on hover */
+  color: #000; /* Keep text black for readability */
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design */
@@ -1075,4 +1082,122 @@
   .careers-internship-title {
     font-size: 1.5rem;
   }
+}
+
+/* Desktop Full-Screen Why Join Us Section */
+@media (min-width: 1024px) {
+  .careers-why-join-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .careers-why-join-section .careers-container {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 40px;
+  }
+
+  .careers-section-header {
+    margin-bottom: 80px;
+  }
+
+  .careers-section-header h2 {
+    font-size: 3rem;
+    margin-bottom: 24px;
+  }
+
+  .careers-section-header p {
+    font-size: 1.4rem;
+    max-width: 700px;
+  }
+
+  .careers-benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .careers-benefit-card {
+    padding: 50px 40px;
+    border-radius: 25px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .careers-benefit-icon {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+  }
+
+  .careers-benefit-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .careers-benefit-card p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1440px) {
+  .careers-benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+  }
+
+  .careers-benefit-card {
+    padding: 60px 50px;
+    min-height: 320px;
+  }
+}
+@media (max-width: 768px) {
+  .careers-internship-title-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 30px; /* Reduced from 45px to 20px */
+    min-height: 80px; /* Reduced from 140px to 80px */
+  }
+
+  .careers-logo {
+    height: 40px; /* Reduced from 60px to 40px */
+    width: auto;
+  }
+
+  .careers-internship-title {
+    font-size: 1.8rem; /* Reduced size for mobile */
+    line-height: 1.2; /* Better line height for smaller text */
+  }
+}
+
+@media (max-width: 480px) {
+  .careers-internship-title-container {
+    padding: 15px 20px; /* Even smaller padding for very small screens */
+    gap: 8px;
+    min-height: 70px; /* Further reduced height */
+  }
+
+  .careers-logo {
+    height: 35px; /* Even smaller logo */
+  }
+
+  .careers-internship-title {
+    font-size: 1.4rem; /* Smaller text for very small screens */
+    letter-spacing: 0.5px; /* Reduced letter spacing */
+  }
+}
+.careers-section-header h2 .careers-ganglia-highlight {
+  color: #fef155 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #fef155 !important;
+  background-clip: unset !important;
 }

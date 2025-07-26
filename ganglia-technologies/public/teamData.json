@@ -1,0 +1,254 @@
+{
+    "foundingTeam": [
+      {
+        "id": 1,
+        "name": "DR JAYARAJ MYMBILLY BALAKRISHNAN",
+        "role": "Co-founder",
+        "image": "founders/chairman_bgrmd_bgrm_BnW.jpg",
+        "alt": "Dr Jayaraj Mymbilly Balakrishnan",
+        "linkedin": "https://linkedin.com/in/jayaraj"
+      },
+      {
+        "id": 2,
+        "name": "DR DASHARATHARAJ K SHETTY",
+        "role": "Co-founder",
+        "image": "founders/DRS.jpg",
+        "alt": "Dr Dasharatharaj K Shetty",
+        "linkedin": "https://linkedin.com/in/dasharatharaj"
+      },
+      {
+        "id": 3,
+        "name": "DR BALAKRISHNA S MADODI",
+        "role": "Co-founder",
+        "image": "founders/madodi.jpg",
+        "alt": "Dr Balakrishna S Madodi",
+        "linkedin": "https://linkedin.com/in/balakrishna"
+      },
+      {
+        "id": 4,
+        "name": "DR SANDEEP S SHENOY",
+        "role": "Director",
+        "image": "founders/sandeep.jpg",
+        "alt": "Dr Sandeep S Shenoy",
+        "linkedin": "https://linkedin.com/in/sandeep"
+      },
+      {
+        "id": 5,
+        "name": "NAMESH MALAROUT",
+        "role": "Chief Executive Officer",
+        "image": "founders/ceo_bgrm_BnW.jpg",
+        "alt": "Namesh Malarout",
+        "linkedin": "https://linkedin.com/in/namesh"
+      },
+      {
+        "id": 6,
+        "name": "SHREEPATHY RANGA BHATTA",
+        "role": "Director",
+        "image": "founders/CFO_bgrm_BnW.jpg",
+        "alt": "Shreepathy Ranga Bhatta",
+        "linkedin": "https://linkedin.com/in/shreepathy"
+      },
+      {
+        "id": 7,
+        "name": "ANUSHA PAI",
+        "role": "Director",
+        "image": "founders/Anusha-mam_bgrm_BnW.jpg",
+        "alt": "Anusha Pai",
+        "linkedin": "https://linkedin.com/in/anusha"
+      },
+      {
+        "id": 8,
+        "name": "DR MANU SUDHI",
+        "role": "Director",
+        "image": "founders/manu sudhi_bgrmd_bgrm_BnW.jpg",
+        "alt": "Dr Manu Sudhi",
+        "linkedin": "https://linkedin.com/in/manu"
+      }
+    ],
+    "managementTeam": [
+      {
+        "id": 1,
+        "name": "Tamil Eniyan T",
+        "role": "AI/ML Engineer",
+        "image": "managers/tamil_bgrmd_bgrm_BnW.jpg",
+        "alt": "Manager 1",
+        "linkedin": "https://linkedin.com/in/manager1"
+      },
+      {
+        "id": 2,
+        "name": "Noel Veigas",
+        "role": "Software Engineer",
+        "image": "managers/Noel_edited_bgrm_BnW.png",
+        "alt": "Manager 2",
+        "linkedin": "https://linkedin.com/in/manager2"
+      },
+      {
+        "id": 3,
+        "name": "Deekshit Prabhu",
+        "role": "Software Engineer",
+        "image": "managers/Deekshith Prabhu_bgrm_BnW.jpg",
+        "alt": "Manager 3",
+        "linkedin": "https://linkedin.com/in/manager3"
+      }
+    ],
+    "internTeam": [
+      {
+        "id": 1,
+        "name": "Abhimanyu Kotari",
+        "role": "Software Development Intern",
+        "image": "interns/Abhimanyu Kotari_bgrm_BnW.jpg",
+        "alt": "Intern 1",
+        "year":""
+      },
+      {
+        "id": 2,
+        "name": "Adaline dsilva",
+        "role": "Software Development Intern",
+        "image": "interns/Adaline dsilva_bgrm_BnW.jpg",
+        "alt": "Intern 2"
+      },
+      {
+        "id": 3,
+        "name": "Aditya S Maller",
+        "role": "Software Development Intern",
+        "image": "interns/aditya s maller_bgrm_BnW.jpg",
+        "alt": "Intern 3"
+      },
+      {
+        "id": 4,
+        "name": "Akshathaa A Annadhani",
+        "role": "Software Development Intern",
+        "image": "interns/Akshathaa Avinash Annadhani_bgrm_BnW.jpg",
+        "alt": "Intern 4"
+      },
+      {
+        "id": 5,
+        "name": "Akshay S Goutham",
+        "role": "Software Development Intern",
+        "image": "interns/Akshay S Goutham_bgrm_BnW.jpg",
+        "alt": "Intern 5"
+      },
+      {
+        "id": 6,
+        "name": "Aman Chandra",
+        "role": "Software Development Intern",
+        "image": "interns/Aman Chandra_bgrm_BnW.jpg",
+        "alt": "Intern 6"
+      },
+      {
+        "id": 7,
+        "name": "Anagha M Nair",
+        "role": "Software Development Intern",
+        "image": "interns/Anagha M Nair_bgrm_BnW.jpg",
+        "alt": "Intern 7"
+      },
+      {
+        "id": 8,
+        "name": "Anoop P",
+        "role": "Software Development Intern",
+        "image": "interns/Anoop P_bgrm_BnW.jpg",
+        "alt": "Intern 8"
+      },
+      {
+        "id": 9,
+        "name": "Bhavana Baalebail",
+        "role": "Software Development Intern",
+        "image": "interns/Bhavana Baalebail_bgrm_BnW.jpg",
+        "alt": "Intern 9"
+      },
+      {
+        "id": 10,
+        "name": "Chandraleksha R",
+        "role": "Software Development Intern",
+        "image": "interns/Chandraleksha R_bgrm_BnW.jpg",
+        "alt": "Intern 10"
+      },
+
+      {
+        "id": 11,
+        "name": "Disha Prashanth",
+        "role": "Software Development Intern",
+        "image": "interns/Disha Prashanth_bgrm_BnW.jpg",
+        "alt": "Intern 11"
+      },
+      {
+        "id": 12,
+        "name": "Geethika Sunkara",
+        "role": "Software Development Intern",
+        "image": "interns/Geethika Sunkara_bgrm_BnW.jpg",
+        "alt": "Intern 12"
+      },
+      {
+        "id": 13,
+        "name": "Ishaan Raina",
+        "role": "Software Development Intern",
+        "image": "interns/Ishaan Raina_bgrm_BnW.jpg",
+        "alt": "Intern 13"
+      },
+      {
+        "id": 14,
+        "name": "K Sindhu Kamath",
+        "role": "Software Development Intern",
+        "image": "interns/K Sindhu Kamath_bgrm_BnW.jpg",
+        "alt": "Intern 14"
+      },
+      {
+        "id": 15,
+        "name": "Mallikarjun Miragi",
+        "role": "Software Development Intern",
+        "image": "interns/Mallikarjun Miragi_bgrm_BnW.jpg",
+        "alt": "Intern 15"
+      },
+      {
+        "id": 16,
+        "name": "Mohammed Maher",
+        "role": "Software Development Intern",
+        "image": "interns/Mohammed Maher_bgrm_BnW.jpg",
+        "alt": "Intern 16"
+      },
+      {
+        "id": 17,
+        "name": "Muskan Abdul Aziz",
+        "role": "Software Development Intern",
+        "image": "interns/Muskan Abdul Aziz_bgrm_BnW.jpg",
+        "alt": "Intern 17"
+      },
+      {
+        "id": 18,
+        "name": "Nithin S",
+        "role": "Software Development Intern",
+        "image": "intern2-photo.jpg",
+        "alt": "Intern 18"
+      },
+      {
+        "id": 19,
+        "name": "Sahil Nangnure",
+        "role": "Software Development Intern",
+        "image": "interns/Sahil Nangnure_bgrm_BnW.jpg",
+        "alt": "Intern 19"
+      },
+      {
+        "id": 20,
+        "name": "Sayed Kaif",
+        "role": "Software Development Intern",
+        "image": "interns/Sayed Kaif_bgrm_BnW.jpg",
+        "alt": "Intern 20"
+      },
+      {
+        "id": 21,
+        "name": "Sharanya Hegde",
+        "role": "Software Development Intern",
+        "image": "interns/Sharanya Hegde_bgrm_BnW.jpg",
+        "alt": "Intern 21"
+      },
+      {
+        "id": 22,
+        "name": "INTERN NAME 2",
+        "role": "Software Development Intern",
+        "image": "intern2-photo.jpg",
+        "alt": "Intern 22" 
+      }
+
+    ]
+  }
+  
