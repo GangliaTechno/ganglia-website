@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/CareersPage.css';
 import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logob.png'; 
+import logo from '../assets/logob.png';
+// Import Firebase database
+import { database } from '../firebase/config';
+import { ref, get } from 'firebase/database';
 
 const CareersPage = () => {
  const [activeFilter, setActiveFilter] = useState('all');
@@ -10,9 +13,76 @@ const CareersPage = () => {
  const [expandedJobCard, setExpandedJobCard] = useState(null);
  const [showApplicationModal, setShowApplicationModal] = useState(false);
  const [selectedJob, setSelectedJob] = useState(null);
+ const [jobData, setJobData] = useState([]);
+ const [loading, setLoading] = useState(true);
+ const [error, setError] = useState(null);
 
  // Add navigation hook
  const navigate = useNavigate();
+
+ // Load job data from Firebase on component mount
+ useEffect(() => {
+   fetchJobsFromFirebase();
+ }, []);
+
+ // Fetch jobs from Firebase Realtime Database
+ const fetchJobsFromFirebase = async () => {
+   try {
+     setLoading(true);
+     setError(null);
+     
+     // Reference to the jobs node in your Firebase database
+     const jobsRef = ref(database, 'jobs');
+     
+     // Option 1: One-time read
+     const snapshot = await get(jobsRef);
+     
+     if (snapshot.exists()) {
+       const data = snapshot.val();
+       // Convert Firebase object to array if needed
+       const jobsArray = Array.isArray(data) ? data : Object.values(data);
+       setJobData(jobsArray);
+     } else {
+       console.log('No jobs data available');
+       setJobData([]);
+     }
+   } catch (error) {
+     console.error('Error fetching jobs from Firebase:', error);
+     setError('Failed to load job data. Please try again later.');
+     // Fallback to empty array
+     setJobData([]);
+   } finally {
+     setLoading(false);
+   }
+ };
+
+ // Alternative: Real-time listener (uncomment if you want real-time updates)
+ // useEffect(() => {
+ //   const jobsRef = ref(database, 'jobs');
+ //   const unsubscribe = onValue(jobsRef, (snapshot) => {
+ //     setLoading(true);
+ //     try {
+ //       if (snapshot.exists()) {
+ //         const data = snapshot.val();
+ //         const jobsArray = Array.isArray(data) ? data : Object.values(data);
+ //         setJobData(jobsArray);
+ //       } else {
+ //         setJobData([]);
+ //       }
+ //     } catch (error) {
+ //       console.error('Error processing Firebase data:', error);
+ //       setError('Failed to load job data.');
+ //     } finally {
+ //       setLoading(false);
+ //     }
+ //   }, (error) => {
+ //     console.error('Firebase read error:', error);
+ //     setError('Failed to connect to database.');
+ //     setLoading(false);
+ //   });
+
+ //   return () => unsubscribe();
+ // }, []);
 
  const handleFilterChange = (filter) => {
  setActiveFilter(filter);
@@ -49,70 +119,8 @@ const CareersPage = () => {
  }
  ];
 
- const jobData = [
- {
- id: 1,
- title: "HR Lead",
- type: "Full-time",
- location: "On-site",
- level: "Senior",
- category: "management",
- description: "We are seeking an experienced HR Lead to spearhead our human resources operations and drive strategic HR initiatives that align with organizational objectives. This leadership role combines strategic thinking with operational excellence to manage all aspects of human capital development.",
- skills: ["Employment Law Knowledge", "HRIS Proficiency", "Data Analytics", "Leadership Skills"],
- detailedInfo: {
- coreResponsibilities: [
- "Design and implement comprehensive HR strategies that support business objectives",
- "Partner with executive leadership on workforce planning and organizational development",
- "Lead organizational transformation initiatives and guide teams through business changes",
- "Manage and mentor HR team members, providing coaching and professional development",
- "Oversee daily HR functions including recruitment, onboarding, and employee relations",
- "Create and implement HR policies and procedures ensuring legal compliance"
- ],
- requiredQualifications: [
- "Bachelor's degree in Human Resources, Business Administration, or related field",
- "5-8 years of progressive HR experience with minimum 3 years in leadership roles",
- "HR Certifications - SHRM-CP, SHRM-SCP, PHR, SPHR, or equivalent credentials",
- "Deep understanding of labor laws, compliance requirements, and regulatory changes",
- "Experience with HR information systems, ATS platforms, and performance management tools",
- "Proven ability to lead, influence, and develop high-performing teams"
- ],
- essentialSkills: [
- "Strategic thinking and ability to align HR initiatives with business strategy",
- "Exceptional communication abilities for all organizational levels",
- "Experience with HRIS, ATS, payroll systems, and performance management platforms",
- "Knowledge of compensation structures and benefits administration",
- "Skills in conflict resolution, mediation, and handling sensitive employee matters",
- "Project management abilities for complex HR initiatives"
- ],
- preferredQualifications: [
- "Master's degree in Human Resources Management, MBA, or related advanced degree",
- "Experience in complex, multi-location, or global organizations",
- "Background in diversity & inclusion, organizational development certifications",
- "Crisis management and business continuity planning experience"
- ]
- }
- },
- {
- id: 2,
- title: "Frontend Developer",
- type: "Full-time",
- location: "On-site",
- level: "senior",
- category: "engineering",
- description: "We are seeking a skilled Frontend Developer to join our development team and create exceptional user experiences through clean, efficient and responsive web applications.",
- skills: ["React", "JavaScript", "Next.js", "Version Control"]
- },
- {
- id: 3,
- title: "Backend Developer",
- type: "Full-time",
- location: "Hybrid",
- level: "Senior",
- category: "engineering",
- description: "We are seeking a skilled Backend Developer to join our development team and create robust, scalable server-side applications that power exceptional user experiences.",
- skills: ["server side languages", "Database Management", "API Development", "Version Control", "Package managers"]
- }
- ];
+ // Calculate dynamic job count
+ const totalJobCount = jobData.length;
 
  const filteredJobs = activeFilter === 'all' 
  ? jobData 
@@ -133,6 +141,16 @@ const CareersPage = () => {
  const handleInternshipApply = () => {
  console.log('Applying for internship');
  alert('Internship application form will be implemented here');
+ };
+
+ // Format date function
+ const formatDate = (dateString) => {
+ const date = new Date(dateString);
+ return date.toLocaleDateString('en-US', { 
+   year: 'numeric', 
+   month: 'short', 
+   day: 'numeric' 
+ });
  };
 
  const renderDetailedInfo = (job) => {
@@ -184,6 +202,32 @@ const CareersPage = () => {
  </div>
  );
  };
+
+ // Loading state
+ if (loading) {
+   return (
+     <div className="careers-page">
+       <div className="loading-container">
+         <div className="loading-spinner"></div>
+         <p>Loading job opportunities...</p>
+       </div>
+     </div>
+   );
+ }
+
+ // Error state
+ if (error) {
+   return (
+     <div className="careers-page">
+       <div className="error-container">
+         <p className="error-message">{error}</p>
+         <button onClick={fetchJobsFromFirebase} className="retry-btn">
+           Try Again
+         </button>
+       </div>
+     </div>
+   );
+ }
 
  return (
  <div className="careers-page">
@@ -245,7 +289,7 @@ const CareersPage = () => {
  <span className="careers-stat-label">Team Members</span>
  </div>
  <div className="careers-stat">
- <span className="careers-stat-number">15+</span>
+ <span className="careers-stat-number">{totalJobCount}+</span>
  <span className="careers-stat-label">Open Positions</span>
  </div>
  </div>
@@ -319,53 +363,126 @@ const CareersPage = () => {
  </div>
 
  <div className="careers-opening-cards">
- {filteredJobs.map(job => (
- <div 
- key={job.id} 
- className={`careers-job-card ${expandedJobCard === job.id ? 'expanded' : 'collapsed'}`} 
- data-category={job.category}
- onClick={() => handleJobCardClick(job.id)}
- >
- {/* Mobile Rectangle View - Title Only */}
- <div className="careers-job-card-content">
- <div className="careers-job-card-title-only">
- {job.title}
- </div>
- </div>
+ {filteredJobs.length > 0 ? (
+   filteredJobs.map(job => (
+   <div 
+   key={job.id} 
+   className={`careers-job-card ${expandedJobCard === job.id ? 'expanded' : 'collapsed'}`} 
+   data-category={job.category}
+   onClick={() => handleJobCardClick(job.id)}
+   >
+   {/* Mobile Rectangle View - Title Only */}
+   <div className="careers-job-card-content">
+   <div className="careers-job-card-title-only">
+   {job.title}
+   </div>
+   </div>
 
- {/* Full Content View - Expanded */}
- <div className="careers-job-card-full-content">
- <div className="careers-job-header">
- <div className="careers-job-title-section">
- <h3>{job.title}</h3>
- <div className="careers-job-meta">
- <span className="careers-job-type">{job.type}</span>
- <span className="careers-job-location">{job.location}</span>
- <span className="careers-job-level">{job.level}</span>
+   {/* Full Content View - Expanded */}
+   <div className="careers-job-card-full-content">
+   <div className="careers-job-header">
+   <div className="careers-job-title-section">
+   <h3>{job.title}</h3>
+   <div className="careers-job-meta">
+   <span className="careers-job-type">{job.type}</span>
+   <span className="careers-job-location">{job.location}</span>
+   <span className="careers-job-level">{job.level}</span>
+   </div>
+   </div>
+   </div>
+   <p className="careers-job-description">{job.description}</p>
+   <div className="careers-job-skills">
+   {job.skills && job.skills.map((skill, index) => (
+   <span key={index} className="careers-skill-tag">{skill}</span>
+   ))}
+   </div>
+   <div className="careers-job-footer">
+   <div className="careers-job-posted">{job.posted}</div>
+   <button 
+   className="careers-job-apply-btn" 
+   onClick={(e) => {
+   e.stopPropagation();
+   handleApplyClick(job.id);
+   }}
+   >
+   Apply Now
+   </button>
+   </div>
+   </div>
+   </div>
+   ))
+ ) : (
+   <div className="no-jobs-message">
+     <p>No job openings available at the moment. Please check back later!</p>
+   </div>
+ )}
  </div>
  </div>
+ </section>
+
+ {/* Application Timeline Table Section */}
+ <section className="careers-timeline-section">
+ <div className="careers-container">
+ <div className="careers-section-header">
+ <h2>Application <span className="careers-ganglia-highlight">Timeline</span></h2>
+ <p>Important dates for all current job openings</p>
  </div>
- <p className="careers-job-description">{job.description}</p>
- <div className="careers-job-skills">
- {job.skills.map((skill, index) => (
- <span key={index} className="careers-skill-tag">{skill}</span>
- ))}
- </div>
- <div className="careers-job-footer">
- <div className="careers-job-posted">{job.posted}</div>
- <button 
- className="careers-job-apply-btn" 
- onClick={(e) => {
- e.stopPropagation();
- handleApplyClick(job.id);
- }}
- >
- Apply Now
- </button>
- </div>
- </div>
- </div>
- ))}
+ 
+ <div className="careers-timeline-table-container">
+ <table className="careers-timeline-table">
+ <thead>
+ <tr>
+ <th>Position</th>
+ <th>Category</th>
+ <th>Applications Open</th>
+ <th>Final Deadline</th>
+ <th>Program Starts</th>
+ <th>Action</th>
+ </tr>
+ </thead>
+ <tbody>
+ {jobData.length > 0 ? (
+   jobData.map(job => (
+   <tr key={job.id}>
+   <td className="position-cell">
+   <div className="position-info">
+   <span className="position-title">{job.title}</span>
+   <span className="position-details">{job.type} • {job.location}</span>
+   </div>
+   </td>
+   <td>
+   <span className={`category-badge ${job.category}`}>
+   {job.category.charAt(0).toUpperCase() + job.category.slice(1)}
+   </span>
+   </td>
+   <td className="date-cell">
+   {job.applicationTimeline ? formatDate(job.applicationTimeline.applicationsOpen) : 'TBD'}
+   </td>
+   <td className="date-cell deadline-cell">
+   {job.applicationTimeline ? formatDate(job.applicationTimeline.finalDeadline) : 'TBD'}
+   </td>
+   <td className="date-cell">
+   {job.applicationTimeline ? formatDate(job.applicationTimeline.programStarts) : 'TBD'}
+   </td>
+   <td>
+   <button 
+   className="table-apply-btn"
+   onClick={() => handleApplyClick(job.id)}
+   >
+   Apply
+   </button>
+   </td>
+   </tr>
+   ))
+ ) : (
+   <tr>
+     <td colSpan="6" className="no-data-message">
+       No job data available
+     </td>
+   </tr>
+ )}
+ </tbody>
+ </table>
  </div>
  </div>
  </section>
@@ -434,20 +551,6 @@ const CareersPage = () => {
  <h3><span className="careers-highlight">Opportunities</span> like this don't wait</h3>
  <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
  <div className="careers-application-info">
- <div className="careers-application-timeline">
- <div className="careers-timeline-item">
- <div className="careers-timeline-date">Jan 15, 2026</div>
- <div className="careers-timeline-event">Applications Open</div>
- </div>
- <div className="careers-timeline-item">
- <div className="careers-timeline-date">Mar 1, 2026</div>
- <div className="careers-timeline-event">Final Deadline</div>
- </div>
- <div className="careers-timeline-item">
- <div className="careers-timeline-date">Jun 1, 2026</div>
- <div className="careers-timeline-event">Program Starts</div>
- </div>
- </div>
  <button 
  className="careers-date-button" 
  onClick={handleInternshipApply}
