@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/OurTeam.css';
+import { ref, get } from 'firebase/database';
+import { database } from '../firebase/config';
 
 const OurTeam = () => {
   const [foundingTeam, setFoundingTeam] = useState([]);
@@ -8,40 +10,32 @@ const OurTeam = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Function to dynamically import images
-  const importImage = async (imagePath) => {
-    try {
-      const image = await import(`../assets/${imagePath}`);
-      return image.default;
-    } catch (err) {
-      console.error(`Error loading image: ${imagePath}`, err);
-      return null;
-    }
-  };
-
   useEffect(() => {
     const fetchTeamData = async () => {
       try {
-        const response = await fetch('/teamData.json');
-        if (!response.ok) {
-          throw new Error('Failed to fetch team data');
+        // ✅ Use root path since your data is not nested under "teamData"
+        const teamRef = ref(database, '/');
+        const snapshot = await get(teamRef);
+
+        if (!snapshot.exists()) {
+          throw new Error('No team data found');
         }
-        const teamData = await response.json();
-        
-        // Process images for each team
-        const processTeamImages = async (team) => {
-          return Promise.all(
-            team.map(async (member) => {
-              const imageSrc = await importImage(member.image);
-              return { ...member, imageSrc };
-            })
-          );
+
+        const data = snapshot.val();
+
+        const processTeamImages = (team) => {
+          return team.map((member) => ({
+            ...member,
+            imageSrc: member.image.startsWith('data:image')
+              ? member.image
+              : `data:image/png;base64,${member.image}`,
+          }));
         };
 
         const [foundingWithImages, managementWithImages, internWithImages] = await Promise.all([
-          processTeamImages(teamData.foundingTeam),
-          processTeamImages(teamData.managementTeam),
-          processTeamImages(teamData.internTeam)
+          processTeamImages(data.foundingTeam || []),
+          processTeamImages(data.managementTeam || []),
+          processTeamImages(data.internTeam || []),
         ]);
 
         setFoundingTeam(foundingWithImages);
@@ -92,7 +86,7 @@ const OurTeam = () => {
   const TeamMember = ({ member, isIntern = false }) => (
     <div className={`ourteam-member ${isIntern ? 'ourteam-intern-member' : ''}`}>
       <div className={`ourteam-member-photo ${isIntern ? 'ourteam-intern-photo' : ''}`}>
-        <img src={member.imageSrc || member.image} alt={member.alt} />
+        <img src={member.imageSrc} alt={member.alt || member.name} />
         <div className="ourteam-linkedin-icon">
           <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
             <LinkedInIcon />
@@ -117,9 +111,7 @@ const OurTeam = () => {
     return (
       <div className="ourteam-error">
         <p>{error}</p>
-        <button onClick={() => window.location.reload()}>
-          Retry
-        </button>
+        <button onClick={() => window.location.reload()}>Retry</button>
       </div>
     );
   }
