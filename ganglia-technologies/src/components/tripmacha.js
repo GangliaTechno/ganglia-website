@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 // import Footer from '../components/Footer';
 import '../styles/tripmacha.css';
 
@@ -18,7 +18,8 @@ const TripMacha = () => {
     { src: autoImage, alt: 'TripMacha mascot in auto rickshaw' }
   ];
 
-  const colors = ['#c9f6ff', '#ffdeeb', '#ffe9cc', '#c8f1f1', '#feffd7'];
+  // Fix 1: Move colors array to useMemo to prevent unnecessary re-renders
+  const colors = useMemo(() => ['#c9f6ff', '#ffdeeb', '#ffe9cc', '#c8f1f1', '#feffd7'], []);
 
   useEffect(() => {
     // Title shuffle animation
@@ -134,6 +135,15 @@ const TripMacha = () => {
     }
   };
 
+  // Fix 2: Handle CTA button click
+  const handleDiscoverClick = (e) => {
+    e.preventDefault();
+    // Add your navigation logic here, for example:
+    // navigate('/discover'); // if using react-router
+    // window.location.href = '/discover';
+    console.log('Discover TripMacha AI clicked');
+  };
+
   return (
     <div className="tripmacha-page">
       <div className="tripmacha-page-container">
@@ -164,7 +174,14 @@ const TripMacha = () => {
                 It creates smart, hyper-personalized itineraries using user interests, 
                 traffic, crowd, and real-time data.
               </p>
-              <a href="#" className="tripmacha-page-btn">Discover TripMacha AI</a>
+              {/* Fix 2: Replace anchor with button or add proper href */}
+              <button 
+                className="tripmacha-page-btn" 
+                onClick={handleDiscoverClick}
+                type="button"
+              >
+                Discover TripMacha AI
+              </button>
             </div>
           </div>
         </section>

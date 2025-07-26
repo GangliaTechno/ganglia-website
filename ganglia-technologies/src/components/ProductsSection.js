@@ -8,7 +8,7 @@ const ProductsSection = () => {
       title: 'Anushtaan',
       subtitle: 'Data-driven Project Management Tool',
       category: 'blue',
-      image: '/api/placeholder/300/200',
+      video: require('../assets/Anusthaan.mp4'),
       isAvailable: true
     },
     {
@@ -16,7 +16,7 @@ const ProductsSection = () => {
       title: 'TripMachaAI',
       subtitle: 'AI-powered short distance travel planner',
       category: 'dark',
-      image: '/api/placeholder/300/200',
+      video: require('../assets/tripmacha.mp4'),
       isAvailable: true
     },
     {
@@ -24,7 +24,7 @@ const ProductsSection = () => {
       title: 'Medical Log Book',
       subtitle: 'AI-powered clinical reporting and evaluation platform',
       category: 'blue',
-      image: '/api/placeholder/300/200',
+      video: require('../assets/Medlog Book.mp4'),
       isAvailable: true
     }
   ];
@@ -35,7 +35,7 @@ const ProductsSection = () => {
       title: 'Smart Video',
       subtitle: 'Laryngoscope',
       category: 'dark',
-      image: '/api/placeholder/300/200',
+      image: require('../assets/lanyngoscope.png'),
       isAvailable: true
     },
     {
@@ -43,15 +43,15 @@ const ProductsSection = () => {
       title: 'Medical Drone',
       subtitle: '',
       category: 'blue',
-      image: '/api/placeholder/300/200',
+      image: require('../assets/drone.png'),
       isAvailable: false
     },
     {
       id: 'mobile-icu',
       title: 'Mobile ICU',
-      subtitle: 'UNLOCKING SOON!',
+      subtitle: '',
       category: 'dark',
-      image: '/api/placeholder/300/200',
+      image: require('../assets/mobile icu.png'),
       isAvailable: false
     },
     {
@@ -59,7 +59,7 @@ const ProductsSection = () => {
       title: 'Thermal-Imaging',
       subtitle: 'System',
       category: 'blue',
-      image: '/api/placeholder/300/200',
+      image: require('../assets/thermal image.png'),
       isAvailable: false
     }
   ];
@@ -69,38 +69,32 @@ const ProductsSection = () => {
       <div className="products-background">
         <div className="products-container">
           <h2 className="products-title">Our Valuable Products</h2>
-          
+
           {/* Top Row - 3 Cards */}
           <div className="products-grid-top">
             {topRowProducts.map((product) => (
-              <div 
+              <div
                 key={product.id}
-                className={`product-card ${product.category} ${!product.isAvailable ? 'coming-soon' : ''}`}
+                className={`product-card ${product.category}`}
                 data-product={product.id}
               >
                 <div className="product-content">
                   <div className="product-header">
-                    <h3 className="product-title">
-                      {product.title}
-                    </h3>
+                    <h3 className="product-title">{product.title}</h3>
                     {product.subtitle && (
-                      <p className="product-subtitle">
-                        {product.subtitle}
-                      </p>
+                      <p className="product-subtitle">{product.subtitle}</p>
                     )}
                   </div>
-                  
+
                   <div className="product-image-container">
-                    <img 
-                      src={product.image} 
-                      alt={product.title}
+                    <video
+                      src={product.video}
                       className="product-image"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
                     />
-                    {!product.isAvailable && (
-                      <div className="coming-soon-overlay">
-                        <span className="coming-soon-text">UNLOCKING SOON!</span>
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>
@@ -110,35 +104,32 @@ const ProductsSection = () => {
           {/* Bottom Row - 4 Cards */}
           <div className="products-grid-bottom">
             {bottomRowProducts.map((product) => (
-              <div 
+              <div
                 key={product.id}
                 className={`product-card ${product.category} ${!product.isAvailable ? 'coming-soon' : ''}`}
                 data-product={product.id}
               >
                 <div className="product-content">
                   <div className="product-header">
-                    <h3 className="product-title">
-                      {product.title}
-                    </h3>
+                    <h3 className="product-title">{product.title}</h3>
                     {product.subtitle && (
-                      <p className="product-subtitle">
-                        {product.subtitle}
-                      </p>
+                      <p className="product-subtitle">{product.subtitle}</p>
                     )}
                   </div>
-                  
+
                   <div className="product-image-container">
-                    <img 
-                      src={product.image} 
+                    <img
+                      src={product.image}
                       alt={product.title}
                       className="product-image"
                     />
-                    {!product.isAvailable && (
-                      <div className="coming-soon-overlay">
-                        <span className="coming-soon-text">UNLOCKING SOON!</span>
-                      </div>
-                    )}
                   </div>
+
+                  {!product.isAvailable && (
+                    <div className="coming-soon-text" style={{ marginTop: '10px', textAlign: 'center' }}>
+                      UNLOCKING SOON!
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

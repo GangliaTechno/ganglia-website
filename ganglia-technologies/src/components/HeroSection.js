@@ -109,7 +109,10 @@ const HeroSection = () => {
         <h1 className="hero-title">
           <span className={`unsatisfied-glitch ${isGlitching ? 'is-glitching' : ''}`}>
             {renderGlitchedWord()}
-          </span> with<br />
+          </span>
+          {/* Add explicit spacing and styling for "with" */}
+          <span className="with-text"> with</span>
+          <br />
           <span className="existing">Existing Technology</span>
         </h1>
         <p className="hero-subtitle">

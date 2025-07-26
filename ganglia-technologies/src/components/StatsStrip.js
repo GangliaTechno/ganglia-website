@@ -1,27 +1,33 @@
 import React from 'react';
 import '../styles/StatsStrip.css';
+import Lottie from 'lottie-react';
+
+import icon1 from '../assets/1.json';
+import icon2 from '../assets/2.json';
+import icon3 from '../assets/3.json';
+import icon4 from '../assets/4.json';
 
 const StatsStrip = () => {
   const stats = [
     {
-      number: '250',
-      label: 'Projects Completed',
-      icon: '📊'
+      number: '17+',
+      label: 'Patents Approved',
+      animation: icon1
     },
     {
-      number: '250',
-      label: 'Happy Clients',
-      icon: '😊'
+      number: '5+',
+      label: 'Core Products',
+      animation: icon2
     },
     {
-      number: '250',
-      label: 'Team Members',
-      icon: '👥'
+      number: '3+',
+      label: 'Papers Accepted',
+      animation: icon3
     },
     {
-      number: '250',
-      label: 'Awards Won',
-      icon: '🏆'
+      number: '1',
+      label: 'Grants Received',
+      animation: icon4
     }
   ];
 
@@ -32,7 +38,9 @@ const StatsStrip = () => {
           <div className="stats-grid">
             {stats.map((stat, index) => (
               <div key={index} className="stat-card">
-                <div className="stat-icon">{stat.icon}</div>
+                <div className="stat-icon" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <Lottie animationData={stat.animation} loop autoplay style={{ height: 50, width: 50 }} />
+                </div>
                 <div className="stat-number">{stat.number}</div>
                 <div className="stat-label">{stat.label}</div>
                 {index < stats.length - 1 && <div className="stat-divider"></div>}
