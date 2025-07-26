@@ -2,6 +2,9 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Footer.css';
 import logo from '../assets/log.png';
+import Lottie from 'lottie-react';
+import emailIcon from '../assets/5.json';
+import callIcon from '../assets/6.json';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -19,16 +22,12 @@ const Footer = () => {
 
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
-    
-    // If we're not on the home page, navigate to home first
     if (location.pathname !== '/') {
       navigate('/');
-      // Wait a bit for navigation to complete, then scroll
       setTimeout(() => {
         scrollToSection(sectionId);
       }, 300);
     } else {
-      // If we're already on home page, just scroll
       scrollToSection(sectionId);
     }
   };
@@ -45,7 +44,7 @@ const Footer = () => {
             <img src={logo} alt="Ganglia Technologies" />
           </div>
         </div>
-        
+
         <div className="footer-center">
           <div className="footer-section headquarters">
             <h3>Headquarters</h3>
@@ -53,25 +52,21 @@ const Footer = () => {
             <p>III Floor MAHE Advanced Research Centre Behind MMMC,</p>
             <p>Manipal, Karnataka 576104</p>
           </div>
-          
+
           <div className="footer-contact">
             <div className="contact-item">
               <div className="contact-icon">
-                <svg width="20" height="16" viewBox="0 0 20 16" fill="none">
-                  <path d="M18 0H2C0.9 0 0 0.9 0 2V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM18 4L10 9L2 4V2L10 7L18 2V4Z" fill="currentColor"/>
-                </svg>
+                <Lottie animationData={emailIcon} loop autoplay style={{ height: 40, width: 40 }} />
               </div>
               <div className="contact-details">
                 <h4>Email</h4>
                 <p>director@ganglia.in</p>
               </div>
             </div>
-            
+
             <div className="contact-item">
               <div className="contact-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M2 3C2 2.45 2.45 2 3 2H5.5C5.85 2 6.15 2.2 6.27 2.53L7.7 6.21C7.85 6.6 7.7 7.04 7.35 7.27L5.5 8.5C6.5 10.62 8.38 12.5 10.5 13.5L11.73 11.65C11.96 11.3 12.4 11.15 12.79 11.3L16.47 12.73C16.8 12.85 17 13.15 17 13.5V16C17 16.55 16.55 17 16 17C8.82 17 3 11.18 3 4C3 3.45 2.55 3 2 3Z" fill="currentColor"/>
-                </svg>
+                <Lottie animationData={callIcon} loop autoplay style={{ height: 40, width: 40 }} />
               </div>
               <div className="contact-details">
                 <h4>Phone</h4>
@@ -80,7 +75,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="footer-right">
           <div className="footer-section company-links">
             <h3>Company</h3>
@@ -93,11 +88,14 @@ const Footer = () => {
               <li><a href="#awards" onClick={(e) => handleNavClick(e, 'awards')}>Awards & Research</a></li>
             </ul>
           </div>
-          
+
           <div className="footer-newsletter">
-            <h3>Join Our Newsletter</h3>
+            <h3>Get in Touch with us</h3>
             <button className="contact-btn" onClick={handleContactClick}>Contact Now</button>
-            
+
+            <h3 style={{ marginTop: '20px' }}>Join Our Newsletter</h3>
+            <button className="contact-btn">Subscribe</button>
+
             <div className="social-icons">
               <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

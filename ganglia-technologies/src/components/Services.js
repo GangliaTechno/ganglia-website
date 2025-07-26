@@ -45,63 +45,33 @@ const Services = () => {
       const windowHeight = window.innerHeight;
       const sectionHeight = rect.height;
       
-      // Improved scroll progress calculation
       const sectionCenter = rect.top + sectionHeight / 2;
       const viewportCenter = windowHeight / 2;
-      
-      // Calculate distance from section center to viewport center
       const distance = Math.abs(sectionCenter - viewportCenter);
       const maxDistance = windowHeight / 2 + sectionHeight / 2;
-      
-      // Progress: 0 when section center aligns with viewport center, 1 when furthest
       let scrollProgress = Math.min(distance / maxDistance, 1);
-      
-      // Invert so cards are fully formed when section is in center
       scrollProgress = 1 - scrollProgress;
-      
-      // Apply a smoother easing function
-      const easeOutQuart = (t) => {
-        return 1 - Math.pow(1 - t, 4);
-      };
 
+      const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
       const easedProgress = easeOutQuart(scrollProgress);
 
       cards.forEach((card, index) => {
         if (!card) return;
-        
-        // Reduced starting distances for smoother animation
         let startX, startY;
-        
         switch(index) {
-          case 0: // Top-left
-            startX = -60;
-            startY = -60;
-            break;
-          case 1: // Top-right
-            startX = 60;
-            startY = -60;
-            break;
-          case 2: // Bottom-left
-            startX = -60;
-            startY = 60;
-            break;
-          case 3: // Bottom-right
-            startX = 60;
-            startY = 60;
-            break;
-          default:
-            startX = 0;
-            startY = 0;
+          case 0: startX = -60; startY = -60; break;
+          case 1: startX = 60; startY = -60; break;
+          case 2: startX = -60; startY = 60; break;
+          case 3: startX = 60; startY = 60; break;
+          default: startX = 0; startY = 0;
         }
 
-        // Calculate current position with smoother interpolation
         const currentX = startX * (1 - easedProgress);
         const currentY = startY * (1 - easedProgress);
-        const currentScale = 0.6 + (0.4 * easedProgress); // Scale from 0.6 to 1
-        const currentOpacity = 0.3 + (0.7 * easedProgress); // Opacity from 0.3 to 1
-        const currentRotation = (1 - easedProgress) * (index % 2 === 0 ? -8 : 8); // Reduced rotation
+        const currentScale = 0.6 + (0.4 * easedProgress);
+        const currentOpacity = 0.3 + (0.7 * easedProgress);
+        const currentRotation = (1 - easedProgress) * (index % 2 === 0 ? -8 : 8);
 
-        // Apply transforms with smoother transitions
         requestAnimationFrame(() => {
           card.style.transform = `translate(${currentX}vw, ${currentY}vh) scale(${currentScale}) rotate(${currentRotation}deg)`;
           card.style.opacity = currentOpacity;
@@ -109,32 +79,26 @@ const Services = () => {
       });
     };
 
-    // Use requestAnimationFrame for smoother animations
     let rafId;
     const smoothHandleScroll = () => {
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
+      if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(handleScroll);
     };
     
     window.addEventListener('scroll', smoothHandleScroll, { passive: true });
     window.addEventListener('resize', smoothHandleScroll, { passive: true });
     
-    // Initial call
     handleScroll();
 
     return () => {
       window.removeEventListener('scroll', smoothHandleScroll);
       window.removeEventListener('resize', smoothHandleScroll);
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
 
   return (
-    <section className="services-section" ref={sectionRef}>
+    <section className="services-section" id="services" ref={sectionRef}>
       <div className="services-bg" />
       <div className="services-container">
         <h2 className="services-heading">Services We Provide</h2>

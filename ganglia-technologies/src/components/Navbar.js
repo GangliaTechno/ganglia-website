@@ -247,7 +247,7 @@ const Navbar = () => {
       isHeader: true,
       items: [
         { label: 'TripMacha AI – Short Trip Planner', link: '/tripmacha' }, // ← Updated link
-        { label: 'Anushtaan – Project Management Tool', link: '/anushtaan' },
+        { label: 'Anushtaan – Project Management Tool', link: '/main-component' },
         { label: 'Medical Logbook', link: '/medical-logbook' }
       ]
     }
