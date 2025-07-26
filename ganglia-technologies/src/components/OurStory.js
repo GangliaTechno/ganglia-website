@@ -37,15 +37,25 @@ function OurStory() {
   }, []);
 
   useEffect(() => {
-    // Track scroll direction
+    // Track scroll direction with throttling
+    let ticking = false;
+    
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY.current) {
-        setScrollDirection('down');
-      } else {
-        setScrollDirection('up');
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          if (Math.abs(currentScrollY - lastScrollY.current) > 5) { // Only update if significant change
+            if (currentScrollY > lastScrollY.current) {
+              setScrollDirection('down');
+            } else {
+              setScrollDirection('up');
+            }
+            lastScrollY.current = currentScrollY;
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
-      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -53,30 +63,46 @@ function OurStory() {
   }, []);
 
   useEffect(() => {
-    // Set up Intersection Observer with more lenient settings
+    // Pre-load only the header to reduce initial lag
+    const initialVisible = new Set(['header']);
+    setVisibleElements(initialVisible);
+  }, [imagesLoaded]);
+
+  useEffect(() => {
+    // Clean intersection observer for animations
     observerRef.current = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Add element to visible set when it enters viewport
-            setVisibleElements(prev => new Set([...prev, entry.target.id]));
-          } else {
-            // Remove element from visible set when it leaves viewport
-            setVisibleElements(prev => {
-              const newSet = new Set(prev);
-              newSet.delete(entry.target.id);
-              return newSet;
-            });
-          }
+        setVisibleElements(currentVisible => {
+          const newVisible = new Set(currentVisible);
+          let changed = false;
+
+          entries.forEach((entry) => {
+            const elementId = entry.target.id;
+            const isIntersecting = entry.isIntersecting && entry.intersectionRatio > 0.1;
+            const wasVisible = newVisible.has(elementId);
+            
+            if (isIntersecting && !wasVisible) {
+              newVisible.add(elementId);
+              changed = true;
+            } else if (!isIntersecting && wasVisible) {
+              // Allow re-animation for blue cards only
+              const animatableCards = ['why-exist', 'how-we-do', 'what-we-create', 'impact'];
+              if (animatableCards.includes(elementId)) {
+                newVisible.delete(elementId);
+                changed = true;
+              }
+            }
+          });
+
+          return changed ? newVisible : currentVisible;
         });
       },
       {
-        threshold: 0.15, // Slightly higher threshold for better control
-        rootMargin: '0px 0px -10% 0px' // Remove from view when 10% out of viewport
+        threshold: [0.1, 0.15],
+        rootMargin: '50px 0px -50px 0px'
       }
     );
 
-    // Longer delay to ensure DOM is fully ready
     const setupObserver = () => {
       const slideElements = document.querySelectorAll('.slide-element');
       slideElements.forEach((el) => {
@@ -86,7 +112,7 @@ function OurStory() {
       });
     };
 
-    setTimeout(setupObserver, 300);
+    setTimeout(setupObserver, 100);
 
     return () => {
       if (observerRef.current) {
@@ -94,6 +120,11 @@ function OurStory() {
       }
     };
   }, [imagesLoaded]);
+
+  // Simple visibility check
+  const isElementVisible = (elementId) => {
+    return visibleElements.has(elementId);
+  };
 
   // Function to safely require images with fallback
   const getImageSrc = (imageModule, fallback) => {
@@ -135,7 +166,7 @@ function OurStory() {
         {/* Header */}
         <div
           id="header"
-          className={`slide-element slide-up aboutus-header ${visibleElements.has('header') ? 'visible' : ''}`}
+          className={`slide-element slide-up aboutus-header ${isElementVisible('header') ? 'visible' : ''}`}
         >
           <h1 className="aboutus-main-title">About</h1>
           <h2 className="aboutus-company-title">
@@ -148,13 +179,15 @@ function OurStory() {
           {/* Why We Exist Section */}
           <div
             id="why-exist"
-            className={`slide-element ${scrollDirection === 'down' ? 'slide-down' : 'slide-up'} stacking-card ${visibleElements.has('why-exist') ? 'visible' : ''}`}
+            className={`slide-element ${scrollDirection === 'down' ? 'slide-down' : 'slide-up'} stacking-card ${isElementVisible('why-exist') ? 'visible' : ''}`}
           >
             <div className="card-overlay">
               <CardParticleEffect />
             </div>
             <div className="card-content">
-              <h3 className="section-title">Why We Exist</h3>
+              <h3 className="section-title">
+                <span className="yellow-highlight">Why</span> We Exist
+              </h3>
               <p className="section-text">
                 At Ganglia Technologies, we believe in a future where world-class
                 healthcare and technological automation are not luxuries for the
@@ -169,13 +202,15 @@ function OurStory() {
           {/* How we do it Section */}
           <div
             id="how-we-do"
-            className={`slide-element ${scrollDirection === 'down' ? 'slide-down' : 'slide-up'} stacking-card ${visibleElements.has('how-we-do') ? 'visible' : ''}`}
+            className={`slide-element ${scrollDirection === 'down' ? 'slide-down' : 'slide-up'} stacking-card ${isElementVisible('how-we-do') ? 'visible' : ''}`}
           >
             <div className="card-overlay">
               <CardParticleEffect />
             </div>
             <div className="card-content">
-              <h3 className="section-title">How we do it</h3>
+              <h3 className="section-title">
+                <span className="yellow-highlight">How</span> we do it
+              </h3>
               <p className="section-text-with-margin">
                 We challenge the status quo by blending deep engineering, medical
                 expertise, and actual human empathy. For us, technology is not
@@ -213,13 +248,15 @@ function OurStory() {
           {/* What We Create Section */}
           <div
             id="what-we-create"
-            className={`slide-element ${scrollDirection === 'down' ? 'slide-down' : 'slide-up'} stacking-card ${visibleElements.has('what-we-create') ? 'visible' : ''}`}
+            className={`slide-element ${scrollDirection === 'down' ? 'slide-down' : 'slide-up'} stacking-card ${isElementVisible('what-we-create') ? 'visible' : ''}`}
           >
             <div className="card-overlay">
               <CardParticleEffect />
             </div>
             <div className="card-content">
-              <h3 className="section-title">What We Create</h3>
+              <h3 className="section-title">
+                <span className="yellow-highlight">What</span> We Create
+              </h3>
               <p className="section-text-with-margin">
                 We build solutions that don't just work—they inspire.
               </p>
@@ -270,7 +307,7 @@ function OurStory() {
           {/* The Impact Section */}
           <div
             id="impact"
-            className={`slide-element ${scrollDirection === 'down' ? 'slide-down' : 'slide-up'} stacking-card ${visibleElements.has('impact') ? 'visible' : ''}`}
+            className={`slide-element ${scrollDirection === 'down' ? 'slide-down' : 'slide-up'} stacking-card ${isElementVisible('impact') ? 'visible' : ''}`}
           >
             <div className="card-overlay">
               <CardParticleEffect />
@@ -290,7 +327,7 @@ function OurStory() {
         {/* Hero Section - Full Width */}
         <div
           id="hero-image"
-          className={`slide-element slide-up hero-image-section ${visibleElements.has('hero-image') ? 'visible' : ''}`}
+          className={`slide-element slide-up hero-image-section ${isElementVisible('hero-image') ? 'visible' : ''}`}
         >
           <div className="hero-image-container">
             <img
@@ -367,14 +404,14 @@ function OurStory() {
           <div className="values-section">
             <h3
               id="values-header"
-              className={`slide-element slide-up values-title ${visibleElements.has('values-header') ? 'visible' : ''}`}
+              className={`slide-element slide-up values-title ${isElementVisible('values-header') ? 'visible' : ''}`}
             >
               Our Values
             </h3>
             <div className="values-grid">
               <div
                 id="value-card-1"
-                className={`slide-element slide-left value-card ${visibleElements.has('value-card-1') ? 'visible' : ''}`}
+                className={`slide-element slide-left value-card ${isElementVisible('value-card-1') ? 'visible' : ''}`}
               >
                 <h5 className="value-card-title">Human-Centricity</h5>
                 <p className="value-card-description">
@@ -383,7 +420,7 @@ function OurStory() {
               </div>
               <div
                 id="value-card-2"
-                className={`slide-element slide-up value-card ${visibleElements.has('value-card-2') ? 'visible' : ''}`}
+                className={`slide-element slide-up value-card ${isElementVisible('value-card-2') ? 'visible' : ''}`}
               >
                 <h5 className="value-card-title">Affordability with Excellence</h5>
                 <p className="value-card-description">
@@ -392,7 +429,7 @@ function OurStory() {
               </div>
               <div
                 id="value-card-3"
-                className={`slide-element slide-right value-card ${visibleElements.has('value-card-3') ? 'visible' : ''}`}
+                className={`slide-element slide-right value-card ${isElementVisible('value-card-3') ? 'visible' : ''}`}
               >
                 <h5 className="value-card-title">Innovation with Impact</h5>
                 <p className="value-card-description">

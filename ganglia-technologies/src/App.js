@@ -13,7 +13,9 @@ import CertificationsSection from './components/CertificationsSection';
 import Footer from './components/Footer';
 import CareersPage from './components/CareersPage';
 import ContactUs from './components/ContactUs';
-import OurStory from './components/OurStory'; // Add this import
+import OurStory from './components/OurStory';
+import OurTeam from './components/OurTeam';
+import TripMacha from './components/tripmacha'; // ← Add TripMacha import
 import './styles/App.css';
 
 // Create a HomePage component that contains all your main page content
@@ -50,7 +52,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/our-story" element={<OurStory />} /> {/* Add this route */}
+          <Route path="/our-story" element={<OurStory />} />
+          <Route path="/our-team" element={<OurTeam />} />
+          <Route path="/tripmacha" element={<TripMacha />} /> {/* ← Add TripMacha route */}
         </Routes>
       </div>
     </Router>

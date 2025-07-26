@@ -1,0 +1,752 @@
+/* Import Google Fonts for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* TripMacha-specific reset and base styles */
+.tripmacha-page * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.tripmacha-page {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #80CBC4;
+  color: #1f1f1f;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.tripmacha-page-container {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Enhanced Hero Section */
+.tripmacha-page-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 4rem 4rem 4rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: 
+    radial-gradient(circle at -20% -20%, #fe9a0d 30%, transparent 40%),
+    linear-gradient(135deg, #80CBC4 0%, #4DB6AC 50%, #26A69A 100%);
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Enhanced floating bubble */
+.tripmacha-page-hero::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  filter: blur(120px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: tripmachaFloatBubble 30s ease-in-out infinite alternate;
+}
+
+.tripmacha-page-hero .tripmacha-parallax-bubbles {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+.tripmacha-page-hero .tripmacha-bubble {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: auto;
+  z-index: 1;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 70%, transparent 100%);
+  opacity: 0.6;
+  filter: blur(1px) saturate(1.2);
+  box-shadow: 
+    0 8px 32px rgba(255, 255, 255, 0.1),
+    inset 0 1px 32px rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.tripmacha-page-hero .tripmacha-bubble:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);
+}
+
+/* Keep content above all layers */
+.tripmacha-page-hero > * {
+  position: relative;
+  z-index: 10;
+}
+
+/* Enhanced Main Content Layout */
+.tripmacha-page-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.tripmacha-page-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.tripmacha-page-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 650px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.tripmacha-page-image img:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Description Section */
+.tripmacha-page-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.tripmacha-page-description .tripmacha-page-logo {
+  position: static;
+  height: 60px;
+  opacity: 0.9;
+  z-index: 5;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
+  margin-bottom: 1rem;
+  align-self: flex-start;
+}
+
+.tripmacha-page-description h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: white;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.tripmacha-page-description p {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+  max-width: 600px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Button */
+.tripmacha-page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  color: white;
+  border: none;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 8px 25px rgba(255, 107, 53, 0.3),
+    0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tripmacha-page-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.tripmacha-page-btn:hover::before {
+  left: 100%;
+}
+
+.tripmacha-page-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 15px 35px rgba(255, 107, 53, 0.4),
+    0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced About Section */
+.tripmacha-page-about {
+  padding: 8rem 4rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 6rem;
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.tripmacha-page-about-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.tripmacha-page-about-text h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.tripmacha-page-about-text h2 span {
+  background: linear-gradient(135deg, #FF6B35, #F7931E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.tripmacha-page-about-text h2 span::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(135deg, #FF6B35, #F7931E);
+  border-radius: 2px;
+}
+
+.tripmacha-page-about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #495057;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+/* Enhanced Features Card */
+.tripmacha-page-features-card {
+  background: linear-gradient(135deg, #26A69A 0%, #4DB6AC 50%, #80CBC4 100%);
+  padding: 3rem;
+  border-radius: 24px;
+  color: white;
+  box-shadow: 
+    0 20px 60px rgba(38, 166, 154, 0.3),
+    0 8px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tripmacha-page-features-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 
+    0 30px 80px rgba(38, 166, 154, 0.4),
+    0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.tripmacha-page-features-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.6s;
+}
+
+.tripmacha-page-features-card:hover::before {
+  left: 100%;
+}
+
+.tripmacha-page-features-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.tripmacha-page-features-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tripmacha-page-features-card li {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.tripmacha-page-features-card li:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(10px);
+}
+
+.tripmacha-page-features-card li:last-child {
+  margin-bottom: 0;
+}
+
+.tripmacha-page-icon {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Enhanced How It Works Section */
+.tripmacha-page-how-it-works {
+  padding: 8rem 4rem;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFB74D 100%);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tripmacha-page-how-it-works::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
+  z-index: 1;
+}
+
+.tripmacha-page-how-it-works > * {
+  position: relative;
+  z-index: 2;
+}
+
+.tripmacha-page-subheading {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tripmacha-page-how-it-works h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 4rem;
+  letter-spacing: -0.02em;
+}
+
+.tripmacha-page-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tripmacha-page-step {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tripmacha-page-step:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tripmacha-page-step p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Step placeholder styling */
+.tripmacha-step-placeholder {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  margin: 0 auto 2rem auto;
+}
+
+.tripmacha-page-step:hover .tripmacha-step-placeholder {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.step-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Pricing Section */
+.tripmacha-page-pricing {
+  padding: 8rem 4rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  text-align: center;
+}
+
+.tripmacha-page-pricing h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 4rem;
+  position: relative;
+  letter-spacing: -0.02em;
+}
+
+.tripmacha-page-pricing h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(135deg, #FF6B35, #F7931E);
+  border-radius: 2px;
+}
+
+.tripmacha-page-pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tripmacha-page-card {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.tripmacha-page-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  border-color: #26A69A;
+}
+
+.tripmacha-page-card.highlight {
+  background: linear-gradient(135deg, #26A69A 0%, #4DB6AC 50%, #80CBC4 100%);
+  color: white;
+  transform: scale(1.05);
+}
+
+.tripmacha-page-card.highlight:hover {
+  transform: scale(1.05) translateY(-15px);
+}
+
+/* Enhanced Final CTA Section */
+.tripmacha-page-final-cta {
+  padding: 8rem 4rem;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.tripmacha-page-final-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: tripmachaRotate 20s linear infinite;
+}
+
+.tripmacha-page-cta-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.tripmacha-page-cta-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tripmacha-page-cta-content .faint {
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+/* CTA placeholder styling */
+.tripmacha-cta-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  animation: tripmachaFloat 3s ease-in-out infinite;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-emoji {
+  font-size: 4rem;
+}
+
+/* TripMacha-specific animations with unique names */
+@keyframes tripmachaFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes tripmachaFloatBubble {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(100px, 120px) scale(1.05);
+  }
+  100% {
+    transform: translate(-80px, 200px) scale(1);
+  }
+}
+
+@keyframes tripmachaRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes tripmachaFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tripmachaSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes tripmachaSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply TripMacha-specific animations */
+.tripmacha-page-hero {
+  animation: tripmachaFadeInUp 1s ease-out;
+}
+
+.tripmacha-page-about {
+  animation: tripmachaSlideInLeft 1s ease-out 0.2s both;
+}
+
+.tripmacha-page-how-it-works {
+  animation: tripmachaFadeInUp 1s ease-out 0.4s both;
+}
+
+.tripmacha-page-pricing {
+  animation: tripmachaSlideInRight 1s ease-out 0.6s both;
+}
+
+.tripmacha-page-final-cta {
+  animation: tripmachaFadeInUp 1s ease-out 0.8s both;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+  .tripmacha-page-hero {
+    padding: 2rem;
+  }
+  
+  .tripmacha-page-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .tripmacha-page-about {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    padding: 6rem 2rem;
+  }
+  
+  .tripmacha-page-description {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .tripmacha-page-description .tripmacha-page-logo {
+    align-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .tripmacha-page-hero,
+  .tripmacha-page-about,
+  .tripmacha-page-how-it-works,
+  .tripmacha-page-pricing,
+  .tripmacha-page-final-cta {
+    padding: 4rem 1rem;
+  }
+  
+  .tripmacha-page-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .tripmacha-page-pricing-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .tripmacha-page-cta-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .tripmacha-page-image img {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tripmacha-page-description h1 {
+    font-size: 2.5rem;
+  }
+  
+  .tripmacha-page-about-text h2 {
+    font-size: 2rem;
+  }
+  
+  .tripmacha-page-features-card {
+    padding: 2rem;
+  }
+  
+  .tripmacha-page-step {
+    padding: 2rem 1rem;
+  }
+}
+
+/* TripMacha-specific scroll behavior */
+.tripmacha-page {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced focus states for accessibility */
+.tripmacha-page-btn:focus,
+.tripmacha-page-card:focus {
+  outline: 3px solid rgba(38, 166, 154, 0.5);
+  outline-offset: 2px;
+}
+
+/* Improved text selection for TripMacha page */
+.tripmacha-page ::selection {
+  background: rgba(255, 107, 53, 0.3);
+  color: #2c3e50;
+}

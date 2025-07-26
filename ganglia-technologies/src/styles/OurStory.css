@@ -1,4 +1,4 @@
-/* OurStory.css - Enhanced with Tech Milestones */
+/* OurStory.css - Enhanced with Tech Milestones and Yellow Highlights - COMPLETED + Card Hover Effects */
 
 /* Keyframes for animations */
 @keyframes twinkle {
@@ -52,6 +52,33 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Card hover animations */
+@keyframes shinyBorderStreak {
+  0% {
+    background-position: -150% 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 150% 0;
+    opacity: 0;
+  }
+}
+
+@keyframes cardPopUp {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-8px) scale(1.02);
   }
 }
 
@@ -196,17 +223,18 @@
   padding: 120px 2rem 0 2rem;
 }
 
-/* Header styles */
+/* Header styles - Updated to move entire About Ganglia Technologies section down by 200px */
 .aboutus-header {
   text-align: left;
   margin-bottom: 2rem;
   padding-left: 1rem;
+  margin-top: 200px; /* Added 200px top margin to push the entire header section down */
 }
 
 .aboutus-main-title {
   font-size: 48px;
   font-weight: 400;
-  margin: 0;
+  margin: 0 0 1rem 0; /* Small margin between "About" and "Ganglia Technologies" */
   color: #ffffff;
   line-height: 1;
 }
@@ -285,6 +313,64 @@
   border: 1px solid rgba(59, 130, 246, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+
+/* Hover effects for stacking cards */
+.stacking-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(96, 165, 250, 0.15);
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+/* Shiny border streak effect - much more prominent */
+.stacking-card::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 20%,
+    #ffffff 35%,
+    #60a5fa 40%,
+    #ffffff 45%,
+    #60a5fa 50%,
+    #ffffff 55%,
+    #60a5fa 60%,
+    #ffffff 65%,
+    transparent 80%,
+    transparent 100%
+  );
+  border-radius: 19px;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-size: 300% 100%;
+  filter: blur(0.5px) brightness(1.5);
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.stacking-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(37, 99, 235, 0.15);
+  border-radius: 16px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.stacking-card:hover::before {
+  animation: shinyBorderStreak 1.2s ease-in-out;
 }
 
 .card-overlay {
@@ -297,16 +383,21 @@
 
 .card-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-/* Section titles */
+/* Section titles with yellow highlights for first words */
 .section-title {
   font-size: 24px;
   font-weight: 600;
   color: #60a5fa;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+}
+
+/* Yellow highlight class for first words */
+.section-title .yellow-highlight {
+  color: #fef155 !important;
 }
 
 /* Text styles */
@@ -1029,37 +1120,6 @@
   top: -6px;
 }
 
-.connector-line {
-  width: 50px;
-  height: 2px;
-  background: linear-gradient(90deg, #1e3a8a 0%, #60a5fa 100%);
-  position: relative;
-}
-
-.tech-milestone-card.right .connector-line {
-  background: linear-gradient(90deg, #60a5fa 0%, #1e3a8a 100%);
-}
-
-.connector-node {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background: #60a5fa;
-  border: 2px solid #000426;
-  border-radius: 50%;
-  animation: nodeGlow 2s infinite ease-in-out;
-}
-
-.tech-milestone-card.left .connector-node {
-  right: -6px;
-}
-
-.tech-milestone-card.right .connector-node {
-  left: -6px;
-}
-
 .node-pulse {
   position: absolute;
   inset: -4px;
@@ -1069,41 +1129,6 @@
 }
 
 /* Data streams */
-.data-streams {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.stream {
-  position: absolute;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    #60a5fa 20%,
-    transparent 40%,
-    #2563eb 60%,
-    transparent 80%,
-    #1e40af 100%
-  );
-  opacity: 0.2;
-}
-
-.stream-1 {
-  left: 20%;
-  animation: dataFlow 15s infinite linear;
-}
-
-.stream-2 {
-  right: 20%;
-  animation: dataFlow 18s infinite linear reverse;
-  animation-delay: 3s;
-}
-
-/* Data streams - adjusted for horizontal layout */
 .data-streams {
   position: absolute;
   inset: 0;
@@ -1145,6 +1170,10 @@
     padding: 100px 1rem 0 1rem;
   }
 
+  .aboutus-header {
+    margin-top: 150px; /* Proportionally smaller spacing on tablet */
+  }
+
   .aboutus-main-title,
   .aboutus-company-title {
     font-size: 32px;
@@ -1168,6 +1197,22 @@
   .stacking-card {
     padding: 2rem;
     margin-bottom: 1.5rem;
+  }
+
+  /* Disable hover effects on mobile */
+  .stacking-card:hover {
+    transform: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+
+  .stacking-card:hover::before {
+    animation: none;
+    opacity: 0;
+  }
+
+  .stacking-card::after {
+    display: none;
   }
 
   .mission-card {
@@ -1312,11 +1357,19 @@
   .milestone-description {
     font-size: 13px;
   }
+
+  .section-title {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 480px) {
   .aboutus-content-wrapper {
     padding: 80px 1rem 0 1rem;
+  }
+
+  .aboutus-header {
+    margin-top: 100px; /* Even smaller spacing on very small screens */
   }
 
   .aboutus-main-title,
@@ -1381,5 +1434,68 @@
   .milestone-date {
     font-size: 11px;
     padding: 0.2rem 0.6rem;
+  }
+}
+/* Replace the existing shiny border streak effect with this more subtle version */
+
+/* Reduced shiny border streak effect - much more subtle */
+.stacking-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(96, 165, 250, 0.2) 50%,
+    rgba(255, 255, 255, 0.15) 55%,
+    transparent 65%,
+    transparent 100%
+  );
+  border-radius: 18px;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-size: 200% 100%;
+  filter: blur(0.8px);
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.3);
+}
+
+.stacking-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(37, 99, 235, 0.15);
+  border-radius: 16px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.stacking-card:hover::before {
+  animation: shinyBorderStreak 1.5s ease-in-out;
+}
+
+/* Updated animation for more subtle effect */
+@keyframes shinyBorderStreak {
+  0% {
+    background-position: -100% 0;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    background-position: 100% 0;
+    opacity: 0;
   }
 }

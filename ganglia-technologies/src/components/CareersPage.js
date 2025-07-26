@@ -125,7 +125,7 @@ const CareersPage = () => {
       <section className="careers-why-join-section">
         <div className="careers-container">
           <div className="careers-section-header">
-            <h2>Why Choose Ganglia?</h2>
+            <h2>Why Choose <span className="careers-ganglia-highlight">Ganglia ?</span></h2>
             <p>We're not just building technology—we're shaping the future</p>
           </div>
           <div className="careers-benefits-grid">

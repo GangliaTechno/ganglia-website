@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Add this import
 import '../styles/AboutUsSection.css';
 
 import gifting from '../assets/gifting1.jpeg';
@@ -6,6 +7,7 @@ import gifting1 from '../assets/gifting.png';
 import boardroom from '../assets/boardroom.jpeg';
 
 const AboutUsSection = () => {
+  const navigate = useNavigate(); // Add this hook
   const [flippedImages, setFlippedImages] = useState({
     top: false,
     bottomLeft: false,
@@ -34,6 +36,11 @@ const AboutUsSection = () => {
         [imageKey]: !prev[imageKey]
       }));
     }
+  };
+
+  // Add click handler for the Know More button
+  const handleKnowMoreClick = () => {
+    navigate('/our-story');
   };
 
   return (
@@ -99,7 +106,9 @@ const AboutUsSection = () => {
           <p className="about-description">
             We are dedicated to making <span className="highlight">advanced healthcare</span> and technology solutions both <span className="highlight">innovative</span> and <span className="highlight">affordable</span> by leveraging AI and engineering.
           </p>
-          <button className="know-more-btn">Know More</button>
+          <button className="know-more-btn" onClick={handleKnowMoreClick}>
+            Know More
+          </button>
         </div>
       </div>
     </section>
