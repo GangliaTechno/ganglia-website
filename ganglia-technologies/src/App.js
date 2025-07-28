@@ -23,7 +23,7 @@ import MainComponent from './components/MainComponent';
 import MedlogBookPlatform from './components/MedlogBookPlatform';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
-
+import ResearchPapers from './components/research'
 const HomePage = () => {
   return (
     <>
@@ -97,6 +97,7 @@ function App() {
           <Route path="/smart-video-laryngoscope" element={<Laryngoscope />} />
           <Route path="/medical-logbook" element={<MedlogBookPlatform />} /> 
           <Route path="/main-component" element={<MainComponent />} />
+          <Route path="/research-papers" element={<ResearchPapers />} />
           
           {/* ✅ Catch-all route for 404s */}
           <Route path="*" element={<NotFoundPage />} />

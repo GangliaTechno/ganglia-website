@@ -179,6 +179,8 @@ const Navbar = () => {
     
     if (sectionId === 'careers') {
       navigate('/careers');
+    } else if (sectionId === 'research') {
+      navigate('/research-papers');
     } else {
       if (location.pathname !== '/') {
         navigate('/');
@@ -474,7 +476,7 @@ const Navbar = () => {
 
             <li>
               <a 
-                href="#research" 
+                href="/research-papers" 
                 onClick={(e) => handleNavClick(e, 'research')}
               >
                 Research
@@ -567,7 +569,7 @@ const Navbar = () => {
 
               <li>
                 <a 
-                  href="#research" 
+                  href="/research-papers" 
                   onClick={(e) => handleNavClick(e, 'research')}
                 >
                   Research

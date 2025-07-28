@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import Footer from "./Footer"; // <-- Import the Footer component
+import Footer from "./Footer";
 
 function LaryngoscopeComponent() {
   const keyframes = `
@@ -392,19 +392,33 @@ function LaryngoscopeComponent() {
               alignItems: 'center',
               order: 1 
             }}>
-              {/* Device visualization placeholder */}
+              {/* Device visualization with corrected image */}
               <div style={{
                 width: '300px',
                 height: '300px',
-                backgroundColor: 'rgba(0, 206, 209, 0.1)',
                 borderRadius: '20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 border: '2px solid rgba(0, 206, 209, 0.3)',
-                fontSize: '64px'
+                overflow: 'hidden',
+                backgroundColor: 'rgba(0, 206, 209, 0.1)'
               }}>
-                🔬
+                <img
+                  src="/assets/laryngoscope.jpg"
+                  alt="Ganglia Smart Video-Laryngoscope"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '18px'
+                  }}
+                  onError={(e) => {
+                    // Fallback to microscope emoji if image fails to load
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<div style="font-size: 64px; color: #00CED1;">🔬</div>';
+                  }}
+                />
               </div>
             </div>
           </div>
