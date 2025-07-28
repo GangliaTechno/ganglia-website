@@ -213,11 +213,12 @@ const Navbar = () => {
   };
 
   const handleGetStartedClick = () => {
-    navigate('/contact');
-    setIsMobileMenuOpen(false);
-    setDropdownStates({ about: false, products: false, services: false });
-    setMobileDropdownStates({ about: false, products: false, services: false });
-  };
+  navigate('/get-started');
+  setIsMobileMenuOpen(false);
+  setDropdownStates({ about: false, products: false, services: false });
+  setMobileDropdownStates({ about: false, products: false, services: false });
+};
+
 
   // FIXED: Improved mobile menu toggle
   const toggleMobileMenu = (e) => {

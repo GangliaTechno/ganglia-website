@@ -24,6 +24,7 @@ import MedlogBookPlatform from './components/MedlogBookPlatform';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
 import ResearchPapers from './components/research'
+import GetStartedForm from './components/getstarted';
 const HomePage = () => {
   return (
     <>
@@ -98,6 +99,7 @@ function App() {
           <Route path="/medical-logbook" element={<MedlogBookPlatform />} /> 
           <Route path="/main-component" element={<MainComponent />} />
           <Route path="/research-papers" element={<ResearchPapers />} />
+          <Route path="/get-started" element={<GetStartedForm />} />
           
           {/* ✅ Catch-all route for 404s */}
           <Route path="*" element={<NotFoundPage />} />
