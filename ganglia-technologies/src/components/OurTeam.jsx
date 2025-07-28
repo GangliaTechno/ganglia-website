@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import '../styles/OurTeam.css';
 import { ref, get } from 'firebase/database';
 import { database } from '../firebase/config';
+import Footer from './Footer';
 
 const OurTeam = () => {
   const [foundingTeam, setFoundingTeam] = useState([]);
   const [managementTeam, setManagementTeam] = useState([]);
+  const [foundingInternTeam, setFoundingInternTeam] = useState([]);
   const [internTeam, setInternTeam] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,22 +26,31 @@ const OurTeam = () => {
         const data = snapshot.val();
 
         const processTeamImages = (team) => {
+          if (!team || !Array.isArray(team)) {
+            return [];
+          }
+          
           return team.map((member) => ({
             ...member,
-            imageSrc: member.image.startsWith('data:image')
+            imageSrc: member.image && member.image.startsWith('data:image')
               ? member.image
-              : `data:image/png;base64,${member.image}`,
+              : member.image 
+                ? `data:image/png;base64,${member.image}`
+                : null,
           }));
         };
 
-        const [foundingWithImages, managementWithImages, internWithImages] = await Promise.all([
-          processTeamImages(data.foundingTeam || []),
-          processTeamImages(data.managementTeam || []),
-          processTeamImages(data.internTeam || []),
+        // ✅ Fix: Use the correct Firebase keys with spaces and capitals
+        const [foundingWithImages, managementWithImages, foundingInternWithImages, internWithImages] = await Promise.all([
+          processTeamImages(data.foundingTeam || data['Founding Team'] || []),
+          processTeamImages(data.managementTeam || data['Management Team'] || []),
+          processTeamImages(data.foundingInternTeam || data['Founding Intern Team'] || []), // ✅ This is the fix!
+          processTeamImages(data.internTeam || data['Intern Team'] || []),
         ]);
 
         setFoundingTeam(foundingWithImages);
         setManagementTeam(managementWithImages);
+        setFoundingInternTeam(foundingInternWithImages);
         setInternTeam(internWithImages);
         setLoading(false);
       } catch (err) {
@@ -86,12 +97,20 @@ const OurTeam = () => {
   const TeamMember = ({ member, isIntern = false }) => (
     <div className={`ourteam-member ${isIntern ? 'ourteam-intern-member' : ''}`}>
       <div className={`ourteam-member-photo ${isIntern ? 'ourteam-intern-photo' : ''}`}>
-        <img src={member.imageSrc} alt={member.alt || member.name} />
-        <div className="ourteam-linkedin-icon">
-          <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-            <LinkedInIcon />
-          </a>
-        </div>
+        {member.imageSrc ? (
+          <img src={member.imageSrc} alt={member.alt || member.name} />
+        ) : (
+          <div className="ourteam-image-placeholder">
+            {member.name ? member.name.charAt(0).toUpperCase() : '?'}
+          </div>
+        )}
+        {member.linkedin && (
+          <div className="ourteam-linkedin-icon">
+            <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+              <LinkedInIcon />
+            </a>
+          </div>
+        )}
       </div>
       <h3>{member.name}</h3>
       <p className="ourteam-role">{member.role}</p>
@@ -139,8 +158,8 @@ const OurTeam = () => {
           <div className="ourteam-contact-form ourteam-animate-on-scroll">
             <div className="ourteam-info ourteam-animate-on-scroll">
               <div className="ourteam-founding-grid">
-                {foundingTeam.map((member) => (
-                  <TeamMember key={member.id} member={member} />
+                {foundingTeam.map((member, index) => (
+                  <TeamMember key={member.id || index} member={member} />
                 ))}
               </div>
             </div>
@@ -154,9 +173,30 @@ const OurTeam = () => {
           <div className="ourteam-contact-form ourteam-animate-on-scroll">
             <div className="ourteam-info ourteam-animate-on-scroll">
               <div className="ourteam-management-grid">
-                {managementTeam.map((member) => (
-                  <TeamMember key={member.id} member={member} />
+                {managementTeam.map((member, index) => (
+                  <TeamMember key={member.id || index} member={member} />
                 ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="ourteam-section ourteam-founding-intern-section">
+        <div className="ourteam-container">
+          <h2 className="ourteam-title">Founding Intern Team</h2>
+          <div className="ourteam-contact-form ourteam-animate-on-scroll">
+            <div className="ourteam-info ourteam-animate-on-scroll">
+              <div className="ourteam-intern-grid">
+                {foundingInternTeam.length > 0 ? (
+                  foundingInternTeam.map((member, index) => (
+                    <TeamMember key={member.id || index} member={member} isIntern={true} />
+                  ))
+                ) : (
+                  <div className="ourteam-no-data">
+                    <p>No founding intern team members found</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -169,14 +209,15 @@ const OurTeam = () => {
           <div className="ourteam-contact-form ourteam-animate-on-scroll">
             <div className="ourteam-info ourteam-animate-on-scroll">
               <div className="ourteam-intern-grid">
-                {internTeam.map((member) => (
-                  <TeamMember key={member.id} member={member} isIntern={true} />
+                {internTeam.map((member, index) => (
+                  <TeamMember key={member.id || index} member={member} isIntern={true} />
                 ))}
               </div>
             </div>
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

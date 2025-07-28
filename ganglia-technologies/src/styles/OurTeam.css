@@ -536,7 +536,9 @@ body {
     font-size: 1rem;
   }
 }
--width: 768px) {
+/* Replace the malformed media queries at the bottom of your CSS file with these corrected versions: */
+
+@media (max-width: 768px) {
   .ourteam-loading,
   .ourteam-error {
     min-height: 80vh;
@@ -594,23 +596,8 @@ body {
     font-size: 1rem;
   }
 }
--width: 480px) {
-  .ourteam-spinner {
-    width: 40px;
-    height: 40px;
-    border-width: 3px;
-  }
+/* Add this CSS for the new Founding Intern Team section */
 
-  .ourteam-retry-btn {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  .ourteam-no-data {
-    padding: 30px 10px;
-  }
-
-  .ourteam-no-data p {
-    font-size: 0.9rem;
-  }
+.ourteam-founding-intern-section {
+  background-color: #f7f7f7;
 }
