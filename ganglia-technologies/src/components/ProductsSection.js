@@ -1,7 +1,41 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // For React Router navigation
 import '../styles/ProductsSection.css'; // Assuming you have a CSS file for styling
 
 const ProductsSection = () => {
+  const navigate = useNavigate(); // React Router hook for navigation
+
+  // Navigation handler for product cards
+  const handleProductClick = (productId, isAvailable) => {
+    if (!isAvailable) return; // Don't navigate if product is not available
+    
+    switch (productId) {
+      case 'anushtaan':
+        navigate('/main-component'); // MainComponent.js (Anushtaan page) - matches navbar
+        break;
+      case 'tripmachaai':
+        navigate('/tripmacha'); // TripMacha.js - matches navbar
+        break;
+      case 'medical-log-book':
+        navigate('/medical-logbook'); // MedlogBookPlatform.js - matches navbar
+        break;
+      case 'smart-laryngoscope':
+        navigate('/smart-video-laryngoscope'); // Laryngoscope.js - matches navbar
+        break;
+      case 'medical-drone':
+        navigate('/medical-drone'); // Route for when page is ready
+        break;
+      case 'mobile-icu':
+        navigate('/mobile-icu'); // Route for when page is ready
+        break;
+      case 'thermal-imaging':
+        navigate('/medical-thermal-imaging'); // Route for when page is ready
+        break;
+      default:
+        console.log('Product clicked:', productId);
+    }
+  };
+
   const topRowProducts = [
     {
       id: 'anushtaan',
@@ -73,65 +107,81 @@ const ProductsSection = () => {
           {/* Top Row - 3 Cards */}
           <div className="products-grid-top">
             {topRowProducts.map((product) => (
-              <div
+              <button
                 key={product.id}
-                className={`product-card ${product.category}`}
-                data-product={product.id}
+                className="product-card-button"
+                onClick={() => handleProductClick(product.id, product.isAvailable)}
+                disabled={!product.isAvailable}
+                aria-label={`Navigate to ${product.title} page`}
               >
-                <div className="product-content">
-                  <div className="product-header">
-                    <h3 className="product-title">{product.title}</h3>
-                    {product.subtitle && (
-                      <p className="product-subtitle">{product.subtitle}</p>
-                    )}
-                  </div>
+                <div
+                  className={`product-card ${product.category}`}
+                  data-product={product.id}
+                >
+                  <div className="product-content">
+                    <div className="product-header">
+                      <h3 className="product-title">{product.title}</h3>
+                      {product.subtitle && (
+                        <p className="product-subtitle">{product.subtitle}</p>
+                      )}
+                    </div>
 
-                  <div className="product-image-container">
-                    <video
-                      src={product.video}
-                      className="product-image"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                    />
+                    <div className="product-image-container">
+                      <video
+                        src={product.video}
+                        className="product-image"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        style={{ pointerEvents: 'none' }}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
           {/* Bottom Row - 4 Cards */}
           <div className="products-grid-bottom">
             {bottomRowProducts.map((product) => (
-              <div
+              <button
                 key={product.id}
-                className={`product-card ${product.category} ${!product.isAvailable ? 'coming-soon' : ''}`}
-                data-product={product.id}
+                className="product-card-button"
+                onClick={() => handleProductClick(product.id, product.isAvailable)}
+                disabled={!product.isAvailable}
+                aria-label={product.isAvailable ? `Navigate to ${product.title} page` : `${product.title} coming soon`}
               >
-                <div className="product-content">
-                  <div className="product-header">
-                    <h3 className="product-title">{product.title}</h3>
-                    {product.subtitle && (
-                      <p className="product-subtitle">{product.subtitle}</p>
+                <div
+                  className={`product-card ${product.category} ${!product.isAvailable ? 'coming-soon' : ''}`}
+                  data-product={product.id}
+                >
+                  <div className="product-content">
+                    <div className="product-header">
+                      <h3 className="product-title">{product.title}</h3>
+                      {product.subtitle && (
+                        <p className="product-subtitle">{product.subtitle}</p>
+                      )}
+                    </div>
+
+                    <div className="product-image-container">
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="product-image"
+                        style={{ pointerEvents: 'none' }}
+                      />
+                    </div>
+
+                    {!product.isAvailable && (
+                      <div className="coming-soon-text" style={{ marginTop: '10px', textAlign: 'center' }}>
+                        UNLOCKING SOON!
+                      </div>
                     )}
                   </div>
-
-                  <div className="product-image-container">
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="product-image"
-                    />
-                  </div>
-
-                  {!product.isAvailable && (
-                    <div className="coming-soon-text" style={{ marginTop: '10px', textAlign: 'center' }}>
-                      UNLOCKING SOON!
-                    </div>
-                  )}
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>

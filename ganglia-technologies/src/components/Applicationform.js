@@ -85,7 +85,7 @@ Career Portal System
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          recipient: "akshay.ganglia@gmail.com", // Change this to your actual recipient email
+          recipient: "director@ganglia.in", // Change this to your actual recipient email
           subject: emailSubject,
           body: emailBody
         })

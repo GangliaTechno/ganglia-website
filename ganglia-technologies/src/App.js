@@ -59,8 +59,8 @@ function App() {
           <Route path="/our-story" element={<OurStory />} />
           <Route path="/our-team" element={<OurTeam />} />
           <Route path="/tripmacha" element={<TripMacha />} />
-          {/* <Route path="/smart-video-laryngoscope" element={<Laryngoscope />} /> */}
-          {/* <Route path="/medical-logbook" element={<MedlogBookPlatform />} /> {/* ✅ New Route */}
+          <Route path="/smart-video-laryngoscope" element={<Laryngoscope />} />
+          <Route path="/medical-logbook" element={<MedlogBookPlatform />} /> 
            <Route path="/main-component" element={<MainComponent />} /> 
         </Routes>
       </div>

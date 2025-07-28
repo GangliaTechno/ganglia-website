@@ -15,26 +15,52 @@ const Navbar = () => {
     products: false,
     services: false
   });
+  // Add mobile dropdown states
+  const [mobileDropdownStates, setMobileDropdownStates] = useState({
+    about: false,
+    products: false,
+    services: false
+  });
 
   const navigate = useNavigate();
   const location = useLocation();
   const scrollTimeoutRef = useRef(null);
   const mouseTimeoutRef = useRef(null);
 
-  // Check if device is mobile
+  // Check if device is mobile - FIXED: Check on mount AND resize
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      
       // Close mobile menu when switching to desktop
-      if (window.innerWidth > 768) {
+      if (!mobile && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
+        // Re-enable body scroll when closing mobile menu
+        document.body.style.overflow = '';
       }
     };
 
+    // Check on initial load
     checkMobile();
+    
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  }, [isMobileMenuOpen]); // Added dependency
+
+  // FIXED: Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   // Optimized scroll handler with throttling
   const handleScroll = useCallback(() => {
@@ -58,6 +84,7 @@ const Navbar = () => {
         setIsMobileMenuOpen(false);
         // Close all dropdowns when hiding navbar
         setDropdownStates({ about: false, products: false, services: false });
+        setMobileDropdownStates({ about: false, products: false, services: false });
       }
       // Show navbar when scrolling up
       else if (currentScrollY < lastScrollY) {
@@ -101,6 +128,7 @@ const Navbar = () => {
           setIsVisible(false);
           setIsMobileMenuOpen(false);
           setDropdownStates({ about: false, products: false, services: false });
+          setMobileDropdownStates({ about: false, products: false, services: false });
         }
       }, 3000);
     };
@@ -124,6 +152,14 @@ const Navbar = () => {
     setDropdownStates(prev => ({
       ...prev,
       [dropdownName]: isOpen
+    }));
+  };
+
+  // Mobile dropdown handlers
+  const handleMobileDropdownToggle = (dropdownName) => {
+    setMobileDropdownStates(prev => ({
+      ...prev,
+      [dropdownName]: !prev[dropdownName]
     }));
   };
 
@@ -153,6 +189,7 @@ const Navbar = () => {
     }
     setIsMobileMenuOpen(false);
     setDropdownStates({ about: false, products: false, services: false });
+    setMobileDropdownStates({ about: false, products: false, services: false });
   };
 
   const handleCareersClick = (e) => {
@@ -160,6 +197,7 @@ const Navbar = () => {
     navigate('/careers');
     setIsMobileMenuOpen(false);
     setDropdownStates({ about: false, products: false, services: false });
+    setMobileDropdownStates({ about: false, products: false, services: false });
   };
 
   const handleLogoClick = () => {
@@ -169,30 +207,56 @@ const Navbar = () => {
     }
     setIsMobileMenuOpen(false);
     setDropdownStates({ about: false, products: false, services: false });
+    setMobileDropdownStates({ about: false, products: false, services: false });
   };
 
   const handleGetStartedClick = () => {
     navigate('/contact');
     setIsMobileMenuOpen(false);
     setDropdownStates({ about: false, products: false, services: false });
+    setMobileDropdownStates({ about: false, products: false, services: false });
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  // FIXED: Improved mobile menu toggle
+  const toggleMobileMenu = (e) => {
+    e.stopPropagation(); // Prevent event bubbling
+    setIsMobileMenuOpen(prev => !prev);
     // Close all dropdowns when toggling mobile menu
     setDropdownStates({ about: false, products: false, services: false });
+    setMobileDropdownStates({ about: false, products: false, services: false });
   };
 
-  // Close mobile menu when clicking outside
+  // FIXED: Close mobile menu when clicking outside - improved logic
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMobileMenuOpen && !event.target.closest('.navbar')) {
+      // Only close if mobile menu is open and click is outside the navbar
+      if (isMobileMenuOpen && 
+          !event.target.closest('.navbar') && 
+          !event.target.closest('.mobile-menu-overlay')) {
         setIsMobileMenuOpen(false);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
+    if (isMobileMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
     return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMobileMenuOpen]);
+
+  // FIXED: Close mobile menu on escape key
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    return () => document.removeEventListener('keydown', handleEscapeKey);
   }, [isMobileMenuOpen]);
 
   // Determine navbar classes
@@ -246,7 +310,7 @@ const Navbar = () => {
       link: '/ai-powered-tools',
       isHeader: true,
       items: [
-        { label: 'TripMacha AI – Short Trip Planner', link: '/tripmacha' }, // ← Updated link
+        { label: 'TripMacha AI – Short Trip Planner', link: '/tripmacha' },
         { label: 'Anushtaan – Project Management Tool', link: '/main-component' },
         { label: 'Medical Logbook', link: '/medical-logbook' }
       ]
@@ -267,7 +331,6 @@ const Navbar = () => {
     }
   ];
 
-  // ← Updated renderDropdownMenu function
   const renderDropdownMenu = (items, isOpen) => (
     <div className={`dropdown-menu ${isOpen ? 'active' : ''}`}>
       <div className="dropdown-section">
@@ -308,6 +371,48 @@ const Navbar = () => {
     </div>
   );
 
+  // Mobile dropdown menu renderer
+  const renderMobileDropdownMenu = (items, isOpen) => (
+    <div className={`mobile-dropdown-menu ${isOpen ? 'active' : ''}`}>
+      {items.map((section, index) => (
+        <div key={index} className="mobile-dropdown-category">
+          <a 
+            href={section.link} 
+            className="mobile-dropdown-item mobile-category-header"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(section.link);
+              setIsMobileMenuOpen(false);
+              setMobileDropdownStates({ about: false, products: false, services: false });
+            }}
+          >
+            {section.category}
+          </a>
+          <div className="mobile-dropdown-subsection">
+            {section.items.map((item, itemIndex) => (
+              <a 
+                key={itemIndex}
+                href={item.link} 
+                className={`mobile-dropdown-item ${item.highlighted ? 'highlighted' : ''}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(item.link);
+                  setIsMobileMenuOpen(false);
+                  setMobileDropdownStates({ about: false, products: false, services: false });
+                }}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  // Debug logging (remove in production)
+  console.log('Navbar Debug:', { isMobile, isMobileMenuOpen, window: typeof window !== 'undefined' ? window.innerWidth : 'SSR' });
+
   return (
     <nav className={getNavbarClasses()}>
       <div className="logo">
@@ -320,133 +425,146 @@ const Navbar = () => {
         />
       </div>
 
-      {/* Desktop Navigation */}
-      <div className={`navbar-right ${isMobile ? 'navbar-desktop-hidden' : ''}`}>
-        <ul className="nav-links">
-          <li 
-            className="dropdown-container"
-            onMouseEnter={() => handleDropdownToggle('about', true)}
-            onMouseLeave={() => handleDropdownToggle('about', false)}
+      {/* Desktop Navigation - FIXED: Better conditional rendering */}
+      {!isMobile && (
+        <div className="navbar-right">
+          <ul className="nav-links">
+            <li 
+              className="dropdown-container"
+              onMouseEnter={() => handleDropdownToggle('about', true)}
+              onMouseLeave={() => handleDropdownToggle('about', false)}
+            >
+              <a 
+                href="/our-story" 
+                className="dropdown-trigger"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/our-story');
+                }}
+              >
+                About Us
+                <span className="dropdown-arrow">▼</span>
+              </a>
+              {renderDropdownMenu(aboutDropdownItems, dropdownStates.about)}
+            </li>
+
+            <li
+              className="dropdown-container"
+              onMouseEnter={() => handleDropdownToggle('products', true)}
+              onMouseLeave={() => handleDropdownToggle('products', false)}
+            >
+              <a href="#products" className="dropdown-trigger">
+                Products
+                <span className="dropdown-arrow">▼</span>
+              </a>
+              {renderDropdownMenu(productsDropdownItems, dropdownStates.products)}
+            </li>
+
+            <li
+              className="dropdown-container"
+              onMouseEnter={() => handleDropdownToggle('services', true)}
+              onMouseLeave={() => handleDropdownToggle('services', false)}
+            >
+              <a href="#services" className="dropdown-trigger">
+                Services
+                <span className="dropdown-arrow">▼</span>
+              </a>
+              {renderDropdownMenu(servicesDropdownItems, dropdownStates.services)}
+            </li>
+
+            <li>
+              <a 
+                href="#research" 
+                onClick={(e) => handleNavClick(e, 'research')}
+              >
+                Research
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#blog" 
+                onClick={(e) => handleNavClick(e, 'blog')}
+              >
+                Blog
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#careers" 
+                onClick={handleCareersClick}
+              >
+                Careers
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#awards" 
+                onClick={(e) => handleNavClick(e, 'awards')}
+              >
+                Awards & News
+              </a>
+            </li>
+          </ul>
+          <button 
+            className="get-started-btn"
+            onClick={handleGetStartedClick}
           >
-            <a 
-              href="/our-story" 
-              className="dropdown-trigger"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate('/our-story');
-              }}
-            >
-              About Us
-              <span className="dropdown-arrow">▼</span>
-            </a>
-            {renderDropdownMenu(aboutDropdownItems, dropdownStates.about)}
-          </li>
+            Get Started
+          </button>
+        </div>
+      )}
 
-          <li
-            className="dropdown-container"
-            onMouseEnter={() => handleDropdownToggle('products', true)}
-            onMouseLeave={() => handleDropdownToggle('products', false)}
-          >
-            <a href="#products" className="dropdown-trigger">
-              Products
-              <span className="dropdown-arrow">▼</span>
-            </a>
-            {renderDropdownMenu(productsDropdownItems, dropdownStates.products)}
-          </li>
-
-          <li
-            className="dropdown-container"
-            onMouseEnter={() => handleDropdownToggle('services', true)}
-            onMouseLeave={() => handleDropdownToggle('services', false)}
-          >
-            <a href="#services" className="dropdown-trigger">
-              Services
-              <span className="dropdown-arrow">▼</span>
-            </a>
-            {renderDropdownMenu(servicesDropdownItems, dropdownStates.services)}
-          </li>
-
-          <li>
-            <a 
-              href="#research" 
-              onClick={(e) => handleNavClick(e, 'research')}
-            >
-              Research
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#blog" 
-              onClick={(e) => handleNavClick(e, 'blog')}
-            >
-              Blog
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#careers" 
-              onClick={handleCareersClick}
-            >
-              Careers
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#awards" 
-              onClick={(e) => handleNavClick(e, 'awards')}
-            >
-              Awards & News
-            </a>
-          </li>
-        </ul>
-        <button 
-          className="get-started-btn"
-          onClick={handleGetStartedClick}
-        >
-          Get Started
-        </button>
-      </div>
-
-      {/* Mobile Hamburger Menu */}
+      {/* Mobile Hamburger Menu - FIXED: Always render when mobile */}
       {isMobile && (
         <>
-          <div className="hamburger-menu" onClick={toggleMobileMenu}>
+          <div 
+            className="hamburger-menu" 
+            onClick={toggleMobileMenu}
+            role="button"
+            aria-label="Toggle mobile menu"
+            aria-expanded={isMobileMenuOpen}
+          >
             <div className={`hamburger-line ${isMobileMenuOpen ? 'active' : ''}`}></div>
             <div className={`hamburger-line ${isMobileMenuOpen ? 'active' : ''}`}></div>
             <div className={`hamburger-line ${isMobileMenuOpen ? 'active' : ''}`}></div>
           </div>
 
-          {/* Mobile Menu Overlay */}
+          {/* Mobile Menu Overlay with Dropdowns */}
           <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`}>
             <ul className="mobile-nav-links">
-              <li>
-                <a
-                  href="/our-story"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigate('/our-story');
-                    setIsMobileMenuOpen(false);
-                  }}
+              <li className="mobile-dropdown-container">
+                <div 
+                  className="mobile-dropdown-trigger"
+                  onClick={() => handleMobileDropdownToggle('about')}
                 >
                   About Us
-                </a>
+                  <span className={`mobile-dropdown-arrow ${mobileDropdownStates.about ? 'active' : ''}`}>▼</span>
+                </div>
+                {renderMobileDropdownMenu(aboutDropdownItems, mobileDropdownStates.about)}
               </li>
-              <li>
-                <a
-                  href="#products"
-                  onClick={(e) => handleNavClick(e, 'products')}
+
+              <li className="mobile-dropdown-container">
+                <div 
+                  className="mobile-dropdown-trigger"
+                  onClick={() => handleMobileDropdownToggle('products')}
                 >
                   Products
-                </a>
+                  <span className={`mobile-dropdown-arrow ${mobileDropdownStates.products ? 'active' : ''}`}>▼</span>
+                </div>
+                {renderMobileDropdownMenu(productsDropdownItems, mobileDropdownStates.products)}
               </li>
-              <li>
-                <a 
-                  href="#services" 
-                  onClick={(e) => handleNavClick(e, 'services')}
+
+              <li className="mobile-dropdown-container">
+                <div 
+                  className="mobile-dropdown-trigger"
+                  onClick={() => handleMobileDropdownToggle('services')}
                 >
                   Services
-                </a>
+                  <span className={`mobile-dropdown-arrow ${mobileDropdownStates.services ? 'active' : ''}`}>▼</span>
+                </div>
+                {renderMobileDropdownMenu(servicesDropdownItems, mobileDropdownStates.services)}
               </li>
+
               <li>
                 <a 
                   href="#research" 

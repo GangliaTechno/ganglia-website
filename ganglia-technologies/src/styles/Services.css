@@ -9,7 +9,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 120px 0 80px 0;
+  padding: 80px 0 60px 0; /* Reduced padding */
   z-index: 1;
   overflow: hidden;
   /* Enhanced performance optimizations */
@@ -37,7 +37,7 @@ html {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0px;
-  margin-top: 75px;
+  margin-top: 40px; /* Reduced from 75px */
 }
 
 .services-heading {
@@ -45,7 +45,7 @@ html {
   font-weight: 700;
   color: #ffffff;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px; /* Reduced from 80px */
   letter-spacing: -1px;
   margin-top: 20px;
 }
@@ -54,7 +54,7 @@ html {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 60px 60px;
+  gap: 30px 40px; /* Reduced from 60px 60px */
 }
 
 .service-card {
@@ -63,8 +63,8 @@ html {
   box-shadow: 0 8px 32px rgba(3, 124, 226, 0.15);
   display: flex;
   align-items: center;
-  padding: 48px 36px;
-  min-height: 260px;
+  padding: 36px 30px; /* Reduced from 48px 36px */
+  min-height: 220px; /* Reduced from 260px */
   position: relative;
   cursor: pointer;
   /* Enhanced performance for animations */
@@ -81,11 +81,11 @@ html {
 }
 
 .service-img {
-  width: 180px;
-  height: 180px;
+  width: 160px; /* Reduced from 180px */
+  height: 160px; /* Reduced from 180px */
   object-fit: cover;
   border-radius: 24px;
-  margin-right: 40px;
+  margin-right: 32px; /* Reduced from 40px */
   background: #fff;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
   transition: transform 0.3s ease;
@@ -100,9 +100,9 @@ html {
 }
 
 .service-title {
-  font-size: 32px;
+  font-size: 28px; /* Reduced from 32px */
   font-weight: 700;
-  margin-bottom: 18px;
+  margin-bottom: 14px; /* Reduced from 18px */
   background: linear-gradient(90deg, #fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -118,7 +118,7 @@ html {
 }
 
 .service-desc {
-  font-size: 18px;
+  font-size: 16px; /* Reduced from 18px */
   color: #ffffff;
   font-weight: 500;
   line-height: 1.5;
@@ -130,7 +130,7 @@ html {
 }
 
 .top-row {
-  margin-bottom: 60px;
+  margin-bottom: 30px; /* Reduced from 60px */
 }
 
 .bottom-row {
@@ -143,12 +143,12 @@ html {
 
 .service-card.reverse .service-info {
   margin-left: 0;
-  margin-right: 40px;
+  margin-right: 32px; /* Reduced from 40px */
 }
 
 .service-card.reverse .service-img {
   margin-right: 0;
-  margin-left: 40px;
+  margin-left: 32px; /* Reduced from 40px */
 }
 
 /* Improved Scroll-Responsive Animation Styles */
@@ -172,7 +172,7 @@ html {
 @media (max-width: 900px) {
   .services-section {
     min-height: auto; /* Ensure no fixed height */
-    padding: 60px 0 40px 0; /* Reduced padding */
+    padding: 50px 0 30px 0; /* Reduced padding */
   }
 
   .services-bg {
@@ -181,14 +181,14 @@ html {
   }
 
   .services-container {
-    margin-top: 20px; /* Reduced margin */
+    margin-top: 15px; /* Reduced margin */
   }
 
   .services-grid {
     /* Keep 2x2 grid on mobile */
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 20px;
+    gap: 15px; /* Further reduced gap */
   }
 
   .service-card {
@@ -196,8 +196,8 @@ html {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 20px 16px;
-    min-height: 200px;
+    padding: 16px 12px; /* Reduced padding */
+    min-height: 180px; /* Reduced height */
     border-radius: 20px;
     /* Ensure proper animation inheritance */
     position: relative;
@@ -219,34 +219,34 @@ html {
 
   .service-card.reverse .service-img {
     margin-left: 0;
-    margin-bottom: 12px;
+    margin-bottom: 10px; /* Reduced margin */
   }
 
   .service-img {
-    width: 60px;
-    height: 60px;
+    width: 50px; /* Reduced size */
+    height: 50px; /* Reduced size */
     margin-right: 0;
-    margin-bottom: 12px;
+    margin-bottom: 10px; /* Reduced margin */
     border-radius: 12px;
   }
 
   .service-title {
-    font-size: 18px;
-    margin-bottom: 8px;
+    font-size: 16px; /* Reduced size */
+    margin-bottom: 6px; /* Reduced margin */
   }
 
   .service-desc {
-    font-size: 13px;
+    font-size: 12px; /* Reduced size */
     line-height: 1.4;
   }
 
   .top-row {
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced margin */
   }
 
   .services-heading {
-    font-size: 32px;
-    margin-bottom: 30px; /* Reduced margin */
+    font-size: 28px; /* Reduced size */
+    margin-bottom: 25px; /* Reduced margin */
   }
 
   /* Mobile scroll-responsive adjustments */
@@ -264,7 +264,7 @@ html {
 
 @media (max-width: 600px) {
   .services-section {
-    padding: 40px 0 30px 0; /* Further reduced padding */
+    padding: 40px 0 25px 0; /* Further reduced padding */
   }
 
   .services-bg {
@@ -274,37 +274,37 @@ html {
 
   .services-container {
     padding: 0 15px;
-    margin-top: 15px; /* Reduced margin */
+    margin-top: 10px; /* Reduced margin */
   }
 
   .services-grid {
-    gap: 15px;
+    gap: 12px; /* Further reduced gap */
   }
 
   .service-card {
-    padding: 16px 12px;
-    min-height: 180px;
+    padding: 14px 10px; /* Reduced padding */
+    min-height: 160px; /* Reduced height */
     border-radius: 16px;
   }
 
   .services-heading {
-    font-size: 26px;
+    font-size: 24px; /* Reduced size */
     margin-bottom: 20px; /* Reduced margin */
   }
 
   .service-title {
-    font-size: 16px;
-    margin-bottom: 6px;
+    font-size: 14px; /* Reduced size */
+    margin-bottom: 5px; /* Reduced margin */
   }
 
   .service-desc {
-    font-size: 12px;
+    font-size: 11px; /* Reduced size */
   }
 
   .service-img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
+    width: 45px; /* Further reduced */
+    height: 45px; /* Further reduced */
+    margin-bottom: 8px; /* Reduced margin */
     border-radius: 10px;
   }
 
@@ -333,11 +333,15 @@ html {
   }
 
   .services-container {
-    margin-top: 10px; /* Minimal margin */
+    margin-top: 8px; /* Minimal margin */
   }
 
   .services-heading {
     margin-bottom: 15px; /* Minimal margin */
+  }
+
+  .services-grid {
+    gap: 10px; /* Minimal gap */
   }
 }
 
@@ -347,7 +351,11 @@ html {
   }
 
   .services-heading {
-    font-size: 24px;
+    font-size: 22px; /* Further reduced */
     margin-bottom: 12px; /* Extra minimal margin */
+  }
+
+  .services-grid {
+    gap: 8px; /* Extra minimal gap */
   }
 }

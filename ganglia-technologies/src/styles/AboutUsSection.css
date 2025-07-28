@@ -205,8 +205,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px; /* Reduced gap for better centering */
   text-align: center;
+  position: relative;
 }
 
 .know-more-btn:hover {
@@ -217,6 +218,421 @@
 .arrow-icon {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 30px;
   width: 30px;
+  margin-left: 10px; /* Increased from 6px to 10px */
+  transform: translateX(5px); /* Increased from 3px to 5px */
+}
+
+/* Responsive Design - Following products section pattern */
+@media (max-width: 1200px) {
+  .about-section {
+    padding: 60px 40px; /* Reduced padding */
+  }
+
+  .about-container {
+    gap: 40px;
+  }
+
+  .image-collage {
+    width: 550px;
+    height: 750px;
+  }
+
+  .top-image {
+    width: 420px;
+    height: 250px;
+  }
+
+  .bottom-left {
+    width: 380px;
+    height: 200px;
+    bottom: 280px;
+  }
+
+  .bottom-right {
+    width: 440px;
+    height: 280px;
+  }
+
+  .about-right {
+    margin-right: 100px;
+    margin-left: 50px;
+  }
+
+  .about-title {
+    font-size: 34px;
+    margin-bottom: 80px;
+  }
+
+  .about-description {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-container {
+    gap: 60px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-section {
+    padding: 40px 30px; /* Further reduced padding */
+  }
+
+  .image-collage {
+    width: 500px;
+    height: 600px;
+  }
+
+  .top-image {
+    width: 380px;
+    height: 220px;
+  }
+
+  .top-image:hover {
+    transform: translateX(-50%) translateY(-10px) translateZ(15px);
+  }
+
+  .top-image.flipped:hover {
+    transform: translateX(-50%) rotateY(180deg) translateY(-10px)
+      translateZ(15px);
+  }
+
+  .bottom-left {
+    width: 320px;
+    height: 180px;
+    bottom: 220px;
+  }
+
+  .bottom-right {
+    width: 380px;
+    height: 240px;
+  }
+
+  .image-wrapper:hover {
+    transform: translateY(-10px) translateZ(15px);
+  }
+
+  .image-wrapper.flipped:hover {
+    transform: rotateY(180deg) translateY(-10px) translateZ(15px);
+  }
+
+  .about-right {
+    margin: 0;
+    height: auto;
+    max-width: 600px;
+  }
+
+  .about-title {
+    font-size: 40px;
+    margin-bottom: 60px;
+  }
+
+  .about-description {
+    font-size: 20px;
+    max-width: none;
+  }
+
+  .image-back h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .image-back p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 968px) {
+  .about-section {
+    padding: 30px 30px; /* Reduced padding */
+  }
+
+  .image-collage {
+    width: 450px;
+    height: 500px;
+  }
+
+  .top-image {
+    width: 340px;
+    height: 190px;
+  }
+
+  .bottom-left {
+    width: 280px;
+    height: 160px;
+    bottom: 180px;
+  }
+
+  .bottom-right {
+    width: 320px;
+    height: 200px;
+  }
+
+  .about-title {
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+
+  .about-description {
+    font-size: 18px;
+  }
+}
+
+/* Enhanced Mobile Layout - Grid Structure */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 0px; /* Increased top padding to create more space from previous section */
+    background-size: cover;
+    background-position: center top; /* Changed from left center to center top */
+    background-attachment: scroll; /* Better for mobile */
+    min-height: auto; /* Ensure no extra height */
+    margin-top: 40px; /* Added margin-top for additional spacing from previous section */
+  }
+
+  .about-container {
+    gap: 40px; /* Increased gap for better spacing */
+    padding: 0 15px; /* Add container padding instead */
+  }
+
+  /* Transform image-collage into a grid container */
+  .image-collage {
+    width: 100vw; /* Full viewport width */
+    max-width: 100vw;
+    height: auto;
+    padding: 0;
+    margin: 0 -15px; /* Negative margin to reach screen edges */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns for first row */
+    grid-template-rows: auto auto; /* 2 rows */
+    gap: 0px; /* Remove all gaps */
+    position: static;
+    perspective: none;
+    border-radius: 0;
+  }
+
+  /* Remove 3D effects and simplify for mobile */
+  .image-wrapper {
+    position: static;
+    cursor: default;
+    border-radius: 0px; /* Remove border radius for seamless grid */
+    overflow: hidden;
+    box-shadow: none; /* Remove shadows for seamless look */
+    transition: transform 0.2s ease;
+    transform: none !important;
+    perspective: none;
+    border: none; /* Remove all borders */
+  }
+
+  .image-wrapper:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Disable flip functionality on mobile */
+  .image-wrapper.flipped,
+  .image-wrapper.flipped:hover {
+    transform: none !important;
+  }
+
+  .image-inner {
+    transition: none;
+    transform: none !important;
+    transform-style: none;
+    border-radius: 12px;
+  }
+
+  .image-wrapper.flipped .image-inner {
+    transform: none !important;
+  }
+
+  .image-front,
+  .image-back {
+    border: none !important; /* Remove all borders */
+    border-radius: 0px; /* Remove border radius */
+    backface-visibility: visible;
+  }
+
+  .image-front {
+    position: relative;
+    z-index: 1;
+  }
+
+  .image-back {
+    display: none !important; /* Hide back content on mobile */
+  }
+
+  .image-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0px; /* Remove border radius */
+  }
+
+  /* Grid positioning for mobile - INCREASED HEIGHTS */
+  .top-image {
+    grid-column: 1; /* First column, first row */
+    grid-row: 1;
+    position: static;
+    transform: none !important;
+    width: 100%;
+    height: 180px; /* INCREASED from 120px to 180px */
+    min-height: 180px; /* INCREASED from 120px to 180px */
+    border-right: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+  }
+
+  .bottom-left {
+    grid-column: 2; /* Second column, first row */
+    grid-row: 1;
+    position: static;
+    display: block !important;
+    width: 100%;
+    height: 180px; /* INCREASED from 120px to 180px */
+    min-height: 180px; /* INCREASED from 120px to 180px */
+    border-left: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+  }
+
+  .bottom-right {
+    grid-column: 1 / 3; /* Span both columns, second row */
+    grid-row: 2;
+    position: static;
+    display: block !important;
+    width: 100%;
+    height: 200px; /* INCREASED from 140px to 200px */
+    min-height: 200px; /* INCREASED from 140px to 200px */
+    justify-self: stretch; /* Full width instead of centered */
+    max-width: 100%; /* Full width */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+  }
+
+  .about-right {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-title {
+    font-size: 28px;
+    margin-bottom: 20px; /* Reduced margin */
+    text-align: center;
+  }
+
+  .about-description {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px; /* Reduced margin */
+    max-width: none;
+  }
+
+  .know-more-btn {
+    padding: 14px 32px;
+    font-size: 15px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .arrow-icon {
+    margin-left: 35px; /* Increased margin for mobile */
+    transform: translateX(8px); /* More right positioning for mobile */
+  }
+}
+
+/* Smaller mobile screens */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 50px 0px; /* Increased padding for better spacing */
+    background-position: center top; /* Changed from left center to center top */
+    margin-top: 30px; /* Added margin-top for spacing */
+  }
+
+  .about-container {
+    gap: 30px; /* Increased gap */
+    padding: 0 10px; /* Reduce container padding */
+  }
+
+  .image-collage {
+    margin: 0 -10px; /* Adjust negative margin */
+    gap: 0px; /* Keep no gaps */
+  }
+
+  .top-image,
+  .bottom-left {
+    height: 160px; /* INCREASED from 100px to 160px */
+    min-height: 160px; /* INCREASED from 100px to 160px */
+  }
+
+  .bottom-right {
+    height: 180px; /* INCREASED from 120px to 180px */
+    min-height: 180px; /* INCREASED from 120px to 180px */
+    max-width: 100%; /* Full width */
+  }
+
+  .image-front,
+  .image-back {
+    border: none !important; /* Keep no borders */
+  }
+
+  .about-title {
+    font-size: 24px;
+    margin-bottom: 15px; /* Reduced margin */
+  }
+
+  .about-description {
+    font-size: 14px;
+    margin-bottom: 15px; /* Reduced margin */
+  }
+
+  .know-more-btn {
+    padding: 12px 28px;
+    font-size: 14px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .about-section {
+    padding: 40px 0px; /* Increased padding for better spacing */
+    background-position: center top; /* Changed from left center to center top */
+    margin-top: 25px; /* Added margin-top for spacing */
+  }
+
+  .about-container {
+    padding: 0 8px; /* Minimal container padding */
+    gap: 25px; /* Increased gap */
+  }
+
+  .image-collage {
+    margin: 0 -8px; /* Adjust negative margin */
+    gap: 0px; /* Keep no gaps */
+  }
+
+  .top-image,
+  .bottom-left {
+    height: 140px; /* INCREASED from 90px to 140px */
+    min-height: 140px; /* INCREASED from 90px to 140px */
+  }
+
+  .bottom-right {
+    height: 160px; /* INCREASED from 110px to 160px */
+    min-height: 160px; /* INCREASED from 110px to 160px */
+    max-width: 100%; /* Full width */
+  }
+
+  .about-title {
+    font-size: 22px;
+    margin-bottom: 12px; /* Reduced margin */
+  }
+
+  .about-description {
+    font-size: 13px;
+    margin-bottom: 12px; /* Reduced margin */
+  }
 }

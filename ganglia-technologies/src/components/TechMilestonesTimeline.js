@@ -1,21 +1,108 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { Player } from '@lottiefiles/react-lottie-player';
+import mile1Animation from '../assets/mile1.json';
+import mile2Animation from '../assets/mile2.json';
+import mile3Animation from '../assets/mile3.json';
+import mile4Animation from '../assets/mile4.json';
+import mile5Animation from '../assets/mile5.json';
+import mile6Animation from '../assets/mile6.json';
+import mile7Animation from '../assets/mile7.json';
+import mile8Animation from '../assets/mile8.json';
+import '../styles/OurStory.css';
+
+// Memoized milestone card component
+const MilestoneCard = React.memo(({ 
+  milestone, 
+  index, 
+  isVisible, 
+  isHovered, 
+  magneticEffect,
+  onMouseEnter,
+  onMouseLeave 
+}) => {
+  const cardStyle = useMemo(() => ({
+    '--delay': `${index * 0.15}s`,
+    transform: `translate(${magneticEffect.x}px, ${magneticEffect.y}px) ${isHovered ? 'scale(1.02)' : 'scale(1)'}`,
+  }), [index, magneticEffect, isHovered]);
+
+  const cardClassName = useMemo(() => {
+    return `tech-milestone-card ${milestone.side} ${isVisible ? 'visible' : ''} ${isHovered ? 'hovered' : ''}`;
+  }, [milestone.side, isVisible, isHovered]);
+
+  return (
+    <div
+      data-card-id={milestone.id}
+      className={cardClassName}
+      style={cardStyle}
+      onMouseEnter={() => onMouseEnter(milestone.id)}
+      onMouseLeave={() => onMouseLeave(null)}
+    >
+      {/* Glass morphism card */}
+      <div className="card-glass">
+        {/* Holographic border effect */}
+        <div className="holo-border"></div>
+        
+        {/* Card content */}
+        <div className="card-header">
+          <div className="milestone-icon">
+            <Player
+              autoplay
+              loop
+              src={milestone.icon}
+              style={{ height: '24px', width: '24px' }}
+            />
+          </div>
+          <div className="milestone-date">{milestone.date}</div>
+        </div>
+        
+        <h4 className="milestone-title">{milestone.title}</h4>
+        <p className="milestone-description">{milestone.description}</p>
+        
+        {/* Tech grid overlay */}
+        <div className="tech-grid"></div>
+      </div>
+
+      {/* Connection to timeline */}
+      <div className="timeline-connector">
+        <div className="connector-line"></div>
+        <div className="connector-node">
+          <div className="node-pulse"></div>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+// Memoized circuit node component
+const CircuitNode = React.memo(({ node }) => (
+  <div
+    className="circuit-node"
+    style={{
+      left: `${node.x}%`,
+      top: `${node.y}%`,
+      width: `${node.size}px`,
+      height: `${node.size}px`,
+      animationDelay: `${node.pulseDelay}s`,
+    }}
+  />
+));
 
 const TechMilestonesTimeline = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [visibleCards, setVisibleCards] = useState(new Set());
   const [hoveredCard, setHoveredCard] = useState(null);
-  const [circuitNodes, setCircuitNodes] = useState([]);
   const containerRef = useRef(null);
   const observerRef = useRef(null);
+  const mouseMoveTimeoutRef = useRef(null);
 
-  // Milestone data with tech-focused styling
-  const milestones = [
+  // Memoize milestone data
+  const milestones = useMemo(() => [
     {
       id: 1,
       date: "June 2023",
       title: "Singapore-India-Hackathon-2023",
       description: "Selected as one of the 12 Start-ups in India for the prestigious Singapore-India-Hackathon-2023",
-      icon: "🚀",
+      icon: mile1Animation,
       side: "left"
     },
     {
@@ -23,7 +110,7 @@ const TechMilestonesTimeline = () => {
       date: "August 2023",
       title: "Company Foundation",
       description: "Ganglia Incorporated and incubated",
-      icon: "🏢",
+      icon: mile2Animation,
       side: "right"
     },
     {
@@ -31,7 +118,7 @@ const TechMilestonesTimeline = () => {
       date: "August 2023",
       title: "Government Recognition",
       description: "Received Government of Karnataka's Seed Fund Grant",
-      icon: "🏆",
+      icon: mile3Animation,
       side: "left"
     },
     {
@@ -39,7 +126,7 @@ const TechMilestonesTimeline = () => {
       date: "August 2023",
       title: "Prototype Development",
       description: "Near Final Mechanical prototype 3D print ready in August 2023",
-      icon: "⚙️",
+      icon: mile4Animation,
       side: "right"
     },
     {
@@ -47,7 +134,7 @@ const TechMilestonesTimeline = () => {
       date: "October 2023",
       title: "Startup Awards",
       description: "Secured the Great Indian Entrepreneurship, Business Design, Startup award",
-      icon: "🥇",
+      icon: mile5Animation,
       side: "left"
     },
     {
@@ -55,7 +142,7 @@ const TechMilestonesTimeline = () => {
       date: "June 2024",
       title: "Patent Portfolio",
       description: "Ganglia Technologies secured 14 Patents",
-      icon: "📜",
+      icon: mile6Animation,
       side: "right"
     },
     {
@@ -63,7 +150,7 @@ const TechMilestonesTimeline = () => {
       date: "July 2024",
       title: "Additional Patents",
       description: "Ganglia Technologies secured 2 more Patents, Totalling 16",
-      icon: "📋",
+      icon: mile7Animation,
       side: "left"
     },
     {
@@ -71,70 +158,41 @@ const TechMilestonesTimeline = () => {
       date: "July 2024",
       title: "Excellence Recognition",
       description: "Certificate of Excellence in product design at the 3rd Elets Startup Awards",
-      icon: "🏅",
+      icon: mile8Animation,
       side: "right"
     }
-  ];
+  ], []);
 
-  // Generate circuit board nodes
-  useEffect(() => {
-    const nodes = [...Array(35)].map((_, i) => ({
+  // Memoize circuit nodes
+  const circuitNodes = useMemo(() => {
+    return [...Array(35)].map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 2 + 1,
       pulseDelay: Math.random() * 3,
     }));
-    setCircuitNodes(nodes);
   }, []);
 
-  // Set up intersection observer
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const cardId = parseInt(entry.target.dataset.cardId);
-          if (entry.isIntersecting) {
-            setVisibleCards(prev => new Set([...prev, cardId]));
-          }
-        });
-      },
-      {
-        threshold: 0.3,
-        rootMargin: '0px 0px -20% 0px'
-      }
-    );
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, []);
-
-  // Observe cards after they mount
-  useEffect(() => {
-    const cards = document.querySelectorAll('.tech-milestone-card');
-    cards.forEach((card) => {
-      if (observerRef.current) {
-        observerRef.current.observe(card);
-      }
-    });
-  }, []);
-
-  // Update mouse position for magnetic effect
-  const handleMouseMove = (e) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      setMousePosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-      });
+  // Throttled mouse move handler
+  const handleMouseMove = useCallback((e) => {
+    if (mouseMoveTimeoutRef.current) {
+      clearTimeout(mouseMoveTimeoutRef.current);
     }
-  };
 
-  // Calculate magnetic effect
-  const calculateMagneticEffect = (cardElement, mouseX, mouseY) => {
+    mouseMoveTimeoutRef.current = setTimeout(() => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        });
+      }
+    }, 8); // ~120fps throttling for smooth movement
+  }, []);
+
+  // Optimized magnetic effect calculation
+  const calculateMagneticEffect = useCallback((cardElement, mouseX, mouseY) => {
     if (!cardElement || !containerRef.current) return { x: 0, y: 0 };
     
     const rect = cardElement.getBoundingClientRect();
@@ -154,7 +212,75 @@ const TechMilestonesTimeline = () => {
       x: distanceX * magnetStrength * 0.1,
       y: distanceY * magnetStrength * 0.1
     };
-  };
+  }, []);
+
+  // Optimized intersection observer setup
+  const setupIntersectionObserver = useCallback(() => {
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        const newVisibleCards = new Set(visibleCards);
+        let hasChanges = false;
+
+        entries.forEach((entry) => {
+          const cardId = parseInt(entry.target.dataset.cardId);
+          if (entry.isIntersecting && !newVisibleCards.has(cardId)) {
+            newVisibleCards.add(cardId);
+            hasChanges = true;
+          }
+        });
+
+        if (hasChanges) {
+          setVisibleCards(newVisibleCards);
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '0px 0px -20% 0px'
+      }
+    );
+
+    // Observe cards after a short delay to ensure they're mounted
+    setTimeout(() => {
+      const cards = document.querySelectorAll('.tech-milestone-card');
+      cards.forEach((card) => {
+        if (observerRef.current) {
+          observerRef.current.observe(card);
+        }
+      });
+    }, 100);
+  }, [visibleCards]);
+
+  // Setup intersection observer
+  useEffect(() => {
+    setupIntersectionObserver();
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [setupIntersectionObserver]);
+
+  // Cleanup mouse move timeout
+  useEffect(() => {
+    return () => {
+      if (mouseMoveTimeoutRef.current) {
+        clearTimeout(mouseMoveTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Memoized hover handlers
+  const handleMouseEnter = useCallback((cardId) => {
+    setHoveredCard(cardId);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredCard(null);
+  }, []);
 
   return (
     <div className="tech-milestones-wrapper">
@@ -173,17 +299,7 @@ const TechMilestonesTimeline = () => {
         {/* Circuit board background */}
         <div className="circuit-background">
           {circuitNodes.map((node) => (
-            <div
-              key={node.id}
-              className="circuit-node"
-              style={{
-                left: `${node.x}%`,
-                top: `${node.y}%`,
-                width: `${node.size}px`,
-                height: `${node.size}px`,
-                animationDelay: `${node.pulseDelay}s`,
-              }}
-            />
+            <CircuitNode key={node.id} node={node} />
           ))}
           
           {/* Circuit traces */}
@@ -214,49 +330,16 @@ const TechMilestonesTimeline = () => {
             ) : { x: 0, y: 0 };
             
             return (
-              <div
+              <MilestoneCard
                 key={milestone.id}
-                data-card-id={milestone.id}
-                className={`tech-milestone-card ${milestone.side} ${isVisible ? 'visible' : ''} ${isHovered ? 'hovered' : ''}`}
-                style={{
-                  '--delay': `${index * 0.15}s`,
-                  transform: `translate(${magneticEffect.x}px, ${magneticEffect.y}px) ${isHovered ? 'scale(1.02)' : 'scale(1)'}`,
-                }}
-                onMouseEnter={() => setHoveredCard(milestone.id)}
-                onMouseLeave={() => setHoveredCard(null)}
-              >
-                {/* Glass morphism card */}
-                <div className="card-glass">
-                  {/* Holographic border effect */}
-                  <div className="holo-border"></div>
-                  
-                  {/* Card content */}
-                  <div className="card-header">
-                    <div className="milestone-icon">{milestone.icon}</div>
-                    <div className="milestone-date">{milestone.date}</div>
-                  </div>
-                  
-                  <h4 className="milestone-title">{milestone.title}</h4>
-                  <p className="milestone-description">{milestone.description}</p>
-                  
-                  {/* Tech grid overlay */}
-                  <div className="tech-grid"></div>
-                  
-                  {/* Status indicator */}
-                  <div className="status-indicator">
-                    <div className="status-dot"></div>
-                    <span>COMPLETED</span>
-                  </div>
-                </div>
-
-                {/* Connection to timeline */}
-                <div className="timeline-connector">
-                  <div className="connector-line"></div>
-                  <div className="connector-node">
-                    <div className="node-pulse"></div>
-                  </div>
-                </div>
-              </div>
+                milestone={milestone}
+                index={index}
+                isVisible={isVisible}
+                isHovered={isHovered}
+                magneticEffect={magneticEffect}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              />
             );
           })}
         </div>
