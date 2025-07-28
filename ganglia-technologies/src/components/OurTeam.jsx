@@ -51,7 +51,7 @@ const OurTeam = () => {
           processTeamImages(data.foundingTeam || data['Founding Team'] || []),
           processTeamImages(data.managementTeam || data['Management Team'] || []),
           processTeamImages(data.foundingInternTeam || data['Founding Intern Team'] || []),
-          processTeamImages(data.previousInternTeam || data['Previous Intern Team'] || []), // <=== NEW
+          processTeamImages(data.previousInternTeam || data['Previous Interns'] || []), // <=== NEW
           processTeamImages(data.internTeam || data['Intern Team'] || []),
         ]);
 
