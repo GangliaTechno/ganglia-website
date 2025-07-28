@@ -382,6 +382,60 @@
   text-align: center;
 }
 
+/* NEW: Detailed job info styles */
+.job-detailed-info {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.job-detailed-info .info-section {
+  margin-bottom: 25px;
+}
+
+.job-detailed-info .info-section:last-child {
+  margin-bottom: 0;
+}
+
+.job-detailed-info .info-section h4 {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid rgba(100, 181, 246, 0.3);
+}
+
+.job-detailed-info .info-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.job-detailed-info .info-section li {
+  padding: 6px 0;
+  color: var(--light-text);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.job-detailed-info .info-section li:last-child {
+  border-bottom: none;
+}
+
+.job-detailed-info .info-section li:before {
+  content: "•";
+  color: var(--accent-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
 .careers-job-skills {
   display: flex;
   gap: 8px;
@@ -401,13 +455,33 @@
 
 .careers-job-footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  gap: 10px; /* spacing between More Info and Apply Now */
 }
 
 .careers-job-posted {
   font-size: 0.9rem;
   color: var(--light-text);
+}
+
+/* ──────────────────────────────────────────────
+   "More Info" toggle button (small, text-style)
+────────────────────────────────────────────── */
+.info-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.info-btn:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .careers-job-apply-btn {
