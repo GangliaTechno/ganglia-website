@@ -323,7 +323,7 @@ function ResearchPapers() {
                 </h3>
                 <div className="paper-meta">
                   <span className="paper-type">Review Article</span>
-                  <span className="paper-status">Published</span>
+                  <span className="paper-status">Accepted for Publishing</span>
                 </div>
               </div>
               
