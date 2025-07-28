@@ -496,14 +496,14 @@
 
 .form-subtitle {
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   text-align: center;
   margin-bottom: 48px;
   line-height: 1.6;
 }
 
 .get-started-form {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(255, 255, 255);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 40px;
@@ -530,7 +530,7 @@
 .form-group-full label {
   font-size: 16px;
   font-weight: 600;
-  color: white;
+  color: rgb(0, 0, 0);
   margin-bottom: 8px;
 }
 
@@ -542,8 +542,8 @@
   padding: 12px 16px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: rgba(221, 221, 221, 0.9); /* Changed to more opaque white background */
+  color: #000000; /* Changed to black text */
   font-size: 16px;
   transition: all 0.3s ease;
 }
@@ -556,14 +556,14 @@
   outline: none;
   border-color: #4a90e2;
   box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  background: rgba(255, 255, 255, 1); /* Full white background on focus */
 }
 
 .form-group input::placeholder,
 .form-group-full input::placeholder,
 .form-group-full textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5); /* Changed placeholder to black with opacity */
 }
-
 .checkbox-group,
 .radio-group {
   display: grid;
@@ -597,7 +597,7 @@
 .checkbox-label span,
 .radio-label span {
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9); /* Keep this white since it's on dark background */
 }
 
 .form-group-full small {
