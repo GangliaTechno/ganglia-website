@@ -198,92 +198,98 @@ function MainComponent() {
 
         {/* Hero Section */}
         <div style={{
-  maxWidth: '1200px',
-  margin: '0 auto',
-  padding: '204px 20px',
-  position: 'relative',
-  zIndex: 10
-}}>
-  <div style={{
-    display: 'flex',
-    flexDirection: 'row', // Change to row for side-by-side
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: '64px'
-  }}>
-    {/* Left Side - Heading and Content */}
-    <div style={{
-      width: '60%',
-      paddingRight: '2px',
-      textAlign: 'right',
-      
-order: 2 
-    }}>
-      <h2 style={{
-        fontSize: '56px',
-        fontWeight: 'bold',
-        marginBottom: '32px',
-        color: '#B5B5F9',
-        margin: '0 0 32px 0'
-      }}>
-        Anushtaan
-      </h2>
-      <p style={{
-        fontSize: '18px',
-        lineHeight: '1.75',
-        marginBottom: '12px',
-        color: 'white',
-        margin: '0 0 32px 0'
-      }}>
-        Anushtaan is a highly customizable project management<br />
-        tool built for professionals and teams seeking<br />
-        transparency, efficiency, and control.
-      </p>
-      <p style={{
-        fontSize: '18px',
-        lineHeight: '1.75',
-        marginBottom: '48px',
-        color: 'white',
-        margin: '0 0 48px 0'
-      }}>
-        With real-time time tracking, it ensures accurate billing<br />
-        and trust for hourly-based freelance and team projects.
-      </p>
-      <button style={{
-        padding: '16px 48px',
-        borderRadius: '9999px',
-        color: 'white',
-        fontSize: '20px',
-        fontWeight: '500',
-        background: 'linear-gradient(135deg, #9996DC 0%, #CA86D0 100%)',
-        border: 'none',
-        cursor: 'pointer',
-        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-        transition: 'all 0.3s ease'
-      }}>
-        Discover Anushtaan
-      </button>
-    </div>
-    {/* Right Side - Logo */}
-    <div style={{
-      width: '40%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-        order: 1 
-    }}>
-      {/* <img
-        src={require('../assets/image-removebg-preview (1).png')}
-        alt="Anushtaan Logo"
-        style={{
-          width: '520px',
-          height: 'auto',
-         
-        }}
-      /> */}
-    </div>
-  </div>
-</div>
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '204px 20px',
+          position: 'relative',
+          zIndex: 10
+        }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '64px'
+          }}>
+            {/* Left Side - Heading and Content */}
+            <div style={{
+              width: '60%',
+              paddingRight: '2px',
+              textAlign: 'right',
+              order: 2 
+            }}>
+              <h1 style={{
+                fontSize: '56px',
+                fontWeight: 'bold',
+                marginBottom: '16px',
+                color: '#B5B5F9',
+                margin: '0 0 16px 0'
+              }}>
+                Anushtaan
+              </h1>
+              <h2 style={{
+                fontSize: '28px',
+                fontWeight: '600',
+                marginBottom: '24px',
+                color: '#CE85CE',
+                margin: '0 0 24px 0'
+              }}>
+                The Ultimate AI-Driven Project Management Platform
+              </h2>
+              <p style={{
+                fontSize: '20px',
+                lineHeight: '1.6',
+                marginBottom: '16px',
+                color: '#B5B5F9',
+                fontWeight: '500',
+                margin: '0 0 16px 0'
+              }}>
+                Rethink Project Management. Redefine Possibility.
+              </p>
+              <p style={{
+                fontSize: '18px',
+                lineHeight: '1.75',
+                marginBottom: '32px',
+                color: 'white',
+                margin: '0 0 32px 0'
+              }}>
+                Anushtaan isn't just another project management tool—it's a next-generation platform designed for professionals and organizations that demand efficiency, transparency, and intelligent control. Built by Ganglia Technologies, Anushtaan brings powerful AI and human-centered design to every stage of your projects.
+              </p>
+              <button style={{
+                padding: '16px 48px',
+                borderRadius: '9999px',
+                color: 'white',
+                fontSize: '20px',
+                fontWeight: '500',
+                background: 'linear-gradient(135deg, #9996DC 0%, #CA86D0 100%)',
+                border: 'none',
+                cursor: 'pointer',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                transition: 'all 0.3s ease'
+              }}>
+                Discover Anushtaan
+              </button>
+            </div>
+            {/* Right Side - Logo */}
+            <div style={{
+              width: '40%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              order: 1 
+            }}>
+              {/* <img
+                src={require('../assets/image-removebg-preview (1).png')}
+                alt="Anushtaan Logo"
+                style={{
+                  width: '520px',
+                  height: 'auto',
+                 
+                }}
+              /> */}
+            </div>
+          </div>
+        </div>
 
         {/* About Section */}
         <div style={{
@@ -313,12 +319,7 @@ order: 2
                 marginBottom: '24px',
                 margin: '0 0 24px 0'
               }}>
-                Anushtaan is a highly customizable Project Management Tool
-                designed for professionals and organizations that demand
-                transparency, efficiency, and control. With real-time time
-                tracking, it ensures accurate billing and trust for hourly-based
-                projects to accurately bill and time-ensuring trust and
-                accountability with clients.
+                Anushtaan is a highly customizable Project Management Tool designed for professionals and organizations that demand transparency, efficiency, and control. With real-time time tracking, it ensures accurate billing and trust for hourly-based projects to accurately bill and time-ensuring trust and accountability with clients.
               </p>
               <p style={{
                 fontSize: '18px',
@@ -326,14 +327,7 @@ order: 2
                 marginBottom: '24px',
                 margin: '0 0 24px 0'
               }}>
-                Equipped with an advanced Admin Portal, Anushtaan provides deep
-                visibility into project health through live dashboards. Gantt
-                Charts, Kanban boards, financial tracking, and data analytics.
-                Admins can assign tasks, monitor team progress, manage budgets,
-                and oversee quality settings ensuring projects stay on track. The
-                platform offers secure data storage, and receive automated email
-                notifications. Whether you prefer calendar view, table view, or
-                dark mode — Anushtaan easily adapts to your workflow.
+                Equipped with an advanced Admin Portal, Anushtaan provides deep visibility into project health through live dashboards. Gantt Charts, Kanban boards, financial tracking, and data analytics. Admins can assign tasks, monitor team progress, manage budgets, and oversee quality settings ensuring projects stay on track. The platform offers secure data storage, and receive automated email notifications. Whether you prefer calendar view, table view, or dark mode — Anushtaan easily adapts to your workflow.
               </p>
             </div>
 
@@ -341,105 +335,478 @@ order: 2
               <div style={{
                 backdropFilter: 'blur(4px)',
                 borderRadius: '12%',
-                padding: '24px',
+                padding: '32px',
                 background: 'linear-gradient(135deg, #9996DC 0%, #CA86D0 100%)'
               }}>
                 <h3 style={{
-                  fontSize: '55px',
+                  fontSize: '48px',
                   fontWeight: 'bold',
-                  marginBottom: '24px',
-                  margin: '0 0 24px 0'
-                }}>Features</h3>
-                <ul style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  margin: 0
+                  marginBottom: '32px',
+                  margin: '0 0 32px 0'
+                }}>All Features</h3>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr',
+                  gap: '20px'
                 }}>
-                  <li style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '16px'
-                  }}>
-                    <div style={{
-                      width: '8px',
-                      height: '8px',
-                      backgroundColor: '#C084FC',
-                      borderRadius: '50%',
-                      marginRight: '12px'
-                    }}></div>
-                    <span style={{ fontSize: '28px', fontWeight: '300' }}>Live Time & Budget Tracking</span>
-                  </li>
-                  <li style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '16px'
-                  }}>
-                    <div style={{
-                      width: '8px',
-                      height: '8px',
-                      backgroundColor: '#C084FC',
-                      borderRadius: '50%',
-                      marginRight: '12px'
-                    }}></div>
-                    <span style={{ fontSize: '28px', fontWeight: '500' }}>Data-driven Admin Dashboard</span>
-                  </li>
-                  <li style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '16px'
-                  }}>
-                    <div style={{
-                      width: '8px',
-                      height: '8px',
-                      backgroundColor: '#C084FC',
-                      borderRadius: '50%',
-                      marginRight: '12px'
-                    }}></div>
-                    <span style={{ fontSize: '28px', fontWeight: '500' }}>Multi-View Project Layouts</span>
-                  </li>
-                  <li style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '16px'
-                  }}>
-                    <div style={{
-                      width: '8px',
-                      height: '8px',
-                      backgroundColor: '#C084FC',
-                      borderRadius: '50%',
-                      marginRight: '12px'
-                    }}></div>
-                    <span style={{ fontSize: '28px', fontWeight: '500' }}>Seamless Collaboration Tools</span>
-                  </li>
-                  <li style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '16px'
-                  }}>
-                    <div style={{
-                      width: '8px',
-                      height: '8px',
-                      backgroundColor: '#C084FC',
-                      borderRadius: '50%',
-                      marginRight: '12px'
-                    }}></div>
-                    <span style={{ fontSize: '28px', fontWeight: '500' }}>Smart Notifications & UI Modes</span>
-                  </li>
-                  <li style={{
-                    display: 'flex',
-                    alignItems: 'center'
-                  }}>
-                    <div style={{
-                      width: '8px',
-                      height: '8px',
-                      backgroundColor: '#C084FC',
-                      borderRadius: '50%',
-                      marginRight: '12px'
-                    }}></div>
-                    <span style={{ fontSize: '28px', fontWeight: '500' }}>Scalable & Customizable</span>
-                  </li>
-                </ul>
+                  {[
+                    'Intelligent Project Hours Tracking',
+                    'AI-Powered Productivity Assistant',
+                    'Dynamic Dashboards (30+ KPIs)',
+                    'Seamless Communication & Collaboration',
+                    'Customizable Views (Kanban, Gantt, Table)',
+                    'Personal Projects & Tasks Management',
+                    'Powerful Admin Portal',
+                    'Enterprise-Grade Security',
+                    'Real-Time Presence Indicators',
+                    'Smart Notifications & Email Alerts',
+                    'Dark, Light & System Modes',
+                    'PERT/CPM Critical Path Analysis'
+                  ].map((feature, index) => (
+                    <div key={index} style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      marginBottom: '12px'
+                    }}>
+                      <div style={{
+                        width: '8px',
+                        height: '8px',
+                        backgroundColor: '#FFFFFF',
+                        borderRadius: '50%',
+                        marginRight: '12px',
+                        flexShrink: 0
+                      }}></div>
+                      <span style={{ 
+                        fontSize: '16px', 
+                        fontWeight: '500',
+                        lineHeight: '1.4'
+                      }}>{feature}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Core Features Section */}
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '64px 24px',
+          position: 'relative',
+          zIndex: 10
+        }}>
+          <h2 style={{
+            fontSize: '54px',
+            fontWeight: 'bold',
+            marginBottom: '48px',
+            textAlign: 'center',
+            background: 'linear-gradient(135deg, #9996DC 0%, #CA86D0 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            margin: '0 0 48px 0'
+          }}>
+            Core Features
+          </h2>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gap: '32px',
+            marginBottom: '48px'
+          }}>
+            {/* Intelligent Project Hours Tracking */}
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              borderRadius: '16px',
+              padding: '32px',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '20px'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  backgroundColor: '#9996DC',
+                  borderRadius: '12px',
+                  marginRight: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <span style={{ fontSize: '24px' }}>⏱️</span>
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  margin: 0,
+                  color: '#B5B5F9'
+                }}>Intelligent Hours Tracking</h3>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '12px'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Automated Time Logging:</strong> Smart timer automatically pauses when users step away and resumes when they return
+                  </span>
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Effortless Billing:</strong> Convert accurate, real-time hours into professional client invoices with complete transparency
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* AI-Powered Productivity */}
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              borderRadius: '16px',
+              padding: '32px',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '20px'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  backgroundColor: '#CE85CE',
+                  borderRadius: '12px',
+                  marginRight: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <span style={{ fontSize: '24px' }}>🤖</span>
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  margin: 0,
+                  color: '#B5B5F9'
+                }}>AI-Powered Productivity</h3>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '12px'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Conversational AI Assistant:</strong> Generate tasks, identify risks, or create entire projects through natural conversation
+                  </span>
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Smart Planning:</strong> AI analyzes resource allocation and foresees challenges to keep projects ahead of schedule
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Dynamic Dashboards */}
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              borderRadius: '16px',
+              padding: '32px',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '20px'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  backgroundColor: '#9996DC',
+                  borderRadius: '12px',
+                  marginRight: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <span style={{ fontSize: '24px' }}>📊</span>
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  margin: 0,
+                  color: '#B5B5F9'
+                }}>Dynamic Dashboards</h3>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '12px'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>30+ KPIs Visualized:</strong> Comprehensive dashboards track budgets, workloads, progress, and milestones at a glance
+                  </span>
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Real-Time Presence:</strong> Instantly see which team members are online and actively working
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Seamless Communication */}
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              borderRadius: '16px',
+              padding: '32px',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '20px'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  backgroundColor: '#CE85CE',
+                  borderRadius: '12px',
+                  marginRight: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <span style={{ fontSize: '24px' }}>💬</span>
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  margin: 0,
+                  color: '#B5B5F9'
+                }}>Communication & Collaboration</h3>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '12px'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Integrated Comments:</strong> Tag teammates, discuss progress on tasks, and keep conversations in context
+                  </span>
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Instant Notifications:</strong> Stay updated with real-time email alerts for every update and milestone
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Customizable Views */}
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              borderRadius: '16px',
+              padding: '32px',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '20px'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  backgroundColor: '#9996DC',
+                  borderRadius: '12px',
+                  marginRight: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <span style={{ fontSize: '24px' }}>📋</span>
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  margin: 0,
+                  color: '#B5B5F9'
+                }}>Customizable Views</h3>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '12px'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>KANBAN Board:</strong> Drag-and-drop interface fully customizable to fit your team's process
+                  </span>
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '12px'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Gantt Chart:</strong> Advanced PERT/CPM logic with critical path highlighting
+                  </span>
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Multiple UI Modes:</strong> Dark, Light & System modes for any environment
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Security & Enterprise */}
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              borderRadius: '16px',
+              padding: '32px',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '20px'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  backgroundColor: '#CE85CE',
+                  borderRadius: '12px',
+                  marginRight: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <span style={{ fontSize: '24px' }}>🔒</span>
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  margin: 0,
+                  color: '#B5B5F9'
+                }}>Security You Can Trust</h3>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '12px'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Enterprise-Grade Security:</strong> AWS highly secure cloud infrastructure for data protection and scalability
+                  </span>
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start'
+                }}>
+                  <span style={{
+                    color: '#CE85CE',
+                    marginRight: '8px',
+                    fontSize: '18px'
+                  }}>•</span>
+                  <span style={{ fontSize: '16px', lineHeight: '1.5' }}>
+                    <strong>Data Sovereignty:</strong> Enterprise customers get on-premises or dedicated server storage options
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -491,13 +858,18 @@ order: 2
                     height: '64px',
                     backgroundColor: '#C084FC',
                     borderRadius: '8px',
-                    margin: '0 auto 8px auto'
-                  }}></div>
+                    margin: '0 auto 8px auto',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <span style={{ fontSize: '28px' }}>📋</span>
+                  </div>
                   <p style={{
                     fontSize: '14px',
                     opacity: 0.75,
                     margin: 0
-                  }}>Task Progress Interface</p>
+                  }}>Drag & Drop Interface</p>
                 </div>
               </div>
               <h3 style={{
@@ -506,7 +878,7 @@ order: 2
                 textAlign: 'center',
                 margin: 0
               }}>
-                Task Progress List
+                KANBAN Board
               </h3>
             </div>
 
@@ -531,13 +903,18 @@ order: 2
                     height: '64px',
                     backgroundColor: '#C084FC',
                     borderRadius: '8px',
-                    margin: '0 auto 8px auto'
-                  }}></div>
+                    margin: '0 auto 8px auto',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <span style={{ fontSize: '28px' }}>📊</span>
+                  </div>
                   <p style={{
                     fontSize: '14px',
                     opacity: 0.75,
                     margin: 0
-                  }}>Analytics Dashboard</p>
+                  }}>30+ KPIs Dashboard</p>
                 </div>
               </div>
               <h3 style={{
@@ -546,7 +923,7 @@ order: 2
                 textAlign: 'center',
                 margin: 0
               }}>
-                Project Summary
+                Project Analytics
               </h3>
             </div>
 
@@ -571,13 +948,18 @@ order: 2
                     height: '64px',
                     backgroundColor: '#C084FC',
                     borderRadius: '8px',
-                    margin: '0 auto 8px auto'
-                  }}></div>
+                    margin: '0 auto 8px auto',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <span style={{ fontSize: '28px' }}>📈</span>
+                  </div>
                   <p style={{
                     fontSize: '14px',
                     opacity: 0.75,
                     margin: 0
-                  }}>Timeline View</p>
+                  }}>PERT/CPM Timeline</p>
                 </div>
               </div>
               <h3 style={{
@@ -609,13 +991,18 @@ order: 2
                     height: '64px',
                     backgroundColor: '#C084FC',
                     borderRadius: '8px',
-                    margin: '0 auto 8px auto'
-                  }}></div>
+                    margin: '0 auto 8px auto',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <span style={{ fontSize: '28px' }}>⚙️</span>
+                  </div>
                   <p style={{
                     fontSize: '14px',
                     opacity: 0.75,
                     margin: 0
-                  }}>Management Interface</p>
+                  }}>Company-Wide Insights</p>
                 </div>
               </div>
               <h3 style={{
@@ -628,13 +1015,231 @@ order: 2
           </div>
         </div>
 
+        {/* Why Anushtaan Section */}
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '64px 24px',
+          position: 'relative',
+          zIndex: 10
+        }}>
+          <h2 style={{
+            fontSize: '54px',
+            fontWeight: 'bold',
+            marginBottom: '48px',
+            textAlign: 'center',
+            background: 'linear-gradient(135deg, #9996DC 0%, #CA86D0 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            margin: '0 0 48px 0'
+          }}>
+            Why Choose Anushtaan?
+          </h2>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '32px'
+          }}>
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              borderRadius: '16px',
+              padding: '32px',
+              textAlign: 'center',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                backgroundColor: '#9996DC',
+                borderRadius: '50%',
+                margin: '0 auto 24px auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <span style={{ fontSize: '28px' }}>🤖</span>
+              </div>
+              <h3 style={{
+                fontSize: '24px',
+                fontWeight: '600',
+                marginBottom: '16px',
+                color: '#B5B5F9',
+                margin: '0 0 16px 0'
+              }}>AI-Integrated Management</h3>
+              <p style={{
+                fontSize: '16px',
+                lineHeight: '1.6',
+                color: 'rgba(255, 255, 255, 0.8)',
+                margin: 0
+              }}>
+                From planning to risk assessment, let AI supercharge every aspect of your project workflow.
+              </p>
+            </div>
+
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              borderRadius: '16px',
+              padding: '32px',
+              textAlign: 'center',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                backgroundColor: '#CE85CE',
+                borderRadius: '50%',
+                margin: '0 auto 24px auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <span style={{ fontSize: '28px' }}>🎯</span>
+              </div>
+              <h3 style={{
+                fontSize: '24px',
+                fontWeight: '600',
+                marginBottom: '16px',
+                color: '#B5B5F9',
+                margin: '0 0 16px 0'
+              }}>Precision & Accountability</h3>
+              <p style={{
+                fontSize: '16px',
+                lineHeight: '1.6',
+                color: 'rgba(255, 255, 255, 0.8)',
+                margin: 0
+              }}>
+                Live tracking, scoring, and comprehensive dashboards ensure every hour, task, and decision counts.
+              </p>
+            </div>
+
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              borderRadius: '16px',
+              padding: '32px',
+              textAlign: 'center',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                backgroundColor: '#9996DC',
+                borderRadius: '50%',
+                margin: '0 auto 24px auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <span style={{ fontSize: '28px' }}>👤</span>
+              </div>
+              <h3 style={{
+                fontSize: '24px',
+                fontWeight: '600',
+                marginBottom: '16px',
+                color: '#B5B5F9',
+                margin: '0 0 16px 0'
+              }}>User-Centric Flexibility</h3>
+              <p style={{
+                fontSize: '16px',
+                lineHeight: '1.6',
+                color: 'rgba(255, 255, 255, 0.8)',
+                margin: 0
+              }}>
+                Manage work and personal projects side-by-side, adapting the platform to your life and career.
+              </p>
+            </div>
+
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(4px)',
+              borderRadius: '16px',
+              padding: '32px',
+              textAlign: 'center',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                backgroundColor: '#CE85CE',
+                borderRadius: '50%',
+                margin: '0 auto 24px auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <span style={{ fontSize: '28px' }}>🔒</span>
+              </div>
+              <h3 style={{
+                fontSize: '24px',
+                fontWeight: '600',
+                marginBottom: '16px',
+                color: '#B5B5F9',
+                margin: '0 0 16px 0'
+              }}>Flexible, Scalable, Secure</h3>
+              <p style={{
+                fontSize: '16px',
+                lineHeight: '1.6',
+                color: 'rgba(255, 255, 255, 0.8)',
+                margin: 0
+              }}>
+                Whether you're a freelancer, agency, or enterprise, Anushtaan adapts to empower teams of all sizes.
+              </p>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div style={{
+            textAlign: 'center',
+            marginTop: '64px',
+            padding: '48px',
+            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            backdropFilter: 'blur(4px)',
+            borderRadius: '24px',
+            border: '1px solid rgba(255, 255, 255, 0.1)'
+          }}>
+            <h3 style={{
+              fontSize: '32px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              color: '#B5B5F9',
+              margin: '0 0 16px 0'
+            }}>Ready to Transform Your Project Management?</h3>
+            <p style={{
+              fontSize: '18px',
+              marginBottom: '32px',
+              color: 'rgba(255, 255, 255, 0.8)',
+              margin: '0 0 32px 0'
+            }}>
+              Cut through the noise of project management—choose the power of AI, transparency, and enterprise security.
+            </p>
+            <button style={{
+              padding: '16px 48px',
+              borderRadius: '9999px',
+              color: 'white',
+              fontSize: '20px',
+              fontWeight: '500',
+              background: 'linear-gradient(135deg, #9996DC 0%, #CA86D0 100%)',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+              transition: 'all 0.3s ease'
+            }}>
+              Choose Anushtaan
+            </button>
+          </div>
+        </div>
+
         {/* Pricing Section */}
         <div
           ref={pricingRef}
           style={{
             maxWidth: '1200px',
             margin: '0 auto',
-            height: '120vh', // Increased height
+            height: '120vh',
             padding: '64px 24px',
             position: 'relative',
             marginBottom: '124px',
@@ -682,7 +1287,7 @@ order: 2
                   <p style={{
                     color: '#D1D5DB',
                     margin: 0
-                  }}>Basic features for small teams</p>
+                  }}>Basic features for small teams and personal projects</p>
                 </div>
               </div>
               <div className={`pricing-card premium${showPricing ? " visible" : ""}`} style={{
@@ -708,7 +1313,7 @@ order: 2
                     color: '#374151',
                     margin: 0
                   }}>
-                    Advanced features for growing teams
+                    Advanced AI features, unlimited projects, and priority support for growing teams
                   </p>
                 </div>
               </div>
@@ -734,7 +1339,7 @@ order: 2
                     color: '#D1D5DB',
                     margin: 0
                   }}>
-                    Full customization for large organizations
+                    Full customization, on-premises deployment, and dedicated support for large organizations
                   </p>
                 </div>
               </div>

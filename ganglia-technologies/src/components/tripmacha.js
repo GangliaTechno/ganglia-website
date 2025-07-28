@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 // import Footer from '../components/Footer';
 import '../styles/tripmacha.css';
-
+import Footer from './Footer';
 import guyOnScooter from '../assets/guy_on_scooter.png';
 import beachPhoto from '../assets/beach-Photoroom.png';
 import autoImage from '../assets/auto.png';
@@ -260,7 +260,9 @@ const TripMacha = () => {
 
         {/* Use your existing Footer component */}
         {/* <Footer /> */}
+        <Footer />
       </div>
+      
     </div>
   );
 };

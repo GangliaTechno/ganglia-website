@@ -23,6 +23,26 @@ export default function ApplicationForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Function to parse job description if it's a JSON string
+  const parseJobDescription = (description) => {
+    if (!description) return null;
+    
+    try {
+      // If it's already an object, return it
+      if (typeof description === 'object') {
+        return description;
+      }
+      
+      // If it's a string, try to parse it as JSON
+      return JSON.parse(description);
+    } catch (error) {
+      // If parsing fails, return the original description as plain text
+      return { "Job Description": description };
+    }
+  };
+
+  const jobDetails = parseJobDescription(state?.jobDescription);
+
   const handleChange = e => {
     const { name, value, files } = e.target;
     setForm(prev => ({
@@ -77,7 +97,6 @@ Career Portal System
     `;
 
     try {
-      // Send email via your custom API
       const response = await fetch('https://tmmail.onrender.com/send-email/', {
         method: 'POST',
         headers: {
@@ -85,14 +104,13 @@ Career Portal System
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          recipient: "director@ganglia.in", // Change this to your actual recipient email
+          recipient: "director@ganglia.in",
           subject: emailSubject,
           body: emailBody
         })
       });
 
       if (response.ok) {
-        // Reset form on successful submission
         setForm({
           name: '',
           email: '',
@@ -105,13 +123,11 @@ Career Portal System
           resume: null
         });
 
-        // Clear file input
         const fileInput = document.getElementById('resume-upload');
         if (fileInput) fileInput.value = '';
 
         toast.success("Application submitted successfully!");
         
-        // Navigate back after showing success message
         setTimeout(() => {
           setIsSubmitting(false);
           navigate('/careers');
@@ -130,7 +146,6 @@ Career Portal System
 
   return (
     <div className="application-form-wrapper">
-      {/* Toast notification container */}
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -151,6 +166,25 @@ Career Portal System
           <h1>Apply for {state?.jobTitle ?? 'Position'}</h1>
           <p>Please fill in your details below</p>
         </div>
+
+        {/* Job Details Section */}
+        {jobDetails && (
+          <div className="job-details-section">
+            <h2>Job Details</h2>
+            <div className="job-details-content">
+              {Object.entries(jobDetails).map(([key, value]) => (
+                <div key={key} className="job-detail-item">
+                  <h3 className="job-detail-title">{key}</h3>
+                  <div className="job-detail-description">
+                    {value.split('\n').map((line, index) => (
+                      <p key={index}>{line}</p>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         <form className="application-form" onSubmit={handleSubmit}>
           <div className="form-grid">

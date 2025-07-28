@@ -8,6 +8,7 @@ const OurTeam = () => {
   const [foundingTeam, setFoundingTeam] = useState([]);
   const [managementTeam, setManagementTeam] = useState([]);
   const [foundingInternTeam, setFoundingInternTeam] = useState([]);
+  const [previousInternTeam, setPreviousInternTeam] = useState([]); // NEW
   const [internTeam, setInternTeam] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,7 +16,6 @@ const OurTeam = () => {
   useEffect(() => {
     const fetchTeamData = async () => {
       try {
-        // ✅ Use root path since your data is not nested under "teamData"
         const teamRef = ref(database, '/');
         const snapshot = await get(teamRef);
 
@@ -29,7 +29,7 @@ const OurTeam = () => {
           if (!team || !Array.isArray(team)) {
             return [];
           }
-          
+
           return team.map((member) => ({
             ...member,
             imageSrc: member.image && member.image.startsWith('data:image')
@@ -40,17 +40,25 @@ const OurTeam = () => {
           }));
         };
 
-        // ✅ Fix: Use the correct Firebase keys with spaces and capitals
-        const [foundingWithImages, managementWithImages, foundingInternWithImages, internWithImages] = await Promise.all([
+        // Add fetching for 'Previous Intern Team':
+        const [
+          foundingWithImages,
+          managementWithImages,
+          foundingInternWithImages,
+          previousInternWithImages,
+          internWithImages
+        ] = await Promise.all([
           processTeamImages(data.foundingTeam || data['Founding Team'] || []),
           processTeamImages(data.managementTeam || data['Management Team'] || []),
-          processTeamImages(data.foundingInternTeam || data['Founding Intern Team'] || []), // ✅ This is the fix!
+          processTeamImages(data.foundingInternTeam || data['Founding Intern Team'] || []),
+          processTeamImages(data.previousInternTeam || data['Previous Interns'] || []), // <=== NEW
           processTeamImages(data.internTeam || data['Intern Team'] || []),
         ]);
 
         setFoundingTeam(foundingWithImages);
         setManagementTeam(managementWithImages);
         setFoundingInternTeam(foundingInternWithImages);
+        setPreviousInternTeam(previousInternWithImages); // NEW
         setInternTeam(internWithImages);
         setLoading(false);
       } catch (err) {
@@ -202,6 +210,29 @@ const OurTeam = () => {
           </div>
         </div>
       </section>
+
+      {/* ---- Previous Intern Team Section (NEW) ---- */}
+      <section className="ourteam-section ourteam-previous-intern-section">
+        <div className="ourteam-container">
+          <h2 className="ourteam-title">Previous Intern Team</h2>
+          <div className="ourteam-contact-form ourteam-animate-on-scroll">
+            <div className="ourteam-info ourteam-animate-on-scroll">
+              <div className="ourteam-intern-grid">
+                {previousInternTeam.length > 0 ? (
+                  previousInternTeam.map((member, index) => (
+                    <TeamMember key={member.id || index} member={member} isIntern={true} />
+                  ))
+                ) : (
+                  <div className="ourteam-no-data">
+                    <p>No previous intern team members found</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ------------------------------------------- */}
 
       <section className="ourteam-section ourteam-intern-section">
         <div className="ourteam-container">

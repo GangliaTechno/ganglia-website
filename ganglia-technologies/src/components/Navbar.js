@@ -179,6 +179,8 @@ const Navbar = () => {
     
     if (sectionId === 'careers') {
       navigate('/careers');
+    } else if (sectionId === 'research') {
+      navigate('/research-papers');
     } else {
       if (location.pathname !== '/') {
         navigate('/');
@@ -211,11 +213,12 @@ const Navbar = () => {
   };
 
   const handleGetStartedClick = () => {
-    navigate('/contact');
-    setIsMobileMenuOpen(false);
-    setDropdownStates({ about: false, products: false, services: false });
-    setMobileDropdownStates({ about: false, products: false, services: false });
-  };
+  navigate('/get-started');
+  setIsMobileMenuOpen(false);
+  setDropdownStates({ about: false, products: false, services: false });
+  setMobileDropdownStates({ about: false, products: false, services: false });
+};
+
 
   // FIXED: Improved mobile menu toggle
   const toggleMobileMenu = (e) => {
@@ -474,7 +477,7 @@ const Navbar = () => {
 
             <li>
               <a 
-                href="#research" 
+                href="/research-papers" 
                 onClick={(e) => handleNavClick(e, 'research')}
               >
                 Research
@@ -567,7 +570,7 @@ const Navbar = () => {
 
               <li>
                 <a 
-                  href="#research" 
+                  href="/research-papers" 
                   onClick={(e) => handleNavClick(e, 'research')}
                 >
                   Research
