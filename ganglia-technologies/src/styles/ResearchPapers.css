@@ -1722,3 +1722,83 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
+
+/* Performance optimizations */
+.research-container {
+  will-change: auto;
+}
+
+/* Simplified animation mode */
+.simple-mode .paper-wrapper {
+  animation: none !important;
+}
+
+.simple-mode .paper-sheet {
+  animation: none !important;
+}
+
+.simple-mode .bar {
+  animation: none !important;
+}
+
+.simple-mode .helix-strand {
+  animation: none !important;
+}
+
+.simple-mode .stat-value {
+  animation: none !important;
+}
+
+/* Simplified containers */
+.paper-container-simple,
+.chart-container-simple,
+.medical-container-simple {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.paper-icon,
+.chart-icon,
+.medical-icon {
+  font-size: 48px;
+  opacity: 0.8;
+}
+
+.paper-title,
+.chart-title,
+.medical-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+}
+
+/* Reduce animation complexity */
+.slide-element {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Optimize paper cards */
+.paper-card {
+  transform: translateZ(0); /* Force GPU acceleration */
+  backface-visibility: hidden;
+}
+
+.paper-card:hover {
+  transform: translateY(-3px) translateZ(0);
+}
+
+/* Lazy load animations */
+@media (prefers-reduced-motion: reduce) {
+  .slide-element,
+  .paper-wrapper,
+  .floating-orb {
+    animation: none !important;
+    transition: none !important;
+  }
+}
