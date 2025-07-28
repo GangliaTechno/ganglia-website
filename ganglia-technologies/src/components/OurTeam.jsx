@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/OurTeam.css';
-import Footer from './Footer';
-// Import Firebase database and storage
-import { database } from '../firebase/config';
 import { ref, get } from 'firebase/database';
+import { database } from '../firebase/config';
 
 const OurTeam = () => {
   const [foundingTeam, setFoundingTeam] = useState([]);
@@ -12,43 +10,46 @@ const OurTeam = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch team data from Firebase (images are now URLs)
-  const fetchTeamDataFromFirebase = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      // Reference to the team data node in Firebase
-      const teamRef = ref(database, 'teamData');
-      
-      const snapshot = await get(teamRef);
-      
-      if (snapshot.exists()) {
-        const teamData = snapshot.val();
-        
-        // No need to process images anymore - they're already URLs from Firebase Storage
-        setFoundingTeam(teamData.foundingTeam || []);
-        setManagementTeam(teamData.managementTeam || []);
-        setInternTeam(teamData.internTeam || []);
-      } else {
-        console.log('No team data available');
-        setFoundingTeam([]);
-        setManagementTeam([]);
-        setInternTeam([]);
-      }
-    } catch (err) {
-      console.error('Error fetching team data from Firebase:', err);
-      setError('Failed to load team data. Please try again later.');
-      setFoundingTeam([]);
-      setManagementTeam([]);
-      setInternTeam([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchTeamDataFromFirebase();
+    const fetchTeamData = async () => {
+      try {
+        // ✅ Use root path since your data is not nested under "teamData"
+        const teamRef = ref(database, '/');
+        const snapshot = await get(teamRef);
+
+        if (!snapshot.exists()) {
+          throw new Error('No team data found');
+        }
+
+        const data = snapshot.val();
+
+        const processTeamImages = (team) => {
+          return team.map((member) => ({
+            ...member,
+            imageSrc: member.image.startsWith('data:image')
+              ? member.image
+              : `data:image/png;base64,${member.image}`,
+          }));
+        };
+
+        const [foundingWithImages, managementWithImages, internWithImages] = await Promise.all([
+          processTeamImages(data.foundingTeam || []),
+          processTeamImages(data.managementTeam || []),
+          processTeamImages(data.internTeam || []),
+        ]);
+
+        setFoundingTeam(foundingWithImages);
+        setManagementTeam(managementWithImages);
+        setInternTeam(internWithImages);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to load team data');
+        setLoading(false);
+        console.error('Error fetching team data:', err);
+      }
+    };
+
+    fetchTeamData();
   }, []);
 
   useEffect(() => {
@@ -82,41 +83,21 @@ const OurTeam = () => {
     </svg>
   );
 
-  const TeamMember = ({ member, isIntern = false }) => {
-    const [imageError, setImageError] = useState(false);
-    
-    const handleImageError = () => {
-      setImageError(true);
-    };
-
-    return (
-      <div className={`ourteam-member ${isIntern ? 'ourteam-intern-member' : ''}`}>
-        <div className={`ourteam-member-photo ${isIntern ? 'ourteam-intern-photo' : ''}`}>
-          {!imageError ? (
-            <img 
-              src={member.imageUrl || member.image} 
-              alt={member.alt}
-              onError={handleImageError}
-              loading="lazy"
-            />
-          ) : (
-            <div className="ourteam-image-placeholder">
-              <span>{member.name.charAt(0)}</span>
-            </div>
-          )}
-          <div className="ourteam-linkedin-icon">
-            <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-              <LinkedInIcon />
-            </a>
-          </div>
+  const TeamMember = ({ member, isIntern = false }) => (
+    <div className={`ourteam-member ${isIntern ? 'ourteam-intern-member' : ''}`}>
+      <div className={`ourteam-member-photo ${isIntern ? 'ourteam-intern-photo' : ''}`}>
+        <img src={member.imageSrc} alt={member.alt || member.name} />
+        <div className="ourteam-linkedin-icon">
+          <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+            <LinkedInIcon />
+          </a>
         </div>
-        <h3>{member.name}</h3>
-        <p className="ourteam-role">{member.role}</p>
       </div>
-    );
-  };
+      <h3>{member.name}</h3>
+      <p className="ourteam-role">{member.role}</p>
+    </div>
+  );
 
-  // Loading state
   if (loading) {
     return (
       <div className="ourteam-loading">
@@ -126,14 +107,11 @@ const OurTeam = () => {
     );
   }
 
-  // Error state
   if (error) {
     return (
       <div className="ourteam-error">
-        <p className="ourteam-error-message">{error}</p>
-        <button onClick={fetchTeamDataFromFirebase} className="ourteam-retry-btn">
-          Try Again
-        </button>
+        <p>{error}</p>
+        <button onClick={() => window.location.reload()}>Retry</button>
       </div>
     );
   }
@@ -155,73 +133,50 @@ const OurTeam = () => {
         </div>
       </section>
 
-      {/* Founding Team Section */}
       <section className="ourteam-section">
         <div className="ourteam-container">
           <h2 className="ourteam-title">Founding Team</h2>
           <div className="ourteam-contact-form ourteam-animate-on-scroll">
             <div className="ourteam-info ourteam-animate-on-scroll">
-              {foundingTeam.length > 0 ? (
-                <div className="ourteam-founding-grid">
-                  {foundingTeam.map((member) => (
-                    <TeamMember key={member.id} member={member} />
-                  ))}
-                </div>
-              ) : (
-                <div className="ourteam-no-data">
-                  <p>No founding team members available at the moment.</p>
-                </div>
-              )}
+              <div className="ourteam-founding-grid">
+                {foundingTeam.map((member) => (
+                  <TeamMember key={member.id} member={member} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Management Team Section */}
       <section className="ourteam-section ourteam-management-section">
         <div className="ourteam-container">
           <h2 className="ourteam-title">Management Team</h2>
           <div className="ourteam-contact-form ourteam-animate-on-scroll">
             <div className="ourteam-info ourteam-animate-on-scroll">
-              {managementTeam.length > 0 ? (
-                <div className="ourteam-management-grid">
-                  {managementTeam.map((member) => (
-                    <TeamMember key={member.id} member={member} />
-                  ))}
-                </div>
-              ) : (
-                <div className="ourteam-no-data">
-                  <p>No management team members available at the moment.</p>
-                </div>
-              )}
+              <div className="ourteam-management-grid">
+                {managementTeam.map((member) => (
+                  <TeamMember key={member.id} member={member} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Intern Team Section */}
       <section className="ourteam-section ourteam-intern-section">
         <div className="ourteam-container">
           <h2 className="ourteam-title">Intern Team</h2>
           <div className="ourteam-contact-form ourteam-animate-on-scroll">
             <div className="ourteam-info ourteam-animate-on-scroll">
-              {internTeam.length > 0 ? (
-                <div className="ourteam-intern-grid">
-                  {internTeam.map((member) => (
-                    <TeamMember key={member.id} member={member} isIntern={true} />
-                  ))}
-                </div>
-              ) : (
-                <div className="ourteam-no-data">
-                  <p>No intern team members available at the moment.</p>
-                </div>
-              )}
+              <div className="ourteam-intern-grid">
+                {internTeam.map((member) => (
+                  <TeamMember key={member.id} member={member} isIntern={true} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
-      
-      <Footer />
     </div>
   );
 };

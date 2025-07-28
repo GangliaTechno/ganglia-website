@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // If using React Router
+// import { Link } from 'react-router-dom'; // Alternative approach
 import '../styles/App.css';
 
 const HeroSection = () => {
+  const navigate = useNavigate(); // React Router hook for navigation
+  
   const [glitchState, setGlitchState] = useState({
     visibleLetters: [true, true, true, true, true, true, true, true, true, true, true], // "Unsatisfied"
     letterGlitches: Array(11).fill(false) // Track which letters have missing parts
@@ -103,6 +107,21 @@ const HeroSection = () => {
     });
   };
 
+  // Navigation handler for the Learn More button
+  const handleLearnMoreClick = () => {
+    // Option 1: Using React Router navigate
+    navigate('/our-story');
+    
+    // Option 2: Smooth scroll to Our Story section if on same page
+    // const ourStoryElement = document.getElementById('our-story');
+    // if (ourStoryElement) {
+    //   ourStoryElement.scrollIntoView({ behavior: 'smooth' });
+    // }
+    
+    // Option 3: Simple page navigation
+    // window.location.href = '/our-story';
+  };
+
   return (
     <div className="hero-content">
       <div className="hero-text">
@@ -116,10 +135,25 @@ const HeroSection = () => {
           <span className="existing">Existing Technology</span>
         </h1>
         <p className="hero-subtitle">
-          Revolutionising AI healthcare with accessible, efficient, and
-          future-ready solutions.
+          Revolutionising AI healthcare with accessible, efficient, <br />
+          and future-ready solutions.
         </p>
-        <button className="learn-more-btn">Learn More</button>
+        
+        {/* Updated Learn More button with navigation */}
+        <button 
+          className="learn-more-btn" 
+          onClick={handleLearnMoreClick}
+          aria-label="Learn more about our story"
+        >
+          Learn More
+        </button>
+        
+        {/* Alternative: Using Link component instead of button */}
+        {/* 
+        <Link to="/our-story" className="learn-more-btn" role="button">
+          Learn More
+        </Link>
+        */}
       </div>
     </div>
   );

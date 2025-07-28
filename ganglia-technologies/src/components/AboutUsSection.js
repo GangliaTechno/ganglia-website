@@ -5,7 +5,7 @@ import '../styles/AboutUsSection.css';
 
 import gifting from '../assets/gifting1.jpeg';
 import gifting1 from '../assets/gifting.png';
-import boardroom from '../assets/boardroom.jpeg';
+import boardroom from '../assets/awards3.jpeg';
 import forwardAnimation from '../assets/Forward.json'; // Import your Lottie JSON
 
 const AboutUsSection = () => {
@@ -57,8 +57,8 @@ const AboutUsSection = () => {
                 </div>
                 {!isMobile && (
                   <div className="image-back">
-                    <h3>Award Ceremony</h3>
-                    <p>Annual Excellence Awards 2024 - Recognizing outstanding achievements in healthcare technology and innovation. A memorable evening celebrating our team's dedication to advancing medical solutions.</p>
+                    
+                    <p>Official agreement signing between Dr. Manesh Thomas (CEO, Manipal - Government of Karnataka Bioincubator) and Dr. Dasharathraj K. Shetty (Co-founder, Ganglia Technologies) marking Ganglia’s incubation at the Manipal - Government of Karnataka Bioincubator, 2 August 2022</p>
                   </div>
                 )}
               </div>
@@ -74,8 +74,8 @@ const AboutUsSection = () => {
                 </div>
                 {!isMobile && (
                   <div className="image-back">
-                    <h3>Strategic Planning</h3>
-                    <p>Quarterly business strategy session focused on expanding our healthcare technology solutions. Key stakeholders discussing future roadmaps and innovative product development initiatives.</p>
+                    
+                    <p>Ganglia Technologies is honored with the "Promising & Innovative Technology Company of the Year 2023" Karnataka Award for Futuristic Product Development & Research at the prestigious 23rd Great Indian Entrepreneurship, Design, Business, & Startup Awards & Conference. development initiatives.</p>
                   </div>
                 )}
               </div>
@@ -91,8 +91,8 @@ const AboutUsSection = () => {
                 </div>
                 {!isMobile && (
                   <div className="image-back">
-                    <h3>Board Room Discussion</h3>
-                    <p>Executive team collaboration on AI-powered healthcare initiatives. Discussing partnerships, technological advancements, and strategic decisions to make healthcare more accessible and affordable.</p>
+                    
+                    <p>At a board-endorsed ceremony attended by Ganglia Technologies’ leadership and Manipal GoK Bio-Incubator representatives, co-founder Dr. Dasharathraj K Shetty officially welcomed and honoured newly appointed CEO Namesh Malarout, an MIT Engineering Management graduate and former Canada-based data analyst and consultant, marking a pivotal moment in setting Ganglia’s 2025 strategic leadership direction.</p>
                   </div>
                 )}
               </div>
@@ -103,7 +103,7 @@ const AboutUsSection = () => {
         <div className="about-right">
           <h2 className="about-title">About Ganglia</h2>
           <p className="about-description">
-            At Ganglia Technologies, we believe world-class healthcare and automation should be within everyone's reach—not a privilege for a few. By blending <span className="highlight">engineering excellence</span>, <span className="highlight">medical insight</span>, and <span className="highlight">true empathy</span>, we create breakthrough solutions that heal, empower, and inspire. From <span className="highlight">trauma-free medical devices</span> to <span className="highlight">AI-driven tools</span> and <span className="highlight">rapid-response ICUs</span>, we're redefining what's possible—making <span className="highlight">innovation affordable</span>, <span className="highlight">human-centered</span>, and <span className="highlight">impactful </span>for all.
+            At Ganglia Technologies, we believe world-class healthcare and automation should be within everyone's reach, not a privilege for a few. By blending <span className="highlight">engineering excellence</span>, <span className="highlight">medical insight</span>, and <span className="highlight">true empathy</span>, we create breakthrough solutions that heal, empower, and inspire. From <span className="highlight">trauma-free medical devices</span> to <span className="highlight">AI-driven tools</span> and <span className="highlight">rapid-response ICUs</span>, we're redefining what's possible,making <span className="highlight">innovation affordable</span>, <span className="highlight">human-centered</span>, and <span className="highlight">impactful </span>for all.
           </p>
           <button className="know-more-btn" onClick={handleKnowMoreClick}>
             Discover Our Story
