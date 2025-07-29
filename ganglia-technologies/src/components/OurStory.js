@@ -445,6 +445,7 @@ function OurStory() {
                   • <strong>Bridging Gaps, Not Just Engineering Products:</strong> Ganglia aims to eliminate the barriers that keep life-saving technology out of reach in underserved regions, ensuring that world-class healthcare and automation opportunities are available to all.
                 </p>
               </div>
+              
               <h4 className="mission-title-left">Our Mission</h4>
             </div>
           </div>

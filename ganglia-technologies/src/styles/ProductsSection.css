@@ -32,12 +32,16 @@
   text-align: center;
   font-size: 48px;
   font-weight: 700;
-  color: #ffffff;
+  color: #ffffff !important;
   margin-bottom: 80px;
   font-family: "Arial", sans-serif;
   letter-spacing: -0.5px;
   position: relative;
   z-index: 3; /* Below navbar */
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: #ffffff;
+  background-clip: unset;
 }
 
 /* Top Row - 3 Cards */
@@ -141,18 +145,12 @@
 }
 
 /* Special gradient text for specific products */
-.product-card[data-product="smart-laryngoscope"] .product-title,
-.product-card[data-product="medical-drone"] .product-title {
-  background: linear-gradient(45deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+
 
 .product-subtitle {
   font-size: 14px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
   line-height: 1.4;
   margin: 0;
   font-family: "Arial", sans-serif;
@@ -310,6 +308,7 @@
   .product-title {
     font-size: 14px;
     font-weight: 600;
+    color: #ffffff !important; /* Ensure white on mobile too */
     margin-bottom: 4px;
     line-height: 1.1;
   }
@@ -352,9 +351,10 @@
     margin-top: 15px;
   }
 
-  .products-title {
-    font-size: 28px;
-    margin-bottom: 20px;
+  .product-title {
+    font-size: 12px;
+    color: #ffffff !important; /* Ensure white on small mobile */
+    margin-bottom: 3px;
   }
 
   .products-grid-top {
@@ -375,13 +375,8 @@
     padding: 10px;
   }
 
-  .product-title {
-    font-size: 12px;
-    margin-bottom: 3px;
-  }
-
   .product-subtitle {
-    font-size: 9px;
+    font-size: 7px;
   }
 
   .product-image {

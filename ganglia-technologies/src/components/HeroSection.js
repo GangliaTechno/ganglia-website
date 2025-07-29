@@ -135,7 +135,7 @@ const HeroSection = () => {
           <span className="existing">Existing Technology</span>
         </h1>
         <p className="hero-subtitle">
-          Revolutionising AI healthcare with accessible, efficient, <br />
+          Revolutionising AI healthcare with accessible, efficient,
           and future-ready solutions.
         </p>
         

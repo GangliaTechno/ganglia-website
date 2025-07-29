@@ -4,6 +4,7 @@ import { ref, get } from 'firebase/database';
 import { database } from '../firebase/config';
 import Footer from './Footer';
 
+
 const OurTeam = () => {
   const [foundingTeam, setFoundingTeam] = useState([]);
   const [managementTeam, setManagementTeam] = useState([]);
@@ -13,22 +14,27 @@ const OurTeam = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   useEffect(() => {
     const fetchTeamData = async () => {
       try {
         const teamRef = ref(database, '/');
         const snapshot = await get(teamRef);
 
+
         if (!snapshot.exists()) {
           throw new Error('No team data found');
         }
 
+
         const data = snapshot.val();
+
 
         const processTeamImages = (team) => {
           if (!team || !Array.isArray(team)) {
             return [];
           }
+
 
           return team.map((member) => ({
             ...member,
@@ -39,6 +45,7 @@ const OurTeam = () => {
                 : null,
           }));
         };
+
 
         // Add fetching for 'Previous Intern Team':
         const [
@@ -55,6 +62,7 @@ const OurTeam = () => {
           processTeamImages(data.internTeam || data['Intern Team'] || []),
         ]);
 
+
         setFoundingTeam(foundingWithImages);
         setManagementTeam(managementWithImages);
         setFoundingInternTeam(foundingInternWithImages);
@@ -68,8 +76,10 @@ const OurTeam = () => {
       }
     };
 
+
     fetchTeamData();
   }, []);
+
 
   useEffect(() => {
     if (!loading) {
@@ -86,9 +96,11 @@ const OurTeam = () => {
         }
       );
 
+
       document.querySelectorAll('.ourteam-animate-on-scroll').forEach((el) => {
         observer.observe(el);
       });
+
 
       return () => {
         observer.disconnect();
@@ -96,11 +108,13 @@ const OurTeam = () => {
     }
   }, [loading]);
 
+
   const LinkedInIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="#0077B5">
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
     </svg>
   );
+
 
   const TeamMember = ({ member, isIntern = false }) => (
     <div className={`ourteam-member ${isIntern ? 'ourteam-intern-member' : ''}`}>
@@ -125,6 +139,7 @@ const OurTeam = () => {
     </div>
   );
 
+
   if (loading) {
     return (
       <div className="ourteam-loading">
@@ -134,6 +149,7 @@ const OurTeam = () => {
     );
   }
 
+
   if (error) {
     return (
       <div className="ourteam-error">
@@ -142,6 +158,7 @@ const OurTeam = () => {
       </div>
     );
   }
+
 
   return (
     <div>
@@ -160,6 +177,7 @@ const OurTeam = () => {
         </div>
       </section>
 
+
       <section className="ourteam-section">
         <div className="ourteam-container">
           <h2 className="ourteam-title">Founding Team</h2>
@@ -175,6 +193,7 @@ const OurTeam = () => {
         </div>
       </section>
 
+
       <section className="ourteam-section ourteam-management-section">
         <div className="ourteam-container">
           <h2 className="ourteam-title">Management Team</h2>
@@ -189,6 +208,7 @@ const OurTeam = () => {
           </div>
         </div>
       </section>
+
 
       <section className="ourteam-section ourteam-founding-intern-section">
         <div className="ourteam-container">
@@ -211,7 +231,22 @@ const OurTeam = () => {
         </div>
       </section>
 
-      {/* ---- Previous Intern Team Section (NEW) ---- */}
+      {/* ---- Swapped: Intern Team Section comes BEFORE Previous Intern Team Section ---- */}
+      <section className="ourteam-section ourteam-intern-section">
+        <div className="ourteam-container">
+          <h2 className="ourteam-title">Intern Team</h2>
+          <div className="ourteam-contact-form ourteam-animate-on-scroll">
+            <div className="ourteam-info ourteam-animate-on-scroll">
+              <div className="ourteam-intern-grid">
+                {internTeam.map((member, index) => (
+                  <TeamMember key={member.id || index} member={member} isIntern={true} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="ourteam-section ourteam-previous-intern-section">
         <div className="ourteam-container">
           <h2 className="ourteam-title">Previous Intern Team</h2>
@@ -234,23 +269,10 @@ const OurTeam = () => {
       </section>
       {/* ------------------------------------------- */}
 
-      <section className="ourteam-section ourteam-intern-section">
-        <div className="ourteam-container">
-          <h2 className="ourteam-title">Intern Team</h2>
-          <div className="ourteam-contact-form ourteam-animate-on-scroll">
-            <div className="ourteam-info ourteam-animate-on-scroll">
-              <div className="ourteam-intern-grid">
-                {internTeam.map((member, index) => (
-                  <TeamMember key={member.id || index} member={member} isIntern={true} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <Footer />
     </div>
   );
 };
+
 
 export default OurTeam;
