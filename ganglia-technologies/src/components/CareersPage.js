@@ -7,6 +7,7 @@ import logo from '../assets/logob.png';
 import { database } from '../firebase/config';
 import { ref, get } from 'firebase/database';
 
+
 const CareersPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [expandedCard, setExpandedCard] = useState(null);
@@ -17,8 +18,10 @@ const CareersPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   // Add navigation hook
   const navigate = useNavigate();
+
 
   // Function to parse job description if it's a JSON string
   const parseJobDescription = (description) => {
@@ -38,6 +41,7 @@ const CareersPage = () => {
     }
   };
 
+
   // Function to render job description in modal
   const renderJobDescription = (job) => {
     const parsedDescription = parseJobDescription(job.description);
@@ -46,6 +50,7 @@ const CareersPage = () => {
       // If it's still a string or null, display as regular description
       return <p className="job-description">{job.description}</p>;
     }
+
 
     // If it's a parsed object, display formatted sections
     return (
@@ -64,10 +69,12 @@ const CareersPage = () => {
     );
   };
 
+
   // Load job data from Firebase on component mount
   useEffect(() => {
     fetchJobsFromFirebase();
   }, []);
+
 
   // Fetch jobs from Firebase Realtime Database
   const fetchJobsFromFirebase = async () => {
@@ -100,17 +107,21 @@ const CareersPage = () => {
     }
   };
 
+
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
   };
+
 
   const handleCardClick = (cardIndex) => {
     setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
   };
 
+
   const handleJobCardClick = (jobId) => {
     setExpandedJobCard(expandedJobCard === jobId ? null : jobId);
   };
+
 
   const imageCardsData = [
     {
@@ -135,12 +146,15 @@ const CareersPage = () => {
     }
   ];
 
+
   // Calculate dynamic job count
   const totalJobCount = jobData.length;
+
 
   const filteredJobs = activeFilter === 'all' 
     ? jobData 
     : jobData.filter(job => job.category === activeFilter);
+
 
   const handleApplyClick = (jobId) => {
     const job = jobData.find(j => j.id === jobId);
@@ -148,15 +162,18 @@ const CareersPage = () => {
     setShowApplicationModal(true);
   };
 
+
   const closeModal = () => {
     setShowApplicationModal(false);
     setSelectedJob(null);
   };
 
+
   const handleInternshipApply = () => {
     console.log('Applying for internship');
     alert('Internship application form will be implemented here');
   };
+
 
   // Format date function
   const formatDate = (dateString) => {
@@ -168,8 +185,10 @@ const CareersPage = () => {
     });
   };
 
+
   const renderDetailedInfo = (job) => {
     if (!job.detailedInfo) return null;
+
 
     return (
       <div className="job-detailed-info">
@@ -182,6 +201,7 @@ const CareersPage = () => {
           </ul>
         </div>
 
+
         <div className="info-section">
           <h3>Required Qualifications</h3>
           <ul>
@@ -190,6 +210,7 @@ const CareersPage = () => {
             ))}
           </ul>
         </div>
+
 
         <div className="info-section">
           <h3>Essential Skills</h3>
@@ -200,6 +221,7 @@ const CareersPage = () => {
           </ul>
         </div>
 
+
         <div className="info-section">
           <h3>Preferred Qualifications</h3>
           <ul>
@@ -209,6 +231,7 @@ const CareersPage = () => {
           </ul>
         </div>
 
+
         <div className="info-section">
           <p className="submit-note">
             <strong>Please submit:</strong> This role offers an exceptional opportunity to shape organizational culture, drive strategic HR initiatives, and lead a dynamic team in a growing organization.
@@ -217,6 +240,7 @@ const CareersPage = () => {
       </div>
     );
   };
+
 
   // Loading state
   if (loading) {
@@ -229,6 +253,7 @@ const CareersPage = () => {
       </div>
     );
   }
+
 
   // Error state
   if (error) {
@@ -243,6 +268,7 @@ const CareersPage = () => {
       </div>
     );
   }
+
 
   return (
     <div className="careers-page">
@@ -293,6 +319,7 @@ const CareersPage = () => {
         </div>
       )}
 
+
       {/* Hero Section */}
       <section className="careers-hero">
         <div className="careers-hero-overlay"></div>
@@ -318,6 +345,7 @@ const CareersPage = () => {
           <div className="careers-scroll-indicator"></div>
         </div>
       </section>
+
 
       {/* Why Join Us Section */}
       <section className="careers-why-join-section">
@@ -345,6 +373,7 @@ const CareersPage = () => {
           </div>
         </div>
       </section>
+
 
       {/* Openings Section */}
       <section className="careers-section" id="openings">
@@ -381,6 +410,7 @@ const CareersPage = () => {
             </button>
           </div>
 
+
           <div className="careers-opening-cards">
             {filteredJobs.length > 0 ? (
               filteredJobs.map(job => (
@@ -396,6 +426,7 @@ const CareersPage = () => {
                       {job.title}
                     </div>
                   </div>
+
 
                   {/* Full Content View - Expanded */}
                   <div className="careers-job-card-full-content">
@@ -433,6 +464,7 @@ const CareersPage = () => {
                       })()}
                     </div>
 
+
                     <div className="careers-job-skills">
                       {job.skills && job.skills.map((skill, index) => (
                         <span key={index} className="careers-skill-tag">{skill}</span>
@@ -462,6 +494,7 @@ const CareersPage = () => {
         </div>
       </section>
 
+
       {/* Application Timeline Table Section */}
       <section className="careers-timeline-section">
         <div className="careers-container">
@@ -478,8 +511,7 @@ const CareersPage = () => {
                   <th>Category</th>
                   <th>Applications Open</th>
                   <th>Final Deadline</th>
-                  <th>Program Starts</th>
-                  <th>Action</th>
+                  <th>Start Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -506,19 +538,11 @@ const CareersPage = () => {
                       <td className="date-cell">
                         {job.applicationTimeline ? formatDate(job.applicationTimeline.programStarts) : 'TBD'}
                       </td>
-                      <td>
-                        <button 
-                          className="table-apply-btn"
-                          onClick={() => handleApplyClick(job.id)}
-                        >
-                          Apply
-                        </button>
-                      </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="6" className="no-data-message">
+                    <td colSpan="5" className="no-data-message">
                       No job data available
                     </td>
                   </tr>
@@ -528,6 +552,7 @@ const CareersPage = () => {
           </div>
         </div>
       </section>
+
 
       {/* Internship Section */}
       <section className="careers-internship-section" id="internships">
@@ -605,10 +630,12 @@ const CareersPage = () => {
         </div>
       </section>
 
+
       {/* Footer Component */}
       <Footer />
     </div>
   );
 };
+
 
 export default CareersPage;
