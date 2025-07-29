@@ -199,7 +199,10 @@
 .company-links a:hover {
   color: #fef155;
   text-shadow: 0 0 10px rgba(100, 149, 237, 0.5);
-  padding-left: 25px;
+  /* Remove padding change */
+  padding-left: 0;
+  /* Visual shift without layout change */
+  transform: translateX(10px);
 }
 
 .company-links a:hover::before {
@@ -383,6 +386,18 @@
     text-align: left; /* Left align company links */
   }
 
+  .company-links a:hover,
+  .company-links a:focus {
+    color: #fef155;
+    text-shadow: 0 0 10px rgba(100, 149, 237, 0.5);
+    transform: translateX(10px); /* same horizontal shift */
+    padding-left: 0; /* no padding based shift, for stable layout */
+  }
+
+  .company-links a:hover::before,
+  .company-links a:focus::before {
+    width: 15px;
+  }
   .company-links h3 {
     font-size: 18px;
     margin-bottom: 15px;
@@ -390,6 +405,16 @@
 
   .company-links a {
     font-size: 12px;
+  }
+  .company-links a:focus {
+    outline: none; /* optional */
+    color: #fef155;
+    text-shadow: 0 0 10px rgba(100, 149, 237, 0.5);
+    transform: translateX(10px);
+  }
+
+  .company-links a:focus::before {
+    width: 15px;
   }
 
   .company-links li {
