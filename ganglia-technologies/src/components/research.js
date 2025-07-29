@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import Footer from "./Footer";
-import '../styles/ResearchPapers.css';
+import '../styles/research.css';
 
 function ResearchPapers() {
   const [state, setState] = useState({
@@ -52,7 +52,7 @@ function ResearchPapers() {
     }
   ], []);
 
-  // Optimized scroll handler with debouncing
+  // Optimized scroll handler with debouncing - Faster response
   const handleScroll = React.useCallback(() => {
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
@@ -60,7 +60,7 @@ function ResearchPapers() {
 
     scrollTimeoutRef.current = setTimeout(() => {
       const currentScrollY = window.scrollY;
-      if (Math.abs(currentScrollY - lastScrollY.current) > 10) { // Increased threshold
+      if (Math.abs(currentScrollY - lastScrollY.current) > 10) {
         const newDirection = currentScrollY > lastScrollY.current ? 'down' : 'up';
         setState(prev => ({
           ...prev,
@@ -68,10 +68,10 @@ function ResearchPapers() {
         }));
         lastScrollY.current = currentScrollY;
       }
-    }, 32); // Reduced frequency to 30fps
+    }, 16); // Reduced from 32ms to 16ms for faster response
   }, []);
 
-  // Simplified intersection observer
+  // Optimized intersection observer - Faster detection
   const setupIntersectionObserver = React.useCallback(() => {
     if (observerRef.current) {
       observerRef.current.disconnect();
@@ -84,7 +84,7 @@ function ResearchPapers() {
           let hasChanges = false;
 
           entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.1) { // Reduced threshold
               newVisible.add(entry.target.id);
               hasChanges = true;
             }
@@ -94,12 +94,11 @@ function ResearchPapers() {
         });
       },
       {
-        threshold: [0.2], // Single threshold
-        rootMargin: '100px 0px -50px 0px'
+        threshold: [0.1], // Reduced threshold for faster detection
+        rootMargin: '50px 0px -25px 0px' // Reduced margins
       }
     );
 
-    // Only observe essential elements
     const slideElements = document.querySelectorAll('.slide-element');
     slideElements.forEach((el) => {
       if (el.id && observerRef.current) {
@@ -119,9 +118,9 @@ function ResearchPapers() {
     };
   }, [handleScroll]);
 
-  // Setup intersection observer with delay
+  // Setup intersection observer with reduced delay
   useEffect(() => {
-    const timeoutId = setTimeout(setupIntersectionObserver, 200); // Increased delay
+    const timeoutId = setTimeout(setupIntersectionObserver, 100); // Reduced from 200ms
     return () => {
       clearTimeout(timeoutId);
       if (observerRef.current) {
@@ -134,7 +133,7 @@ function ResearchPapers() {
     return state.visibleElements.has(elementId);
   }, [state.visibleElements]);
 
-  // Simplified AnimatedSection
+  // Optimized AnimatedSection - Faster animations
   const AnimatedSection = React.memo(({ 
     id, 
     className, 
@@ -152,30 +151,30 @@ function ResearchPapers() {
     );
   });
 
-  // Memoized Paper Component
+  // Optimized Paper Component - Updated with new class names
   const PaperCard = React.memo(({ paper }) => (
-    <div className="paper-card">
-      <div className="paper-header">
-        <h3 className="paper-title">{paper.title}</h3>
-        <div className="paper-meta">
-          <span className="paper-type">{paper.type}</span>
-          <span className="paper-status">{paper.status}</span>
+    <div className="research-paper-card">
+      <div className="research-paper-header">
+        <h3 className="research-paper-title">{paper.title}</h3>
+        <div className="research-paper-meta">
+          <span className="research-paper-type">{paper.type}</span>
+          <span className="research-paper-status">{paper.status}</span>
         </div>
       </div>
       
-      <div className="paper-authors">
+      <div className="research-paper-authors">
         <h4>Authors:</h4>
         <p>{paper.authors}</p>
       </div>
 
-      <div className="paper-abstract">
+      <div className="research-paper-abstract">
         <h4>Abstract:</h4>
         {paper.abstract ? (
           <p>{paper.abstract}</p>
         ) : (
-          <div className="abstract-sections">
+          <div className="research-abstract-sections">
             {paper.abstractSections.map((section, index) => (
-              <div key={index} className="abstract-section">
+              <div key={index} className="research-abstract-section">
                 <strong>{section.title}:</strong> {section.content}
               </div>
             ))}
@@ -183,60 +182,40 @@ function ResearchPapers() {
         )}
       </div>
 
-      <div className="paper-keywords">
+      <div className="research-paper-keywords">
         <h4>Keywords:</h4>
-        <div className="keywords-list">
+        <div className="research-keywords-list">
           {paper.keywords.map((keyword, index) => (
-            <span key={index} className="keyword">{keyword}</span>
+            <span key={index} className="research-keyword">{keyword}</span>
           ))}
         </div>
       </div>
     </div>
   ));
 
-  // Simplified animation components (remove heavy animations initially)
-  const SimpleAnimationCollage = React.memo(() => (
-    <div className="research-papers-collage simple-mode">
-      {/* Simplified Paper Stack 1 */}
-      <div className="paper-wrapper top-paper">
-        <div className="paper-inner">
-          <div className="paper-front">
-            <div className="paper-container-simple">
-              <div className="paper-icon">📄</div>
-              <div className="paper-title">Research Papers</div>
-            </div>
-          </div>
-        </div>
+  // Research Stats Component - Updated with new class names
+  const ResearchStats = React.memo(() => (
+    <div className="research-stats">
+      <div className="research-stat-item">
+        <div className="research-stat-icon">📊</div>
+        <div className="research-stat-number">2</div>
+        <div className="research-stat-label">Published Papers</div>
       </div>
-
-      {/* Simplified Chart 2 */}
-      <div className="paper-wrapper bottom-left-paper">
-        <div className="paper-inner">
-          <div className="paper-front">
-            <div className="chart-container-simple">
-              <div className="chart-icon">📊</div>
-              <div className="chart-title">Data Analysis</div>
-            </div>
-          </div>
-        </div>
+      <div className="research-stat-item">
+        <div className="research-stat-icon">🔬</div>
+        <div className="research-stat-number">5+</div>
+        <div className="research-stat-label">Research Areas</div>
       </div>
-
-      {/* Simplified Medical 3 */}
-      <div className="paper-wrapper bottom-right-paper">
-        <div className="paper-inner">
-          <div className="paper-front">
-            <div className="medical-container-simple">
-              <div className="medical-icon">🧬</div>
-              <div className="medical-title">Medical Innovation</div>
-            </div>
-          </div>
-        </div>
+      <div className="research-stat-item">
+        <div className="research-stat-icon">🏆</div>
+        <div className="research-stat-number">100%</div>
+        <div className="research-stat-label">Acceptance Rate</div>
       </div>
     </div>
   ));
 
   return (
-    <div className="research-container" style={{ margin: 0, padding: 0 }}>
+    <div className="research-container">
       {/* Hero Section */}
       <div className="research-hero-section">
         <AnimatedSection
@@ -244,61 +223,69 @@ function ResearchPapers() {
           className="slide-up research-header"
           isVisible={isElementVisible('header')}
         >
-          <h1 className="research-main-title">Research Papers</h1>
-          <h2 className="research-subtitle">
-            <span className="ganglia-highlight">Ganglia</span> Technologies
-          </h2>
-          <p className="research-description">
-            Advancing healthcare through cutting-edge research and innovation
-          </p>
+          <div className="hero-content">
+            <h1 className="research-main-title">Research Papers</h1>
+            <p className="research-description">
+              Advancing healthcare through cutting-edge research and innovation
+            </p>
+            <div className="hero-divider"></div>
+          </div>
         </AnimatedSection>
       </div>
 
-      {/* About Section with Simplified Collage */}
-      <div className="about-section">
-        <div className="about-container">
-          <div className="about-left">
-            <SimpleAnimationCollage />
-          </div>
+      {/* Stats Section - Updated with new class names */}
+      <AnimatedSection
+        id="stats-section"
+        className="slide-up research-stats-section"
+        isVisible={isElementVisible('stats-section')}
+      >
+        <ResearchStats />
+      </AnimatedSection>
 
-          <div className="about-right">
-            <h2 className="about-title">
-              Pioneering <span className="highlight">Medical Research</span>
+      {/* About Section - Updated with new class names */}
+      <AnimatedSection
+        id="about-section"
+        className="slide-up research-about-section"
+        isVisible={isElementVisible('about-section')}
+      >
+        <div className="research-about-container">
+          <div className="research-about-content">
+            <h2 className="research-about-title">
+              Pioneering <span className="research-highlight">Medical Research</span>
             </h2>
-            <p className="about-description">
+            <p className="research-about-description">
               Our research focuses on developing innovative AI-driven solutions for healthcare challenges, 
-              from automated disease detection to advanced medical device technologies.
+              from automated disease detection to advanced medical device technologies. We collaborate with 
+              leading researchers and institutions to push the boundaries of medical innovation.
             </p>
-            <button className="know-more-btn">
-              View Publications
-              <div className="arrow-icon">→</div>
-            </button>
+            <div className="research-areas">
+              <div className="research-area-tag">AI in Healthcare</div>
+              <div className="research-area-tag">Medical Imaging</div>
+              <div className="research-area-tag">Disease Detection</div>
+              <div className="research-area-tag">Explainable AI</div>
+            </div>
           </div>
         </div>
-      </div>
+      </AnimatedSection>
 
-      <div className="research-content-wrapper" style={{ margin: 0, padding: 0 }}>
-        {/* Research Papers Section */}
-        <AnimatedSection
-          id="papers-section"
-          className="slide-up papers-section"
-          isVisible={isElementVisible('papers-section')}
-        >
-          <div className="papers-container">
-            <h2 className="section-title">Published Research Papers</h2>
-            
-            {/* Render papers using memoized component */}
+      {/* Research Papers Section - Updated with new class names */}
+      <AnimatedSection
+        id="papers-section"
+        className="slide-up research-papers-section"
+        isVisible={isElementVisible('papers-section')}
+      >
+        <div className="research-papers-container">
+          <h2 className="research-section-title">Published Research Papers</h2>
+          <div className="research-papers-grid">
             {paperData.map((paper) => (
               <PaperCard key={paper.id} paper={paper} />
             ))}
           </div>
-        </AnimatedSection>
-      </div>
+        </div>
+      </AnimatedSection>
 
       {/* Footer */}
-      <div style={{ margin: 0, padding: 0, marginBottom: 0, paddingBottom: 0 }}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

@@ -20,37 +20,37 @@ function MainComponent() {
   }, []);
 
   return (
-    <div className="page-root">
+    <div className="main-page-root">
       {/* Animated Gradient Bubbles */}
-      <div className="bubbles" aria-hidden>
-        <span className="bubble lg a"></span>
-        <span className="bubble md b"></span>
-        <span className="bubble lg c"></span>
-        <span className="bubble md d"></span>
-        <span className="bubble sm e"></span>
-        <span className="bubble sm f"></span>
+      <div className="main-bubbles" aria-hidden>
+        <span className="main-bubble lg a"></span>
+        <span className="main-bubble md b"></span>
+        <span className="main-bubble lg c"></span>
+        <span className="main-bubble md d"></span>
+        <span className="main-bubble sm e"></span>
+        <span className="main-bubble sm f"></span>
       </div>
       {/* HERO */}
-      <section className="hero-section">
-        <div className="hero-grid">
-          <div className="hero-left">
+      <section className="main-hero-section">
+        <div className="main-hero-grid">
+          <div className="main-hero-left">
             <h1>Anushtaan</h1>
             <h2>The Ultimate AI-Driven Project Management Platform</h2>
-            <p className="hero-tag">Rethink Project Management. Redefine Possibility.</p>
-            <p className="hero-lead">
+            <p className="main-hero-tag">Rethink Project Management. Redefine Possibility.</p>
+            <p className="main-hero-lead">
               Anushtaan isn't just another project management tool—it's a next-generation platform designed for professionals and organizations that demand efficiency, transparency, and intelligent control. Built by Ganglia Technologies, Anushtaan brings powerful AI and human-centered design to every stage of your projects.
             </p>
-            <button className="primary-button">Discover Anushtaan</button>
+            <button className="main-primary-button">Discover Anushtaan</button>
           </div>
-          <div className="hero-right">
-            <div className="hero-logo" aria-label="Logo">🚀</div>
+          <div className="main-hero-right">
+            <div className="main-hero-logo" aria-label="Logo">🚀</div>
           </div>
         </div>
       </section>
       {/* ABOUT */}
-      <section className="about-section">
-        <div className="about-flex">
-          <div className="about-left">
+      <section className="main-about-section">
+        <div className="main-about-flex">
+          <div className="main-about-left">
             <h2>About Anushtaan</h2>
             <p>
               Anushtaan is a highly customizable Project Management Tool designed for professionals and organizations that demand transparency, efficiency, and control. With real-time time tracking, it ensures accurate billing and trust for hourly-based projects.
@@ -59,7 +59,7 @@ function MainComponent() {
               Equipped with an advanced Admin Portal, Anushtaan provides deep visibility into project health through live dashboards, Gantt charts, Kanban boards, financial tracking, and data analytics. Admins can assign tasks, monitor team progress, manage budgets, and oversee quality settings, ensuring projects stay on track.
             </p>
           </div>
-          <aside className="about-features">
+          <aside className="main-about-features">
             <h3>All Features</h3>
             <ul>
               {[
@@ -83,12 +83,12 @@ function MainComponent() {
         </div>
       </section>
       {/* CORE FEATURES */}
-      <section className="core-section">
+      <section className="main-core-section">
         <h2>Core Features</h2>
-        <div className="core-grid">
-          <div className="core-card">
-            <div className="core-card-head">
-              <span className="core-icon">⏱️</span>
+        <div className="main-core-grid">
+          <div className="main-core-card">
+            <div className="main-core-card-head">
+              <span className="main-core-icon">⏱️</span>
               <h3>Intelligent Hours Tracking</h3>
             </div>
             <ul>
@@ -100,9 +100,9 @@ function MainComponent() {
               </li>
             </ul>
           </div>
-          <div className="core-card">
-            <div className="core-card-head">
-              <span className="core-icon">🤖</span>
+          <div className="main-core-card">
+            <div className="main-core-card-head">
+              <span className="main-core-icon">🤖</span>
               <h3>AI-Powered Productivity</h3>
             </div>
             <ul>
@@ -114,9 +114,9 @@ function MainComponent() {
               </li>
             </ul>
           </div>
-          <div className="core-card">
-            <div className="core-card-head">
-              <span className="core-icon">📊</span>
+          <div className="main-core-card">
+            <div className="main-core-card-head">
+              <span className="main-core-icon">📊</span>
               <h3>Dynamic Dashboards</h3>
             </div>
             <ul>
@@ -128,9 +128,9 @@ function MainComponent() {
               </li>
             </ul>
           </div>
-          <div className="core-card">
-            <div className="core-card-head">
-              <span className="core-icon">💬</span>
+          <div className="main-core-card">
+            <div className="main-core-card-head">
+              <span className="main-core-icon">💬</span>
               <h3>Communication & Collaboration</h3>
             </div>
             <ul>
@@ -142,9 +142,9 @@ function MainComponent() {
               </li>
             </ul>
           </div>
-          <div className="core-card">
-            <div className="core-card-head">
-              <span className="core-icon">📋</span>
+          <div className="main-core-card">
+            <div className="main-core-card-head">
+              <span className="main-core-icon">📋</span>
               <h3>Customizable Views</h3>
             </div>
             <ul>
@@ -159,9 +159,9 @@ function MainComponent() {
               </li>
             </ul>
           </div>
-          <div className="core-card">
-            <div className="core-card-head">
-              <span className="core-icon">🔒</span>
+          <div className="main-core-card">
+            <div className="main-core-card-head">
+              <span className="main-core-icon">🔒</span>
               <h3>Security You Can Trust</h3>
             </div>
             <ul>
@@ -176,73 +176,73 @@ function MainComponent() {
         </div>
       </section>
       {/* GLIMPSE SECTION */}
-      <section className="glimpse-section">
+      <section className="main-glimpse-section">
         <h2>Glimpse of Anushtaan</h2>
-        <div className="glimpse-grid">
-          <div className="glimpse-card">
-            <div className="glimpse-art"><span role="img" aria-label="Kanban Board">📋</span></div>
-            <div className="glimpse-label">KANBAN Board</div>
+        <div className="main-glimpse-grid">
+          <div className="main-glimpse-card">
+            <div className="main-glimpse-art"><span role="img" aria-label="Kanban Board">📋</span></div>
+            <div className="main-glimpse-label">KANBAN Board</div>
           </div>
-          <div className="glimpse-card">
-            <div className="glimpse-art"><span role="img" aria-label="Analytics">📊</span></div>
-            <div className="glimpse-label">Project Analytics</div>
+          <div className="main-glimpse-card">
+            <div className="main-glimpse-art"><span role="img" aria-label="Analytics">📊</span></div>
+            <div className="main-glimpse-label">Project Analytics</div>
           </div>
-          <div className="glimpse-card">
-            <div className="glimpse-art"><span role="img" aria-label="Gantt Chart">📈</span></div>
-            <div className="glimpse-label">GANTT Chart</div>
+          <div className="main-glimpse-card">
+            <div className="main-glimpse-art"><span role="img" aria-label="Gantt Chart">📈</span></div>
+            <div className="main-glimpse-label">GANTT Chart</div>
           </div>
-          <div className="glimpse-card">
-            <div className="glimpse-art"><span role="img" aria-label="Admin Portal">⚙️</span></div>
-            <div className="glimpse-label">Admin Portal</div>
+          <div className="main-glimpse-card">
+            <div className="main-glimpse-art"><span role="img" aria-label="Admin Portal">⚙️</span></div>
+            <div className="main-glimpse-label">Admin Portal</div>
           </div>
         </div>
       </section>
       {/* WHY CHOOSE SECTION */}
-      <section className="why-section">
+      <section className="main-why-section">
         <h2>Why Choose Anushtaan?</h2>
-        <div className="why-grid">
-          <div className="why-card">
-            <span className="why-icon">🤖</span>
+        <div className="main-why-grid">
+          <div className="main-why-card">
+            <span className="main-why-icon">🤖</span>
             <h3>AI-Integrated Management</h3>
             <p>From planning to risk assessment, let AI supercharge every aspect of your project workflow.</p>
           </div>
-          <div className="why-card">
-            <span className="why-icon">🎯</span>
+          <div className="main-why-card">
+            <span className="main-why-icon">🎯</span>
             <h3>Precision & Accountability</h3>
             <p>Live tracking, scoring, and comprehensive dashboards ensure every hour, task, and decision counts.</p>
           </div>
-          <div className="why-card">
-            <span className="why-icon">👤</span>
+          <div className="main-why-card">
+            <span className="main-why-icon">👤</span>
             <h3>User-Centric Flexibility</h3>
             <p>Manage work and personal projects side-by-side, adapting the platform to your life and career.</p>
           </div>
-          <div className="why-card">
-            <span className="why-icon">🔒</span>
+          <div className="main-why-card">
+            <span className="main-why-icon">🔒</span>
             <h3>Flexible, Scalable, Secure</h3>
             <p>Whether you're a freelancer, agency, or enterprise, Anushtaan adapts to empower teams of all sizes.</p>
           </div>
         </div>
-        <div className="why-cta">
+        <div className="main-why-cta">
           <h3>Ready to Transform Your Project Management?</h3>
           <p>
             Cut through the noise of project management—choose the power of AI, transparency, and enterprise security.
           </p>
-          <button className="primary-button">Choose Anushtaan</button>
+          <button className="main-primary-button">Choose Anushtaan</button>
         </div>
       </section>
       {/* PRICING */}
-      <section className="pricing-section" ref={pricingRef}>
+      <section className="main-pricing-section" ref={pricingRef}>
         <h2>PRICING</h2>
-        <div className={`pricing-cards${showPricing ? " visible" : ""}`}>
-          <div className="pricing-card">
+        <div className={`main-pricing-cards${showPricing ? " visible" : ""}`}>
+          <div className="main-pricing-card">
             <h3>Free Version</h3>
             <p>Basic features for small teams and personal projects</p>
           </div>
-          <div className="pricing-card premium">
+          <div className="main-pricing-card premium">
             <h3>Premium</h3>
             <p>Advanced AI features, unlimited projects, and priority support for growing teams</p>
           </div>
-          <div className="pricing-card">
+          <div className="main-pricing-card">
             <h3>Enterprise</h3>
             <p>Full customization, on-premises deployment, and dedicated support for large organizations</p>
           </div>
