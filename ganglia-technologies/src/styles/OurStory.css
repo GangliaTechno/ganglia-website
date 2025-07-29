@@ -55,20 +55,133 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .mission-benefit-card {
-    padding: 30px 20px;
+  .aboutus-content-wrapper {
+    padding: 100px 1rem 0 1rem;
   }
-  
+
+  .aboutus-header {
+    margin-top: 150px;
+  }
+
+  .stacking-card {
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Disable hover effects on mobile for better performance */
+  .stacking-card:hover {
+    transform: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+
+  .stacking-card:hover::before {
+    animation: none;
+    opacity: 0;
+  }
+
+  .mission-card {
+    padding: 2rem;
+    min-height: auto;
+  }
+
+  .mission-card-content,
+  .mission-card-content-right {
+    max-width: 100%;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  /* HIDE MISSION ICONS ON MOBILE */
+  .mission-icon,
+  .mission-icon-1,
   .mission-icon-gif {
-    width: 42px;
-    height: 42px;
+    display: none !important;
   }
-  
-  .mission-benefit-card h3 {
-    font-size: 1.2rem;
+
+  /* REPOSITION MISSION TITLES TO TOP OF CONTAINER */
+  .mission-title,
+  .mission-title-left {
+    position: static; /* Remove absolute positioning */
+    font-size: 24px;
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 2rem; /* Add bottom margin for spacing */
+    order: -1; /* Move to top if using flexbox */
+    text-align: center; /* Center align on mobile */
+    padding: 0 1rem; /* Add horizontal padding */
+  }
+
+  /* Make mission cards flex containers to control order */
+  .mission-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    min-height: auto;
+  }
+
+  /* Ensure content comes after title */
+  .mission-card-content,
+  .mission-card-content-right {
+    order: 1;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .value-card {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Tech milestones mobile optimizations */
+  .tech-milestones-wrapper {
+    margin: 2rem 0;
+    padding: 2rem 0;
+  }
+
+  .tech-timeline-container {
+    padding: 1rem;
+    height: auto;
+    overflow: visible;
+  }
+
+  .tech-milestones-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: auto;
+    overflow: visible;
+  }
+
+  .tech-milestone-card {
+    position: relative !important;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .timeline-spine {
+    left: 2rem;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    height: 100%;
+    transform: none;
+  }
+
+  .timeline-connector {
+    display: none;
   }
 }
-
 
 
 /* GPU-accelerated animations only for critical elements */
