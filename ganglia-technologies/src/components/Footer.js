@@ -54,26 +54,37 @@ const Footer = () => {
           </div>
 
           <div className="footer-contact">
-            <div className="contact-item">
-              <div className="contact-icon">
-                <Lottie animationData={emailIcon} loop autoplay style={{ height: 40, width: 40 }} />
-              </div>
-              <div className="contact-details">
-                <h4>Email</h4>
-                <p>director@ganglia.in</p>
-              </div>
-            </div>
+          <div className="contact-item">
+  <a
+    href="https://mail.google.com/mail/?view=cm&fs=1&to=director@ganglia.in"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="contact-link"
+  >
+    <div className="contact-icon">
+      <Lottie animationData={emailIcon} loop autoplay style={{ height: 40, width: 40 }} />
+    </div>
+    <div className="contact-details">
+      <h4>Email</h4>
+      <p>director@ganglia.in</p>
+    </div>
+  </a>
+</div>
 
-            <div className="contact-item">
-              <div className="contact-icon">
-                <Lottie animationData={callIcon} loop autoplay style={{ height: 40, width: 40 }} />
-              </div>
-              <div className="contact-details">
-                <h4>Phone</h4>
-                <p>(+91) 81097 82903</p>
-              </div>
-            </div>
-          </div>
+
+  <div className="contact-item">
+    <a href="tel:+918109782903" className="contact-link">
+      <div className="contact-icon">
+        <Lottie animationData={callIcon} loop autoplay style={{ height: 40, width: 40 }} />
+      </div>
+      <div className="contact-details">
+        <h4>Phone</h4>
+        <p>(+91) 81097 82903</p>
+      </div>
+    </a>
+  </div>
+</div>
+
         </div>
 
         <div className="footer-right">
@@ -97,21 +108,22 @@ const Footer = () => {
             <button className="contact-btn">Subscribe</button>
 
             <div className="social-icons">
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M20 2H4C2.9 2 2 2.9 2 4V20C2 21.1 2.9 22 4 22H12.6V14.2H10.2V11.2H12.6V9C12.6 6.6 14.1 5.3 16.3 5.3C17.3 5.3 18.2 5.4 18.5 5.4V8.1H17C15.8 8.1 15.6 8.7 15.6 9.5V11.2H18.4L18 14.2H15.6V22H20C21.1 22 22 21.1 22 20V4C22 2.9 21.1 2 20 2Z" fill="currentColor"/>
-                </svg>
-              </a>
-              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Twitter">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M23 3C22.0424 3.67548 20.9821 4.19211 19.86 4.53C19.2577 3.83751 18.4573 3.34669 17.567 3.12393C16.6767 2.90116 15.7395 2.95718 14.8821 3.28445C14.0247 3.61173 13.2884 4.19445 12.773 4.95371C12.2575 5.71297 11.9877 6.61435 12 7.53V8.53C10.2426 8.57557 8.50127 8.18581 6.93101 7.39624C5.36074 6.60667 4.01032 5.43666 3 4C3 4 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.5C20.9991 7.22145 20.9723 6.94359 20.92 6.67C21.9406 5.66349 22.6608 4.39271 23 3V3Z" fill="currentColor"/>
-                </svg>
-              </a>
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.194 3.305 5.337 3.305C6.477 3.305 7.401 4.23 7.401 5.368C7.401 6.507 6.476 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z" fill="currentColor"/>
-                </svg>
-              </a>
+            <a href="https://www.facebook.com/people/Ganglia-Technologies-Private-Limited/100093543685978/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M20 2H4C2.9 2 2 2.9 2 4V20C2 21.1 2.9 22 4 22H12.6V14.2H10.2V11.2H12.6V9C12.6 6.6 14.1 5.3 16.3 5.3C17.3 5.3 18.2 5.4 18.5 5.4V8.1H17C15.8 8.1 15.6 8.7 15.6 9.5V11.2H18.4L18 14.2H15.6V22H20C21.1 22 22 21.1 22 20V4C22 2.9 21.1 2 20 2Z" fill="currentColor"/>
+  </svg>
+</a>
+<a href="https://x.com/Ganglia_in" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="X">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M17.53 2H21.5L14.5 10.15L22.67 22H16.16L10.98 14.85L4.97 22H1L8.39 13.23L0.5 2H7.16L12 8.6L17.53 2ZM16.36 20H18.13L6.32 3.93H4.42L16.36 20Z" fill="currentColor"/>
+  </svg>
+</a>
+<a href="https://www.linkedin.com/company/ganglia-technologies-private-limited" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.194 3.305 5.337 3.305C6.477 3.305 7.401 4.23 7.401 5.368C7.401 6.507 6.476 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z" fill="currentColor"/>
+  </svg>
+</a>
+
             </div>
           </div>
         </div>
