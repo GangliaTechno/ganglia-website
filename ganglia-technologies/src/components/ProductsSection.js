@@ -66,8 +66,8 @@ const ProductsSection = () => {
   const bottomRowProducts = [
     {
       id: 'smart-laryngoscope',
-      title: 'Smart Video',
-      subtitle: 'Laryngoscope',
+      title: 'Smart Video Laryngoscope',
+      subtitle: '',
       category: 'dark',
       image: require('../assets/lanyngoscope.png'),
       isAvailable: true
@@ -90,8 +90,8 @@ const ProductsSection = () => {
     },
     {
       id: 'thermal-imaging',
-      title: 'Thermal-Imaging',
-      subtitle: 'System',
+      title: 'Thermal Imaging System',
+      subtitle: '',
       category: 'blue',
       image: require('../assets/thermal image.png'),
       isAvailable: false

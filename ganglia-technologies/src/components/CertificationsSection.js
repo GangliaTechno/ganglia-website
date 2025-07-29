@@ -124,9 +124,10 @@ const CertificationsSection = () => {
         </h2>
         
         <p className="certifications-description">
-          We are proud of our achievements in innovation and excellence. From securing patents to winning 
-          industry awards, our work is making a real impact. Here are some of our key Certifications
-        </p>
+  We are proud of our achievements in innovation and excellence. From securing patents to winning 
+  industry awards, our work is making a real impact. Here are some of our key certifications
+</p>
+
 
         <div className="certifications-grid">
           {certifications.map((cert, index) => (
