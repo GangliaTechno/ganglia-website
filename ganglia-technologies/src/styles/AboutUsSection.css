@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 40px;
+  padding: 80px 0;
 }
 
 .about-container {
@@ -16,6 +16,10 @@
   width: 100%;
   align-items: center;
   gap: 0px;
+  position: relative;
+  z-index: 2; /* Higher than section but below navbar */
+  padding: 0 60px;
+  flex-direction: row;
 }
 
 .about-left {

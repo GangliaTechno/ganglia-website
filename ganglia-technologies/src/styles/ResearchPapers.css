@@ -85,38 +85,11 @@
 /* Import the existing about section styles */
 /* (Include all the CSS you provided for the about section here) */
 
-.about-section {
-  position: relative;
-  width: 100%;
-  min-height: auto;
-  background: url("../assets/aboutusbg.png") no-repeat center top;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 40px;
-}
 
-.about-container {
-  display: flex;
-  max-width: 1400px;
-  width: 100%;
-  align-items: center;
-  gap: 0px;
-}
 
-.about-left {
-  position: relative;
-  flex: 1;
-}
 
-.image-collage {
-  position: relative;
-  width: 650px;
-  height: 900px;
-  perspective: 1500px;
-  border-radius: 25px;
-}
+
+
 
 .image-wrapper {
   position: absolute;

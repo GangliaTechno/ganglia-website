@@ -9,6 +9,7 @@ import AboutUsSection from './components/AboutUsSection';
 import ProductsSection from './components/ProductsSection';
 import StatsStrip from './components/StatsStrip';
 import Services from './components/Services';
+import ServicesPage from './components/servicespage';
 import TeamSection from './components/TeamSection';
 import CertificationsSection from './components/CertificationsSection';
 import Footer from './components/Footer';
@@ -100,6 +101,7 @@ function App() {
           <Route path="/main-component" element={<MainComponent />} />
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/get-started" element={<GetStartedForm />} />
+           <Route path="/services" element={<ServicesPage />} />
           
           {/* ✅ Catch-all route for 404s */}
           <Route path="*" element={<NotFoundPage />} />

@@ -1,6 +1,15 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import Footer from "./Footer";
+
+let laryImage;
+try {
+  laryImage = require('../assets/lanyngoscope1.png');
+} catch (error) {
+  laryImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 280 280'%3E%3Crect width='280' height='280' fill='%23374151' rx='10'/%3E%3Ctext x='140' y='140' text-anchor='middle' fill='%23ffffff' font-size='16'%3ELaryngoscope%3C/text%3E%3C/svg%3E";
+}
+
+
 
 function LaryngoscopeComponent() {
   const keyframes = `
@@ -121,12 +130,21 @@ function LaryngoscopeComponent() {
     { feature: 'AI Processing', prototype1: 'Real-time Detection', prototype2: 'Advanced ML Algorithms' },
     { feature: 'Display Output', prototype1: 'HD Video Stream', prototype2: '4K + Mobile Compatible' }
   ];
+  const getImageSrc = useCallback((imageModule, fallback) => {
+      if (typeof imageModule === 'string') {
+        return imageModule;
+      } else if (imageModule && imageModule.default) {
+        return imageModule.default;
+      }
+      return fallback;
+    }, []);
 
   // ECG Divider Component
   const ECGDivider = ({ variant = 1 }) => {
+    // Extended left part pattern to cover full width
     const ecgPath = variant === 1 
-      ? "M0,50 L100,50 L120,50 L130,20 L140,80 L150,10 L160,90 L170,50 L200,50 L300,50 L320,50 L330,30 L340,70 L350,20 L360,80 L370,50 L400,50 L1200,50"
-      : "M0,50 L80,50 L90,50 L100,25 L110,75 L120,15 L130,85 L140,50 L180,50 L280,50 L290,50 L300,35 L310,65 L320,25 L330,75 L340,50 L380,50 L1200,50";
+      ? "M0,50 Q20,45 40,50 Q60,55 80,50 Q100,45 120,50 L130,20 L140,80 L150,10 L160,90 L170,50 Q190,45 210,50 Q230,55 250,50 Q270,45 290,50 Q310,55 320,50 L330,30 L340,70 L350,20 L360,80 L370,50 Q390,45 410,50 Q430,55 450,50 Q470,45 490,50 Q510,55 530,50 Q550,45 570,50 Q590,55 610,50 Q630,45 650,50 Q670,55 690,50 Q710,45 730,50 Q750,55 770,50 Q790,45 810,50 Q830,55 850,50 Q870,45 890,50 Q910,55 930,50 Q950,45 970,50 Q990,55 1010,50 Q1030,45 1050,50 Q1070,55 1090,50 Q1110,45 1130,50 Q1150,55 1170,50 Q1190,45 1200,50"
+      : "M0,50 Q15,48 30,50 Q45,52 60,50 Q75,48 90,50 L100,25 L110,75 L120,15 L130,85 L140,50 Q155,48 170,50 Q185,52 200,50 Q215,48 230,50 Q245,52 260,50 Q275,48 290,50 L300,35 L310,65 L320,25 L330,75 L340,50 Q355,48 370,50 Q385,52 400,50 Q415,48 430,50 Q445,52 460,50 Q475,48 490,50 Q505,52 520,50 Q535,48 550,50 Q565,52 580,50 Q595,48 610,50 Q625,52 640,50 Q655,48 670,50 Q685,52 700,50 Q715,48 730,50 Q745,52 760,50 Q775,48 790,50 Q805,52 820,50 Q835,48 850,50 Q865,52 880,50 Q895,48 910,50 Q925,52 940,50 Q955,48 970,50 Q985,52 1000,50 Q1015,48 1030,50 Q1045,52 1060,50 Q1075,48 1090,50 Q1105,52 1120,50 Q1135,48 1150,50 Q1165,52 1180,50 Q1195,48 1200,50";
 
     return (
       <div style={{
@@ -176,14 +194,14 @@ function LaryngoscopeComponent() {
             fill="none"
             stroke="url(#ecgGradient)"
             strokeWidth="3"
-            strokeDasharray="1000"
-            strokeDashoffset="1000"
+            strokeDasharray="2000"
+            strokeDashoffset="2000"
             style={{
-              animation: 'heartbeat 4s ease-in-out infinite'
+              animation: 'ecgFlow 4s linear infinite'
             }}
           />
           
-          {/* Heartbeat pulse indicators */}
+          {/* Heartbeat pulse indicators - only at the ECG spike locations */}
           <circle 
             cx="150" 
             cy="50" 
@@ -204,31 +222,40 @@ function LaryngoscopeComponent() {
           />
         </svg>
 
-        {/* Heart icon */}
-        <div style={{
-          position: 'absolute',
-          right: '50px',
-          fontSize: '24px',
-          color: '#00CED1',
-          animation: 'ecgPulse 2s ease-in-out infinite'
-        }}>
-          ❤️
-        </div>
-
-        {/* BPM indicator */}
-        <div style={{
-          position: 'absolute',
-          left: '50px',
-          fontSize: '16px',
-          color: '#00CED1',
-          fontWeight: '600',
-          fontFamily: 'monospace'
-        }}>
-          72 BPM
-        </div>
+        <style jsx>{`
+          @keyframes ecgFlow {
+            0% {
+              stroke-dashoffset: 2000;
+            }
+            100% {
+              stroke-dashoffset: 0;
+            }
+          }
+          
+          @keyframes heartbeatGlow {
+            0%, 100% {
+              filter: drop-shadow(0 0 5px rgba(0, 206, 209, 0.5));
+            }
+            50% {
+              filter: drop-shadow(0 0 15px rgba(0, 206, 209, 0.8));
+            }
+          }
+          
+          @keyframes ecgPulse {
+            0%, 100% {
+              opacity: 0.6;
+              transform: scale(1);
+            }
+            50% {
+              opacity: 1;
+              transform: scale(1.3);
+            }
+          }
+        `}</style>
       </div>
     );
-  };
+};
+
 
   return (
     <div>
@@ -393,33 +420,17 @@ function LaryngoscopeComponent() {
               order: 1 
             }}>
               {/* Device visualization with corrected image */}
-              <div style={{
-                width: '300px',
-                height: '300px',
-                borderRadius: '20px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '2px solid rgba(0, 206, 209, 0.3)',
-                overflow: 'hidden',
-                backgroundColor: 'rgba(0, 206, 209, 0.1)'
-              }}>
+              
                 <img
-                  src="/assets/laryngoscope.jpg"
-                  alt="Ganglia Smart Video-Laryngoscope"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    borderRadius: '18px'
-                  }}
-                  onError={(e) => {
-                    // Fallback to microscope emoji if image fails to load
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = '<div style="font-size: 64px; color: #00CED1;">🔬</div>';
-                  }}
-                />
-              </div>
+      src={getImageSrc(laryImage, laryImage)}
+      alt="laryngoscope"
+      
+      onError={(e) => {
+        console.warn("Idea GIF failed to load, using fallback");
+        e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Ccircle cx='12' cy='12' r='6'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3C/svg%3E";
+      }}
+    />
+              
             </div>
           </div>
         </div>
