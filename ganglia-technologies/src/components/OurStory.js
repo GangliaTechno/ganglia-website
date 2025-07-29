@@ -7,11 +7,22 @@ import '../styles/OurStory.css';
 
 // Static imports for images with fallbacks
 let aboutusImage;
-
+let targetGif;
+let ideaGif;
 try {
   aboutusImage = require('../assets/aboutus.svg');
 } catch (error) {
   aboutusImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23001a4d;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23000814;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='600' fill='url(%23bg)'/%3E%3Cg transform='translate(200,150)'%3E%3Crect width='800' height='300' fill='%23374151' rx='20'/%3E%3Ccircle cx='150' cy='150' r='40' fill='%234B5563'/%3E%3Ccircle cx='300' cy='150' r='40' fill='%234B5563'/%3E%3Ccircle cx='450' cy='150' r='40' fill='%234B5563'/%3E%3Ccircle cx='600' cy='150' r='40' fill='%234B5563'/%3E%3Ccircle cx='650' cy='150' r='40' fill='%234B5563'/%3E%3Ctext x='400' y='250' text-anchor='middle' fill='%239CA3AF' font-size='24'%3ETeam Silhouette%3C/text%3E%3C/g%3E%3C/svg%3E";
+}
+try {
+  targetGif = require('../assets/rocket.gif');
+} catch (error) {
+  targetGif = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Ccircle cx='12' cy='12' r='6'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3C/svg%3E";
+}
+try {
+  ideaGif = require('../assets/idea.gif');
+} catch (error) {
+  ideaGif = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2'%3E%3Cpath d='M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM9.5 16h5v-1h-5v1zm1-3h3v-1h-3v1zm0-2h3V9h-3v2z'/%3E%3C/svg%3E";
 }
 
 // Memoized star component to prevent unnecessary re-renders
@@ -244,7 +255,7 @@ function OurStory() {
               <p className="section-text">
                 At Ganglia Technologies, we believe in a future where world-class
                 healthcare and technological automation are not luxuries for the
-                few, but rights for all. We exist to break barriers—to redefine
+                few, but rights for all. We exist to break barriers to redefine
                 what's possible for those who refuse to settle for less. Every
                 morning, we wake up driven by a single question: How can we make
                 life better, easier, safer?
@@ -269,13 +280,13 @@ function OurStory() {
               <p className="section-text-with-margin">
                 We challenge the status quo by blending deep engineering, medical
                 expertise, and actual human empathy. For us, technology is not
-                about cold code or plastic and wires—it's about people.
+                about cold code or plastic and wires it's about people.
               </p>
               <ul className="feature-list">
                 <li className="feature-list-item">
                   <span className="feature-bullet">•</span>
                   <span>
-                    We engineer bold ideas into practical tools—medical devices
+                    We engineer bold ideas into practical tools, medical devices
                     that heal without trauma, ICU solutions that reach the
                     remotest highways, and software that thinks, learns, and
                     empowers.
@@ -284,14 +295,14 @@ function OurStory() {
                 <li className="feature-list-item">
                   <span className="feature-bullet">•</span>
                   <span>
-                    We make innovation affordable—cutting-edge, AI-powered,
+                    We make innovation affordable cutting-edge, AI-powered,
                     beautifully simple, and always within reach.
                   </span>
                 </li>
                 <li className="feature-list-item">
                   <span className="feature-bullet">•</span>
                   <span>
-                    We obsess over every detail—from a laryngoscope's ergonomic
+                    We obsess over every detail from a laryngoscope's ergonomic
                     grip to seamless software UI, from clinical accuracy to
                     planetary impact.
                   </span>
@@ -315,7 +326,7 @@ function OurStory() {
                 <span className="yellow-highlight">What</span> We Create
               </h3>
               <p className="section-text-with-margin">
-                We build solutions that don't just work—they inspire.
+                We build solutions that don't just work, they inspire.
               </p>
               <ul className="feature-list">
                 <li className="feature-list-item-large">
@@ -331,7 +342,7 @@ function OurStory() {
                   <span>
                     <strong>Mobile ICUs</strong> designed for rapid deployment,
                     capable of turning accident sites into sanctuaries of survival
-                    within minutes—because every second matters.
+                    within minutes because every second matters.
                   </span>
                 </li>
                 <li className="feature-list-item-large">
@@ -375,7 +386,7 @@ function OurStory() {
               <h3 className="section-title">The Impact</h3>
               <p className="section-text">
                 We are more than inventors. We are partners in
-                progress—collaborating with healthcare leaders, serving
+                progress collaborating with healthcare leaders, serving
                 institutions and patients, and reaching underserved communities
                 with solutions that change lives.
               </p>
@@ -424,29 +435,57 @@ function OurStory() {
 
           <div className="mission-cards-container">
             <div id="mission-card-1" className="mission-card">
-              <div className="mission-card-content">
-                <p className="mission-quote">
-                  "To be the most preferred cost-effective medical device developer and automation solution provider by 2032."
-                </p>
-                <p className="mission-description">
-                  Ganglia Technologies was founded on a belief that transcends creating medical devices and automation solutions. The company exists to redefine what's possible for people and institutions who refuse to settle for less. This deep sense of purpose drives Ganglia to challenge the status quo in healthcare and technology, striving to make advanced solutions accessible not as a privilege, but as a fundamental right.
-                </p>
-              </div>
-              <h4 className="mission-title">Our Vision</h4>
-            </div>
+  <div className="mission-card-content">
+    <p className="mission-quote">
+      "To be the most preferred cost-effective medical device developer and automation solution provider by 2032."
+    </p>
+    <p className="mission-description">
+      Ganglia Technologies was founded on a belief that transcends creating medical devices and automation solutions. The company exists to redefine what's possible for people and institutions who refuse to settle for less. This deep sense of purpose drives Ganglia to challenge the status quo in healthcare and technology, striving to make advanced solutions accessible not as a privilege, but as a fundamental right.
+    </p>
+  </div>
+  <div className="mission-card-right">
+    <img
+      src={getImageSrc(ideaGif, ideaGif)}
+      alt="Mission Icon"
+      className="mission-icon-1"
+      onError={(e) => {
+        console.warn("Idea GIF failed to load, using fallback");
+        e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Ccircle cx='12' cy='12' r='6'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3C/svg%3E";
+      }}
+    />
+    <h4 className="mission-title">Our Vision</h4>
+  </div>
+</div>
 
-            <div id="mission-card-2" className="mission-card">
-              <div className="mission-card-content-right">
-                <p className="mission-quote">
-                  "We leverage engineering, AI, and medical expertise to develop affordable, high-quality solutions that improve lives and streamline operations for businesses and institutions."
-                </p>
-                <p className="mission-description-center">
-                  • <strong>Empowering Human Potential:</strong> Ganglia's core belief is in making the world better, easier, and safer for everyone. The mission is not solely to innovate, but to ensure those innovations reach communities and institutions often overlooked by the traditional tech industry.<br/><br/>
-                  • <strong>Bridging Gaps, Not Just Engineering Products:</strong> Ganglia aims to eliminate the barriers that keep life-saving technology out of reach in underserved regions, ensuring that world-class healthcare and automation opportunities are available to all.
-                </p>
-              </div>
-              
-              <h4 className="mission-title-left">Our Mission</h4>
+
+           <div id="mission-card-2" className="mission-card">
+  <div className="mission-card-content-right">
+    <p className="mission-quote">
+      "We leverage engineering, AI, and medical expertise to develop affordable, high-quality solutions that improve lives and streamline operations for businesses and institutions."
+    </p>
+    <p className="mission-description-center">
+      <strong>Empowering Human Potential:</strong> Ganglia's core belief is in making the world better, easier, and safer for everyone. The mission is not solely to innovate, but to ensure those innovations reach communities and institutions often overlooked by the traditional tech industry.<br/><br/>
+      <strong>Bridging Gaps, Not Just Engineering Products:</strong> Ganglia aims to eliminate the barriers that keep life-saving technology out of reach in underserved regions, ensuring that world-class healthcare and automation opportunities are available to all.
+    </p>
+  </div>
+  <img
+      src={getImageSrc(targetGif, targetGif)}
+      alt="Mission Icon"
+      className="mission-icon"
+      onError={(e) => {
+        console.warn("Target GIF failed to load, using fallback");
+        e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Ccircle cx='12' cy='12' r='6'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3C/svg%3E";
+      }}
+    />
+  <div className="mission-title-container">
+    {/* Icon first (top) */}
+    
+    {/* Heading second (bottom) */}
+    <h4 className="mission-title-left">Our Mission</h4>
+  </div>
+
+
+
             </div>
           </div>
 
@@ -467,9 +506,9 @@ function OurStory() {
                 isVisible={isElementVisible('value-card-1')}
                 scrollDirection={state.scrollDirection}
               >
-                <h5 className="value-card-title">Human-Centricity</h5>
+                <h5 className="value-card-title">Human Centricity</h5>
                 <p className="value-card-description">
-                  Every innovation is designed around real human needs—whether that's a trauma-free laryngoscope for clinicians or a user-friendly medical logbook for young doctors and nurses.
+                  Every innovation is designed around real human needs whether that's a trauma-free laryngoscope for clinicians or a user-friendly medical logbook for young doctors and nurses.
                 </p>
               </AnimatedSection>
               <AnimatedSection
@@ -491,46 +530,44 @@ function OurStory() {
               >
                 <h5 className="value-card-title">Innovation with Impact</h5>
                 <p className="value-card-description">
-                  Each solution—from emergency mobile ICUs to AI-powered travel planning—addresses genuine challenges impacting health, education, and operational efficiency.
+                  Each solution from emergency mobile ICUs to AI-powered travel planning addresses genuine challenges impacting health, education, and operational efficiency.
                 </p>
               </AnimatedSection>
             </div>
           </div>
 
           {/* Broader Impact Section - WITH particle effects - NO ANIMATION */}
-          <div className="broader-impact-section">
+        
             <h3 id="broader-impact-title" className="broader-impact-title">
               Broader Impact
             </h3>
-            <div id="broader-impact-content" className="broader-impact-content">
-              <div className="card-overlay">
-                <CardParticleEffect />
-              </div>
-              <div className="card-content">
+            
+              
+              
                 <p className="broader-impact-text">
                   Ganglia Technologies actively collaborates with healthcare leaders, businesses, and government institutions to:
                 </p>
                 <ul className="broader-impact-list">
                   <li className="broader-impact-item">
-                    <span className="feature-bullet">•</span>
+                    
                     <span>Support underserved communities with technology that has the power to save lives and uplift local infrastructure.</span>
                   </li>
                   <li className="broader-impact-item">
-                    <span className="feature-bullet">•</span>
-                    <span>Foster learning environments—helping hospitals, interns, and junior doctors grow through better accountability and knowledge-sharing.</span>
+                    
+                    <span>Foster learning environments helping hospitals, interns, and junior doctors grow through better accountability and knowledge-sharing.</span>
                   </li>
                   <li className="broader-impact-item">
-                    <span className="feature-bullet">•</span>
-                    <span>Drive social change by making transformative technology the new standard—not just a luxury for a select few.</span>
+                    
+                    <span>Drive social change by making transformative technology the new standard not just a luxury for a select few.</span>
                   </li>
                 </ul>
                 <p className="broader-impact-conclusion">
                   Ganglia Technologies exists not just to build things, but to drive progress, inspire action, and create a future where technology is quietly, powerfully, and meaningfully woven into the everyday lives of people everywhere.
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
+            
+          
+        
 
         {/* Tech Milestones Section */}
         <TechMilestonesTimeline />

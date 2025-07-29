@@ -21,6 +21,56 @@
   will-change: auto;
 }
 
+
+
+.mission-benefit-icon {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mission-icon {
+  width: 208px;
+  height: 208px;
+  margin-top: -70rem;
+  margin-bottom: 90px;
+}
+.mission-icon-1 {
+  width: 208px;
+  height: 208px;
+  margin-bottom: 5rem;
+  object-fit: contain;
+  margin-left: 52rem;
+  margin-top: -20rem;
+
+}
+
+.mission-benefit-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: var(--accent-color);
+  margin: 0; /* Remove default margins */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mission-benefit-card {
+    padding: 30px 20px;
+  }
+  
+  .mission-icon-gif {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .mission-benefit-card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
+
 /* GPU-accelerated animations only for critical elements */
 .slide-element,
 .stacking-card,
@@ -168,11 +218,13 @@
   background: var(--bg-dark);
   color: white;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: hidden; /* This removes horizontal scrollbar */
+  overflow-y: auto; /* Keep vertical scrolling */
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 
 /* Optimized loading state */
 .loading-container {
