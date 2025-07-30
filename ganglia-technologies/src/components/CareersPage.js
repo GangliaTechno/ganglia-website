@@ -352,24 +352,11 @@ const CareersPage = () => {
               filteredJobs.map(job => (
                 <div
                   key={job.id}
-                  className={`careers-job-card ${
-                    isMobile
-                      ? (expandedJobCard === job.id ? 'expanded' : 'collapsed')
-                      : 'expanded'
-                  }`}
+                  className="careers-job-card expanded"
                   data-category={job.category}
-                  onClick={() => {
-                    if (isMobile) handleJobCardClick(job.id);
-                  }}
+
                 >
-                  {/* Only show mobile title row when mobile */}
-                  {isMobile && (
-                    <div className="careers-job-card-content">
-                      <div className="careers-job-card-title-only">
-                        {job.title}
-                      </div>
-                    </div>
-                  )}
+                  
 
                   {/* Full Content View - Expanded */}
                   <div className="careers-job-card-full-content">
@@ -512,7 +499,7 @@ const CareersPage = () => {
               <p>Contribute to actual product features and research initiatives that impact thousands of healthcare professionals.</p>
             </div>
             <div className="careers-highlight-card">
-              <div className="careers-highlight-icon"><Player autoplay loop src={launch} style={{ height: 55, width: 55 }} /></div>
+              <div className="careers-highlight-icon"><Player autoplay loop src={launch} style={{ height: 55, width: 55 }} />< /div>
               <h3>Career Launch</h3>
               <p>Kickstart your career with a company that's revolutionizing healthcare.</p>
             </div>

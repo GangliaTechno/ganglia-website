@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import Footer from "./Footer";
-import '../styles/GetStartedForm.css';
+import '../styles/getstarted.css';
 
 function GetStartedForm() {
   const [state, setState] = useState({
@@ -139,9 +139,6 @@ function GetStartedForm() {
         <div className="floating-orb orb-blue"></div>
       </div>
 
-      {/* Hero Section */}
-      
-
       {/* Main Form Section */}
       <div className="form-content-wrapper">
         <AnimatedSection
@@ -154,7 +151,7 @@ function GetStartedForm() {
             <div className="form-card">
               <h2 className="form-title-modern">Get Started with Ganglia Technologies</h2>
               <p className="form-subtitle-modern">
-                implementing our solutions or interested in collaborating on research? 
+                Implementing our solutions or interested in collaborating on research? 
                 Fill out the form below and we'll get back to you.
               </p>
 

@@ -22,6 +22,7 @@ import TripMacha from './components/tripmacha';
 import Laryngoscope from './components/laryngoscope';
 import MainComponent from './components/MainComponent';
 import MedlogBookPlatform from './components/MedlogBookPlatform';
+import Blogs from './components/blogs';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
 import ResearchPapers from './components/research'
@@ -102,7 +103,8 @@ function App() {
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/get-started" element={<GetStartedForm />} />
            <Route path="/services" element={<ServicesPage />} />
-          
+           <Route path="/blogs" element={<Blogs />} />
+
           {/* ✅ Catch-all route for 404s */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

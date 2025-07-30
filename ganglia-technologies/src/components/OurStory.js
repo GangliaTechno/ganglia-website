@@ -420,15 +420,7 @@ function OurStory() {
         </AnimatedSection>
 
         {/* Ganglia Story Section - Full Width - NO ANIMATION */}
-        <div id="ganglia-story" className="ganglia-story-section">
-          <p className="story-subtitle">
-            Unsatisfied with existing technology
-          </p>
-          <h3 className="story-title">
-            The <span className="ganglia-text">Ganglia</span> Story
-          </h3>
-        </div>
-
+       
         {/* Philosophy Section - NO ANIMATIONS */}
         <div id="philosophy-header" className="philosophy-section">
           <h3 className="philosophy-title">Philosophy</h3>
@@ -572,6 +564,39 @@ function OurStory() {
         {/* Tech Milestones Section */}
         <TechMilestonesTimeline />
       </div>
+
+
+      {/* Social Responsibility Section */}
+<div id="social-responsibility-section" className="social-responsibility-section">
+  <h3 className="social-responsibility-title">
+    Social Responsibility: Technology for Good
+  </h3>
+  <p className="social-responsibility-text">
+    At Ganglia Technologies, our commitment to social responsibility runs deep—it shapes not only what we create but how we create it. We focus on sustainable, inclusive impact by:
+  </p>
+  <ul className="social-responsibility-list">
+    <li>
+      <span className="feature-bullet">•</span>
+      Ensuring affordability with accessible pricing models designed to bring advanced healthcare technology within reach of underserved communities.
+    </li>
+    <li>
+      <span className="feature-bullet">•</span>
+      Empowering the next generation through comprehensive training and education programs that equip interns, healthcare workers, and local professionals with essential skills and knowledge.
+    </li>
+    <li>
+      <span className="feature-bullet">•</span>
+      Championing environmental stewardship by integrating eco-friendly design principles and sustainable manufacturing processes into every product we build.
+    </li>
+    <li>
+      <span className="feature-bullet">•</span>
+      Engaging deeply with communities through outreach initiatives that foster lasting social change and strengthen local healthcare ecosystems.
+    </li>
+  </ul>
+  <p className="social-responsibility-conclusion">
+    Our promise goes far beyond products, it is woven into the fabric of every community we serve, driving progress that is ethical, lasting, and meaningful.
+  </p>
+</div>
+
        
       <Footer />  
     </div>
