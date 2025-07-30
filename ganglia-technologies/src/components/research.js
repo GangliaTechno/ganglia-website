@@ -1,18 +1,9 @@
 "use client";
-import React, { useRef, useEffect, useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import Footer from "./Footer";
 import '../styles/research.css';
 
 function ResearchPapers() {
-  const [state, setState] = useState({
-    visibleElements: new Set(['header']),
-    scrollDirection: 'down'
-  });
-
-  const observerRef = useRef(null);
-  const lastScrollY = useRef(0);
-  const scrollTimeoutRef = useRef(null);
-
   // Memoize paper data to prevent re-renders
   const paperData = useMemo(() => [
     {
@@ -52,97 +43,11 @@ function ResearchPapers() {
     }
   ], []);
 
-  // Optimized scroll handler with debouncing - Faster response
-  const handleScroll = React.useCallback(() => {
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-
-    scrollTimeoutRef.current = setTimeout(() => {
-      const currentScrollY = window.scrollY;
-      if (Math.abs(currentScrollY - lastScrollY.current) > 10) {
-        const newDirection = currentScrollY > lastScrollY.current ? 'down' : 'up';
-        setState(prev => ({
-          ...prev,
-          scrollDirection: newDirection
-        }));
-        lastScrollY.current = currentScrollY;
-      }
-    }, 16); // Reduced from 32ms to 16ms for faster response
-  }, []);
-
-  // Optimized intersection observer - Faster detection
-  const setupIntersectionObserver = React.useCallback(() => {
-    if (observerRef.current) {
-      observerRef.current.disconnect();
-    }
-
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        setState(prev => {
-          const newVisible = new Set(prev.visibleElements);
-          let hasChanges = false;
-
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.1) { // Reduced threshold
-              newVisible.add(entry.target.id);
-              hasChanges = true;
-            }
-          });
-
-          return hasChanges ? { ...prev, visibleElements: newVisible } : prev;
-        });
-      },
-      {
-        threshold: [0.1], // Reduced threshold for faster detection
-        rootMargin: '50px 0px -25px 0px' // Reduced margins
-      }
-    );
-
-    const slideElements = document.querySelectorAll('.slide-element');
-    slideElements.forEach((el) => {
-      if (el.id && observerRef.current) {
-        observerRef.current.observe(el);
-      }
-    });
-  }, []);
-
-  // Setup scroll listener
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-    };
-  }, [handleScroll]);
-
-  // Setup intersection observer with reduced delay
-  useEffect(() => {
-    const timeoutId = setTimeout(setupIntersectionObserver, 100); // Reduced from 200ms
-    return () => {
-      clearTimeout(timeoutId);
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, [setupIntersectionObserver]);
-
-  const isElementVisible = React.useCallback((elementId) => {
-    return state.visibleElements.has(elementId);
-  }, [state.visibleElements]);
-
-  // Optimized AnimatedSection - Faster animations
-  const AnimatedSection = React.memo(({ 
-    id, 
-    className, 
-    children, 
-    isVisible
-  }) => {
+  // Simplified AnimatedSection - Always visible
+  const AnimatedSection = React.memo(({ id, className, children }) => {
     const sectionClass = useMemo(() => {
-      return `slide-element ${className} ${isVisible ? 'visible' : ''}`;
-    }, [className, isVisible]);
+      return `slide-element ${className} visible`;
+    }, [className]);
 
     return (
       <div id={id} className={sectionClass}>
@@ -151,7 +56,7 @@ function ResearchPapers() {
     );
   });
 
-  // Optimized Paper Component - Updated with new class names
+  // Paper Component
   const PaperCard = React.memo(({ paper }) => (
     <div className="research-paper-card">
       <div className="research-paper-header">
@@ -193,7 +98,7 @@ function ResearchPapers() {
     </div>
   ));
 
-  // Research Stats Component - Updated with new class names
+  // Research Stats Component
   const ResearchStats = React.memo(() => (
     <div className="research-stats">
       <div className="research-stat-item">
@@ -221,7 +126,6 @@ function ResearchPapers() {
         <AnimatedSection
           id="header"
           className="slide-up research-header"
-          isVisible={isElementVisible('header')}
         >
           <div className="hero-content">
             <h1 className="research-main-title">Research Papers</h1>
@@ -233,20 +137,18 @@ function ResearchPapers() {
         </AnimatedSection>
       </div>
 
-      {/* Stats Section - Updated with new class names */}
+      {/* Stats Section */}
       <AnimatedSection
         id="stats-section"
         className="slide-up research-stats-section"
-        isVisible={isElementVisible('stats-section')}
       >
         <ResearchStats />
       </AnimatedSection>
 
-      {/* About Section - Updated with new class names */}
+      {/* About Section */}
       <AnimatedSection
         id="about-section"
         className="slide-up research-about-section"
-        isVisible={isElementVisible('about-section')}
       >
         <div className="research-about-container">
           <div className="research-about-content">
@@ -268,11 +170,10 @@ function ResearchPapers() {
         </div>
       </AnimatedSection>
 
-      {/* Research Papers Section - Updated with new class names */}
+      {/* Research Papers Section */}
       <AnimatedSection
         id="papers-section"
         className="slide-up research-papers-section"
-        isVisible={isElementVisible('papers-section')}
       >
         <div className="research-papers-container">
           <h2 className="research-section-title">Published Research Papers</h2>
