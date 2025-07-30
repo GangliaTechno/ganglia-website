@@ -108,7 +108,7 @@ const AppContent = () => {
         <Route path="/our-team" element={<OurTeam />} />
         <Route path="/tripmacha" element={<TripMacha />} />
         <Route path="/smart-video-laryngoscope" element={<Laryngoscope />} />
-        {/*<Route path="/medical-logbook" element={<MedlogBookPlatform />} /> */}
+        <Route path="/medical-logbook" element={<MedlogBookPlatform />} /> 
         <Route path="/main-component" element={<MainComponent />} />
         <Route path="/research-papers" element={<ResearchPapers />} />
         <Route path="/get-started" element={<GetStartedForm />} />
