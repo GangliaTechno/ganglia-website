@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import '../styles/MedlogBookPlatform.css';
-import Footer from "./Footer";
+
 let medlog;
 try {
   medlog= require('../assets/medlog.png');
@@ -272,7 +272,7 @@ const MedlogBookPlatform = () => {
           </div>
         </div>
       </section>
-      <Footer />
+      
     </div>
   );
 };
