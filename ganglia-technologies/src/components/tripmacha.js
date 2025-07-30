@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import '../styles/tripmacha.css';
-import Footer from './Footer';
 import guyOnScooter from '../assets/guy_on_scooter.png';
 import beachPhoto from '../assets/beach-Photoroom.png';
 import autoImage from '../assets/auto.png';
@@ -257,7 +256,7 @@ const TripMacha = () => {
       </div>
       
       {/* External Footer Component - Same as all other pages */}
-      <Footer />
+
     </div>
   );
 };

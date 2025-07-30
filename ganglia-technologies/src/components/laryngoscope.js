@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import Footer from "./Footer";
 
 let laryImage;
 try {
@@ -1305,8 +1304,6 @@ function LaryngoscopeComponent() {
           </div>
         </div>
 
-        {/* Footer */}
-        <Footer />
       </div>
     </div>
   );

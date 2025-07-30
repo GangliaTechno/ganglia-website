@@ -135,13 +135,13 @@ const Footer = () => {
             </div>
 
             <div className="contact-item">
-              <a href="tel:+918109782903" className="contact-link">
+              <a href="tel:+7760042810" className="contact-link">
                 <div className="contact-icon">
                   <Lottie animationData={callIcon} loop autoplay style={{ height: 40, width: 40 }} />
                 </div>
                 <div className="contact-details">
                   <h4>Phone</h4>
-                  <p>(+91) 81097 82903</p>
+                  <p>(+91) 77600 42810</p>
                 </div>
               </a>
             </div>
@@ -204,9 +204,13 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
+            
           </div>
         </div>
       </div>
+      <div className="footer-copyright">
+  © 2025 Ganglia Technologies. All rights reserved.
+</div>
     </footer>
   );
 };

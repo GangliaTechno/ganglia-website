@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import Footer from "./Footer";
 import "../styles/MainComponent.css";
 
 function MainComponent() {
@@ -249,7 +248,6 @@ function MainComponent() {
         </div>
       </section>
       {/* FOOTER */}
-      <Footer />
     </div>
   );
 }

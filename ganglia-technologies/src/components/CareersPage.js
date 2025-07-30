@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/CareersPage.css';
-import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logob.png';
 // Import Firebase database
@@ -574,8 +573,6 @@ const CareersPage = () => {
         </div>
       </section>
 
-      {/* Footer Component */}
-      <Footer />
     </div>
   );
 };

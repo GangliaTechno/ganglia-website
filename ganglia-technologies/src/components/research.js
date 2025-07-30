@@ -4,7 +4,6 @@ import research from '../assets/Research.json';
 import file from '../assets/file.json';
 import trophy from '../assets/Trophy.json';
 import { Player } from '@lottiefiles/react-lottie-player';
-import Footer from './Footer';
 
 
 const ResearchPage = () => {
@@ -228,8 +227,6 @@ const ResearchPage = () => {
           </div>
         </div>
       </div>
-      {/* Footer Section */}
-      <Footer />
     </div>
   );
 };

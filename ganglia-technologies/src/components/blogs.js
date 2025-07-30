@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/blogs.css";
-import Footer from './Footer';
 
 function Blogs() {
   // Empty array to show "no blogs available" state
@@ -40,7 +39,6 @@ function Blogs() {
         </div>
       </section>
       
-      <Footer />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import '../styles/OurTeam.css';
 import { ref, get } from 'firebase/database';
 import { database } from '../firebase/config';
-import Footer from './Footer';
+
 
 const OurTeam = () => {
   const location = useLocation(); 
@@ -307,7 +307,6 @@ const OurTeam = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 };
