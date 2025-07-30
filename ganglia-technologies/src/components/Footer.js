@@ -57,9 +57,12 @@ const Footer = () => {
       navigateWithScrollToTop('/services');
     } else if (sectionId === 'blog') {
       navigateWithScrollToTop('/blogs');
-    } else if (sectionId === 'awards') {
+    } else if (sectionId === 'research') {
       navigateWithScrollToTop('/research-papers');
-    } else if (sectionId === 'home') {
+    } else if (sectionId === 'awards') {
+      navigateWithScrollToTop('/awards-recognition');
+    } 
+    else if (sectionId === 'home') {
       navigateWithScrollToTop('/');
     } else {
       // For sections on home page
@@ -153,6 +156,7 @@ const Footer = () => {
               <li><a href="#story" onClick={(e) => handleNavClick(e, 'story')}>Our Story</a></li>
               <li><a href="#products" onClick={(e) => handleNavClick(e, 'products')}>Products</a></li>
               <li><a href="#services" onClick={(e) => handleNavClick(e, 'services')}>Services</a></li>
+              <li><a href="#research" onClick={(e) => handleNavClick(e, 'research')}>Research</a></li>
               <li><a href="#blog" onClick={(e) => handleNavClick(e, 'blog')}>Blog</a></li>
               <li><a href="#awards" onClick={(e) => handleNavClick(e, 'awards')}>Awards & Research</a></li>
             </ul>

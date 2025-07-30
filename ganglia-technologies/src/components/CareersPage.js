@@ -28,7 +28,8 @@ const CareersPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Responsive: detect mobile
+  // Responsive: detect mobile - if you need this later, remove the eslint-disable comment
+  // eslint-disable-next-line no-unused-vars
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
 
   useEffect(() => {
@@ -97,23 +98,22 @@ const CareersPage = () => {
 
   const handleFilterChange = (filter) => setActiveFilter(filter);
   const handleCardClick = (cardIndex) => setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
+  
+  // If you need this function later, remove the eslint-disable comment
+  // eslint-disable-next-line no-unused-vars
   const handleJobCardClick = (jobId) => setExpandedJobCard(expandedJobCard === jobId ? null : jobId);
 
   const imageCardsData = [
     {
-      
       image: developmentTeamImg
     },
     {
-      
       image: researchLabImg
     },
     {
-      
       image: designStudioImg
     },
     {
-      
       image: collaborationSpacesImg
     }
   ];
@@ -354,10 +354,7 @@ const CareersPage = () => {
                   key={job.id}
                   className="careers-job-card expanded"
                   data-category={job.category}
-
                 >
-                  
-
                   {/* Full Content View - Expanded */}
                   <div className="careers-job-card-full-content">
                     <div className="careers-job-header">
@@ -499,7 +496,7 @@ const CareersPage = () => {
               <p>Contribute to actual product features and research initiatives that impact thousands of healthcare professionals.</p>
             </div>
             <div className="careers-highlight-card">
-              <div className="careers-highlight-icon"><Player autoplay loop src={launch} style={{ height: 55, width: 55 }} />< /div>
+              <div className="careers-highlight-icon"><Player autoplay loop src={launch} style={{ height: 55, width: 55 }} /></div>
               <h3>Career Launch</h3>
               <p>Kickstart your career with a company that's revolutionizing healthcare.</p>
             </div>

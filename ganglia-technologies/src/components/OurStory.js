@@ -562,7 +562,9 @@ function OurStory() {
         
 
         {/* Tech Milestones Section */}
+        <div id="TechMilestonesTimeline">
         <TechMilestonesTimeline />
+        </div>
       </div>
 
 

@@ -333,9 +333,9 @@ const Navbar = () => {
       link: '/our-story',
       isHeader: true,
       items: [
-        { label: 'Philosophy', link: 'our-story#about-ganglia' },
-        { label: 'Milestone', link: 'our-story#incubation-journey' },
-        { label: 'Social Responsibility', link: '/our-story#awards-recognition' }
+        { label: 'Philosophy', link: 'our-story#philosophy-header' },
+      { label: 'Milestone', link: '/our-story#TechMilestonesTimeline' },
+        { label: 'Social Responsibility', link: '/our-story#social-responsibility-section' }
       ]
     },
     {
@@ -375,12 +375,6 @@ const Navbar = () => {
   ];
 
   const servicesDropdownItems = [
-    {
-      category: 'View All Services',
-      link: '/services',
-      isHeader: true,
-      items: []
-    },
     {
       category: 'Our Services',
       link: '/services',

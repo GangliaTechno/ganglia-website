@@ -1,10 +1,16 @@
-"use client";
-import React, { useMemo } from "react";
-import Footer from "./Footer";
+import React, { useState, useEffect, useMemo } from 'react';
 import '../styles/research.css';
+import research from '../assets/Research.json';
+import file from '../assets/file.json';
+import trophy from '../assets/Trophy.json';
+import { Player } from '@lottiefiles/react-lottie-player';
+import Footer from './Footer';
 
-function ResearchPapers() {
-  // Memoize paper data to prevent re-renders
+
+const ResearchPage = () => {
+  const [visibleElements, setVisibleElements] = useState(new Set());
+
+  // Paper data
   const paperData = useMemo(() => [
     {
       id: 'paper1',
@@ -43,152 +49,189 @@ function ResearchPapers() {
     }
   ], []);
 
-  // Simplified AnimatedSection - Always visible
-  const AnimatedSection = React.memo(({ id, className, children }) => {
-    const sectionClass = useMemo(() => {
-      return `slide-element ${className} visible`;
-    }, [className]);
+  // Animation effects
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-    return (
-      <div id={id} className={sectionClass}>
-        {children}
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setVisibleElements(prev => new Set([...prev, entry.target.id]));
+        }
+      });
+    }, observerOptions);
+
+    const elements = document.querySelectorAll('.rsch-fade-in-element');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Scroll effects
+  useEffect(() => {
+    let ticking = false;
+    
+    const updateScrollEffects = () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.rsch-hero-wrapper');
+      
+      parallaxElements.forEach(el => {
+        const speed = 0.5;
+        if (el) {
+          el.style.transform = `translateY(${scrolled * speed}px)`;
+        }
+      });
+      
+      ticking = false;
+    };
+
+    const requestTick = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollEffects);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', requestTick);
+    return () => window.removeEventListener('scroll', requestTick);
+  }, []);
+
+  // Stats Component
+  const StatsSection = () => (
+    <div className="rsch-stats-wrapper">
+      <div className="rsch-stats-grid">
+        <div className="rsch-stat-card">
+          <div className="rsch-stat-icon"><Player autoplay loop src={file} style={{ height: 55, width: 55 }} /></div>
+          <div className="rsch-stat-number">2</div>
+          <div className="rsch-stat-label">Published Papers</div>
+        </div>
+        <div className="rsch-stat-card">
+          <div className="rsch-stat-icon"><Player autoplay loop src={research} style={{ height: 55, width: 55 }} /></div>
+          <div className="rsch-stat-number">5+</div>
+          <div className="rsch-stat-label">Research Areas</div>
+        </div>
+        <div className="rsch-stat-card">
+          <div className="rsch-stat-icon"><Player autoplay loop src={trophy} style={{ height: 55, width: 55 }} /></div>
+          <div className="rsch-stat-number">100%</div>
+          <div className="rsch-stat-label">Acceptance Rate</div>
+        </div>
       </div>
-    );
-  });
+    </div>
+  );
 
-  // Paper Component
-  const PaperCard = React.memo(({ paper }) => (
-    <div className="research-paper-card">
-      <div className="research-paper-header">
-        <h3 className="research-paper-title">{paper.title}</h3>
-        <div className="research-paper-meta">
-          <span className="research-paper-type">{paper.type}</span>
-          <span className="research-paper-status">{paper.status}</span>
+  // Paper Card Component
+  const PaperCard = ({ paper }) => (
+    <div className="rsch-paper-card" data-paper-id={paper.id}>
+      <div className="rsch-paper-header">
+        <h3 className="rsch-paper-title">{paper.title}</h3>
+        <div className="rsch-paper-meta">
+          <span className="rsch-paper-type">{paper.type}</span>
+          <span className="rsch-paper-status">{paper.status}</span>
         </div>
       </div>
       
-      <div className="research-paper-authors">
-        <h4>Authors:</h4>
-        <p>{paper.authors}</p>
+      <div className="rsch-paper-authors">
+        <h4 className="rsch-section-subtitle">Authors:</h4>
+        <p className="rsch-authors-text">{paper.authors}</p>
       </div>
 
-      <div className="research-paper-abstract">
-        <h4>Abstract:</h4>
+      <div className="rsch-paper-abstract">
+        <h4 className="rsch-section-subtitle">Abstract:</h4>
         {paper.abstract ? (
-          <p>{paper.abstract}</p>
+          <p className="rsch-abstract-text">{paper.abstract}</p>
         ) : (
-          <div className="research-abstract-sections">
+          <div className="rsch-abstract-sections">
             {paper.abstractSections.map((section, index) => (
-              <div key={index} className="research-abstract-section">
-                <strong>{section.title}:</strong> {section.content}
+              <div key={index} className="rsch-abstract-section">
+                <strong className="rsch-section-title">{section.title}:</strong>{' '}
+                <span className="rsch-section-content">{section.content}</span>
               </div>
             ))}
           </div>
         )}
       </div>
 
-      <div className="research-paper-keywords">
-        <h4>Keywords:</h4>
-        <div className="research-keywords-list">
+      <div className="rsch-paper-keywords">
+        <h4 className="rsch-section-subtitle">Keywords:</h4>
+        <div className="rsch-keywords-container">
           {paper.keywords.map((keyword, index) => (
-            <span key={index} className="research-keyword">{keyword}</span>
+            <span key={index} className="rsch-keyword-tag">{keyword}</span>
           ))}
         </div>
       </div>
     </div>
-  ));
-
-  // Research Stats Component
-  const ResearchStats = React.memo(() => (
-    <div className="research-stats">
-      <div className="research-stat-item">
-        <div className="research-stat-icon">📊</div>
-        <div className="research-stat-number">2</div>
-        <div className="research-stat-label">Published Papers</div>
-      </div>
-      <div className="research-stat-item">
-        <div className="research-stat-icon">🔬</div>
-        <div className="research-stat-number">5+</div>
-        <div className="research-stat-label">Research Areas</div>
-      </div>
-      <div className="research-stat-item">
-        <div className="research-stat-icon">🏆</div>
-        <div className="research-stat-number">100%</div>
-        <div className="research-stat-label">Acceptance Rate</div>
-      </div>
-    </div>
-  ));
+  );
 
   return (
-    <div className="research-container">
+    <div id="research-main-container">
       {/* Hero Section */}
-      <div className="research-hero-section">
-        <AnimatedSection
-          id="header"
-          className="slide-up research-header"
+      <div className="rsch-hero-wrapper">
+        <div 
+          id="hero-content"
+          className={`rsch-hero-content rsch-fade-in-element ${visibleElements.has('hero-content') ? 'rsch-visible' : ''}`}
         >
-          <div className="hero-content">
-            <h1 className="research-main-title">Research Papers</h1>
-            <p className="research-description">
-              Advancing healthcare through cutting-edge research and innovation
-            </p>
-            <div className="hero-divider"></div>
-          </div>
-        </AnimatedSection>
+          <h1 className="rsch-main-heading">Research Papers</h1>
+          <p className="rsch-hero-description">
+            Advancing healthcare through cutting-edge research and innovation
+          </p>
+          <div className="rsch-hero-divider"></div>
+        </div>
       </div>
 
       {/* Stats Section */}
-      <AnimatedSection
+      <div 
         id="stats-section"
-        className="slide-up research-stats-section"
+        className={`rsch-fade-in-element ${visibleElements.has('stats-section') ? 'rsch-visible' : ''}`}
       >
-        <ResearchStats />
-      </AnimatedSection>
+        <StatsSection />
+      </div>
 
       {/* About Section */}
-      <AnimatedSection
+      <div 
         id="about-section"
-        className="slide-up research-about-section"
+        className={`rsch-about-wrapper rsch-fade-in-element ${visibleElements.has('about-section') ? 'rsch-visible' : ''}`}
       >
-        <div className="research-about-container">
-          <div className="research-about-content">
-            <h2 className="research-about-title">
-              Pioneering <span className="research-highlight">Medical Research</span>
+        <div className="rsch-about-container">
+          <div className="rsch-about-content">
+            <h2 className="rsch-about-heading">
+              Pioneering <span className="rsch-highlight-text">Medical Research</span>
             </h2>
-            <p className="research-about-description">
+            <p className="rsch-about-text">
               Our research focuses on developing innovative AI-driven solutions for healthcare challenges, 
               from automated disease detection to advanced medical device technologies. We collaborate with 
               leading researchers and institutions to push the boundaries of medical innovation.
             </p>
-            <div className="research-areas">
-              <div className="research-area-tag">AI in Healthcare</div>
-              <div className="research-area-tag">Medical Imaging</div>
-              <div className="research-area-tag">Disease Detection</div>
-              <div className="research-area-tag">Explainable AI</div>
+            <div className="rsch-area-tags">
+              <div className="rsch-area-tag">AI in Healthcare</div>
+              <div className="rsch-area-tag">Medical Imaging</div>
+              <div className="rsch-area-tag">Disease Detection</div>
+              <div className="rsch-area-tag">Explainable AI</div>
             </div>
           </div>
         </div>
-      </AnimatedSection>
+      </div>
 
       {/* Research Papers Section */}
-      <AnimatedSection
+      <div 
         id="papers-section"
-        className="slide-up research-papers-section"
+        className={`rsch-papers-wrapper rsch-fade-in-element ${visibleElements.has('papers-section') ? 'rsch-visible' : ''}`}
       >
-        <div className="research-papers-container">
-          <h2 className="research-section-title">Published Research Papers</h2>
-          <div className="research-papers-grid">
+        <div className="rsch-papers-container">
+          <h2 className="rsch-section-heading">Published Research Papers</h2>
+          <div className="rsch-papers-grid">
             {paperData.map((paper) => (
               <PaperCard key={paper.id} paper={paper} />
             ))}
           </div>
         </div>
-      </AnimatedSection>
-
-      {/* Footer */}
+      </div>
+      {/* Footer Section */}
       <Footer />
     </div>
   );
-}
+};
 
-export default ResearchPapers;
+export default ResearchPage;
