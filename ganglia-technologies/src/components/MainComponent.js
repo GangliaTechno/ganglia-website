@@ -2,6 +2,20 @@
 import React, { useRef, useEffect, useState } from "react";
 import Footer from "./Footer";
 import "../styles/MainComponent.css";
+import anushataanLogo from '../assets/anushtaanlogo.png';
+import kanban1 from '../assets/kanbanboard1.png';
+import projectAnalytics from '../assets/projectanalytics.png';
+import adminPortal from '../assets/adminportal.png';
+import ganttChart from '../assets/ganttchart.png';
+import { Player } from '@lottiefiles/react-lottie-player';
+import anushtaan1 from '../assets/anushtaan1.json';
+import anushtaan2 from '../assets/anushtaan2.json';
+import anushtaan3 from '../assets/anushtaan3.json';
+import anushtaan4 from '../assets/anushtaan4.json';
+import anushtaan5 from '../assets/anushtaan5.json';
+import anushtaan6 from '../assets/anushtaan6.json';
+import anushtaan7 from '../assets/anushtaan7.json';
+import anushtaan8 from '../assets/anushtaan8.json'; 
 
 function MainComponent() {
   const pricingRef = useRef(null);
@@ -43,8 +57,12 @@ function MainComponent() {
             <button className="anushtaan-primary-button">Discover Anushtaan</button>
           </div>
           <div className="anushtaan-hero-right">
-            <div className="anushtaan-hero-logo" aria-label="Logo">🚀</div>
-          </div>
+  <img 
+    src={anushataanLogo} 
+    alt="Anushtaan Logo" 
+    className="anushtaan-hero-logo" 
+  />
+</div>
         </div>
       </section>
       {/* ABOUT */}
@@ -88,7 +106,7 @@ function MainComponent() {
         <div className="anushtaan-core-grid">
           <div className="anushtaan-core-card">
             <div className="anushtaan-core-card-head">
-              <span className="anushtaan-core-icon">⏱️</span>
+              <span className="anushtaan-core-icon"><Player autoplay loop src={anushtaan1} style={{ height: 55, width: 55 }} /></span>
               <h3>Intelligent Hours Tracking</h3>
             </div>
             <ul>
@@ -102,7 +120,7 @@ function MainComponent() {
           </div>
           <div className="anushtaan-core-card">
             <div className="anushtaan-core-card-head">
-              <span className="anushtaan-core-icon">🤖</span>
+              <span className="anushtaan-core-icon"><Player autoplay loop src={anushtaan2} style={{ height: 55, width: 55 }} /></span>
               <h3>AI-Powered Productivity</h3>
             </div>
             <ul>
@@ -116,7 +134,7 @@ function MainComponent() {
           </div>
           <div className="anushtaan-core-card">
             <div className="anushtaan-core-card-head">
-              <span className="anushtaan-core-icon">📊</span>
+              <span className="anushtaan-core-icon"><Player autoplay loop src={anushtaan3} style={{ height: 55, width: 55 }} /></span>
               <h3>Dynamic Dashboards</h3>
             </div>
             <ul>
@@ -130,7 +148,7 @@ function MainComponent() {
           </div>
           <div className="anushtaan-core-card">
             <div className="anushtaan-core-card-head">
-              <span className="anushtaan-core-icon">💬</span>
+              <span className="anushtaan-core-icon"><Player autoplay loop src={anushtaan4} style={{ height: 55, width: 55 }} /></span>
               <h3>Communication & Collaboration</h3>
             </div>
             <ul>
@@ -144,7 +162,7 @@ function MainComponent() {
           </div>
           <div className="anushtaan-core-card">
             <div className="anushtaan-core-card-head">
-              <span className="anushtaan-core-icon">📋</span>
+              <span className="anushtaan-core-icon"><Player autoplay loop src={anushtaan5} style={{ height: 55, width: 55 }} /></span>
               <h3>Customizable Views</h3>
             </div>
             <ul>
@@ -161,7 +179,7 @@ function MainComponent() {
           </div>
           <div className="anushtaan-core-card">
             <div className="anushtaan-core-card-head">
-              <span className="anushtaan-core-icon">🔒</span>
+              <span className="anushtaan-core-icon"><Player autoplay loop src={anushtaan6} style={{ height: 55, width: 55 }} /></span>
               <h3>Security You Can Trust</h3>
             </div>
             <ul>
@@ -179,45 +197,67 @@ function MainComponent() {
       <section className="anushtaan-glimpse-section">
         <h2>Glimpse of Anushtaan</h2>
         <div className="anushtaan-glimpse-grid">
-          <div className="anushtaan-glimpse-card">
-            <div className="anushtaan-glimpse-art"><span role="img" aria-label="Kanban Board">📋</span></div>
-            <div className="anushtaan-glimpse-label">KANBAN Board</div>
-          </div>
-          <div className="anushtaan-glimpse-card">
-            <div className="anushtaan-glimpse-art"><span role="img" aria-label="Analytics">📊</span></div>
-            <div className="anushtaan-glimpse-label">Project Analytics</div>
-          </div>
-          <div className="anushtaan-glimpse-card">
-            <div className="anushtaan-glimpse-art"><span role="img" aria-label="Gantt Chart">📈</span></div>
-            <div className="anushtaan-glimpse-label">GANTT Chart</div>
-          </div>
-          <div className="anushtaan-glimpse-card">
-            <div className="anushtaan-glimpse-art"><span role="img" aria-label="Admin Portal">⚙️</span></div>
-            <div className="anushtaan-glimpse-label">Admin Portal</div>
-          </div>
-        </div>
+  <div className="anushtaan-glimpse-card">
+    <div className="anushtaan-glimpse-art">
+      <img src={kanban1} alt="Kanban Board" className="anushtaan-glimpse-icon" />
+    </div>
+    <div className="anushtaan-glimpse-label">KANBAN Board</div>
+  </div>
+  <div className="anushtaan-glimpse-card">
+    <div className="anushtaan-glimpse-art">
+      <img src={projectAnalytics} alt="Project Analytics" className="anushtaan-glimpse-icon" />
+    </div>
+    <div className="anushtaan-glimpse-label">Project Analytics</div>
+  </div>
+  <div className="anushtaan-glimpse-card">
+    <div className="anushtaan-glimpse-art">
+      <img src={ganttChart} alt="Gantt Chart" className="anushtaan-glimpse-icon" />
+    </div>
+    <div className="anushtaan-glimpse-label">GANTT Chart</div>
+  </div>
+  <div className="anushtaan-glimpse-card">
+    <div className="anushtaan-glimpse-art">
+      <img src={adminPortal} alt="Admin Portal" className="anushtaan-glimpse-icon" />
+    </div>
+    <div className="anushtaan-glimpse-label">Admin Portal</div>
+  </div>
+  <div className="anushtaan-glimpse-card">
+    <div className="anushtaan-glimpse-art">
+      <img src={adminPortal} alt="Admin Portal" className="anushtaan-glimpse-icon" />
+    </div>
+    <div className="anushtaan-glimpse-label">Admin Portal</div>
+  </div>
+  <div className="anushtaan-glimpse-card">
+    <div className="anushtaan-glimpse-art">
+      <img src={adminPortal} alt="Admin Portal" className="anushtaan-glimpse-icon" />
+    </div>
+    <div className="anushtaan-glimpse-label">Admin Portal</div>
+  </div>
+
+</div>
+
       </section>
       {/* WHY CHOOSE SECTION */}
       <section className="anushtaan-why-section">
         <h2>Why Choose Anushtaan?</h2>
         <div className="anushtaan-why-grid">
           <div className="anushtaan-why-card">
-            <span className="anushtaan-why-icon">🤖</span>
+            <span className="anushtaan-why-icon"><Player autoplay loop src={anushtaan2} style={{ height: 55, width: 55 }} /></span>
             <h3>AI-Integrated Management</h3>
             <p>From planning to risk assessment, let AI supercharge every aspect of your project workflow.</p>
           </div>
           <div className="anushtaan-why-card">
-            <span className="anushtaan-why-icon">🎯</span>
+            <span className="anushtaan-why-icon"><Player autoplay loop src={anushtaan7} style={{ height: 55, width: 55 }} /></span>
             <h3>Precision & Accountability</h3>
             <p>Live tracking, scoring, and comprehensive dashboards ensure every hour, task, and decision counts.</p>
           </div>
           <div className="anushtaan-why-card">
-            <span className="anushtaan-why-icon">👤</span>
+            <span className="anushtaan-why-icon"><Player autoplay loop src={anushtaan8} style={{ height: 55, width: 55 }} /></span>
             <h3>User-Centric Flexibility</h3>
             <p>Manage work and personal projects side-by-side, adapting the platform to your life and career.</p>
           </div>
           <div className="anushtaan-why-card">
-            <span className="anushtaan-why-icon">🔒</span>
+            <span className="anushtaan-why-icon"><Player autoplay loop src={anushtaan6} style={{ height: 55, width: 55 }} /></span>
             <h3>Flexible, Scalable, Secure</h3>
             <p>Whether you're a freelancer, agency, or enterprise, Anushtaan adapts to empower teams of all sizes.</p>
           </div>
