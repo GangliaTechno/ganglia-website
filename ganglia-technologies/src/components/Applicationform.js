@@ -55,62 +55,91 @@ export default function ApplicationForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Validate PDF file
+    if (!form.resume) {
+      toast.error("Please upload your resume");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (form.resume.type !== 'application/pdf') {
+      toast.error("Please upload a PDF file");
+      setIsSubmitting(false);
+      return;
+    }
+
     // Prepare email content
     const emailSubject = `New Job Application - ${state?.jobTitle || 'Position'} (Job ID: ${jobId})`;
     
     const emailBody = `
-🎯 NEW JOB APPLICATION RECEIVED
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">
+          🎯 NEW JOB APPLICATION RECEIVED
+        </h2>
+        
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <h3 style="color: #2c3e50; margin-top: 0;">📋 POSITION DETAILS</h3>
+          <p><strong>Position:</strong> ${state?.jobTitle || 'Position'}</p>
+          <p><strong>Job ID:</strong> ${jobId}</p>
+        </div>
 
-═══════════════════════════════════════
+        <div style="background-color: #e8f4fd; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <h3 style="color: #2c3e50; margin-top: 0;">👤 APPLICANT INFORMATION</h3>
+          <p><strong>Name:</strong> ${form.name}</p>
+          <p><strong>Email:</strong> ${form.email}</p>
+          <p><strong>Phone:</strong> ${form.phone}</p>
+          <p><strong>Location:</strong> ${form.currentLocation}</p>
+          <p><strong>LinkedIn:</strong> ${form.linkedin || 'Not provided'}</p>
+          <p><strong>Experience:</strong> ${form.experience} years</p>
+        </div>
 
-📋 POSITION DETAILS
-Position: ${state?.jobTitle || 'Position'}
-Job ID: ${jobId}
+        <div style="background-color: #f0fff4; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <h3 style="color: #2c3e50; margin-top: 0;">💼 SKILLS & QUALIFICATIONS</h3>
+          <p><strong>Key Skills:</strong></p>
+          <p style="white-space: pre-line;">${form.skills}</p>
+          
+          ${form.tools ? `
+            <p><strong>Tools & Technologies:</strong></p>
+            <p style="white-space: pre-line;">${form.tools}</p>
+          ` : ''}
+        </div>
 
-👤 APPLICANT INFORMATION
-Name: ${form.name}
-Email: ${form.email}
-Phone: ${form.phone}
-Location: ${form.currentLocation}
-LinkedIn: ${form.linkedin || 'Not provided'}
-Experience: ${form.experience} years
+        <div style="background-color: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <h3 style="color: #2c3e50; margin-top: 0;">📄 RESUME</h3>
+          <p><strong>File Name:</strong> ${form.resume.name}</p>
+          <p><strong>File Size:</strong> ${(form.resume.size / 1024 / 1024).toFixed(2)} MB</p>
+          <p style="color: #28a745;"><strong>✅ Resume attached to this email</strong></p>
+        </div>
 
-💼 SKILLS & QUALIFICATIONS
-Key Skills:
-${form.skills}
-
-Tools & Technologies:
-${form.tools || 'Not specified'}
-
-📄 RESUME
-File Name: ${form.resume ? form.resume.name : 'No resume uploaded'}
-
-⚠️ NOTE: Resume file was uploaded but cannot be attached via email.
-
-═══════════════════════════════════════
-
-This application was submitted through your website's career portal.
-Please review and contact the candidate if suitable.
-
-Best regards,
-Career Portal System
+        <hr style="border: none; border-top: 1px solid #dee2e6; margin: 30px 0;">
+        
+        <p style="color: #6c757d; font-size: 14px;">
+          This application was submitted through your website's career portal.<br>
+          Please review and contact the candidate if suitable.
+        </p>
+        
+        <p style="color: #6c757d; font-size: 14px;">
+          <strong>Best regards,</strong><br>
+          Career Portal System
+        </p>
+      </div>
     `;
 
     try {
-      const response = await fetch('https://tmmail.onrender.com/send-email/', {
+      // Create FormData for file upload
+      const formData = new FormData();
+      formData.append('recipient', 'director@ganglia.in');
+      formData.append('subject', emailSubject);
+      formData.append('body', emailBody);
+      formData.append('pdf_file', form.resume);
+
+      const response = await fetch('https://tmmail.onrender.com/send-email-with-pdf/', {
         method: 'POST',
-        headers: {
-          'accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          recipient: "director@ganglia.in",
-          subject: emailSubject,
-          body: emailBody
-        })
+        body: formData // No Content-Type header needed for FormData
       });
 
       if (response.ok) {
+        // Reset form
         setForm({
           name: '',
           email: '',
@@ -123,10 +152,11 @@ Career Portal System
           resume: null
         });
 
+        // Clear file input
         const fileInput = document.getElementById('resume-upload');
         if (fileInput) fileInput.value = '';
 
-        toast.success("Application submitted successfully!");
+        toast.success("Application submitted successfully! Your resume has been sent.");
         
         setTimeout(() => {
           setIsSubmitting(false);
@@ -134,12 +164,13 @@ Career Portal System
         }, 2000);
 
       } else {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
       }
 
     } catch (error) {
       console.error('Error submitting application:', error);
-      toast.error("Failed to submit application. Please try again.");
+      toast.error(`Failed to submit application: ${error.message}`);
       setIsSubmitting(false);
     }
   };
