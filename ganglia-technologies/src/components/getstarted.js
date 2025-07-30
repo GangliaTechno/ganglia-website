@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import Footer from "./Footer";
 import '../styles/getstarted.css';
 
 function GetStartedForm() {
@@ -337,7 +336,6 @@ function GetStartedForm() {
       </div>
 
       {/* Footer */}
-      <Footer />
     </div>
   );
 }

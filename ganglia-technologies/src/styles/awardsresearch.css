@@ -1,0 +1,544 @@
+/* Awards & Research Page Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000426;
+  color: #ffffff;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+#awards-research-main-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000426 0%, #001247 50%, #000426 100%);
+}
+
+/* Hero Section Styles */
+.awrd-hero-wrapper {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #000426 0%, #001859 100%);
+  overflow: hidden;
+}
+
+.awrd-hero-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 30% 70%,
+      rgba(120, 180, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(60, 140, 255, 0.08) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+.awrd-hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.awrd-main-heading {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #87ceeb 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(135, 206, 235, 0.3);
+  letter-spacing: -0.02em;
+}
+
+.awrd-hero-description {
+  font-size: 1.4rem;
+  color: #b0c4de;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.awrd-hero-divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #87ceeb, #4169e1, #87ceeb);
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.5);
+}
+
+/* Awards Section Styles */
+.awrd-awards-wrapper {
+  padding: 120px 20px;
+  background: rgba(0, 4, 38, 0.8);
+}
+
+.awrd-awards-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.awrd-section-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #ffffff;
+  position: relative;
+}
+
+.awrd-section-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #87ceeb, #4169e1);
+  border-radius: 2px;
+}
+
+.awrd-awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 40px;
+}
+
+.awrd-award-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(135, 206, 235, 0.08) 100%
+  );
+  border: 1px solid rgba(135, 206, 235, 0.2);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(15px);
+  position: relative;
+}
+
+.awrd-award-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(135, 206, 235, 0.4);
+  box-shadow: 0 25px 50px rgba(135, 206, 235, 0.15);
+}
+
+.awrd-award-image-container {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  background: rgba(0, 4, 38, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.awrd-award-image {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  transition: all 0.4s ease;
+  border-radius: 8px;
+}
+
+.awrd-award-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 4, 38, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(135, 206, 235, 0.3);
+}
+
+.awrd-award-year {
+  color: #87ceeb;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.awrd-award-content {
+  padding: 30px;
+}
+
+.awrd-award-header {
+  margin-bottom: 25px;
+}
+
+.awrd-award-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.awrd-award-category {
+  background: rgba(135, 206, 235, 0.2);
+  color: #87ceeb;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid rgba(135, 206, 235, 0.3);
+}
+
+.awrd-award-organization,
+.awrd-award-venue,
+.awrd-award-date,
+.awrd-award-description {
+  margin-bottom: 20px;
+}
+
+.awrd-section-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #87ceeb;
+  margin-bottom: 8px;
+}
+
+.awrd-organization-text,
+.awrd-venue-text,
+.awrd-date-text,
+.awrd-description-text {
+  color: #b0c4de;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+/* Description Content Styles */
+.awrd-description-content {
+  position: relative;
+}
+
+.awrd-read-more-btn {
+  background: rgba(135, 206, 235, 0.2);
+  border: 1px solid rgba(135, 206, 235, 0.3);
+  color: #87ceeb;
+  padding: 6px 12px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 10px;
+  position: absolute;
+  right: 0;
+  bottom: -35px;
+}
+
+.awrd-read-more-btn:hover {
+  background: rgba(135, 206, 235, 0.3);
+  border-color: rgba(135, 206, 235, 0.5);
+  transform: translateY(-1px);
+}
+
+/* News Section Styles */
+.awrd-news-wrapper {
+  padding: 120px 20px;
+  background: rgba(0, 4, 38, 0.6);
+}
+
+.awrd-news-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.awrd-news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 40px;
+}
+
+.awrd-news-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(135, 206, 235, 0.08) 100%
+  );
+  border: 1px solid rgba(135, 206, 235, 0.2);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(15px);
+  position: relative;
+}
+
+.awrd-news-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(135, 206, 235, 0.4);
+  box-shadow: 0 25px 50px rgba(135, 206, 235, 0.15);
+}
+
+.awrd-news-content {
+  padding: 30px;
+}
+
+.awrd-news-header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.awrd-news-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  flex: 1;
+}
+
+.awrd-news-date {
+  background: rgba(135, 206, 235, 0.2);
+  color: #87ceeb;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(135, 206, 235, 0.3);
+  white-space: nowrap;
+}
+
+.awrd-news-summary {
+  margin-bottom: 20px;
+}
+
+.awrd-news-summary-text {
+  color: #b0c4de;
+  line-height: 1.7;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.awrd-news-full-content {
+  margin-bottom: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(135, 206, 235, 0.1);
+  animation: awrd-slideDown 0.3s ease;
+}
+
+.awrd-news-content-text {
+  color: #b0c4de;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* News Actions Styles */
+.awrd-news-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.awrd-news-read-more-btn {
+  background: linear-gradient(
+    135deg,
+    rgba(135, 206, 235, 0.2),
+    rgba(65, 105, 225, 0.2)
+  );
+  border: 1px solid rgba(135, 206, 235, 0.3);
+  color: #87ceeb;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  flex: 1;
+}
+
+.awrd-news-read-more-btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(135, 206, 235, 0.3),
+    rgba(65, 105, 225, 0.3)
+  );
+  border-color: rgba(135, 206, 235, 0.5);
+  transform: translateY(-2px);
+}
+
+.awrd-news-source-btn {
+  background: linear-gradient(
+    135deg,
+    rgba(65, 105, 225, 0.2),
+    rgba(135, 206, 235, 0.2)
+  );
+  border: 1px solid rgba(65, 105, 225, 0.3);
+  color: #87ceeb;
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.awrd-news-source-btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(65, 105, 225, 0.3),
+    rgba(135, 206, 235, 0.3)
+  );
+  border-color: rgba(65, 105, 225, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(65, 105, 225, 0.2);
+}
+
+.awrd-source-icon {
+  font-size: 0.9rem;
+}
+
+/* Animation Classes */
+.awrd-fade-in-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.awrd-fade-in-element.awrd-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes awrd-slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .awrd-main-heading {
+    font-size: 3rem;
+  }
+
+  .awrd-hero-description {
+    font-size: 1.2rem;
+  }
+
+  .awrd-section-heading {
+    font-size: 2.5rem;
+  }
+
+  .awrd-awards-grid,
+  .awrd-news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .awrd-award-card,
+  .awrd-news-card {
+    margin: 0 10px;
+  }
+
+  .awrd-award-content,
+  .awrd-news-content {
+    padding: 25px 20px;
+  }
+
+  .awrd-award-image-container {
+    height: 250px;
+  }
+
+  .awrd-read-more-btn {
+    position: static;
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: 0;
+    width: fit-content;
+  }
+
+  .awrd-news-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .awrd-news-date {
+    align-self: flex-start;
+  }
+
+  .awrd-news-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .awrd-news-read-more-btn,
+  .awrd-news-source-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .awrd-main-heading {
+    font-size: 2.5rem;
+  }
+
+  .awrd-award-title,
+  .awrd-news-title {
+    font-size: 1.3rem;
+  }
+
+  .awrd-award-image-container {
+    height: 200px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000426;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #87ceeb, #4169e1);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #4169e1, #87ceeb);
+}

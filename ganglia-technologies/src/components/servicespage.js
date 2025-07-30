@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../styles/servicepage.css';
-import Footer from './Footer';
 
 // Import your service images
 import healthcareImage from '../assets/ai.png';
@@ -142,7 +141,6 @@ const Services = () => {
         </div>
       </div>
       
-      <Footer />
     </div>
   );
 };

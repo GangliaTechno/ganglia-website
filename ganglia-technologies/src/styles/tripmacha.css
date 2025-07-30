@@ -224,14 +224,10 @@
   box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4), 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Enhanced About Section */
+/* Enhanced About Section - Updated for single column layout */
 .tripmacha-page-about {
   padding: 8rem 4rem;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 6rem;
-  align-items: start;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -278,84 +274,78 @@
   font-weight: 400;
 }
 
-/* Enhanced Features Card */
-.tripmacha-page-features-card {
+/* New Features Section */
+.tripmacha-page-features {
+  padding: 8rem 4rem;
   background: linear-gradient(135deg, #26a69a 0%, #4db6ac 50%, #80cbc4 100%);
-  padding: 3rem;
-  border-radius: 24px;
   color: white;
-  box-shadow: 0 20px 60px rgba(38, 166, 154, 0.3), 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-width: 1400px;
+  margin: 0 auto;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(20px);
-  transform: translateY(0);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tripmacha-page-features-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 30px 80px rgba(38, 166, 154, 0.4),
-    0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.tripmacha-page-features-card::before {
+.tripmacha-page-features::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.15),
-    transparent
-  );
-  transition: left 0.6s;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
+  z-index: 1;
 }
 
-.tripmacha-page-features-card:hover::before {
-  left: 100%;
+.tripmacha-page-features > * {
+  position: relative;
+  z-index: 2;
 }
 
-.tripmacha-page-features-card h3 {
+.tripmacha-page-features h2 {
   font-family: "Poppins", sans-serif;
-  font-size: 2.2rem;
+  font-size: clamp(2.5rem, 4vw, 4rem);
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
-.tripmacha-page-features-card ul {
+.tripmacha-page-features ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
 }
 
-.tripmacha-page-features-card li {
+.tripmacha-page-features li {
   font-size: 1.1rem;
-  margin-bottom: 1.5rem;
   display: flex;
-  align-items: center;
-  padding: 1rem;
+  align-items: flex-start;
+  padding: 2rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  line-height: 1.6;
 }
 
-.tripmacha-page-features-card li:hover {
+.tripmacha-page-features li:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: translateX(10px);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.tripmacha-page-features-card li:last-child {
-  margin-bottom: 0;
+.tripmacha-page-features li strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .tripmacha-page-icon {
-  margin-right: 1rem;
+  margin-right: 1.5rem;
   font-size: 1.5rem;
   width: 40px;
   height: 40px;
@@ -365,16 +355,259 @@
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* New Benefits Section */
+.tripmacha-page-benefits {
+  padding: 8rem 4rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.tripmacha-page-benefits h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #2c3e50;
+  text-align: center;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.tripmacha-page-benefits h2::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border-radius: 2px;
+}
+
+.tripmacha-page-benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.tripmacha-page-benefits li {
+  font-size: 1.1rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid #26a69a;
+  position: relative;
+  color: #495057;
+  line-height: 1.7;
+}
+
+.tripmacha-page-benefits li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-left-color: #ff6b35;
+}
+
+.tripmacha-page-benefits li::before {
+  content: "✓";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: #26a69a;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.tripmacha-page-benefits li:hover::before {
+  background: #ff6b35;
+}
+
+/* New Additional Advantages Section */
+.tripmacha-page-advantages {
+  padding: 8rem 4rem;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb74d 100%);
+  color: white;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.tripmacha-page-advantages::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
+  z-index: 1;
+}
+
+.tripmacha-page-advantages > * {
+  position: relative;
+  z-index: 2;
+}
+
+.tripmacha-page-advantages h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.tripmacha-page-advantages ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.tripmacha-page-advantages li {
+  font-size: 1.1rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  line-height: 1.7;
+  position: relative;
+}
+
+.tripmacha-page-advantages li:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tripmacha-page-advantages li::before {
+  content: "★";
+  position: absolute;
+  left: -12px;
+  top: 2rem;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #ff6b35;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* New Why Choose Section */
+.tripmacha-page-why-choose {
+  padding: 8rem 4rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tripmacha-page-why-choose h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #2c3e50;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.tripmacha-page-why-choose h2::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border-radius: 2px;
+}
+
+.tripmacha-page-why-choose ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  text-align: left;
+}
+
+.tripmacha-page-why-choose li {
+  font-size: 1.1rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  color: #495057;
+  line-height: 1.7;
+  position: relative;
+  border-top: 4px solid #26a69a;
+}
+
+.tripmacha-page-why-choose li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-top-color: #ff6b35;
+}
+
+.tripmacha-page-why-choose p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tripmacha-page-why-choose p:last-child {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #ff6b35;
+  font-weight: 500;
+  margin-bottom: 0;
 }
 
 /* Enhanced How It Works Section */
 .tripmacha-page-how-it-works {
   padding: 8rem 4rem;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb74d 100%);
+  background: linear-gradient(135deg, #26a69a 0%, #4db6ac 50%, #80cbc4 100%);
   color: white;
   text-align: center;
   position: relative;
   overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .tripmacha-page-how-it-works::before {
@@ -472,6 +705,8 @@
   padding: 8rem 4rem;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   text-align: center;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .tripmacha-page-pricing h2 {
@@ -539,6 +774,8 @@
   color: white;
   position: relative;
   overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .tripmacha-page-final-cta::before {
@@ -676,16 +913,32 @@
   animation: tripmachaSlideInLeft 1s ease-out 0.2s both;
 }
 
+.tripmacha-page-features {
+  animation: tripmachaFadeInUp 1s ease-out 0.3s both;
+}
+
+.tripmacha-page-benefits {
+  animation: tripmachaSlideInRight 1s ease-out 0.4s both;
+}
+
+.tripmacha-page-advantages {
+  animation: tripmachaSlideInLeft 1s ease-out 0.5s both;
+}
+
+.tripmacha-page-why-choose {
+  animation: tripmachaFadeInUp 1s ease-out 0.6s both;
+}
+
 .tripmacha-page-how-it-works {
-  animation: tripmachaFadeInUp 1s ease-out 0.4s both;
+  animation: tripmachaSlideInRight 1s ease-out 0.7s both;
 }
 
 .tripmacha-page-pricing {
-  animation: tripmachaSlideInRight 1s ease-out 0.6s both;
+  animation: tripmachaFadeInUp 1s ease-out 0.8s both;
 }
 
 .tripmacha-page-final-cta {
-  animation: tripmachaFadeInUp 1s ease-out 0.8s both;
+  animation: tripmachaSlideInLeft 1s ease-out 0.9s both;
 }
 
 /* Footer Integration - Ensure Footer appears correctly */
@@ -709,9 +962,14 @@
     text-align: center;
   }
 
-  .tripmacha-page-about {
-    grid-template-columns: 1fr;
-    gap: 4rem;
+  .tripmacha-page-about,
+  .tripmacha-page-features,
+  .tripmacha-page-benefits,
+  .tripmacha-page-advantages,
+  .tripmacha-page-why-choose,
+  .tripmacha-page-how-it-works,
+  .tripmacha-page-pricing,
+  .tripmacha-page-final-cta {
     padding: 6rem 2rem;
   }
 
@@ -723,11 +981,25 @@
   .tripmacha-page-description .tripmacha-page-logo {
     align-self: center;
   }
+
+  .tripmacha-page-features ul,
+  .tripmacha-page-advantages ul {
+    grid-template-columns: 1fr;
+  }
+
+  .tripmacha-page-benefits ul,
+  .tripmacha-page-why-choose ul {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
   .tripmacha-page-hero,
   .tripmacha-page-about,
+  .tripmacha-page-features,
+  .tripmacha-page-benefits,
+  .tripmacha-page-advantages,
+  .tripmacha-page-why-choose,
   .tripmacha-page-how-it-works,
   .tripmacha-page-pricing,
   .tripmacha-page-final-cta {
@@ -752,6 +1024,13 @@
   .tripmacha-page-image img {
     max-height: 400px;
   }
+
+  .tripmacha-page-features ul,
+  .tripmacha-page-benefits ul,
+  .tripmacha-page-advantages ul,
+  .tripmacha-page-why-choose ul {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -760,16 +1039,26 @@
     font-size: 2.5rem;
   }
 
-  .tripmacha-page-about-text h2 {
+  .tripmacha-page-about-text h2,
+  .tripmacha-page-features h2,
+  .tripmacha-page-benefits h2,
+  .tripmacha-page-advantages h2,
+  .tripmacha-page-why-choose h2 {
     font-size: 2rem;
-  }
-
-  .tripmacha-page-features-card {
-    padding: 2rem;
   }
 
   .tripmacha-page-step {
     padding: 2rem 1rem;
+  }
+
+  .tripmacha-page-features li,
+  .tripmacha-page-advantages li {
+    padding: 1.5rem;
+  }
+
+  .tripmacha-page-benefits li,
+  .tripmacha-page-why-choose li {
+    padding: 1.5rem;
   }
 }
 

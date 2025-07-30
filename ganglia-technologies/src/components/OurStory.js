@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useEffect, useState, useCallback, useMemo } from "react";
-import Footer from "./Footer";
 import CardParticleEffect from "./CardParticleEffect";
 import TechMilestonesTimeline from "./TechMilestonesTimeline";
 import '../styles/OurStory.css';
@@ -599,8 +598,6 @@ function OurStory() {
   </p>
 </div>
 
-       
-      <Footer />  
     </div>
   );
 }

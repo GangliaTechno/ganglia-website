@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import '../styles/tripmacha.css';
-import Footer from './Footer';
 import guyOnScooter from '../assets/guy_on_scooter.png';
 import beachPhoto from '../assets/beach-Photoroom.png';
 import autoImage from '../assets/auto.png';
 import logoImage from '../assets/logo.png';
+
 
 const TripMacha = () => {
   const [scooterImageIndex, setScooterImageIndex] = useState(0);
@@ -17,8 +17,10 @@ const TripMacha = () => {
     { src: autoImage, alt: 'TripMacha mascot in auto rickshaw' }
   ];
 
+
   // Optimize colors array with useMemo to prevent unnecessary re-renders
   const colors = useMemo(() => ['#c9f6ff', '#ffdeeb', '#ffe9cc', '#c8f1f1', '#feffd7'], []);
+
 
   useEffect(() => {
     // Title shuffle animation
@@ -34,6 +36,7 @@ const TripMacha = () => {
       return arr.join('');
     };
 
+
     const animateShuffle = (text, iterations = 6, delay = 80) => {
       let count = 0;
       const intervalId = setInterval(() => {
@@ -47,9 +50,11 @@ const TripMacha = () => {
       }, delay);
     };
 
+
     if (titleElement) {
       animateShuffle(originalText);
     }
+
 
     // Dynamic bubble creation
     const createBubble = () => {
@@ -91,11 +96,13 @@ const TripMacha = () => {
       return bubble;
     };
 
+
     const createBubbleAndAppend = () => {
       if (bubbleContainerRef.current) {
         bubbleContainerRef.current.appendChild(createBubble());
       }
     };
+
 
     // Generate bubbles
     if (bubbleContainerRef.current) {
@@ -104,6 +111,7 @@ const TripMacha = () => {
         createBubbleAndAppend();
       }
     }
+
 
     // Mouse parallax effect
     const handleMouseMove = (e) => {
@@ -114,12 +122,15 @@ const TripMacha = () => {
       });
     };
 
+
     document.addEventListener('mousemove', handleMouseMove);
+
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
   }, [colors]);
+
 
   const handleScooterClick = () => {
     const scooterImg = document.getElementById('scooterGuy');
@@ -134,6 +145,7 @@ const TripMacha = () => {
     }
   };
 
+
   const handleDiscoverClick = (e) => {
     e.preventDefault();
     console.log('Discover TripMacha AI clicked');
@@ -141,6 +153,7 @@ const TripMacha = () => {
     // navigate('/discover'); // if using react-router
     // window.location.href = '/discover';
   };
+
 
   return (
     <div className="tripmacha-page">
@@ -168,9 +181,7 @@ const TripMacha = () => {
               <img src={logoImage} alt="TripMacha Logo" className="tripmacha-page-logo" />
               <h1 className="tripmacha-title" ref={titleRef}>Trip Macha AI</h1>
               <p>
-                TripMacha AI is an AI travel assistant tailored for short, time-limited trips. 
-                It creates smart, hyper-personalized itineraries using user interests, 
-                traffic, crowd, and real-time data.
+                TripMachaAI is an intelligent, end-to-end travel and logistics planning platform powered by advanced AI—built specifically for hospitals, academic institutions, and healthcare organizations. Streamlines itinerary creation, accommodation selection, approval processes, and reimbursement tracking with unmatched efficiency and cost control.
               </p>
               <button 
                 className="tripmacha-page-btn" 
@@ -183,35 +194,87 @@ const TripMacha = () => {
           </div>
         </section>
 
+
         {/* About Section */}
         <section className="tripmacha-page-about">
           <div className="tripmacha-page-about-text">
-            <h2><span>About</span> TripMacha</h2>
+            <h2><span>About</span> TripMachaAI</h2>
             <p>
-              TripMacha AI is the first-of-its-kind AI-powered travel assistant in India, built specifically for short-distance, time-limited travel. Ideal for users with just a few hours to explore, it generates smart, hyper-personalized itineraries based on minimal input—factoring in user interest, traffic, live crowd data, and real-time availability.
+              TripMachaAI is an intelligent, end-to-end travel and logistics planning platform powered by advanced AI—built specifically for hospitals, academic institutions, and healthcare organizations. Moving beyond basic manual and spreadsheet-based travel management, TripMachaAI helps your team plan, optimize, and track journeys for conferences, patient transfers, fieldwork, student postings, and more—all with unmatched efficiency and cost control.
             </p>
             <p>
-              Unlike conventional travel apps that overload users with choices, TripMacha AI delivers instant, optimized plans with built-in navigation and reservation options. With no comparable solution in the Indian market, it redefines spontaneous travel through intelligent automation and seamless execution.
+              Seamlessly integrating with organizational workflows, TripMachaAI streamlines itinerary creation, accommodation selection, approval processes, and reimbursement tracking. Designed for doctors, admin staff, engineers, faculty, and students, it brings clarity, transparency, and peace of mind to every official trip—so you can focus on your mission, not the paperwork.
             </p>
-          </div>
-
-          <div className="tripmacha-page-features-card">
-            <h3>Features</h3>
-            <ul>
-              <li><i className="tripmacha-page-icon" role="img" aria-label="location">📍</i> Short Distance Travel Partner</li>
-              <li><i className="tripmacha-page-icon" role="img" aria-label="checkmark">✅</i> Hyper-personalised Itineraries</li>
-              <li><i className="tripmacha-page-icon" role="img" aria-label="clock">⏱️</i> Real time Optimisation</li>
-              <li><i className="tripmacha-page-icon" role="img" aria-label="chart">📊</i> Minimum Input, Max Output</li>
-              <li><i className="tripmacha-page-icon" role="img" aria-label="handshake">🤝</i> Hassle Free Planner</li>
-              <li><i className="tripmacha-page-icon" role="img" aria-label="globe">🌐</i> Web & App support</li>
-            </ul>
           </div>
         </section>
+
+
+        {/* Features Section */}
+        <section className="tripmacha-page-features">
+          <h2>Features</h2>
+          <ul>
+            <li><i className="tripmacha-page-icon" role="img" aria-label="ai">🤖</i> <strong>AI-Powered Itinerary Planning:</strong> Automatically generates optimal travel routes, schedules, and accommodation options based on user needs and organizational policies.</li>
+            <li><i className="tripmacha-page-icon" role="img" aria-label="workflow">⚙️</i> <strong>Approval Workflow Automation:</strong> Simplifies and accelerates travel requests, approvals, and documentation with customizable, rule-based steps.</li>
+            <li><i className="tripmacha-page-icon" role="img" aria-label="money">💰</i> <strong>Cost Optimization Engine:</strong> Suggests the best travel and stay options for both comfort and budget—maximizing value within company guidelines.</li>
+            <li><i className="tripmacha-page-icon" role="img" aria-label="bell">🔔</i> <strong>Real-Time Notifications:</strong> Keeps travelers, managers, and admin teams updated on approvals, status changes, and travel alerts via email or SMS.</li>
+            <li><i className="tripmacha-page-icon" role="img" aria-label="group">👥</i> <strong>Group & Bulk Booking:</strong> Handles individual or batch travel planning for teams, student groups, or multiple delegates with ease.</li>
+            <li><i className="tripmacha-page-icon" role="img" aria-label="expense">📊</i> <strong>Integrated Expense Management:</strong> Captures receipts, automates reimbursement forms, and tracks expenses for transparent accounting.</li>
+            <li><i className="tripmacha-page-icon" role="img" aria-label="dashboard">📋</i> <strong>Personalized Dashboards:</strong> Gives each user—traveler, admin, or approver—a clear view of upcoming trips, pending actions, and overall travel stats.</li>
+            <li><i className="tripmacha-page-icon" role="img" aria-label="security">🔒</i> <strong>Data Security and Privacy:</strong> All travel data is securely stored within the organization's infrastructure or on-premises servers per your policy—never shared externally.</li>
+            <li><i className="tripmacha-page-icon" role="img" aria-label="device">📱</i> <strong>Multi-Platform Accessibility:</strong> Plan, approve, and track travel from any device, at work or on the go.</li>
+          </ul>
+        </section>
+
+
+        {/* Benefits Section */}
+        <section className="tripmacha-page-benefits">
+          <h2>Benefits of Using TripMachaAI</h2>
+          <ul>
+            <li>Dramatically reduces manual paperwork and administrative effort</li>
+            <li>Ensures compliance with organizational travel policies and budgets</li>
+            <li>Enhances accuracy, transparency, and speed of travel planning and approvals</li>
+            <li>Improves user satisfaction with tailored, AI-guided itineraries</li>
+            <li>Empowers HR and finance teams with real-time oversight of travel expenditures</li>
+            <li>Scales effortlessly from small teams to multi-campus organizations</li>
+            <li>Guarantees data privacy with secure, local data storage</li>
+          </ul>
+        </section>
+
+
+        {/* Additional Advantages Section */}
+        <section className="tripmacha-page-advantages">
+          <h2>Additional Advantages</h2>
+          <ul>
+            <li>Customizable fields and approval chains to match your institution's workflows</li>
+            <li>Advanced analytics on travel frequency, spend, and trends</li>
+            <li>Seamless integration with internal HR or ERP systems</li>
+            <li>Regional settings for currencies, destinations, and compliance</li>
+            <li>Dedicated support and onboarding from the Ganglia team</li>
+          </ul>
+        </section>
+
+
+        {/* Why Choose TripMachaAI Section */}
+        <section className="tripmacha-page-why-choose">
+          <h2>Why Choose TripMachaAI?</h2>
+          <ul>
+            <li>Developed by Ganglia Technologies—trusted for innovation, security, and collaboration with healthcare and academic leaders</li>
+            <li>Advanced AI algorithms honed for real-world institutional needs</li>
+            <li>Flexible, scalable, and tailored to your organization's travel management</li>
+            <li>Proven to streamline operations, control costs, and enhance planning</li>
+          </ul>
+          <p>
+            <strong>Cut through the chaos of travel management—choose the intelligence of AI, transparency, control, and security with TripMachaAI. Empower your team to move further, faster, and smarter.</strong>
+          </p>
+          <p><em>Innovation. Clarity. Mobility. Delivered.</em></p>
+        </section>
+
 
         {/* How It Works Section */}
         <section className="tripmacha-page-how-it-works">
           <p className="tripmacha-page-subheading">HOW IT WORKS</p>
           <h2>Plan your perfect trip in minutes!</h2>
+
 
           <div className="tripmacha-page-steps">
             <div className="tripmacha-page-step">
@@ -235,6 +298,7 @@ const TripMacha = () => {
           </div>
         </section>
 
+
         {/* Pricing Section */}
         <section className="tripmacha-page-pricing">
           <h2>PRICING</h2>
@@ -244,6 +308,7 @@ const TripMacha = () => {
             <div className="tripmacha-page-card">Pro</div>
           </div>
         </section>
+
 
         {/* Final CTA Section */}
         <section className="tripmacha-page-final-cta">
@@ -257,9 +322,10 @@ const TripMacha = () => {
       </div>
       
       {/* External Footer Component - Same as all other pages */}
-      <Footer />
+
     </div>
   );
 };
+
 
 export default TripMacha;

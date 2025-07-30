@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Preloader from './components/Preloader'; // Initial load preloader
 import RoutePreloader from './components/RoutePreloader'; // Route change preloader
 import { useRouteLoader } from './hooks/useRouteLoader';
@@ -15,6 +15,7 @@ import ServicesPage from './components/servicespage';
 import TeamSection from './components/TeamSection';
 import CertificationsSection from './components/CertificationsSection';
 import Footer from './components/Footer';
+import Profooter from './components/Profooter';
 import CareersPage from './components/CareersPage';
 import ApplicationForm from './components/Applicationform';
 import ContactUs from './components/ContactUs';
@@ -29,7 +30,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
 import ResearchPapers from './components/research';
 import GetStartedForm from './components/getstarted';
+import AwardsResearchPage from './components/AwardsResearch'; 
 
+
+// HomePage: Removed Footer here to avoid duplication
 const HomePage = () => {
   return (
     <>
@@ -47,10 +51,11 @@ const HomePage = () => {
       <Services />
       <TeamSection />
       <CertificationsSection />
-      <Footer />
+      {/* Footer removed from here */}
     </>
   );
 };
+
 
 // Updated 404 component
 const NotFoundPage = () => {
@@ -91,6 +96,32 @@ const NotFoundPage = () => {
   );
 };
 
+
+// FooterController: Decides what footer to render based on current path
+const FooterController = () => {
+  const location = useLocation();
+
+  console.log('Current path:', location.pathname);
+
+  const profooterPaths = [
+    '/tripmacha',
+    '/main-component',
+    '/services',
+    '/MedlogBookPlatform',
+    '/smart-video-laryngoscope',
+    '/get-started'
+  ];
+
+  if (profooterPaths.includes(location.pathname)) {
+    return <Profooter />;
+  }
+  
+  return <Footer />;
+};
+
+
+
+
 // App content wrapper to use route loader
 const AppContent = () => {
   const { isLoading: isRouteLoading } = useRouteLoader();
@@ -108,17 +139,22 @@ const AppContent = () => {
         <Route path="/our-team" element={<OurTeam />} />
         <Route path="/tripmacha" element={<TripMacha />} />
         <Route path="/smart-video-laryngoscope" element={<Laryngoscope />} />
-        {/*<Route path="/medical-logbook" element={<MedlogBookPlatform />} /> */}
+        <Route path="/medical-logbook" element={<MedlogBookPlatform />} /> 
         <Route path="/main-component" element={<MainComponent />} />
         <Route path="/research-papers" element={<ResearchPapers />} />
+        <Route path="/awards" element={<AwardsResearchPage />} /> {/* Add this route */}
         <Route path="/get-started" element={<GetStartedForm />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
+      {/* Conditionally renders either Footer or Profooter */}
+      <FooterController />
     </>
   );
 };
+
 
 function App() {
   const [isInitialLoading, setIsInitialLoading] = useState(true);
@@ -158,5 +194,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
