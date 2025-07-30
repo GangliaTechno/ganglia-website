@@ -4,6 +4,7 @@ import CardParticleEffect from "./CardParticleEffect";
 import TechMilestonesTimeline from "./TechMilestonesTimeline";
 import '../styles/OurStory.css';
 
+
 // Static imports for images with fallbacks
 let aboutusImage;
 let targetGif;
@@ -24,10 +25,12 @@ try {
   ideaGif = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2'%3E%3Cpath d='M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM9.5 16h5v-1h-5v1zm1-3h3v-1h-3v1zm0-2h3V9h-3v2z'/%3E%3C/svg%3E";
 }
 
+
 // Memoized star component to prevent unnecessary re-renders
 const Star = React.memo(({ style }) => (
   <div className="aboutus-star" style={style} />
 ));
+
 
 // Memoized section component
 const AnimatedSection = React.memo(({ 
@@ -44,12 +47,14 @@ const AnimatedSection = React.memo(({
     return `${baseClass} ${directionClass} ${visibilityClass}`.trim();
   }, [className, isVisible, scrollDirection]);
 
+
   return (
     <div id={id} className={sectionClass}>
       {children}
     </div>
   );
 });
+
 
 function OurStory() {
   // Consolidated state
@@ -60,9 +65,11 @@ function OurStory() {
     scrollDirection: 'down'
   });
 
+
   const observerRef = useRef(null);
   const lastScrollY = useRef(0);
   const scrollTimeoutRef = useRef(null);
+
 
   // Memoize stars generation
   const stars = useMemo(() => {
@@ -76,11 +83,13 @@ function OurStory() {
     }));
   }, []);
 
+
   // Throttled scroll handler
   const handleScroll = useCallback(() => {
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
     }
+
 
     scrollTimeoutRef.current = setTimeout(() => {
       const currentScrollY = window.scrollY;
@@ -95,16 +104,19 @@ function OurStory() {
     }, 16); // ~60fps throttling
   }, []);
 
+
   // Optimized intersection observer
   const setupIntersectionObserver = useCallback(() => {
     if (observerRef.current) {
       observerRef.current.disconnect();
     }
 
+
     observerRef.current = new IntersectionObserver(
       (entries) => {
         const updates = {};
         let hasChanges = false;
+
 
         entries.forEach((entry) => {
           const elementId = entry.target.id;
@@ -114,14 +126,15 @@ function OurStory() {
             updates[elementId] = true;
             hasChanges = true;
           } else {
-            // Allow re-animation for specific cards only
-            const animatableCards = ['why-exist', 'how-we-do', 'what-we-create', 'impact'];
+            // Allow re-animation for specific cards only (removed the card IDs that were causing issues)
+            const animatableCards = [];
             if (animatableCards.includes(elementId)) {
               updates[elementId] = false;
               hasChanges = true;
             }
           }
         });
+
 
         if (hasChanges) {
           setState(prev => {
@@ -146,6 +159,7 @@ function OurStory() {
       }
     );
 
+
     // Observe elements
     const slideElements = document.querySelectorAll('.slide-element');
     slideElements.forEach((el) => {
@@ -155,6 +169,7 @@ function OurStory() {
     });
   }, []);
 
+
   // Initialize component
   useEffect(() => {
     setState(prev => ({
@@ -163,6 +178,7 @@ function OurStory() {
       imagesLoaded: true
     }));
   }, [stars]);
+
 
   // Setup scroll listener
   useEffect(() => {
@@ -174,6 +190,7 @@ function OurStory() {
       }
     };
   }, [handleScroll]);
+
 
   // Setup intersection observer
   useEffect(() => {
@@ -188,10 +205,12 @@ function OurStory() {
     }
   }, [state.imagesLoaded, setupIntersectionObserver]);
 
+
   // Memoized visibility checker
   const isElementVisible = useCallback((elementId) => {
     return state.visibleElements.has(elementId);
   }, [state.visibleElements]);
+
 
   // Memoized image src getter
   const getImageSrc = useCallback((imageModule, fallback) => {
@@ -203,6 +222,7 @@ function OurStory() {
     return fallback;
   }, []);
 
+
   // Loading state
   if (!state.imagesLoaded) {
     return (
@@ -212,6 +232,7 @@ function OurStory() {
     );
   }
 
+
   return (
     <div className="aboutus-container">
       {/* Animated stars background */}
@@ -220,6 +241,7 @@ function OurStory() {
           <Star key={star.id} style={star.style} />
         ))}
       </div>
+
 
       <div className="aboutus-content-wrapper">
         {/* Header */}
@@ -235,14 +257,13 @@ function OurStory() {
           </h2>
         </AnimatedSection>
 
+
         {/* Cards Container */}
         <div className="stacking-container">
           {/* Why We Exist Section */}
-          <AnimatedSection
+          <div
             id="why-exist"
             className="stacking-card"
-            isVisible={isElementVisible('why-exist')}
-            scrollDirection={state.scrollDirection}
           >
             <div className="card-overlay">
               <CardParticleEffect />
@@ -260,14 +281,13 @@ function OurStory() {
                 life better, easier, safer?
               </p>
             </div>
-          </AnimatedSection>
+          </div>
+
 
           {/* How we do it Section */}
-          <AnimatedSection
+          <div
             id="how-we-do"
             className="stacking-card"
-            isVisible={isElementVisible('how-we-do')}
-            scrollDirection={state.scrollDirection}
           >
             <div className="card-overlay">
               <CardParticleEffect />
@@ -308,14 +328,13 @@ function OurStory() {
                 </li>
               </ul>
             </div>
-          </AnimatedSection>
+          </div>
+
 
           {/* What We Create Section */}
-          <AnimatedSection
+          <div
             id="what-we-create"
             className="stacking-card"
-            isVisible={isElementVisible('what-we-create')}
-            scrollDirection={state.scrollDirection}
           >
             <div className="card-overlay">
               <CardParticleEffect />
@@ -369,14 +388,13 @@ function OurStory() {
                 </li>
               </ul>
             </div>
-          </AnimatedSection>
+          </div>
+
 
           {/* The Impact Section */}
-          <AnimatedSection
+          <div
             id="impact"
             className="stacking-card"
-            isVisible={isElementVisible('impact')}
-            scrollDirection={state.scrollDirection}
           >
             <div className="card-overlay">
               <CardParticleEffect />
@@ -390,8 +408,9 @@ function OurStory() {
                 with solutions that change lives.
               </p>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
+
 
         {/* Hero Section - Full Width */}
         <AnimatedSection
@@ -418,11 +437,13 @@ function OurStory() {
           </div>
         </AnimatedSection>
 
+
         {/* Ganglia Story Section - Full Width - NO ANIMATION */}
        
         {/* Philosophy Section - NO ANIMATIONS */}
         <div id="philosophy-header" className="philosophy-section">
           <h3 className="philosophy-title">Philosophy</h3>
+
 
           <div className="mission-cards-container">
             <div id="mission-card-1" className="mission-card">
@@ -447,6 +468,7 @@ function OurStory() {
     <h4 className="mission-title">Our Vision</h4>
   </div>
 </div>
+
 
 
            <div id="mission-card-2" className="mission-card">
@@ -477,8 +499,10 @@ function OurStory() {
 
 
 
+
             </div>
           </div>
+
 
           {/* Our Values */}
           <div className="values-section">
@@ -527,6 +551,7 @@ function OurStory() {
             </div>
           </div>
 
+
           {/* Broader Impact Section - WITH particle effects - NO ANIMATION */}
         
             <h3 id="broader-impact-title" className="broader-impact-title">
@@ -560,11 +585,13 @@ function OurStory() {
           
         
 
+
         {/* Tech Milestones Section */}
         <div id="TechMilestonesTimeline">
         <TechMilestonesTimeline />
         </div>
       </div>
+
 
 
       {/* Social Responsibility Section */}
@@ -598,8 +625,10 @@ function OurStory() {
   </p>
 </div>
 
+
     </div>
   );
 }
 
+ 
 export default OurStory;
