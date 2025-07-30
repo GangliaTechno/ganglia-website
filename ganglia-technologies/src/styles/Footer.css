@@ -357,11 +357,13 @@
     flex: 1;
     min-width: 140px;
     max-width: 160px;
+    margin-left: 50px;
   }
 
   .contact-icon {
     width: 28px;
     height: 28px;
+    margin-left: 40px;
   }
 
   .contact-icon svg {

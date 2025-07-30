@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-// import Footer from '../components/Footer';
 import '../styles/tripmacha.css';
 import Footer from './Footer';
 import guyOnScooter from '../assets/guy_on_scooter.png';
@@ -18,7 +17,7 @@ const TripMacha = () => {
     { src: autoImage, alt: 'TripMacha mascot in auto rickshaw' }
   ];
 
-  // Fix 1: Move colors array to useMemo to prevent unnecessary re-renders
+  // Optimize colors array with useMemo to prevent unnecessary re-renders
   const colors = useMemo(() => ['#c9f6ff', '#ffdeeb', '#ffe9cc', '#c8f1f1', '#feffd7'], []);
 
   useEffect(() => {
@@ -135,13 +134,12 @@ const TripMacha = () => {
     }
   };
 
-  // Fix 2: Handle CTA button click
   const handleDiscoverClick = (e) => {
     e.preventDefault();
+    console.log('Discover TripMacha AI clicked');
     // Add your navigation logic here, for example:
     // navigate('/discover'); // if using react-router
     // window.location.href = '/discover';
-    console.log('Discover TripMacha AI clicked');
   };
 
   return (
@@ -174,7 +172,6 @@ const TripMacha = () => {
                 It creates smart, hyper-personalized itineraries using user interests, 
                 traffic, crowd, and real-time data.
               </p>
-              {/* Fix 2: Replace anchor with button or add proper href */}
               <button 
                 className="tripmacha-page-btn" 
                 onClick={handleDiscoverClick}
@@ -219,19 +216,19 @@ const TripMacha = () => {
           <div className="tripmacha-page-steps">
             <div className="tripmacha-page-step">
               <div className="tripmacha-step-placeholder">
-                <span className="step-number">1</span>
+                <span className="tripmacha-step-number">1</span>
               </div>
               <p>Decide the Location<br />for the trip</p>
             </div>
             <div className="tripmacha-page-step">
               <div className="tripmacha-step-placeholder">
-                <span className="step-number">2</span>
+                <span className="tripmacha-step-number">2</span>
               </div>
               <p>Enter the details in<br />TripMacha Chatbot</p>
             </div>
             <div className="tripmacha-page-step">
               <div className="tripmacha-step-placeholder">
-                <span className="step-number">3</span>
+                <span className="tripmacha-step-number">3</span>
               </div>
               <p>Get Your complete<br />Itinerary</p>
             </div>
@@ -243,7 +240,7 @@ const TripMacha = () => {
           <h2>PRICING</h2>
           <div className="tripmacha-page-pricing-cards">
             <div className="tripmacha-page-card">Free Version</div>
-            <div className="tripmacha-page-card highlight">Plus</div>
+            <div className="tripmacha-page-card tripmacha-highlight">Plus</div>
             <div className="tripmacha-page-card">Pro</div>
           </div>
         </section>
@@ -252,17 +249,15 @@ const TripMacha = () => {
         <section className="tripmacha-page-final-cta">
           <div className="tripmacha-page-cta-content">
             <div className="tripmacha-cta-placeholder">
-              <span className="cta-emoji">🚗</span>
+              <span className="tripmacha-cta-emoji">🚗</span>
             </div>
-            <h2><span className="faint">Plan your trip</span> <strong>NOW!</strong></h2>
+            <h2><span className="tripmacha-faint">Plan your trip</span> <strong>NOW!</strong></h2>
           </div>
         </section>
-
-        {/* Use your existing Footer component */}
-        {/* <Footer /> */}
-        <Footer />
       </div>
       
+      {/* External Footer Component - Same as all other pages */}
+      <Footer />
     </div>
   );
 };

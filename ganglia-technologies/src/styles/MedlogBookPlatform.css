@@ -743,7 +743,6 @@ body {
 .medlog-platform-wrapper * {
   animation: slideInUp 0.6s ease-out;
 }
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -754,10 +753,16 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-gradient);
+  background: #fef155; /* Yellow color */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-gradient);
+  background: #fff700; /* Brighter yellow on hover */
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #fef155 #f1f1f1;
 }

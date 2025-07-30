@@ -6,7 +6,17 @@ import logo from '../assets/logob.png';
 // Import Firebase database
 import { database } from '../firebase/config';
 import { ref, get } from 'firebase/database';
-
+import { Player } from '@lottiefiles/react-lottie-player';
+import innovation from '../assets/innovation.json';
+import learning from '../assets/learning.json';
+import collaboration from '../assets/collaboration.json';
+import developmentTeamImg from '../assets/developmentteam.jpeg';
+import researchLabImg from '../assets/researchlab.jpeg';
+import designStudioImg from '../assets/designstudio.jpeg';
+import collaborationSpacesImg from '../assets/collaborationspaces.jpg';
+import launch from '../assets/Firecracker.json';
+import teach from '../assets/Classroom.json';
+import globe from '../assets/globe.json';
 
 const CareersPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -18,41 +28,33 @@ const CareersPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Responsive: detect mobile - if you need this later, remove the eslint-disable comment
+  // eslint-disable-next-line no-unused-vars
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
 
-  // Add navigation hook
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 900);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const navigate = useNavigate();
 
-
-  // Function to parse job description if it's a JSON string
   const parseJobDescription = (description) => {
     if (!description) return null;
-    
     try {
-      // If it's already an object, return it
-      if (typeof description === 'object') {
-        return description;
-      }
-      
-      // If it's a string, try to parse it as JSON
+      if (typeof description === 'object') return description;
       return JSON.parse(description);
     } catch (error) {
-      // If parsing fails, return the original description as plain text
       return { "Job Description": description };
     }
   };
 
-
-  // Function to render job description in modal
   const renderJobDescription = (job) => {
     const parsedDescription = parseJobDescription(job.description);
-    
     if (!parsedDescription || typeof parsedDescription === 'string') {
-      // If it's still a string or null, display as regular description
       return <p className="job-description">{job.description}</p>;
     }
-
-
-    // If it's a parsed object, display formatted sections
     return (
       <div className="job-description-sections">
         {Object.entries(parsedDescription).map(([key, value]) => (
@@ -69,92 +71,57 @@ const CareersPage = () => {
     );
   };
 
-
-  // Load job data from Firebase on component mount
   useEffect(() => {
     fetchJobsFromFirebase();
   }, []);
 
-
-  // Fetch jobs from Firebase Realtime Database
   const fetchJobsFromFirebase = async () => {
     try {
       setLoading(true);
       setError(null);
-      
-      // Reference to the jobs node in your Firebase database
       const jobsRef = ref(database, 'jobs');
-      
-      // Option 1: One-time read
       const snapshot = await get(jobsRef);
-      
       if (snapshot.exists()) {
         const data = snapshot.val();
-        // Convert Firebase object to array if needed
         const jobsArray = Array.isArray(data) ? data : Object.values(data);
         setJobData(jobsArray);
       } else {
-        console.log('No jobs data available');
         setJobData([]);
       }
     } catch (error) {
-      console.error('Error fetching jobs from Firebase:', error);
       setError('Failed to load job data. Please try again later.');
-      // Fallback to empty array
       setJobData([]);
     } finally {
       setLoading(false);
     }
   };
 
-
-  const handleFilterChange = (filter) => {
-    setActiveFilter(filter);
-  };
-
-
-  const handleCardClick = (cardIndex) => {
-    setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
-  };
-
-
-  const handleJobCardClick = (jobId) => {
-    setExpandedJobCard(expandedJobCard === jobId ? null : jobId);
-  };
-
+  const handleFilterChange = (filter) => setActiveFilter(filter);
+  const handleCardClick = (cardIndex) => setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
+  
+  // If you need this function later, remove the eslint-disable comment
+  // eslint-disable-next-line no-unused-vars
+  const handleJobCardClick = (jobId) => setExpandedJobCard(expandedJobCard === jobId ? null : jobId);
 
   const imageCardsData = [
     {
-      title: "Development Team",
-      description: "Building next-gen healthcare solutions",
-      gradient: "linear-gradient(135deg, #037ee5 0%, #4489ca 100%)"
+      image: developmentTeamImg
     },
     {
-      title: "Research Lab", 
-      description: "AI-powered medical diagnostics",
-      gradient: "linear-gradient(135deg, #4489ca 0%, #64b5f6 100%)"
+      image: researchLabImg
     },
     {
-      title: "Design Studio",
-      description: "Crafting intuitive user experiences", 
-      gradient: "linear-gradient(135deg, #64b5f6 0%, #81e4f9 100%)"
+      image: designStudioImg
     },
     {
-      title: "Collaboration Spaces",
-      description: "Where innovation happens",
-      gradient: "linear-gradient(135deg, #037ee5 0%, #10389d 100%)"
+      image: collaborationSpacesImg
     }
   ];
 
-
-  // Calculate dynamic job count
   const totalJobCount = jobData.length;
-
-
-  const filteredJobs = activeFilter === 'all' 
-    ? jobData 
+  const filteredJobs = activeFilter === 'all'
+    ? jobData
     : jobData.filter(job => job.category === activeFilter);
-
 
   const handleApplyClick = (jobId) => {
     const job = jobData.find(j => j.id === jobId);
@@ -162,34 +129,26 @@ const CareersPage = () => {
     setShowApplicationModal(true);
   };
 
-
   const closeModal = () => {
     setShowApplicationModal(false);
     setSelectedJob(null);
   };
 
-
   const handleInternshipApply = () => {
-    console.log('Applying for internship');
     alert('Internship application form will be implemented here');
   };
 
-
-  // Format date function
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric' 
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
     });
   };
 
-
   const renderDetailedInfo = (job) => {
     if (!job.detailedInfo) return null;
-
-
     return (
       <div className="job-detailed-info">
         <div className="info-section">
@@ -200,8 +159,6 @@ const CareersPage = () => {
             ))}
           </ul>
         </div>
-
-
         <div className="info-section">
           <h3>Required Qualifications</h3>
           <ul>
@@ -210,8 +167,6 @@ const CareersPage = () => {
             ))}
           </ul>
         </div>
-
-
         <div className="info-section">
           <h3>Essential Skills</h3>
           <ul>
@@ -220,8 +175,6 @@ const CareersPage = () => {
             ))}
           </ul>
         </div>
-
-
         <div className="info-section">
           <h3>Preferred Qualifications</h3>
           <ul>
@@ -230,8 +183,6 @@ const CareersPage = () => {
             ))}
           </ul>
         </div>
-
-
         <div className="info-section">
           <p className="submit-note">
             <strong>Please submit:</strong> This role offers an exceptional opportunity to shape organizational culture, drive strategic HR initiatives, and lead a dynamic team in a growing organization.
@@ -241,8 +192,6 @@ const CareersPage = () => {
     );
   };
 
-
-  // Loading state
   if (loading) {
     return (
       <div className="careers-page">
@@ -254,8 +203,6 @@ const CareersPage = () => {
     );
   }
 
-
-  // Error state
   if (error) {
     return (
       <div className="careers-page">
@@ -268,7 +215,6 @@ const CareersPage = () => {
       </div>
     );
   }
-
 
   return (
     <div className="careers-page">
@@ -287,12 +233,9 @@ const CareersPage = () => {
                   <span className="job-location">{selectedJob.location}</span>
                   <span className="job-level">{selectedJob.level}</span>
                 </div>
-                {/* Updated to use the renderJobDescription function */}
                 {renderJobDescription(selectedJob)}
               </div>
-              
               {renderDetailedInfo(selectedJob)}
-              
               <div className="modal-actions">
                 <button className="cancel-btn" onClick={closeModal}>
                   Cancel
@@ -301,9 +244,8 @@ const CareersPage = () => {
                   className="submit-application-btn"
                   onClick={(e) => {
                     e.stopPropagation();
-                    // Pass the parsed job description to the application form
                     navigate(`/apply/${selectedJob.id}`, {
-                      state: { 
+                      state: {
                         jobTitle: selectedJob.title,
                         jobDescription: parseJobDescription(selectedJob.description)
                       }
@@ -318,7 +260,6 @@ const CareersPage = () => {
           </div>
         </div>
       )}
-
 
       {/* Hero Section */}
       <section className="careers-hero">
@@ -346,7 +287,6 @@ const CareersPage = () => {
         </div>
       </section>
 
-
       {/* Why Join Us Section */}
       <section className="careers-why-join-section">
         <div className="careers-container">
@@ -356,24 +296,23 @@ const CareersPage = () => {
           </div>
           <div className="careers-benefits-grid">
             <div className="careers-benefit-card">
-              <div className="careers-benefit-icon">💡</div>
+              <div className="careers-benefit-icon"><Player autoplay loop src={innovation} style={{ height: 55, width: 55 }} /></div>
               <h3>Innovation First</h3>
               <p>Work on cutting-edge projects that push the boundaries of what's possible in healthcare technology.</p>
             </div>
             <div className="careers-benefit-card">
-              <div className="careers-benefit-icon">🌱</div>
+              <div className="careers-benefit-icon"><Player autoplay loop src={learning} style={{ height: 55, width: 55 }} /></div>
               <h3>Growth & Learning</h3>
               <p>Continuous learning opportunities with mentorship from industry experts and access to latest technologies.</p>
             </div>
             <div className="careers-benefit-card">
-              <div className="careers-benefit-icon">🤝</div>
+              <div className="careers-benefit-icon"><Player autoplay loop src={collaboration} style={{ height: 55, width: 55 }} /></div>
               <h3>Collaborative Culture</h3>
               <p>Join a diverse team where every voice matters and breakthrough ideas emerge from collaboration.</p>
             </div>
           </div>
         </div>
       </section>
-
 
       {/* Openings Section */}
       <section className="careers-section" id="openings">
@@ -382,52 +321,40 @@ const CareersPage = () => {
             <h2>Current Openings</h2>
             <p>Join our mission to revolutionize healthcare technology</p>
           </div>
-          
           <div className="careers-filter-tabs">
-            <button 
+            <button
               className={`careers-filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
               onClick={() => handleFilterChange('all')}
             >
               All Positions
             </button>
-            <button 
+            <button
               className={`careers-filter-btn ${activeFilter === 'engineering' ? 'active' : ''}`}
               onClick={() => handleFilterChange('engineering')}
             >
               Engineering
             </button>
-            <button 
+            <button
               className={`careers-filter-btn ${activeFilter === 'design' ? 'active' : ''}`}
               onClick={() => handleFilterChange('design')}
             >
               Design
             </button>
-            <button 
+            <button
               className={`careers-filter-btn ${activeFilter === 'management' ? 'active' : ''}`}
               onClick={() => handleFilterChange('management')}
             >
               Management
             </button>
           </div>
-
-
           <div className="careers-opening-cards">
             {filteredJobs.length > 0 ? (
               filteredJobs.map(job => (
-                <div 
-                  key={job.id} 
-                  className={`careers-job-card ${expandedJobCard === job.id ? 'expanded' : 'collapsed'}`} 
+                <div
+                  key={job.id}
+                  className="careers-job-card expanded"
                   data-category={job.category}
-                  onClick={() => handleJobCardClick(job.id)}
                 >
-                  {/* Mobile Rectangle View - Title Only */}
-                  <div className="careers-job-card-content">
-                    <div className="careers-job-card-title-only">
-                      {job.title}
-                    </div>
-                  </div>
-
-
                   {/* Full Content View - Expanded */}
                   <div className="careers-job-card-full-content">
                     <div className="careers-job-header">
@@ -440,22 +367,20 @@ const CareersPage = () => {
                         </div>
                       </div>
                     </div>
-                    
-                    {/* Display only job description - parse if it's JSON */}
                     <div className="careers-job-description-container">
                       {(() => {
                         const parsedDescription = parseJobDescription(job.description);
-                        
-                        // If it's a parsed JSON object, show only the "Job Description" field
-                        if (parsedDescription && typeof parsedDescription === 'object' && parsedDescription["Job Description"]) {
+                        if (
+                          parsedDescription &&
+                          typeof parsedDescription === 'object' &&
+                          parsedDescription["Job Description"]
+                        ) {
                           return (
                             <p className="careers-job-description">
                               {parsedDescription["Job Description"]}
                             </p>
                           );
                         }
-                        
-                        // Otherwise show the regular description
                         return (
                           <p className="careers-job-description">
                             {job.description}
@@ -463,8 +388,6 @@ const CareersPage = () => {
                         );
                       })()}
                     </div>
-
-
                     <div className="careers-job-skills">
                       {job.skills && job.skills.map((skill, index) => (
                         <span key={index} className="careers-skill-tag">{skill}</span>
@@ -472,8 +395,8 @@ const CareersPage = () => {
                     </div>
                     <div className="careers-job-footer">
                       <div className="careers-job-posted">{job.posted}</div>
-                      <button 
-                        className="careers-job-apply-btn" 
+                      <button
+                        className="careers-job-apply-btn"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleApplyClick(job.id);
@@ -494,7 +417,6 @@ const CareersPage = () => {
         </div>
       </section>
 
-
       {/* Application Timeline Table Section */}
       <section className="careers-timeline-section">
         <div className="careers-container">
@@ -502,7 +424,6 @@ const CareersPage = () => {
             <h2>Application <span className="careers-ganglia-highlight">Timeline</span></h2>
             <p>Important dates for all current job openings</p>
           </div>
-          
           <div className="careers-timeline-table-container">
             <table className="careers-timeline-table">
               <thead>
@@ -553,7 +474,6 @@ const CareersPage = () => {
         </div>
       </section>
 
-
       {/* Internship Section */}
       <section className="careers-internship-section" id="internships">
         <div className="careers-internship-header">
@@ -563,34 +483,32 @@ const CareersPage = () => {
             <h1 className="careers-internship-title">SUMMER INTERNSHIP PROGRAM 2026</h1>
           </div>
         </div>
-        
         <div className="careers-internship-content">
           <div className="careers-program-highlights">
             <div className="careers-highlight-card">
-              <div className="careers-highlight-icon">🎓</div>
+              <div className="careers-highlight-icon"><Player autoplay loop src={teach} style={{ height: 55, width: 55 }} /></div>
               <h3>Learn from Experts</h3>
               <p>Work directly with senior engineers, designers, and product managers who are leaders in healthcare technology.</p>
             </div>
             <div className="careers-highlight-card">
-              <div className="careers-highlight-icon">🔬</div>
+              <div className="careers-highlight-icon"><Player autoplay loop src={globe} style={{ height: 55, width: 55 }} /></div>
               <h3>Real-World Projects</h3>
               <p>Contribute to actual product features and research initiatives that impact thousands of healthcare professionals.</p>
             </div>
             <div className="careers-highlight-card">
-              <div className="careers-highlight-icon">🚀</div>
+              <div className="careers-highlight-icon"><Player autoplay loop src={launch} style={{ height: 55, width: 55 }} /></div>
               <h3>Career Launch</h3>
               <p>Kickstart your career with a company that's revolutionizing healthcare.</p>
             </div>
           </div>
-          
           <div className="careers-image-cards-container">
             {imageCardsData.map((card, index) => (
-              <div 
+              <div
                 key={index}
                 className={`careers-image-card ${expandedCard === index ? 'expanded' : 'collapsed'}`}
                 onClick={() => handleCardClick(index)}
               >
-                <div 
+                <div
                   className="careers-image-card-content"
                   style={{
                     background: card.gradient,
@@ -598,10 +516,37 @@ const CareersPage = () => {
                     height: '100%',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    position: 'relative'
                   }}
                 >
-                  <div className="careers-image-card-title">
+                  {/* Display the image */}
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    style={{
+                      width: '90%',
+                      height: '90%',
+                      objectFit: 'cover',
+                      borderRadius: '10px',
+                      boxShadow: '0 1.5px 9px rgba(0,0,0,0.15)',
+                      position: 'relative',
+                      zIndex: 1
+                    }}
+                  />
+                  {/* Title overlay (above the image) */}
+                  <div
+                    className="careers-image-card-title"
+                    style={{
+                      position: 'absolute',
+                      bottom: '20px',
+                      color: 'white',
+                      fontWeight: '600',
+                      fontSize: '1.1rem',
+                      textShadow: '0 0 5px rgba(0,0,0,0.7)',
+                      zIndex: 2
+                    }}
+                  >
                     {card.title}
                   </div>
                 </div>
@@ -612,14 +557,13 @@ const CareersPage = () => {
               </div>
             ))}
           </div>
-          
           <div className="careers-call-to-action">
             <div className="careers-cta-content">
               <h3><span className="careers-highlight">Opportunities</span> like this don't wait</h3>
               <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
               <div className="careers-application-info">
-                <button 
-                  className="careers-date-button" 
+                <button
+                  className="careers-date-button"
                   onClick={handleInternshipApply}
                 >
                   Apply for Internship
@@ -630,12 +574,10 @@ const CareersPage = () => {
         </div>
       </section>
 
-
       {/* Footer Component */}
       <Footer />
     </div>
   );
 };
-
 
 export default CareersPage;

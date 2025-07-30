@@ -15,7 +15,6 @@ const Navbar = () => {
     products: false,
     services: false
   });
-  // Add mobile dropdown states
   const [mobileDropdownStates, setMobileDropdownStates] = useState({
     about: false,
     products: false,
@@ -27,28 +26,41 @@ const Navbar = () => {
   const scrollTimeoutRef = useRef(null);
   const mouseTimeoutRef = useRef(null);
 
-  // Check if device is mobile - FIXED: Check on mount AND resize
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Enhanced navigation function with scroll to top
+  const navigateWithScrollToTop = (path) => {
+    navigate(path);
+    setTimeout(() => {
+      scrollToTop();
+    }, 100);
+  };
+
+  // Check if device is mobile
   useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
       
-      // Close mobile menu when switching to desktop
       if (!mobile && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
-        // Re-enable body scroll when closing mobile menu
         document.body.style.overflow = '';
       }
     };
 
-    // Check on initial load
     checkMobile();
-    
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
-  }, [isMobileMenuOpen]); // Added dependency
+  }, [isMobileMenuOpen]);
 
-  // FIXED: Prevent body scroll when mobile menu is open
+  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -56,13 +68,12 @@ const Navbar = () => {
       document.body.style.overflow = '';
     }
 
-    // Cleanup on unmount
     return () => {
       document.body.style.overflow = '';
     };
   }, [isMobileMenuOpen]);
 
-  // Optimized scroll handler with throttling
+  // Scroll handler
   const handleScroll = useCallback(() => {
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
@@ -70,29 +81,21 @@ const Navbar = () => {
 
     scrollTimeoutRef.current = setTimeout(() => {
       const currentScrollY = window.scrollY;
-
-      // Set scrolled state for blur effect
       setIsScrolled(currentScrollY > 50);
 
-      // Show navbar when at top of page (within 50px)
       if (currentScrollY <= 50) {
         setIsVisible(true);
-      }
-      // Hide navbar when scrolling down, show when scrolling up
-      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
         setIsMobileMenuOpen(false);
-        // Close all dropdowns when hiding navbar
         setDropdownStates({ about: false, products: false, services: false });
         setMobileDropdownStates({ about: false, products: false, services: false });
-      }
-      // Show navbar when scrolling up
-      else if (currentScrollY < lastScrollY) {
+      } else if (currentScrollY < lastScrollY) {
         setIsVisible(true);
       }
 
       setLastScrollY(currentScrollY);
-    }, 16); // ~60fps throttling
+    }, 16);
   }, [lastScrollY]);
 
   useEffect(() => {
@@ -105,7 +108,7 @@ const Navbar = () => {
     };
   }, [handleScroll]);
 
-  // Handle mouse movement to show navbar
+  // Mouse movement handler
   useEffect(() => {
     const handleMouseMove = () => {
       const now = Date.now();
@@ -116,7 +119,6 @@ const Navbar = () => {
       }
     };
 
-    // Auto-hide navbar after inactivity
     const setupAutoHide = () => {
       if (mouseTimeoutRef.current) {
         clearTimeout(mouseTimeoutRef.current);
@@ -135,7 +137,6 @@ const Navbar = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     setupAutoHide();
-
     const intervalId = setInterval(setupAutoHide, 1000);
 
     return () => {
@@ -155,12 +156,50 @@ const Navbar = () => {
     }));
   };
 
-  // Mobile dropdown handlers
   const handleMobileDropdownToggle = (dropdownName) => {
     setMobileDropdownStates(prev => ({
       ...prev,
       [dropdownName]: !prev[dropdownName]
     }));
+  };
+
+  // Service navigation handler
+  const handleServiceNavigation = (link) => {
+    const [path, hash] = link.split('#');
+    
+    if (location.pathname === path) {
+      // Already on services page, just scroll to section
+      if (hash) {
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        }, 100);
+      }
+    } else {
+      // Navigate to services page, then scroll
+      navigate(path);
+      if (hash) {
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        }, 300);
+      } else {
+        // If no hash, scroll to top
+        setTimeout(() => {
+          scrollToTop();
+        }, 100);
+      }
+    }
   };
 
   // Navigation handlers
@@ -178,9 +217,12 @@ const Navbar = () => {
     e.preventDefault();
     
     if (sectionId === 'careers') {
-      navigate('/careers');
+      navigateWithScrollToTop('/careers');
     } else if (sectionId === 'research') {
-      navigate('/research-papers');
+      navigateWithScrollToTop('/research-papers');
+    } else if (sectionId === 'awards') {
+      // Navigate to dedicated awards page
+      navigateWithScrollToTop('/awards');
     } else {
       if (location.pathname !== '/') {
         navigate('/');
@@ -196,16 +238,25 @@ const Navbar = () => {
 
   const handleCareersClick = (e) => {
     e.preventDefault();
-    navigate('/careers');
+    navigateWithScrollToTop('/careers');
+    setIsMobileMenuOpen(false);
+    setDropdownStates({ about: false, products: false, services: false });
+    setMobileDropdownStates({ about: false, products: false, services: false });
+  };
+
+  const handleAwardsClick = (e) => {
+    e.preventDefault();
+    navigateWithScrollToTop('/awards');
     setIsMobileMenuOpen(false);
     setDropdownStates({ about: false, products: false, services: false });
     setMobileDropdownStates({ about: false, products: false, services: false });
   };
 
   const handleLogoClick = () => {
-    navigate('/');
     if (location.pathname === '/') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      scrollToTop();
+    } else {
+      navigateWithScrollToTop('/');
     }
     setIsMobileMenuOpen(false);
     setDropdownStates({ about: false, products: false, services: false });
@@ -213,26 +264,30 @@ const Navbar = () => {
   };
 
   const handleGetStartedClick = () => {
-  navigate('/get-started');
-  setIsMobileMenuOpen(false);
-  setDropdownStates({ about: false, products: false, services: false });
-  setMobileDropdownStates({ about: false, products: false, services: false });
-};
-
-
-  // FIXED: Improved mobile menu toggle
-  const toggleMobileMenu = (e) => {
-    e.stopPropagation(); // Prevent event bubbling
-    setIsMobileMenuOpen(prev => !prev);
-    // Close all dropdowns when toggling mobile menu
+    navigateWithScrollToTop('/get-started');
+    setIsMobileMenuOpen(false);
     setDropdownStates({ about: false, products: false, services: false });
     setMobileDropdownStates({ about: false, products: false, services: false });
   };
 
-  // FIXED: Close mobile menu when clicking outside - improved logic
+  const handleBlogClick = (e) => {
+    e.preventDefault();
+    navigateWithScrollToTop('/blogs');
+    setIsMobileMenuOpen(false);
+    setDropdownStates({ about: false, products: false, services: false });
+    setMobileDropdownStates({ about: false, products: false, services: false });
+  };
+
+  const toggleMobileMenu = (e) => {
+    e.stopPropagation();
+    setIsMobileMenuOpen(prev => !prev);
+    setDropdownStates({ about: false, products: false, services: false });
+    setMobileDropdownStates({ about: false, products: false, services: false });
+  };
+
+  // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Only close if mobile menu is open and click is outside the navbar
       if (isMobileMenuOpen && 
           !event.target.closest('.navbar') && 
           !event.target.closest('.mobile-menu-overlay')) {
@@ -247,7 +302,7 @@ const Navbar = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMobileMenuOpen]);
 
-  // FIXED: Close mobile menu on escape key
+  // Close mobile menu on escape key
   useEffect(() => {
     const handleEscapeKey = (event) => {
       if (event.key === 'Escape' && isMobileMenuOpen) {
@@ -262,7 +317,6 @@ const Navbar = () => {
     return () => document.removeEventListener('keydown', handleEscapeKey);
   }, [isMobileMenuOpen]);
 
-  // Determine navbar classes
   const getNavbarClasses = () => {
     let classes = 'navbar';
     classes += isVisible ? ' navbar-visible' : ' navbar-hidden';
@@ -279,9 +333,9 @@ const Navbar = () => {
       link: '/our-story',
       isHeader: true,
       items: [
-        { label: 'Philosophy', link: '/philosophy' },
-        { label: 'Milestone', link: '/milestone' },
-        { label: 'Social Responsibility', link: '/social-responsibility' }
+        { label: 'Philosophy', link: 'our-story#philosophy-header' },
+      { label: 'Milestone', link: '/our-story#TechMilestonesTimeline' },
+        { label: 'Social Responsibility', link: '/our-story#social-responsibility-section' }
       ]
     },
     {
@@ -289,9 +343,9 @@ const Navbar = () => {
       link: '/our-team',
       isHeader: true,
       items: [
-        { label: 'Leadership Team', link: '/leadership-team', highlighted: true },
-        { label: 'Management Team', link: '/management-team', highlighted: true },
-        { label: 'Intern Team', link: '/intern-team', highlighted: true }
+        { label: 'Leadership Team', link: '/our-team#leadership-team', highlighted: true },
+        { label: 'Management Team', link: '/our-team#management-team', highlighted: true },
+        { label: 'Intern Team', link: '/our-team#founding-intern-team', highlighted: true },
       ]
     }
   ];
@@ -322,14 +376,14 @@ const Navbar = () => {
 
   const servicesDropdownItems = [
     {
-      category: 'Our Products',
-      link: '/healthcare-tech',
+      category: 'Our Services',
+      link: '/services',
       isHeader: true,
       items: [
-        { label: 'Healthcare Tech', link: '/medical-enterprise-software' },
-        { label: 'Medical Enterprise Software', link: '/consulting-custom-development' },
-        { label: 'Consulting & Custom Development', link: '/consulting-custom-development' },
-        { label: 'AI Powered Applications', link: '/consulting-custom-development' }
+        { label: 'Healthcare Tech', link: '/services#healthcare-tech' },
+        { label: 'Medical Enterprise Software', link: '/services#enterprise-software' },
+        { label: 'Consulting & Custom Development', link: '/services#consulting-development' },
+        { label: 'AI Powered Applications', link: '/services#ai-applications' }
       ]
     }
   ];
@@ -344,7 +398,7 @@ const Navbar = () => {
               className="dropdown-item category-header"
               onClick={(e) => {
                 e.preventDefault();
-                navigate(section.link);
+                navigateWithScrollToTop(section.link);
                 setIsMobileMenuOpen(false);
                 setDropdownStates({ about: false, products: false, services: false });
               }}
@@ -359,7 +413,7 @@ const Navbar = () => {
                   className={`dropdown-item ${item.highlighted ? 'highlighted' : ''}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    navigate(item.link);
+                    handleServiceNavigation(item.link);
                     setIsMobileMenuOpen(false);
                     setDropdownStates({ about: false, products: false, services: false });
                   }}
@@ -374,7 +428,6 @@ const Navbar = () => {
     </div>
   );
 
-  // Mobile dropdown menu renderer
   const renderMobileDropdownMenu = (items, isOpen) => (
     <div className={`mobile-dropdown-menu ${isOpen ? 'active' : ''}`}>
       {items.map((section, index) => (
@@ -384,7 +437,7 @@ const Navbar = () => {
             className="mobile-dropdown-item mobile-category-header"
             onClick={(e) => {
               e.preventDefault();
-              navigate(section.link);
+              navigateWithScrollToTop(section.link);
               setIsMobileMenuOpen(false);
               setMobileDropdownStates({ about: false, products: false, services: false });
             }}
@@ -399,7 +452,7 @@ const Navbar = () => {
                 className={`mobile-dropdown-item ${item.highlighted ? 'highlighted' : ''}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate(item.link);
+                  handleServiceNavigation(item.link);
                   setIsMobileMenuOpen(false);
                   setMobileDropdownStates({ about: false, products: false, services: false });
                 }}
@@ -413,9 +466,6 @@ const Navbar = () => {
     </div>
   );
 
-  // Debug logging (remove in production)
-  console.log('Navbar Debug:', { isMobile, isMobileMenuOpen, window: typeof window !== 'undefined' ? window.innerWidth : 'SSR' });
-
   return (
     <nav className={getNavbarClasses()}>
       <div className="logo">
@@ -428,7 +478,6 @@ const Navbar = () => {
         />
       </div>
 
-      {/* Desktop Navigation - FIXED: Better conditional rendering */}
       {!isMobile && (
         <div className="navbar-right">
           <ul className="nav-links">
@@ -442,7 +491,7 @@ const Navbar = () => {
                 className="dropdown-trigger"
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate('/our-story');
+                  navigateWithScrollToTop('/our-story');
                 }}
               >
                 About Us
@@ -468,7 +517,15 @@ const Navbar = () => {
               onMouseEnter={() => handleDropdownToggle('services', true)}
               onMouseLeave={() => handleDropdownToggle('services', false)}
             >
-              <a href="#services" className="dropdown-trigger">
+              <a 
+                href="/services" 
+                className="dropdown-trigger"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateWithScrollToTop('/services');
+                  setDropdownStates({ about: false, products: false, services: false });
+                }}
+              >
                 Services
                 <span className="dropdown-arrow">▼</span>
               </a>
@@ -484,16 +541,16 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a 
-                href="#blog" 
-                onClick={(e) => handleNavClick(e, 'blog')}
+              <a
+                href="/blogs"
+                onClick={handleBlogClick}
               >
                 Blog
               </a>
             </li>
             <li>
               <a 
-                href="#careers" 
+                href="/careers" 
                 onClick={handleCareersClick}
               >
                 Careers
@@ -501,8 +558,8 @@ const Navbar = () => {
             </li>
             <li>
               <a 
-                href="#awards" 
-                onClick={(e) => handleNavClick(e, 'awards')}
+                href="/awards" 
+                onClick={handleAwardsClick}
               >
                 Awards & News
               </a>
@@ -517,7 +574,6 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Mobile Hamburger Menu - FIXED: Always render when mobile */}
       {isMobile && (
         <>
           <div 
@@ -532,7 +588,6 @@ const Navbar = () => {
             <div className={`hamburger-line ${isMobileMenuOpen ? 'active' : ''}`}></div>
           </div>
 
-          {/* Mobile Menu Overlay with Dropdowns */}
           <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`}>
             <ul className="mobile-nav-links">
               <li className="mobile-dropdown-container">
@@ -578,15 +633,15 @@ const Navbar = () => {
               </li>
               <li>
                 <a 
-                  href="#blog" 
-                  onClick={(e) => handleNavClick(e, 'blog')}
+                  href="/blogs" 
+                  onClick={handleBlogClick}
                 >
                   Blog
                 </a>
               </li>
               <li>
                 <a 
-                  href="#careers" 
+                  href="/careers" 
                   onClick={handleCareersClick}
                 >
                   Careers
@@ -594,8 +649,8 @@ const Navbar = () => {
               </li>
               <li>
                 <a 
-                  href="#awards" 
-                  onClick={(e) => handleNavClick(e, 'awards')}
+                  href="/awards" 
+                  onClick={handleAwardsClick}
                 >
                   Awards & News
                 </a>
