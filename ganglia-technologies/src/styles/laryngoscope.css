@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px; /* Base font size for rem calculations */
+}
+
 body {
   font-family: "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -11,12 +15,15 @@ body {
   color: #1a1a1a;
   overflow-x: hidden;
   background: #0a0a0a;
+  width: 100%;
 }
 
+/* Container with proper responsive padding */
 .infinity-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 1.875rem; /* 30px */
+  width: 100%;
 }
 
 /* Revolutionary Hero Section */
@@ -26,6 +33,7 @@ body {
 
 .quantum-hero-arena {
   min-height: 100vh;
+  min-height: 100svh; /* Better mobile viewport support */
   position: relative;
   display: flex;
   align-items: center;
@@ -41,6 +49,7 @@ body {
     ),
     linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
   overflow: hidden;
+  padding: 2rem 0;
 }
 
 .cosmic-particle-field {
@@ -145,8 +154,9 @@ body {
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 5rem;
   align-items: center;
+  width: 100%;
 }
 
 .hero-content-matrix {
@@ -155,10 +165,10 @@ body {
 }
 
 .galactic-title-showcase {
-  font-size: 4.5rem;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 900;
   margin-bottom: 1.5rem;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -0.03em;
 }
 
@@ -175,7 +185,7 @@ body {
 
 .product-dimension {
   display: block;
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
   margin-top: 0.8rem;
   background: linear-gradient(135deg, #ffffff, #e0e0e0);
   -webkit-background-clip: text;
@@ -194,7 +204,7 @@ body {
 }
 
 .revolutionary-tagline {
-  font-size: 1.8rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
   margin-bottom: 2.5rem;
   opacity: 0.95;
   font-weight: 300;
@@ -213,7 +223,7 @@ body {
 }
 
 .mission-statement-capsule {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   margin-bottom: 3.5rem;
   line-height: 1.8;
   opacity: 0.9;
@@ -226,7 +236,9 @@ body {
 
 .action-command-center {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
+  justify-content: center;
 }
 
 .plasma-cta-primary,
@@ -234,7 +246,7 @@ body {
   padding: 1.2rem 2.5rem;
   border: none;
   border-radius: 60px;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   font-weight: 700;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -242,6 +254,9 @@ body {
   letter-spacing: 1px;
   position: relative;
   overflow: hidden;
+  min-width: 180px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .plasma-cta-primary {
@@ -298,8 +313,10 @@ body {
 
 .device-levitation-chamber {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: clamp(250px, 35vw, 500px);
+  height: clamp(250px, 35vw, 500px);
+  max-width: 90vw;
+  max-height: 90vw;
 }
 
 .aurora-energy-ring {
@@ -307,8 +324,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  height: 400px;
+  width: 80%;
+  height: 80%;
   background: conic-gradient(
     from 0deg,
     transparent,
@@ -329,8 +346,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 250px;
-  height: 320px;
+  width: 50%;
+  height: 64%;
   background: linear-gradient(145deg, #f8f9fa, #e9ecef, #dee2e6);
   border-radius: 25px;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3),
@@ -343,8 +360,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 350px;
-  height: 350px;
+  width: 70%;
+  height: 70%;
   border: 2px solid rgba(120, 119, 198, 0.3);
   border-radius: 50%;
   animation: pulsateRing 3s ease-in-out infinite;
@@ -412,28 +429,32 @@ body {
   }
 }
 
+/* Responsive Sections */
+.section-responsive {
+  padding: clamp(3rem, 8vw, 7.5rem) 0;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-responsive.materialize {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Price Revolution Theater */
 .price-revolution-theater {
-  padding: 120px 0;
   background: radial-gradient(
       circle at center,
       rgba(120, 119, 198, 0.1) 0%,
       transparent 70%
     ),
     linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.price-revolution-theater.materialize {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .disruption-headline {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
   margin-bottom: 5rem;
   color: #1a1a2e;
   font-weight: 800;
@@ -445,9 +466,10 @@ body {
 
 .price-battle-arena {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 4rem;
+  align-items: stretch;
+  gap: clamp(2rem, 4vw, 4rem);
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -455,11 +477,12 @@ body {
 .legacy-price-monument,
 .future-price-beacon {
   background: rgba(255, 255, 255, 0.9);
-  padding: 4rem 3rem;
+  padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 3vw, 3rem);
   border-radius: 30px;
   text-align: center;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   flex: 1;
+  min-width: 280px;
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -473,42 +496,43 @@ body {
 .future-price-beacon.ganglia {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  transform: scale(1.1);
+  transform: scale(1.05);
   box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
 }
 
 .future-price-beacon.ganglia:hover {
-  transform: scale(1.15) translateY(-15px);
+  transform: scale(1.1) translateY(-15px);
   box-shadow: 0 40px 80px rgba(102, 126, 234, 0.6);
 }
 
 .legacy-price-monument h3,
 .future-price-beacon h3 {
-  font-size: 1.8rem;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
   margin-bottom: 1.5rem;
   font-weight: 600;
 }
 
 .price-crystal {
-  font-size: 3rem;
+  font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 900;
   margin-bottom: 1.5rem;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .versus-lightning-bolt {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
   font-weight: 900;
   color: #e74c3c;
   background: linear-gradient(135deg, #ffffff, #f8f9fa);
-  width: 100px;
-  height: 100px;
+  width: clamp(60px, 8vw, 100px);
+  height: clamp(60px, 8vw, 100px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 15px 30px rgba(231, 76, 60, 0.3);
   animation: lightningPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 @keyframes lightningPulse {
@@ -523,7 +547,6 @@ body {
 
 /* Innovation Laboratory */
 .innovation-laboratory {
-  padding: 120px 0;
   background: radial-gradient(
       circle at 30% 20%,
       rgba(255, 107, 107, 0.05) 0%,
@@ -535,19 +558,11 @@ body {
       transparent 50%
     ),
     #ffffff;
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.innovation-laboratory.materialize {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .engineering-manifesto {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
   margin-bottom: 5rem;
   color: #1a1a2e;
   font-weight: 800;
@@ -555,23 +570,25 @@ body {
 
 .prototype-dimension-selector {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 3rem;
+  gap: clamp(1rem, 3vw, 3rem);
   margin-bottom: 5rem;
 }
 
 .evolution-tab {
-  padding: 1.5rem 3rem;
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 3rem);
   border: 3px solid #667eea;
   background: transparent;
   color: #667eea;
   border-radius: 60px;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
   font-weight: 700;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .evolution-tab::before {
@@ -599,7 +616,7 @@ body {
 }
 
 .prototype-universe-container {
-  min-height: 700px;
+  min-height: clamp(400px, 50vw, 700px);
 }
 
 .feature-constellation {
@@ -608,8 +625,8 @@ body {
 
 .innovation-galaxy-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
 }
 
 .stellar-feature-pod {
@@ -618,7 +635,7 @@ body {
     rgba(255, 255, 255, 0.9) 0%,
     rgba(248, 249, 250, 0.9) 100%
   );
-  padding: 3rem;
+  padding: clamp(2rem, 4vw, 3rem);
   border-radius: 25px;
   text-align: center;
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -655,7 +672,7 @@ body {
 }
 
 .cosmic-icon {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 4vw, 4rem);
   margin-bottom: 1.5rem;
   display: block;
   filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
@@ -663,7 +680,7 @@ body {
 }
 
 .stellar-feature-pod h3 {
-  font-size: 1.8rem;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
   margin-bottom: 1.5rem;
   color: #1a1a2e;
   font-weight: 700;
@@ -672,7 +689,7 @@ body {
 .stellar-feature-pod p {
   line-height: 1.8;
   color: #4a5568;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
 }
 
 @keyframes morphIn {
@@ -698,7 +715,6 @@ body {
 
 /* Intelligence Command Center */
 .intelligence-command-center {
-  padding: 120px 0;
   background: radial-gradient(
       circle at 20% 30%,
       rgba(30, 60, 114, 0.9) 0%,
@@ -711,19 +727,11 @@ body {
     ),
     linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
   color: white;
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.intelligence-command-center.materialize {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .neural-supremacy-title {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
   margin-bottom: 5rem;
   font-weight: 800;
   background: linear-gradient(135deg, #ffffff, #e0e0e0, #ffffff);
@@ -734,20 +742,26 @@ body {
 
 .ai-fusion-theater {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+  gap: clamp(3rem, 5vw, 5rem);
   align-items: center;
 }
 
 .consciousness-visualization {
   display: flex;
   justify-content: center;
+  order: 2;
+}
+
+.intelligence-manifesto {
+  order: 1;
 }
 
 .quantum-brain-matrix {
-  width: 400px;
-  height: 400px;
+  width: clamp(200px, 30vw, 400px);
+  height: clamp(200px, 30vw, 400px);
   position: relative;
+  margin: 0 auto;
 }
 
 .synaptic-network-core {
@@ -821,7 +835,7 @@ body {
 }
 
 .intelligence-manifesto h3 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
   margin-bottom: 3rem;
   font-weight: 700;
 }
@@ -832,10 +846,11 @@ body {
 
 .consciousness-feature-catalog li {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
   margin-bottom: 3rem;
-  padding: 2rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
   background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -850,46 +865,38 @@ body {
 }
 
 .neural-emblem {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 3vw, 2.5rem);
   flex-shrink: 0;
   filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.3));
+  align-self: center;
 }
 
 .consciousness-feature-catalog strong {
   display: block;
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
   margin-bottom: 0.8rem;
   font-weight: 700;
 }
 
 .consciousness-feature-catalog p {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   line-height: 1.7;
   opacity: 0.9;
 }
 
 /* Excellence Blueprint */
 .excellence-blueprint {
-  padding: 120px 0;
   background: radial-gradient(
       circle at center,
       rgba(120, 119, 198, 0.05) 0%,
       transparent 70%
     ),
     linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.excellence-blueprint.materialize {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .craftsmanship-declaration {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
   margin-bottom: 5rem;
   color: #1a1a2e;
   font-weight: 800;
@@ -904,25 +911,26 @@ body {
 
 .technical-excellence-grid {
   width: 100%;
+  min-width: 600px;
   background: rgba(255, 255, 255, 0.95);
   border-collapse: collapse;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
   backdrop-filter: blur(20px);
 }
 
 .technical-excellence-grid th {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 2rem;
+  padding: clamp(1rem, 2vw, 2rem);
   text-align: left;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: clamp(1.1rem, 1.3vw, 1.3rem);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .technical-excellence-grid td {
-  padding: 2rem;
+  padding: clamp(1rem, 2vw, 2rem);
   border-bottom: 2px solid rgba(102, 126, 234, 0.1);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -936,7 +944,7 @@ body {
 .feature-identifier {
   font-weight: 700;
   color: #1a1a2e;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
 }
 
 .gen1-specs {
@@ -970,7 +978,7 @@ body {
 
 /* Destiny Convergence Finale */
 .destiny-convergence-finale {
-  padding: 120px 0;
+  padding: clamp(3rem, 8vw, 7.5rem) 0;
   background: radial-gradient(
       circle at 30% 20%,
       rgba(44, 62, 80, 0.9) 0%,
@@ -989,10 +997,11 @@ body {
 .transformation-proclamation {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .revolution-anthem {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 3rem;
   font-weight: 900;
   background: linear-gradient(135deg, #ffffff, #e0e0e0, #ffffff);
@@ -1002,14 +1011,14 @@ body {
 }
 
 .transformation-proclamation p {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
   line-height: 1.8;
   margin-bottom: 4rem;
   opacity: 0.95;
 }
 
 .legacy-signature {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
   font-weight: 700;
   margin-bottom: 4rem;
   background: linear-gradient(135deg, #ffd89b, #19547b, #ffd89b);
@@ -1032,66 +1041,15 @@ body {
 
 .final-action-nexus {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 2.5rem;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .supersized {
-  padding: 2rem 4rem;
-  font-size: 1.3rem;
-}
-
-/* Responsive Mastery */
-@media (max-width: 768px) {
-  .infinity-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 50px;
-  }
-
-  .galactic-title-showcase {
-    font-size: 3rem;
-  }
-
-  .product-dimension {
-    font-size: 2.2rem;
-  }
-
-  .engineering-manifesto,
-  .neural-supremacy-title,
-  .disruption-headline,
-  .craftsmanship-declaration,
-  .revolution-anthem {
-    font-size: 2.5rem;
-  }
-
-  .price-battle-arena {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .versus-lightning-bolt {
-    transform: rotate(90deg);
-  }
-
-  .innovation-galaxy-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ai-fusion-theater {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .action-command-center,
-  .final-action-nexus {
-    flex-direction: column;
-  }
-
-  .prototype-dimension-selector {
-    flex-direction: column;
-    align-items: center;
-  }
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+  min-width: 200px;
 }
 
 /* Universal Animation Classes */
@@ -1110,3 +1068,389 @@ body {
   transform: translateY(0);
 }
 
+/* Apply responsive class to sections */
+.price-revolution-theater,
+.innovation-laboratory,
+.intelligence-command-center,
+.excellence-blueprint {
+  padding: clamp(3rem, 8vw, 7.5rem) 0;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.price-revolution-theater.materialize,
+.innovation-laboratory.materialize,
+.intelligence-command-center.materialize,
+.excellence-blueprint.materialize {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   COMPREHENSIVE RESPONSIVE BREAKPOINTS
+======================================== */
+
+/* Large Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .infinity-container {
+    padding: 0 2rem;
+  }
+}
+
+/* Desktop (992px to 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .infinity-container {
+    padding: 0 1.5rem;
+  }
+  
+  .galactic-title-showcase {
+    font-size: 3.5rem;
+  }
+}
+
+/* Large Tablet (768px to 991px) */
+@media (max-width: 991px) and (min-width: 769px) {
+  .infinity-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+  
+  .quantum-hero-arena {
+    min-height: auto;
+    padding: 3rem 0;
+  }
+  
+  .galactic-title-showcase {
+    font-size: 3.2rem;
+  }
+  
+  .device-levitation-chamber {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* Tablet Portrait (481px to 768px) */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Reduce base font size for mobile */
+  }
+  
+  .infinity-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+    padding: 0 1rem;
+  }
+
+  .quantum-hero-arena {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+
+  .hero-content-matrix {
+    animation: none; /* Reduce animations on mobile for better performance */
+  }
+
+  .galactic-title-showcase {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-dimension {
+    font-size: 2rem;
+  }
+
+  .revolutionary-tagline {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+  }
+
+  .mission-statement-capsule {
+    font-size: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .action-command-center {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .plasma-cta-primary,
+  .crystal-cta-secondary {
+    width: 100%;
+    max-width: 280px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .device-levitation-chamber {
+    width: 300px;
+    height: 300px;
+  }
+
+  .aurora-energy-ring {
+    animation-duration: 12s; /* Slower animations for better mobile performance */
+  }
+
+  .quantum-device-replica {
+    animation-duration: 8s;
+  }
+
+  .price-battle-arena {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .versus-lightning-bolt {
+    order: 1;
+    transform: rotate(90deg);
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+  }
+
+  .legacy-price-monument,
+  .future-price-beacon {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .legacy-price-monument {
+    order: 0;
+  }
+
+  .future-price-beacon {
+    order: 2;
+  }
+
+  .innovation-galaxy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-fusion-theater {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .consciousness-visualization {
+    order: 1;
+  }
+
+  .intelligence-manifesto {
+    order: 2;
+  }
+
+  .consciousness-feature-catalog li {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .consciousness-feature-catalog li:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+
+  .prototype-dimension-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .evolution-tab {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .final-action-nexus {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .supersized {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* Mobile (321px to 480px) */
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+  
+  .infinity-container {
+    padding: 0 0.75rem;
+  }
+
+  .galactic-title-showcase {
+    font-size: 2.2rem;
+    line-height: 1.1;
+  }
+
+  .product-dimension {
+    font-size: 1.6rem;
+  }
+
+  .revolutionary-tagline {
+    font-size: 1.1rem;
+  }
+
+  .device-levitation-chamber {
+    width: 250px;
+    height: 250px;
+  }
+
+  .disruption-headline,
+  .engineering-manifesto,
+  .neural-supremacy-title,
+  .craftsmanship-declaration,
+  .revolution-anthem {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .versus-lightning-bolt {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .stellar-feature-pod {
+    padding: 1.5rem;
+  }
+
+  .quantum-brain-matrix {
+    width: 200px;
+    height: 200px;
+  }
+
+  .technical-excellence-grid {
+    min-width: 500px;
+    font-size: 0.9rem;
+  }
+
+  .technical-excellence-grid th,
+  .technical-excellence-grid td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+/* Small Mobile (320px and below) */
+@media (max-width: 320px) {
+  html {
+    font-size: 12px;
+  }
+  
+  .infinity-container {
+    padding: 0 0.5rem;
+  }
+
+  .galactic-title-showcase {
+    font-size: 2rem;
+  }
+
+  .product-dimension {
+    font-size: 1.4rem;
+  }
+
+  .device-levitation-chamber {
+    width: 200px;
+    height: 200px;
+  }
+
+  .disruption-headline,
+  .engineering-manifesto,
+  .neural-supremacy-title,
+  .craftsmanship-declaration,
+  .revolution-anthem {
+    font-size: 1.6rem;
+  }
+
+  .quantum-brain-matrix {
+    width: 160px;
+    height: 160px;
+  }
+
+  .plasma-cta-primary,
+  .crystal-cta-secondary {
+    max-width: 240px;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .technical-excellence-grid {
+    min-width: 400px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .quantum-hero-arena {
+    min-height: auto;
+    padding: 1.5rem 0;
+  }
+
+  .price-revolution-theater,
+  .innovation-laboratory,
+  .intelligence-command-center,
+  .excellence-blueprint,
+  .destiny-convergence-finale {
+    padding: 2rem 0;
+  }
+}
+
+/* High DPI Display Optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .brand-hologram,
+  .product-dimension {
+    text-shadow: none; /* Remove text-shadow on high DPI for better performance */
+  }
+}
+
+/* Touch Device Optimization */
+@media (hover: none) and (pointer: coarse) {
+  .plasma-cta-primary:hover,
+  .crystal-cta-secondary:hover,
+  .stellar-feature-pod:hover,
+  .evolution-tab:hover,
+  .consciousness-feature-catalog li:hover,
+  .legacy-price-monument:hover,
+  .future-price-beacon:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .plasma-cta-primary:active,
+  .crystal-cta-secondary:active {
+    transform: scale(0.98);
+    transition: transform 0.1s;
+  }
+
+  .stellar-feature-pod:active,
+  .evolution-tab:active {
+    transform: scale(0.99);
+    transition: transform 0.1s;
+  }
+
+  /* Increase touch targets for better usability */
+  .plasma-cta-primary,
+  .crystal-cta-secondary,
+  .evolution-tab {
+    min-height: 44px;
+  }
+}
+
+/* Reduce Motion for Users Who Prefer It */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
