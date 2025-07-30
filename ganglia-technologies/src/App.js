@@ -30,6 +30,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
 import ResearchPapers from './components/research';
 import GetStartedForm from './components/getstarted';
+import AwardsResearchPage from './components/AwardsResearch'; 
 
 
 // HomePage: Removed Footer here to avoid duplication
@@ -138,7 +139,7 @@ const AppContent = () => {
         <Route path="/our-team" element={<OurTeam />} />
         <Route path="/tripmacha" element={<TripMacha />} />
         <Route path="/smart-video-laryngoscope" element={<Laryngoscope />} />
-        {/*<Route path="/medical-logbook" element={<MedlogBookPlatform />} /> */}
+        <Route path="/medical-logbook" element={<MedlogBookPlatform />} /> 
         <Route path="/main-component" element={<MainComponent />} />
         <Route path="/research-papers" element={<ResearchPapers />} />
         <Route path="/awards" element={<AwardsResearchPage />} /> {/* Add this route */}

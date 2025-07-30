@@ -1,7 +1,17 @@
 "use client";
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import Footer from "./Footer";
 
+import laryngoVideo from '../assets/laryngo.mp4';
+import { Player } from '@lottiefiles/react-lottie-player';
+import wireless from '../assets/wireless.json';
+import dualcam from '../assets/dualcam.json';
+import hardware from '../assets/hardware.json';
+import design from '../assets/design.json';
+import joystick from '../assets/joystick.json';
+import wired from '../assets/wired.json';
+import ai from '../assets/ai.json';
+import health from '../assets/health.json';
+import Research from '../assets/Research.json';
 let laryImage;
 try {
   laryImage = require('../assets/lanyngoscope1.png');
@@ -13,13 +23,13 @@ function LaryngoscopeComponent() {
   // Responsive breakpoint helper
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
-  
+ 
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768);
       setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
     };
-    
+   
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
     return () => window.removeEventListener('resize', checkScreenSize);
@@ -33,7 +43,7 @@ function LaryngoscopeComponent() {
       75% { transform: translate(clamp(30px, 10vw, 100px), clamp(20px, 6vw, 60px)) scale(1.1); }
       100% { transform: translate(0, 0) scale(1); }
     }
-    
+   
     @keyframes floatMove2 {
       0% { transform: translate(0, 0) scale(1); }
       20% { transform: translate(clamp(-40px, -12vw, -120px), clamp(25px, 8vw, 80px)) scale(1.3); }
@@ -42,21 +52,21 @@ function LaryngoscopeComponent() {
       80% { transform: translate(clamp(40px, 13vw, 130px), clamp(-15px, -5vw, -50px)) scale(0.9); }
       100% { transform: translate(0, 0) scale(1); }
     }
-    
+   
     @keyframes floatMove3 {
       0% { transform: translate(0, 0) scale(1); }
       33% { transform: translate(clamp(-60px, -18vw, -180px), clamp(-30px, -10vw, -100px)) scale(1.2); }
       66% { transform: translate(clamp(40px, 12vw, 120px), clamp(45px, 14vw, 140px)) scale(0.6); }
       100% { transform: translate(0, 0) scale(1); }
     }
-    
+   
     @keyframes floatMove4 {
       0% { transform: translate(0, 0) scale(1); }
       30% { transform: translate(clamp(50px, 16vw, 160px), clamp(-40px, -13vw, -130px)) scale(1.3); }
       70% { transform: translate(clamp(-30px, -10vw, -100px), clamp(50px, 16vw, 160px)) scale(0.8); }
       100% { transform: translate(0, 0) scale(1); }
     }
-    
+   
     @keyframes floatMove5 {
       0% { transform: translate(0, 0) scale(1); }
       25% { transform: translate(clamp(-45px, -14vw, -140px), clamp(30px, 10vw, 100px)) scale(1.4); }
@@ -64,7 +74,7 @@ function LaryngoscopeComponent() {
       75% { transform: translate(clamp(-30px, -9vw, -90px), clamp(-40px, -12vw, -120px)) scale(1.2); }
       100% { transform: translate(0, 0) scale(1); }
     }
-    
+   
     @keyframes floatMove6 {
       0% { transform: translate(0, 0) scale(1); }
       20% { transform: translate(clamp(50px, 15vw, 150px), clamp(-50px, -15vw, -150px)) scale(1.5); }
@@ -75,15 +85,15 @@ function LaryngoscopeComponent() {
     }
 
     @keyframes heartbeat {
-      0% { 
+      0% {
         stroke-dashoffset: 1000;
         opacity: 1;
       }
-      95% { 
+      95% {
         stroke-dashoffset: 0;
         opacity: 1;
       }
-      100% { 
+      100% {
         stroke-dashoffset: 0;
         opacity: 0;
       }
@@ -156,7 +166,7 @@ function LaryngoscopeComponent() {
 
   // ECG Divider Component
   const ECGDivider = ({ variant = 1 }) => {
-    const ecgPath = variant === 1 
+    const ecgPath = variant === 1
       ? "M0,50 Q20,45 40,50 Q60,55 80,50 Q100,45 120,50 L130,20 L140,80 L150,10 L160,90 L170,50 Q190,45 210,50 Q230,55 250,50 Q270,45 290,50 Q310,55 320,50 L330,30 L340,70 L350,20 L360,80 L370,50 Q390,45 410,50 Q430,55 450,50 Q470,45 490,50 Q510,55 530,50 Q550,45 570,50 Q590,55 610,50 Q630,45 650,50 Q670,55 690,50 Q710,45 730,50 Q750,55 770,50 Q790,45 810,50 Q830,55 850,50 Q870,45 890,50 Q910,55 930,50 Q950,45 970,50 Q990,55 1010,50 Q1030,45 1050,50 Q1070,55 1090,50 Q1110,45 1130,50 Q1150,55 1170,50 Q1190,45 1200,50"
       : "M0,50 Q15,48 30,50 Q45,52 60,50 Q75,48 90,50 L100,25 L110,75 L120,15 L130,85 L140,50 Q155,48 170,50 Q185,52 200,50 Q215,48 230,50 Q245,52 260,50 Q275,48 290,50 L300,35 L310,65 L320,25 L330,75 L340,50 Q355,48 370,50 Q385,52 400,50 Q415,48 430,50 Q445,52 460,50 Q475,48 490,50 Q505,52 520,50 Q535,48 550,50 Q565,52 580,50 Q595,48 610,50 Q625,52 640,50 Q655,48 670,50 Q685,52 700,50 Q715,48 730,50 Q745,52 760,50 Q775,48 790,50 Q805,52 820,50 Q835,48 850,50 Q865,52 880,50 Q895,48 910,50 Q925,52 940,50 Q955,48 970,50 Q985,52 1000,50 Q1015,48 1030,50 Q1045,52 1060,50 Q1075,48 1090,50 Q1105,52 1120,50 Q1135,48 1150,50 Q1165,52 1180,50 Q1195,48 1200,50";
 
@@ -185,10 +195,10 @@ function LaryngoscopeComponent() {
         }}></div>
 
         {/* ECG Line */}
-        <svg 
-          width="100%" 
-          height="100%" 
-          viewBox="0 0 1200 100" 
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 1200 100"
           style={{
             position: 'absolute',
             animation: 'heartbeatGlow 2s ease-in-out infinite'
@@ -201,7 +211,7 @@ function LaryngoscopeComponent() {
               <stop offset="100%" stopColor="#20B2AA" stopOpacity="0.8"/>
             </linearGradient>
           </defs>
-          
+         
           <path
             d={ecgPath}
             fill="none"
@@ -213,19 +223,19 @@ function LaryngoscopeComponent() {
               animation: 'ecgFlow 4s linear infinite'
             }}
           />
-          
-          <circle 
-            cx="150" 
-            cy="50" 
+         
+          <circle
+            cx="150"
+            cy="50"
             r={isMobile ? "3" : "4"}
             fill="#00CED1"
             style={{
               animation: 'ecgPulse 2s ease-in-out infinite'
             }}
           />
-          <circle 
-            cx="340" 
-            cy="50" 
+          <circle
+            cx="340"
+            cy="50"
             r={isMobile ? "3" : "4"}
             fill="#1E90FF"
             style={{
@@ -243,7 +253,7 @@ function LaryngoscopeComponent() {
               stroke-dashoffset: 0;
             }
           }
-          
+         
           @keyframes heartbeatGlow {
             0%, 100% {
               filter: drop-shadow(0 0 5px rgba(0, 206, 209, 0.5));
@@ -252,7 +262,7 @@ function LaryngoscopeComponent() {
               filter: drop-shadow(0 0 15px rgba(0, 206, 209, 0.8));
             }
           }
-          
+         
           @keyframes ecgPulse {
             0%, 100% {
               opacity: 0.6;
@@ -290,7 +300,7 @@ function LaryngoscopeComponent() {
           }
         `}
       </style>
-      
+     
       <div style={{
         minHeight: '100vh',
         backgroundColor: '#00052B',
@@ -502,8 +512,8 @@ function LaryngoscopeComponent() {
                 color: activePrototype === 'prototype1' ? 'white' : '#00CED1',
                 fontSize: 'clamp(1rem, 3vw, 1.125rem)',
                 fontWeight: '600',
-                background: activePrototype === 'prototype1' 
-                  ? 'linear-gradient(135deg, #00CED1 0%, #1E90FF 100%)' 
+                background: activePrototype === 'prototype1'
+                  ? 'linear-gradient(135deg, #00CED1 0%, #1E90FF 100%)'
                   : 'transparent',
                 border: '2px solid #00CED1',
                 cursor: 'pointer',
@@ -523,8 +533,8 @@ function LaryngoscopeComponent() {
                 color: activePrototype === 'prototype2' ? 'white' : '#1E90FF',
                 fontSize: 'clamp(1rem, 3vw, 1.125rem)',
                 fontWeight: '600',
-                background: activePrototype === 'prototype2' 
-                  ? 'linear-gradient(135deg, #1E90FF 0%, #20B2AA 100%)' 
+                background: activePrototype === 'prototype2'
+                  ? 'linear-gradient(135deg, #1E90FF 0%, #20B2AA 100%)'
                   : 'transparent',
                 border: '2px solid #1E90FF',
                 cursor: 'pointer',
@@ -582,9 +592,9 @@ function LaryngoscopeComponent() {
                     lineHeight: 1.3
                   }}>Joy stick Controlled Tongue-tip</h3>
                 </div>
-                <p style={{ 
-                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-                  lineHeight: '1.5', 
+                <p style={{
+                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+                  lineHeight: '1.5',
                   margin: 0,
                   textAlign: isMobile ? 'center' : 'left'
                 }}>
@@ -628,9 +638,9 @@ function LaryngoscopeComponent() {
                     lineHeight: 1.3
                   }}>Dual Camera System</h3>
                 </div>
-                <p style={{ 
-                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-                  lineHeight: '1.5', 
+                <p style={{
+                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+                  lineHeight: '1.5',
                   margin: 0,
                   textAlign: isMobile ? 'center' : 'left'
                 }}>
@@ -674,9 +684,9 @@ function LaryngoscopeComponent() {
                     lineHeight: 1.3
                   }}>In built Oxygen Supply Port</h3>
                 </div>
-                <p style={{ 
-                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-                  lineHeight: '1.5', 
+                <p style={{
+                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+                  lineHeight: '1.5',
                   margin: 0,
                   textAlign: isMobile ? 'center' : 'left'
                 }}>
@@ -720,9 +730,9 @@ function LaryngoscopeComponent() {
                     lineHeight: 1.3
                   }}>Wired Setup</h3>
                 </div>
-                <p style={{ 
-                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-                  lineHeight: '1.5', 
+                <p style={{
+                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+                  lineHeight: '1.5',
                   margin: 0,
                   textAlign: isMobile ? 'center' : 'left'
                 }}>
@@ -766,9 +776,9 @@ function LaryngoscopeComponent() {
                     lineHeight: 1.3
                   }}>AI-Powered Software</h3>
                 </div>
-                <p style={{ 
-                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-                  lineHeight: '1.5', 
+                <p style={{
+                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+                  lineHeight: '1.5',
                   margin: 0,
                   textAlign: isMobile ? 'center' : 'left'
                 }}>
@@ -812,9 +822,9 @@ function LaryngoscopeComponent() {
                     lineHeight: 1.3
                   }}>Ergonomic Design</h3>
                 </div>
-                <p style={{ 
-                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-                  lineHeight: '1.5', 
+                <p style={{
+                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+                  lineHeight: '1.5',
                   margin: 0,
                   textAlign: isMobile ? 'center' : 'left'
                 }}>
@@ -867,9 +877,9 @@ function LaryngoscopeComponent() {
           lineHeight: 1.3
         }}>Wireless Setup</h3>
       </div>
-      <p style={{ 
-        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-        lineHeight: '1.5', 
+      <p style={{
+        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+        lineHeight: '1.5',
         margin: 0,
         textAlign: isMobile ? 'center' : 'left'
       }}>
@@ -914,9 +924,9 @@ function LaryngoscopeComponent() {
           lineHeight: 1.3
         }}>Improved Dual Camera</h3>
       </div>
-      <p style={{ 
-        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-        lineHeight: '1.5', 
+      <p style={{
+        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+        lineHeight: '1.5',
         margin: 0,
         textAlign: isMobile ? 'center' : 'left'
       }}>
@@ -961,9 +971,9 @@ function LaryngoscopeComponent() {
           lineHeight: 1.3
         }}>Water-proof Casing</h3>
       </div>
-      <p style={{ 
-        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-        lineHeight: '1.5', 
+      <p style={{
+        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+        lineHeight: '1.5',
         margin: 0,
         textAlign: isMobile ? 'center' : 'left'
       }}>
@@ -1008,9 +1018,9 @@ function LaryngoscopeComponent() {
           lineHeight: 1.3
         }}>Improved Mechanical Design</h3>
       </div>
-      <p style={{ 
-        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-        lineHeight: '1.5', 
+      <p style={{
+        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+        lineHeight: '1.5',
         margin: 0,
         textAlign: isMobile ? 'center' : 'left'
       }}>
@@ -1055,9 +1065,9 @@ function LaryngoscopeComponent() {
           lineHeight: 1.3
         }}>Lighter, Stronger</h3>
       </div>
-      <p style={{ 
-        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-        lineHeight: '1.5', 
+      <p style={{
+        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+        lineHeight: '1.5',
         margin: 0,
         textAlign: isMobile ? 'center' : 'left'
       }}>
@@ -1102,9 +1112,9 @@ function LaryngoscopeComponent() {
           lineHeight: 1.3
         }}>Refined Ergonomics</h3>
       </div>
-      <p style={{ 
-        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)', 
-        lineHeight: '1.5', 
+      <p style={{
+        fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+        lineHeight: '1.5',
         margin: 0,
         textAlign: isMobile ? 'center' : 'left'
       }}>
@@ -1153,7 +1163,7 @@ function LaryngoscopeComponent() {
     alignItems: 'stretch',
     minHeight: isMobile ? 'auto' : '600px'
   }}>
-    
+   
     {/* Video Player - Position (1,1) to (2,2) - spans 4 grid cells */}
     <div style={{
       gridColumn: isMobile ? '1' : '1 / 3',
@@ -1498,7 +1508,7 @@ function LaryngoscopeComponent() {
 </div>
 
 
-        
+       
 
         {/* ECG Divider 4 */}
         <ECGDivider variant={2} />
@@ -1521,7 +1531,7 @@ function LaryngoscopeComponent() {
           }}>
             Crafted for Real World Excellence
           </h2>
-          
+         
           <div style={{
             backgroundColor: 'rgba(0, 206, 209, 0.05)',
             backdropFilter: 'blur(4px)',
@@ -1601,7 +1611,7 @@ function LaryngoscopeComponent() {
   }}>
     Why Settle? Experience Innovation.
   </h2>
-  
+ 
   {/* Comparison Table */}
   <div style={{
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
@@ -1962,11 +1972,12 @@ function LaryngoscopeComponent() {
               }}>
                 Request Demo
               </button>
-              
+             
             </div>
           </div>
         </div>
 
+       
       </div>
     </div>
   );
