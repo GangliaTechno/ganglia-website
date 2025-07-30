@@ -82,23 +82,23 @@ const Services = () => {
  ];
 
  return (
- <div className="services-container">
- <header className="services-header">
+ <div className="services-container1">
+ <header className="services-header1">
  <h1>Our Services</h1>
  <p>Comprehensive solutions tailored to drive your business forward</p>
  </header>
 
- <div className="services-list">
+ <div className="services-list1">
  {services.map((service, index) => (
  <div 
  key={service.id} 
- className={`service-item ${expandedService === index ? 'expanded' : ''}`}
+ className={`service-item1 ${expandedService === index ? 'expanded1' : ''}`}
  >
- <div className="service-icon">
+ <div className="service-icon1">
  <img 
  src={service.image} 
  alt={service.alt}
- className="service-image"
+ className="service-image1"
  onError={(e) => {
  // Fallback in case image fails to load
  e.target.style.display = 'none';
@@ -106,20 +106,20 @@ const Services = () => {
  }}
  />
  {/* Fallback icon div */}
- <div className={`icon ${service.id === 1 ? 'healthcare-icon' : service.id === 2 ? 'enterprise-icon' : service.id === 3 ? 'consulting-icon' : 'ai-icon'}`} style={{display: 'none'}}></div>
+ <div className={`icon1 ${service.id === 1 ? 'healthcare-icon1' : service.id === 2 ? 'enterprise-icon1' : service.id === 3 ? 'consulting-icon1' : 'ai-icon1'}`} style={{display: 'none'}}></div>
  </div>
  
- <div className="service-content">
- <div className="service-header" onClick={() => toggleService(index)}>
+ <div className="service-content1">
+ <div className="service-header1" onClick={() => toggleService(index)}>
  <h2>{service.title}</h2>
- <span className="expand-btn">
+ <span className="expand-btn1">
  {expandedService === index ? '−' : '+'}
  </span>
  </div>
  
- <p className="service-subtitle">{service.subtitle}</p>
+ <p className="service-subtitle1">{service.subtitle}</p>
  
- <div className="service-details">
+ <div className="service-details1">
  <h3>What We Offer:</h3>
  <ul>
  {service.features.map((feature, idx) => (
@@ -128,7 +128,7 @@ const Services = () => {
  </ul>
  
  <h3>Technologies:</h3>
- <div className="tech-tags">
+ <div className="tech-tags1">
  {service.technologies.map((tech, idx) => (
  <span key={idx}>{tech}</span>
  ))}
@@ -143,6 +143,3 @@ const Services = () => {
 };
 
 export default Services;
-
-
-
