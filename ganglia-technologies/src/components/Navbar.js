@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
@@ -293,9 +291,9 @@ const Navbar = () => {
  link: '/our-story',
  isHeader: true,
  items: [
- { label: 'Philosophy', link: '/philosophy' },
- { label: 'Milestone', link: '/milestone' },
- { label: 'Social Responsibility', link: '/social-responsibility' }
+ { label: 'Philosophy', link: 'our-story#about-ganglia' },
+ { label: 'Milestone', link: 'our-story#incubation-journey' },
+ { label: 'Social Responsibility', link: '/our-story#awards-recognition' }
  ]
  },
  {
@@ -303,11 +301,13 @@ const Navbar = () => {
  link: '/our-team',
  isHeader: true,
  items: [
- { label: 'Leadership Team', link: '/leadership-team', highlighted: true },
- { label: 'Management Team', link: '/management-team', highlighted: true },
- { label: 'Intern Team', link: '/intern-team', highlighted: true }
+ { label: 'Leadership Team', link: '/our-team#leadership-team', highlighted: true },
+ { label: 'Management Team', link: '/our-team#management-team', highlighted: true },
+ { label: 'Intern Team', link: '/our-team#founding-intern-team', highlighted: true },
+
  ]
- }
+}
+
  ];
 
  const productsDropdownItems = [
