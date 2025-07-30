@@ -49,8 +49,8 @@ function MainComponent() {
         <div className="anushtaan-hero-grid">
           <div className="anushtaan-hero-left">
             <h1>Anushtaan</h1>
-            <h2>The Ultimate AI-Driven Project Management Platform</h2>
-            <p className="anushtaan-hero-tag">Rethink Project Management. Redefine Possibility.</p>
+            <h2>The Ultimate AI-Powered, Data-Driven Project Management Platform</h2>
+            
             <p className="anushtaan-hero-lead">
               Anushtaan isn't just another project management tool—it's a next-generation platform designed for professionals and organizations that demand efficiency, transparency, and intelligent control. Built by Ganglia Technologies, Anushtaan brings powerful AI and human-centered design to every stage of your projects.
             </p>

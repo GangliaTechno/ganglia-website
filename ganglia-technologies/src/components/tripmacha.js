@@ -169,7 +169,7 @@ const TripMacha = () => {
               <h1 className="tripmacha-title" ref={titleRef}>Trip Macha AI</h1>
               <p>
                 TripMacha AI is an AI travel assistant tailored for short, time-limited trips. 
-                It creates smart, hyper-personalized itineraries using user interests, 
+                It creates smart, hyper personalized itineraries using user interests, 
                 traffic, crowd, and real-time data.
               </p>
               <button 
@@ -188,7 +188,7 @@ const TripMacha = () => {
           <div className="tripmacha-page-about-text">
             <h2><span>About</span> TripMacha</h2>
             <p>
-              TripMacha AI is the first-of-its-kind AI-powered travel assistant in India, built specifically for short-distance, time-limited travel. Ideal for users with just a few hours to explore, it generates smart, hyper-personalized itineraries based on minimal input—factoring in user interest, traffic, live crowd data, and real-time availability.
+              TripMacha AI is the first of its kind AI-powered travel assistant in India, built specifically for short distance, time limited travel. Ideal for users with just a few hours to explore, it generates smart, hyper-personalized itineraries based on minimal input factoring in user interest, traffic, live crowd data, and real-time availability.
             </p>
             <p>
               Unlike conventional travel apps that overload users with choices, TripMacha AI delivers instant, optimized plans with built-in navigation and reservation options. With no comparable solution in the Indian market, it redefines spontaneous travel through intelligent automation and seamless execution.
