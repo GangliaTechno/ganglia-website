@@ -15,7 +15,7 @@ const ResearchPage = () => {
       id: 'paper1',
       title: "Instance Segmentation and Contrastive Clustering Techniques for White Blood Cell Analysis",
       type: "Research Article",
-      status: "Accepted for publishing",
+      status: "Accepted for publication",
       authors: "Akshathaa Avinash Annadhani, Bhavana Baalebail, Dashrathraj K Shetty, Sharanya G Hegde, Deekshith R Prabhu, Phani Kumar Pullela, Namesh Malarout",
       abstract: "White blood cell (WBC) analysis using artificial intelligence (AI) is growing rapidly. However, many available datasets lack labels, making supervised learning approaches challenging. This review uses both qualitative and quantitative methods. It includes peer-reviewed studies from Scopus indexed journals. Sources were selected from the Scopus. The review groups findings into three key areas: segmentation, clustering, and health scoring. Contrastive clustering enables grouping of cells without labels. New health scoring methods allow assessment of cell health and model confidence. Despite progress, challenges remain. Models often lack robust testing when ground truth data is unavailable. Ethical concerns and limited model explainability also pose barriers. Future research should aim to integrate segmentation, clustering, and clinical objectives within a unified framework.",
       keywords: ["White Blood Cell Analysis", "Instance Segmentation", "Contrastive Clustering", "Artificial Intelligence", "Medical Imaging"]
@@ -24,7 +24,7 @@ const ResearchPage = () => {
       id: 'paper2',
       title: "Explainable AI-Based System for Automated Detection of Cardiovascular Disease Detection from ECG Images: A Theoretical Review",
       type: "Review Article",
-      status: "Accepted for publishing",
+      status: "Accepted for publication",
       authors: "Anoop P, K Sindhu Kamath, Dashrathraj K Shetty, Sharanya G Hegde, Deekshtih R Prabhu, Phani Kumar Pullela, Praveen Shastry",
       abstractSections: [
         {
@@ -103,19 +103,19 @@ const ResearchPage = () => {
     <div className="rsch-stats-wrapper">
       <div className="rsch-stats-grid">
         <div className="rsch-stat-card">
-          <div className="rsch-stat-icon"><Player autoplay loop src={file} style={{ height: 55, width: 55 }} /></div>
+          <div className="rsch-stat-icon"><Player autoplay loop src={trophy} style={{ height: 65, width: 65 }} /></div>
           <div className="rsch-stat-number">2</div>
           <div className="rsch-stat-label">Published Papers</div>
         </div>
         <div className="rsch-stat-card">
-          <div className="rsch-stat-icon"><Player autoplay loop src={research} style={{ height: 55, width: 55 }} /></div>
+          <div className="rsch-stat-icon"><Player autoplay loop src={research} style={{ height: 65, width: 65 }} /></div>
           <div className="rsch-stat-number">5+</div>
           <div className="rsch-stat-label">Research Areas</div>
         </div>
         <div className="rsch-stat-card">
-          <div className="rsch-stat-icon"><Player autoplay loop src={trophy} style={{ height: 55, width: 55 }} /></div>
-          <div className="rsch-stat-number">100%</div>
-          <div className="rsch-stat-label">Acceptance Rate</div>
+          <div className="rsch-stat-icon"><Player autoplay loop src={file} style={{ height: 65, width: 65 }} /></div>
+          <div className="rsch-stat-number">10+</div>
+          <div className="rsch-stat-label">Publications In Pipeline</div>
         </div>
       </div>
     </div>
@@ -172,7 +172,7 @@ const ResearchPage = () => {
           id="hero-content"
           className={`rsch-hero-content rsch-fade-in-element ${visibleElements.has('hero-content') ? 'rsch-visible' : ''}`}
         >
-          <h1 className="rsch-main-heading">Research Papers</h1>
+          <h1 className="rsch-main-heading">Research Publications</h1>
           <p className="rsch-hero-description">
             Advancing healthcare through cutting-edge research and innovation
           </p>

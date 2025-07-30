@@ -24,7 +24,7 @@ import OurTeam from './components/OurTeam';
 import TripMacha from './components/tripmacha';
 import Laryngoscope from './components/laryngoscope';
 import MainComponent from './components/MainComponent';
-//import MedlogBookPlatform from './components/MedlogBookPlatform';
+import MedlogBookPlatform from './components/MedlogBookPlatform';
 import Blogs from './components/blogs';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
@@ -138,9 +138,10 @@ const AppContent = () => {
         <Route path="/our-team" element={<OurTeam />} />
         <Route path="/tripmacha" element={<TripMacha />} />
         <Route path="/smart-video-laryngoscope" element={<Laryngoscope />} />
-        {/* <Route path="/medical-logbook" element={<MedlogBookPlatform />} /> */}
+        {/*<Route path="/medical-logbook" element={<MedlogBookPlatform />} /> */}
         <Route path="/main-component" element={<MainComponent />} />
         <Route path="/research-papers" element={<ResearchPapers />} />
+        <Route path="/awards" element={<AwardsResearchPage />} /> {/* Add this route */}
         <Route path="/get-started" element={<GetStartedForm />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/blogs" element={<Blogs />} />
