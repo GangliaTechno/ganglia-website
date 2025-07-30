@@ -4,7 +4,7 @@ import award1 from '../assets/award1.png';
 import award2 from '../assets/award2.png';
 import award3 from '../assets/award3.png';
 import award4 from '../assets/award4.png';
-import Footer from './Footer';
+
 
 const AwardsResearchPage = () => {
   const [visibleElements, setVisibleElements] = useState(new Set());
@@ -296,8 +296,7 @@ const AwardsResearchPage = () => {
           </div>
         </div>
       </div>
-      {/* Footer Section */}
-      <Footer />
+     
     </div>
   );
 };

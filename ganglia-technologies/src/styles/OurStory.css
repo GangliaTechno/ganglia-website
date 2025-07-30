@@ -1268,3 +1268,87 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Remove animations for the first four stacking cards */
+.stacking-card {
+  position: relative;
+  background: var(--bg-blue-alpha);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  /* Remove these animation properties */
+  /* transition: transform 0.3s var(--animation-timing),
+    box-shadow 0.3s var(--animation-timing),
+    border-color 0.3s var(--animation-timing); */
+  cursor: pointer;
+  backface-visibility: hidden;
+  /* Add immediate visibility */
+  opacity: 1;
+  transform: none;
+}
+
+/* Remove hover animations for better performance */
+.stacking-card:hover {
+  /* Remove transform animation */
+  /* transform: translate3d(0, -8px, 0) scale(1.01); */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Disable the shiny border animation */
+.stacking-card:hover::before {
+  animation: none;
+  opacity: 0;
+}
+/* Remove all hover effects and transitions for the first four cards */
+#why-exist,
+#how-we-do,
+#what-we-create,
+#impact {
+  /* Remove all transitions */
+  transition: none !important;
+
+  /* Ensure no transform animations */
+  transform: none !important;
+
+  /* Remove cursor pointer to indicate no interaction */
+  cursor: default !important;
+}
+
+/* Completely disable hover effects */
+#why-exist:hover,
+#how-we-do:hover,
+#what-we-create:hover,
+#impact:hover {
+  /* Prevent any transform changes */
+  transform: none !important;
+
+  /* Keep original box-shadow */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+
+  /* Keep original border color */
+  border-color: rgba(59, 130, 246, 0.2) !important;
+
+  /* Remove any animations */
+  animation: none !important;
+}
+
+/* Remove shiny border effects completely */
+#why-exist::before,
+#how-we-do::before,
+#what-we-create::before,
+#impact::before {
+  display: none !important;
+}
+
+/* Remove backdrop hover effects */
+#why-exist .card-overlay,
+#how-we-do .card-overlay,
+#what-we-create .card-overlay,
+#impact .card-overlay {
+  transition: none !important;
+}
