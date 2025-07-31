@@ -19,8 +19,8 @@
 }
 
 .route-preloader-gif {
-  max-width: 120px;
-  max-height: 120px;
+  max-width: 400px;
+  max-height: 400px;
   margin-bottom: 15px;
   opacity: 0.9;
 }
@@ -29,7 +29,7 @@
   font-size: 0.9rem;
   color: #cbd5e1;
   font-weight: 500;
-  animation: pulse 1.5s infinite;
+  animation: pulse 1s infinite;
 }
 
 @keyframes fadeIn {
@@ -54,11 +54,7 @@
 /* Mobile responsive */
 @media (max-width: 768px) {
   .route-preloader-gif {
-    max-width: 100px;
-    max-height: 100px;
-  }
-
-  .route-loading-text {
-    font-size: 0.8rem;
+    max-width: 300x;
+    max-height: 300px;
   }
 }

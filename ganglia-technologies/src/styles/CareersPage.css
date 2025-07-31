@@ -536,7 +536,7 @@ a {
 }
 .careers-timeline-table {
   width: 100%;
-  min-width: 760px;
+  min-width: 600px;
   border-collapse: collapse;
   background: transparent;
   color: var(--light);
