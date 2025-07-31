@@ -18,61 +18,30 @@
 }
 
 .preloader-gif {
-  max-width: 200px;
-  max-height: 200px;
-  margin-bottom: 20px;
-}
-
-.progress-container {
-  width: 300px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
-  margin: 20px auto;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  border-radius: 2px;
-  transition: width 0.3s ease;
-}
-
-.loading-text {
-  font-size: 1rem;
-  color: #cbd5e1;
-  margin: 10px 0;
-  font-weight: 500;
+  max-width: 400px;
+  max-height: 400px;
+  animation: pulse 1s infinite;
 }
 
 /* Animation for the preloader */
 @keyframes pulse {
   0%,
-  100% {
-    opacity: 1;
-  }
   50% {
     opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
 .preloader-gif {
-  animation: pulse 2s infinite;
+  animation: 1s infinite;
 }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
   .preloader-gif {
-    max-width: 150px;
-    max-height: 150px;
-  }
-
-  .progress-container {
-    width: 250px;
-  }
-
-  .loading-text {
-    font-size: 0.9rem;
+    max-width: 300px;
+    max-height: 300px;
   }
 }

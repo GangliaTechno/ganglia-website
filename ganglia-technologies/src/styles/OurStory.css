@@ -1268,7 +1268,7 @@
     transition-duration: 0.01ms !important;
   }
 }
-
+/* OurStory.css animation removed*/
 /* Remove animations for the first four stacking cards */
 .stacking-card {
   position: relative;

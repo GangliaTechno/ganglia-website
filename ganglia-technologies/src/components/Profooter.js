@@ -44,7 +44,7 @@ const Profooter = () => {
     } else if (sectionId === 'research') {
       navigateWithScrollToTop('/research-papers');
     } else if (sectionId === 'awards') {
-      navigateWithScrollToTop('/awards-recognition');
+      navigateWithScrollToTop('/awards');
     } else if (sectionId === 'home') {
       navigateWithScrollToTop('/');
     } else {
@@ -104,7 +104,7 @@ const Profooter = () => {
                 </div>
                 <div className="contact-details">
                   <h4>Phone</h4>
-                  <p>(+91) 81097 82903</p>
+                  <p>(+91) 7760042810</p>
                 </div>
               </a>
             </div>
@@ -120,7 +120,7 @@ const Profooter = () => {
               <li><a href="#services" onClick={(e) => handleNavClick(e, 'services')}>Services</a></li>
               <li><a href="#research" onClick={(e) => handleNavClick(e, 'research')}>Research</a></li>
               <li><a href="#blog" onClick={(e) => handleNavClick(e, 'blog')}>Blog</a></li>
-              <li><a href="#awards" onClick={(e) => handleNavClick(e, 'awards')}>Awards & Research</a></li>
+              <li><a href="#awards" onClick={(e) => handleNavClick(e, 'awards')}>Awards & News</a></li>
             </ul>
           </div>
           <div className="profooter-newsletter">

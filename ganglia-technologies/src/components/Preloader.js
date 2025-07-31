@@ -142,7 +142,7 @@ const Preloader = ({ onLoadComplete }) => {
             style={{ width: `${progress}%` }}
           ></div>
         </div>
-        <p className="loading-text">Loading... {Math.round(progress)}%</p>
+        <p className="loading-text">{Math.round(progress)}%</p>
       </div>
     </div>
   );

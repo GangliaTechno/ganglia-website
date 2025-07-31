@@ -107,7 +107,7 @@ const FooterController = () => {
     '/tripmacha',
     '/main-component',
     '/services',
-    '/MedlogBookPlatform',
+    '/medical-logbook',
     '/smart-video-laryngoscope',
     '/get-started'
   ];

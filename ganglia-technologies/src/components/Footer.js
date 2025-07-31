@@ -60,7 +60,7 @@ const Footer = () => {
     } else if (sectionId === 'research') {
       navigateWithScrollToTop('/research-papers');
     } else if (sectionId === 'awards') {
-      navigateWithScrollToTop('/awards-recognition');
+      navigateWithScrollToTop('/awards');
     } 
     else if (sectionId === 'home') {
       navigateWithScrollToTop('/');
@@ -158,7 +158,7 @@ const Footer = () => {
               <li><a href="#services" onClick={(e) => handleNavClick(e, 'services')}>Services</a></li>
               <li><a href="#research" onClick={(e) => handleNavClick(e, 'research')}>Research</a></li>
               <li><a href="#blog" onClick={(e) => handleNavClick(e, 'blog')}>Blog</a></li>
-              <li><a href="#awards" onClick={(e) => handleNavClick(e, 'awards')}>Awards & Research</a></li>
+              <li><a href="#awards" onClick={(e) => handleNavClick(e, 'awards')}>Awards & News</a></li>
             </ul>
           </div>
 
