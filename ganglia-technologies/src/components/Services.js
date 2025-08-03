@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Services.css';
 
 // Import all images from src/assets
@@ -9,21 +10,25 @@ import aiImage from '../assets/ai.png';
 
 const services = [
   {
+    id: 'healthcare-tech',
     title: 'Healthcare Tech',
     description: 'Smart medical devices, telemedicine platforms and patient data management',
     image: healthImage
   },
   {
+    id: 'medical-enterprise',
     title: 'Medical Enterprise Software',
     description: 'Scalable Business Solutions tailored to client needs',
     image: medicalImage
   },
   {
+    id: 'consulting-custom',
     title: 'Consulting & Custom Dev',
     description: 'AI Strategy & Automation for Business Growth.',
     image: consultingImage
   },
   {
+    id: 'ai-powered',
     title: 'AI Powered Applications',
     description: 'Intelligent automation, Machine Learning and NLP models',
     image: aiImage
@@ -33,6 +38,12 @@ const services = [
 const Services = () => {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
+  const navigate = useNavigate();
+
+  // Handle service card click
+  const handleServiceClick = (serviceId) => {
+    navigate(`/services?section=${serviceId}`);
+  };
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -108,6 +119,8 @@ const Services = () => {
               key={idx}
               ref={(el) => (cardsRef.current[idx] = el)}
               className={`service-card scroll-responsive-card ${idx < 2 ? 'top-row' : 'bottom-row'} ${idx % 2 === 1 ? 'reverse' : ''}`}
+              onClick={() => handleServiceClick(service.id)}
+              style={{ cursor: 'pointer' }}
             >
               <img src={service.image} alt={service.title} className="service-img" />
               <div className="service-info">

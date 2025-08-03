@@ -353,18 +353,16 @@ const Navbar = () => {
   const productsDropdownItems = [
     {
       category: 'Health Tech',
-      link: '/health-tech',
       isHeader: true,
       items: [
         { label: 'Smart Video Laryngoscope', link: '/smart-video-laryngoscope' },
-        { label: 'Mobile ICU', link: '/mobile-icu' },
-        { label: 'Medical Thermal-Imaging System', link: '/medical-thermal-imaging' },
-        { label: 'Medical Drone', link: '/medical-drone' }
+        { label: 'Mobile ICU', link: '' , className: 'special-button'},
+        { label: 'Medical Thermal-Imaging System', link: '', className: 'special-button' },
+        { label: 'Medical Drone', link: '', className: 'special-button' }
       ]
     },
     {
       category: 'AI-Powered Tools',
-      link: '/ai-powered-tools',
       isHeader: true,
       items: [
         { label: 'TripMacha AI – Short Trip Planner', link: '/tripmacha' },
@@ -532,6 +530,7 @@ const Navbar = () => {
               {renderDropdownMenu(servicesDropdownItems, dropdownStates.services)}
             </li>
 
+            {/*
             <li>
               <a 
                 href="/research-papers" 
@@ -540,7 +539,7 @@ const Navbar = () => {
                 Research
               </a>
             </li>
-            <li>
+             <li>
               <a
                 href="/blogs"
                 onClick={handleBlogClick}
@@ -548,6 +547,7 @@ const Navbar = () => {
                 Blog
               </a>
             </li>
+            */}
             <li>
               <a 
                 href="/careers" 
@@ -622,7 +622,7 @@ const Navbar = () => {
                 </div>
                 {renderMobileDropdownMenu(servicesDropdownItems, mobileDropdownStates.services)}
               </li>
-
+{/*}
               <li>
                 <a 
                   href="/research-papers" 
@@ -639,6 +639,7 @@ const Navbar = () => {
                   Blog
                 </a>
               </li>
+              */}
               <li>
                 <a 
                   href="/careers" 

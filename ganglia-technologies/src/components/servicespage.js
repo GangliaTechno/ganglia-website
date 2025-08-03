@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../styles/servicepage.css';
 
 // Import your service images
@@ -9,6 +10,7 @@ import aiImage from '../assets/consulting.png';
 
 const Services = () => {
   const [expandedService, setExpandedService] = useState(null);
+  const location = useLocation();
 
   const toggleService = (index) => {
     setExpandedService(expandedService === index ? null : index);
@@ -16,7 +18,7 @@ const Services = () => {
 
   const services = [
     {
-      id: 1,
+      id: 'healthcare-tech',
       title: "Healthcare Tech",
       subtitle: "Smart medical devices, telemedicine platforms and patient data management",
       image: consultingImage,
@@ -32,7 +34,7 @@ const Services = () => {
       technologies: ["React Native", "Node.js", "MongoDB", "AWS Healthcare", "HL7 FHIR", "WebRTC"]
     },
     {
-      id: 2,
+      id: 'medical-enterprise',
       title: "Medical Enterprise Software",
       subtitle: "Scalable Business Solutions tailored to client needs",
       image: enterpriseImage,
@@ -48,7 +50,7 @@ const Services = () => {
       technologies: ["Java Spring", "Angular", "PostgreSQL", "Microservices", "Docker", "Kubernetes"]
     },
     {
-      id: 3,
+      id: 'consulting-custom',
       title: "Consulting & Custom Development",
       subtitle: "AI Strategy & Automation for Business Growth",
       image: aiImage,
@@ -64,7 +66,7 @@ const Services = () => {
       technologies: ["Python", "Django", "React", "AWS", "Azure", "GraphQL"]
     },
     {
-      id: 4,
+      id: 'ai-powered',
       title: "AI Powered Applications",
       subtitle: "Intelligent automation, Machine Learning and NLP models",
       image: healthcareImage,
@@ -81,6 +83,32 @@ const Services = () => {
     }
   ];
 
+  // Handle scroll to specific section based on URL parameter
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const sectionId = urlParams.get('section');
+    
+    if (sectionId) {
+      // Find the service index based on ID
+      const serviceIndex = services.findIndex(service => service.id === sectionId);
+      
+      if (serviceIndex !== -1) {
+        // Small delay to ensure the component has rendered
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+            // Optionally expand the service
+            setExpandedService(serviceIndex);
+          }
+        }, 100);
+      }
+    }
+  }, [location.search]);
+
   return (
     <div>
       <div className="services-container1">
@@ -92,7 +120,8 @@ const Services = () => {
         <div className="services-list1">
           {services.map((service, index) => (
             <div 
-              key={service.id} 
+              key={service.id}
+              id={service.id} // Add ID for scroll targeting
               className={`service-item1 ${expandedService === index ? 'expanded1' : ''}`}
             >
               <div className="service-icon1">
@@ -101,12 +130,10 @@ const Services = () => {
                   alt={service.alt}
                   className="service-image1"
                   onError={(e) => {
-                    // Fallback in case image fails to load
                     e.target.style.display = 'none';
                     e.target.nextSibling.style.display = 'flex';
                   }}
                 />
-                {/* Fallback icon div */}
                 <div className={`icon1 ${service.id === 1 ? 'healthcare-icon1' : service.id === 2 ? 'enterprise-icon1' : service.id === 3 ? 'consulting-icon1' : 'ai-icon1'}`} style={{display: 'none'}}></div>
               </div>
               
@@ -140,7 +167,6 @@ const Services = () => {
           ))}
         </div>
       </div>
-      
     </div>
   );
 };

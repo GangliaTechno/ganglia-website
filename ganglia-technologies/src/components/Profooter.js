@@ -67,11 +67,19 @@ const Profooter = () => {
   return (
     <footer className="profooter">
       <div className="profooter-content">
+
         <div className="profooter-left">
-          <div className="profooter-logo" onClick={handleLogoClick} role="button" tabIndex={0} aria-label="Go to home">
+          <div
+            className="profooter-logo"
+            onClick={handleLogoClick}
+            role="button"
+            tabIndex={0}
+            aria-label="Go to home"
+          >
             <img src={logo} alt="Ganglia Technologies" style={{ cursor: 'pointer' }} />
           </div>
         </div>
+
         <div className="profooter-center">
           <div className="profooter-section headquarters">
             <h3>Headquarters</h3>
@@ -79,7 +87,7 @@ const Profooter = () => {
             <p>III Floor MAHE Advanced Research Centre Behind MMMC,</p>
             <p>Manipal, Karnataka 576104</p>
           </div>
-          <div className="profooter-contact">
+          <div className="profooter-contact footer-contact">
             <div className="contact-item">
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=director@ganglia.in"
@@ -98,18 +106,19 @@ const Profooter = () => {
               </a>
             </div>
             <div className="contact-item">
-              <a href="tel:+918109782903" className="contact-link" aria-label="Phone Ganglia">
+              <a href="tel:+917760042810" className="contact-link" aria-label="Phone Ganglia">
                 <div className="contact-icon">
                   <Lottie animationData={callIcon} loop autoplay style={{ height: 40, width: 40 }} />
                 </div>
                 <div className="contact-details">
                   <h4>Phone</h4>
-                  <p>(+91) 7760042810</p>
+                  <p>(+91) 77600 42810</p>
                 </div>
               </a>
             </div>
           </div>
         </div>
+
         <div className="profooter-right">
           <div className="profooter-section-company-links">
             <h3>Company</h3>
@@ -133,8 +142,8 @@ const Profooter = () => {
             </div>
           </div>
         </div>
+
       </div>
-      {/* Decorative image: as a block, above copyright! */}
 
       <img
         src={responsiveImage}
@@ -146,7 +155,6 @@ const Profooter = () => {
         alt="Payments accepted"
         className="profooter-decorative-image"
       />
-      {/* Copyright at the very bottom */}
       <div className="profooter-copyright">
         © 2025 Ganglia Technologies. All rights reserved.
       </div>

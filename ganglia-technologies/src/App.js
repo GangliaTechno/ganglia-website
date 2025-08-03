@@ -141,11 +141,12 @@ const AppContent = () => {
         <Route path="/smart-video-laryngoscope" element={<Laryngoscope />} />
         <Route path="/medical-logbook" element={<MedlogBookPlatform />} /> 
         <Route path="/main-component" element={<MainComponent />} />
-        <Route path="/research-papers" element={<ResearchPapers />} />
+       {/* <Route path="/research-papers" element={<ResearchPapers />} /> */}
         <Route path="/awards" element={<AwardsResearchPage />} /> {/* Add this route */}
         <Route path="/get-started" element={<GetStartedForm />} />
         <Route path="/services" element={<ServicesPage />} />
-        <Route path="/blogs" element={<Blogs />} />
+        
+        {/*<Route path="/blogs" element={<Blogs />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
