@@ -120,7 +120,8 @@ const Profooter = () => {
         </div>
 
         <div className="profooter-right">
-          <div className="profooter-section-company-links">
+          {/* FIXED: Changed className to match CSS selector */}
+          <div className="profooter-section company-links">
             <h3>Company</h3>
             <ul>
               <li><a href="#home" onClick={(e) => handleNavClick(e, 'home')}>Home</a></li>
@@ -156,7 +157,7 @@ const Profooter = () => {
         className="profooter-decorative-image"
       />
       <div className="profooter-copyright">
-        © 2025 Ganglia Technologies. All rights reserved.
+        ©️ 2025 Ganglia Technologies. All rights reserved.
       </div>
     </footer>
   );
