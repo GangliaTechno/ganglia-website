@@ -1,5 +1,17 @@
 import React, { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import '../styles/MedlogBookPlatform.css';
+import { Player } from '@lottiefiles/react-lottie-player';
+import med1 from '../assets/med1.json';
+import med2 from '../assets/med2.json';
+import med3 from '../assets/med3.json';
+import med4 from '../assets/med4.json';
+import med5 from '../assets/med5.json';
+import med6 from '../assets/med6.json';
+import med7 from '../assets/med7.json';
+import med8 from '../assets/med8.json';
+import med9 from '../assets/med9.json';
+import med10 from '../assets/med10.json';
+import med11  from '../assets/med11.json';
 
 let medlog;
 try {
@@ -122,49 +134,49 @@ const MedlogBookPlatform = () => {
           <div className="features-grid-layout2">
             <div className="premium-feature-card2 card-voice2">
               <div className="feature-icon-container2">
-                <div className="feature-icon2 voice-icon2"></div>
+                <div className="feature-icon2 voice-icon2"><Player autoplay loop src={med1} style={{ height: 55, width: 55 }} /></div>
               </div>
               <h3 className="feature-card-title2">Voice-Enabled Data Entry</h3>
               <p className="feature-card-description2">Easily dictate patient details and clinical notes with advanced AI that accurately understands regional accents.</p>
             </div>
             <div className="premium-feature-card2 card-supervision2">
               <div className="feature-icon-container2">
-                <div className="feature-icon2 supervision-icon2"></div>
+                <div className="feature-icon2 supervision-icon2"><Player autoplay loop src={med2} style={{ height: 55, width: 55 }} /></div>
               </div>
               <h3 className="feature-card-title2">Real-Time Supervision</h3>
               <p className="feature-card-description2">Senior doctors can monitor junior clinicians' entries and progress instantly from anywhere.</p>
             </div>
             <div className="premium-feature-card2 card-ai2">
               <div className="feature-icon-container2">
-                <div className="feature-icon2 ai-icon2"></div>
+                <div className="feature-icon2 ai-icon2"><Player autoplay loop src={med3} style={{ height: 55, width: 55 }} /></div>
               </div>
               <h3 className="feature-card-title2">AI-Powered Scoring</h3>
               <p className="feature-card-description2">Automatically rate junior doctors' performance based on hospital-defined KPIs for transparent feedback.</p>
             </div>
             <div className="premium-feature-card2 card-management2">
               <div className="feature-icon-container2">
-                <div className="feature-icon2 management-icon2"></div>
+                <div className="feature-icon2 management-icon2"><Player autoplay loop src={med4} style={{ height: 55, width: 55 }} /></div>
               </div>
               <h3 className="feature-card-title2">Task & Assignment Management</h3>
               <p className="feature-card-description2">Senior doctors can assign, track, and score clinical tasks or academic assignments seamlessly.</p>
             </div>
             <div className="premium-feature-card2 card-admin2">
               <div className="feature-icon-container2">
-                <div className="feature-icon2 admin-icon2"></div>
+                <div className="feature-icon2 admin-icon2"><Player autoplay loop src={med5} style={{ height: 55, width: 55 }} /></div>
               </div>
               <h3 className="feature-card-title2">Customizable Admin Controls</h3>
               <p className="feature-card-description2">Admins can tailor user roles, access, and system settings to fit specific institutional workflows.</p>
             </div>
             <div className="premium-feature-card2 card-security2">
               <div className="feature-icon-container2">
-                <div className="feature-icon2 security-icon2"></div>
+                <div className="feature-icon2 security-icon2"><Player autoplay loop src={med6} style={{ height: 55, width: 55 }} /></div>
               </div>
               <h3 className="feature-card-title2">Secure Local Data Storage</h3>
               <p className="feature-card-description2">All data is safely stored on hospital premises, ensuring complete privacy without external sharing.</p>
             </div>
             <div className="premium-feature-card2 card-interfaces2">
               <div className="feature-icon-container2">
-                <div className="feature-icon2 interfaces-icon2"></div>
+                <div className="feature-icon2 interfaces-icon2"><Player autoplay loop src={med7} style={{ height: 55, width: 55 }} /></div>
               </div>
               <h3 className="feature-card-title2">Multi-User Interfaces</h3>
               <p className="feature-card-description2">Specialized dashboards provide role-specific tools for smooth operation and collaboration (Student, Doctor, Admin, Visitor).</p>
@@ -179,22 +191,22 @@ const MedlogBookPlatform = () => {
           <h2 className="benefits-title2">Why Choose Ganglia's Medical Logbook</h2>
           <div className="benefits-grid2">
             <div className="benefit-card2">
-              <div className="benefit-icon2 trusted-icon2"></div>
+              <div className="benefit-icon2 trusted-icon2"><Player autoplay loop src={med8} style={{ height: 55, width: 55 }} /></div>
               <h3>Trusted by Leading Hospitals</h3>
               <p>Proven track record with top medical institutions worldwide</p>
             </div>
             <div className="benefit-card2">
-              <div className="benefit-icon2 patents-icon2"></div>
+              <div className="benefit-icon2 patents-icon2"><Player autoplay loop src={med9} style={{ height: 55, width: 55 }} /></div>
               <h3>17+ Approved Patents</h3>
               <p>Backed by advanced AI and innovative technology</p>
             </div>
             <div className="benefit-card2">
-              <div className="benefit-icon2 collaboration-icon2"></div>
+              <div className="benefit-icon2 collaboration-icon2"><Player autoplay loop src={med10} style={{ height: 55, width: 55 }} /></div>
               <h3>Clinician-Engineered</h3>
               <p>Developed through close collaboration with medical professionals</p>
             </div>
             <div className="benefit-card2">
-              <div className="benefit-icon2 customizable-icon2"></div>
+              <div className="benefit-icon2 customizable-icon2"><Player autoplay loop src={med11} style={{ height: 55, width: 55 }} /></div>
               <h3>Fully Customizable</h3>
               <p>Tailored to your institution's unique workflows and protocols</p>
             </div>
