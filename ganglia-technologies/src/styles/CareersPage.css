@@ -533,6 +533,8 @@ a {
   border-radius: 17px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 1.7rem;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 .careers-timeline-table {
   width: 100%;
@@ -785,6 +787,7 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 21px;
+  margin-top: 50px;
 }
 .careers-date-button {
   background: var(--yellow);
@@ -1004,5 +1007,117 @@ a {
 
   .careers-stat-label {
     font-size: 0.75rem;
+  }
+}
+/* Add these mobile-responsive table rules to your existing CSS */
+
+/* Timeline Table Mobile Responsiveness */
+@media (max-width: 1200px) {
+  .careers-timeline-table-container {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .careers-timeline-table-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .careers-timeline-table-container {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 12px;
+  }
+
+  .careers-timeline-table {
+    min-width: 500px; /* Reduced from 600px */
+    font-size: 0.8rem;
+  }
+
+  .careers-timeline-table th,
+  .careers-timeline-table td {
+    padding: 8px 6px;
+    font-size: 0.75rem;
+  }
+
+  .position-title {
+    font-size: 0.85rem;
+  }
+
+  .position-details {
+    font-size: 0.7rem;
+  }
+
+  .category-badge {
+    padding: 4px 8px;
+    font-size: 0.7em;
+  }
+
+  .table-apply-btn {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 499px) {
+  .careers-timeline-table-container {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 8px;
+  }
+
+  .careers-timeline-table {
+    min-width: 450px;
+    font-size: 0.7rem;
+  }
+
+  .careers-timeline-table th,
+  .careers-timeline-table td {
+    padding: 6px 4px;
+    font-size: 0.65rem;
+  }
+
+  .position-title {
+    font-size: 0.75rem;
+  }
+
+  .position-details {
+    font-size: 0.6rem;
+  }
+
+  .category-badge {
+    padding: 3px 6px;
+    font-size: 0.6em;
+  }
+
+  .table-apply-btn {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .careers-timeline-table-container {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .careers-timeline-table {
+    min-width: 400px;
+  }
+
+  .careers-timeline-table th,
+  .careers-timeline-table td {
+    padding: 4px 2px;
+    font-size: 0.6rem;
+  }
+
+  .table-apply-btn {
+    padding: 3px 6px;
+    font-size: 0.65rem;
   }
 }
