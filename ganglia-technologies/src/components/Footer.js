@@ -91,7 +91,7 @@ const Footer = () => {
 
   const handleSubscribeClick = () => {
     // Navigate to blog page instead of scrolling to top
-    navigateWithScrollToTop('/blogs');
+    navigateWithScrollToTop(''); // change to '/blogs' if you want to go to the blog page
   };
 
   return (

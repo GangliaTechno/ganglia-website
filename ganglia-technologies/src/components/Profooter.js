@@ -62,7 +62,7 @@ const Profooter = () => {
     if (location.pathname === '/') { scrollToTop(); }
     else { navigateWithScrollToTop('/'); }
   };
-  const handleSubscribeClick = () => { navigateWithScrollToTop('/blogs'); };
+  const handleSubscribeClick = () => { navigateWithScrollToTop('/'); };
 
   return (
     <footer className="profooter">
