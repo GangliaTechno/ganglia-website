@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useCallback } from 'react';
 import '../styles/CareersPage.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logob.png';
@@ -133,9 +134,23 @@ const CareersPage = () => {
     setSelectedJob(null);
   };
 
-  const handleInternshipApply = () => {
-    alert('Internship application form will be implemented here');
-  };
+  const handleInternshipApply = useCallback((path) => {
+  try {
+    if (typeof path !== 'string') {
+      console.error('Invalid path provided to handleInternshipApply:', path);
+      return;
+    }
+    
+    // Clear any existing timeouts or intervals that might interfere
+    window.scrollTo(0, 0);
+    
+    // Navigate with replace to ensure clean navigation
+    navigate(path, { replace: true });
+    
+  } catch (error) {
+    console.error('Navigation error:', error);
+  }
+}, [navigate]);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -557,19 +572,19 @@ const CareersPage = () => {
             ))}
           </div>
           <div className="careers-call-to-action">
-            <div className="careers-cta-content">
-              <h3><span className="careers-highlight">Opportunities</span> like this don't wait</h3>
-              <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
-              <div className="careers-application-info">
-                <button
-                  className="careers-date-button"
-                  onClick={handleInternshipApply}
-                >
-                  Apply for Internship
-                </button>
-              </div>
-            </div>
-          </div>
+  <div className="careers-cta-content">
+    <h3><span className="careers-highlight">Opportunities</span> like this don't wait</h3>
+    <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
+    <div className="careers-application-info">
+      <button
+        className="careers-date-button"
+        onClick={() => handleInternshipApply('/internship-form')} // ✅ Fixed
+      >
+        Apply for Internship
+      </button>
+    </div>
+  </div>
+</div>
         </div>
       </section>
 

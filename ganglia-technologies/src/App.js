@@ -31,6 +31,7 @@ import './styles/App.css';
 import ResearchPapers from './components/research';
 import GetStartedForm from './components/getstarted';
 import AwardsResearchPage from './components/AwardsResearch'; 
+import InternshipForm from './components/InternshipForm';
 
 
 // HomePage: Removed Footer here to avoid duplication
@@ -147,7 +148,8 @@ const AppContent = () => {
         <Route path="/services" element={<ServicesPage />} />
         
         {/*<Route path="/blogs" element={<Blogs />} /> */}
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/internship-form" element={<InternshipForm />} />
+          <Route path="*" element={<NotFoundPage />} /> 
       </Routes>
 
       {/* Conditionally renders either Footer or Profooter */}
