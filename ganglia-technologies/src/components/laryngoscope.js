@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState, useCallback } from "react";
-
+import { useNavigate } from 'react-router-dom';
 import laryngoVideo from '../assets/laryngo.mp4';
 import { Player } from '@lottiefiles/react-lottie-player';
 import wireless from '../assets/wireless.json';
@@ -12,6 +12,8 @@ import wired from '../assets/wired.json';
 import ai from '../assets/ai.json';
 import health from '../assets/health.json';
 import Research from '../assets/Research.json';
+
+// Image loading logic
 let laryImage;
 try {
   laryImage = require('../assets/lanyngoscope1.png');
@@ -20,6 +22,17 @@ try {
 }
 
 function LaryngoscopeComponent() {
+  const navigate = useNavigate();
+  
+  // Add the navigation function
+  const handleGetStartedClick = (path) => {
+  navigate(path);
+  // Scroll to top after navigation
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 100);
+};
+
   // Responsive breakpoint helper
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
@@ -144,16 +157,15 @@ function LaryngoscopeComponent() {
   }, []);
 
   const specifications = [
-  { feature: 'Joy-stick Controlled Tongue-tip', benefit: 'Minimal trauma, accurate epiglottis movement' },
-  { feature: 'Advanced Dual Camera', benefit: 'Wide + focused views, superior image processing' },
-  { feature: 'In-built Oxygenator', benefit: 'Constant oxygen supply, maximum patient safety' },
-  { feature: 'Wireless Setup', benefit: 'Live video broadcast anywhere' },
-  { feature: 'AI-Powered Software', benefit: 'Real-time trauma & anatomy highlighting' },
-  { feature: 'Waterproof, Lighter Casing', benefit: 'Durable, sterile, comfortable ideal for any environment' },
-  { feature: 'Peer-to-peer Video Sharing (coming soon)', benefit: 'Unlocks immediate global collaboration' },
-  { feature: 'Ergonomics, Improved Mechanics', benefit: 'Less power, more thrust, all-day clinical comfort' }
-];
-
+    { feature: 'Joy-stick Controlled Tongue-tip', benefit: 'Minimal trauma, accurate epiglottis movement' },
+    { feature: 'Advanced Dual Camera', benefit: 'Wide + focused views, superior image processing' },
+    { feature: 'In-built Oxygenator', benefit: 'Constant oxygen supply, maximum patient safety' },
+    { feature: 'Wireless Setup', benefit: 'Live video broadcast anywhere' },
+    { feature: 'AI-Powered Software', benefit: 'Real-time trauma & anatomy highlighting' },
+    { feature: 'Waterproof, Lighter Casing', benefit: 'Durable, sterile, comfortable ideal for any environment' },
+    { feature: 'Peer-to-peer Video Sharing (coming soon)', benefit: 'Unlocks immediate global collaboration' },
+    { feature: 'Ergonomics, Improved Mechanics', benefit: 'Less power, more thrust, all-day clinical comfort' }
+  ];
 
   const getImageSrc = useCallback((imageModule, fallback) => {
     if (typeof imageModule === 'string') {
@@ -423,7 +435,9 @@ function LaryngoscopeComponent() {
               }}>
                 At Ganglia Technologies, we've reimagined the laryngoscope from the ground up merging world class engineering, cutting-edge AI, and effortless usability to deliver the next generation of intubation. Whether you're in a metropolitan hospital or a rural clinic, airway management just became safer, smarter, and truly accessible.
               </p>
-              <button style={{
+              <button 
+              onClick={() => handleGetStartedClick('/get-started')}
+              style={{
                 padding: 'clamp(12px, 3vw, 16px) clamp(32px, 8vw, 48px)',
                 borderRadius: '9999px',
                 color: 'white',
@@ -437,6 +451,7 @@ function LaryngoscopeComponent() {
                 minWidth: isMobile ? '200px' : 'auto',
                 width: isMobile ? '100%' : 'auto',
                 maxWidth: '300px'
+                
               }}>
                 Request Demo
               </button>
@@ -1956,7 +1971,9 @@ function LaryngoscopeComponent() {
               gap: 'clamp(16px, 4vw, 24px)',
               alignItems: 'center'
             }}>
-              <button style={{
+              <button
+              onClick={() => handleGetStartedClick('/get-started')}
+              style={{
                 padding: 'clamp(16px, 4vw, 20px) clamp(32px, 8vw, 48px)',
                 borderRadius: '9999px',
                 color: 'white',

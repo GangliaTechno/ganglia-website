@@ -1071,11 +1071,15 @@
 }
 
 .social-responsibility-section {
-  margin: 4rem 0 3rem 0;
   padding: 2.5rem 2.5rem 2rem 2.5rem;
   background: var(--bg-blue-alpha);
   border-radius: 24px;
   box-shadow: 0 6px 32px rgba(30, 64, 175, 0.1);
+  width: 1100px;
+  max-width: calc(100vw - 40px); /* Prevents overflow */
+  margin-left: 300px;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 
 .social-responsibility-title {
@@ -1091,6 +1095,7 @@
   color: var(--text-light);
   font-size: 1.15rem;
   margin-bottom: 1.2rem;
+  line-height: 1.6; /* Better readability */
 }
 
 .social-responsibility-list {
@@ -1106,6 +1111,7 @@
   font-size: 1.08rem;
   margin-bottom: 0.75rem;
   padding-left: 0.25rem;
+  line-height: 1.5; /* Better readability on mobile */
 }
 
 .social-responsibility-list .feature-bullet {
@@ -1113,21 +1119,99 @@
   font-size: 1.6rem;
   line-height: 1.1;
   margin-right: 0.75rem;
+  flex-shrink: 0; /* Prevents bullet from shrinking */
 }
 
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .social-responsibility-section {
+    width: calc(100vw - 340px); /* Adjusts for sidebar */
+    margin-left: 320px;
+  }
+}
+
+/* Small tablet/large mobile */
 @media (max-width: 768px) {
   .social-responsibility-section {
-    padding: 2rem 1rem 1rem 1rem;
-    margin: 2.5rem 0 2rem 0;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    margin: 2.5rem 20px 2rem 20px;
+    width: auto;
+    max-width: none;
+    border-radius: 16px; /* Smaller radius for mobile */
   }
+
   .social-responsibility-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     text-align: center;
+    margin-bottom: 1rem;
   }
+
   .social-responsibility-text,
   .social-responsibility-conclusion {
     font-size: 1rem;
-    text-align: justify;
+    text-align: left; /* Left align is better than justify on mobile */
+    line-height: 1.6;
+  }
+
+  .social-responsibility-list li {
+    font-size: 1rem;
+    margin-bottom: 1rem; /* More spacing between items */
+  }
+
+  .social-responsibility-list .feature-bullet {
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .social-responsibility-section {
+    padding: 1.5rem 1rem 1rem 1rem;
+    margin: 1.5rem 10px 1.5rem 10px;
+    border-radius: 12px;
+  }
+
+  .social-responsibility-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .social-responsibility-text,
+  .social-responsibility-conclusion {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-responsibility-list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .social-responsibility-list .feature-bullet {
+    font-size: 1.2rem;
+    margin-right: 0.4rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+  .social-responsibility-section {
+    padding: 1rem 0.75rem 0.75rem 0.75rem;
+    margin: 1rem 5px 1rem 5px;
+  }
+
+  .social-responsibility-title {
+    font-size: 1.2rem;
+  }
+
+  .social-responsibility-text,
+  .social-responsibility-conclusion {
+    font-size: 0.9rem;
+  }
+
+  .social-responsibility-list li {
+    font-size: 0.9rem;
   }
 }
 

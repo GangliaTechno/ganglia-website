@@ -21,7 +21,7 @@ const StatsStrip = () => {
     },
     {
       number: '3+',
-      label: 'Papers Accepted',
+      label: 'Papers Accepted for Publication',
       animation: icon3
     },
     {
