@@ -7,14 +7,14 @@ import projectAnalytics from '../assets/projectanalytics.png';
 import adminPortal from '../assets/adminportal.png';
 import ganttChart from '../assets/ganttchart.png';
 import { Player } from '@lottiefiles/react-lottie-player';
-import anushtaan1 from '../assets/anushtaan1.json';
-import anushtaan2 from '../assets/anushtaan2.json';
-import anushtaan3 from '../assets/anushtaan3.json';
-import anushtaan4 from '../assets/anushtaan4.json';
-import anushtaan5 from '../assets/anushtaan5.json';
-import anushtaan6 from '../assets/anushtaan6.json';
-import anushtaan7 from '../assets/anushtaan7.json';
-import anushtaan8 from '../assets/anushtaan8.json'; 
+import anushtaan1 from '../assets/anushtaan/anushtaan1.json';
+import anushtaan2 from '../assets/anushtaan/anushtaan2.json';
+import anushtaan3 from '../assets/anushtaan/anushtaan3.json';
+import anushtaan4 from '../assets/anushtaan/anushtaan4.json';
+import anushtaan5 from '../assets/anushtaan/anushtaan5.json';
+import anushtaan6 from '../assets/anushtaan/anushtaan6.json';
+import anushtaan7 from '../assets/anushtaan/anushtaan7.json';
+import anushtaan8 from '../assets/anushtaan/anushtaan8.json'; 
 
 function MainComponent() {
   const pricingRef = useRef(null);

@@ -1,17 +1,17 @@
 import React, { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import '../styles/MedlogBookPlatform.css';
 import { Player } from '@lottiefiles/react-lottie-player';
-import med1 from '../assets/med1.json';
-import med2 from '../assets/med2.json';
-import med3 from '../assets/med3.json';
-import med4 from '../assets/med4.json';
-import med5 from '../assets/med5.json';
-import med6 from '../assets/med6.json';
-import med7 from '../assets/med7.json';
-import med8 from '../assets/med8.json';
-import med9 from '../assets/med9.json';
-import med10 from '../assets/med10.json';
-import med11  from '../assets/med11.json';
+import med1 from '../assets/medlog/med1.json';
+import med2 from '../assets/medlog/med2.json';
+import med3 from '../assets/medlog/med3.json';
+import med4 from '../assets/medlog/med4.json';
+import med5 from '../assets/medlog/med5.json';
+import med6 from '../assets/medlog/med6.json';
+import med7 from '../assets/medlog/med7.json';
+import med8 from '../assets/medlog/med8.json';
+import med9 from '../assets/medlog/med9.json';
+import med10 from '../assets/medlog/med10.json';
+import med11  from '../assets/medlog/med11.json';
 
 let medlog;
 try {
