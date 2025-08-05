@@ -1,7 +1,7 @@
 /* Import Google Fonts for better typography */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
-/* TripMacha-specific reset and base styles */
+/* Enhanced reset and base styles */
 .tripmacha-page * {
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@
   color: #1f1f1f;
   line-height: 1.6;
   overflow-x: hidden;
-  /* Removed min-height: 100vh to prevent Footer conflicts */
+  scroll-behavior: smooth;
 }
 
 .tripmacha-page-container {
@@ -23,114 +23,194 @@
   position: relative;
 }
 
-/* Enhanced Hero Section */
+/* Enhanced Hero Section with Advanced Layout */
 .tripmacha-page-hero {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 2rem 4rem 4rem 4rem;
+  padding: 0;
   min-height: 100vh;
-  box-sizing: border-box;
-  background: radial-gradient(circle at -20% -20%, #fe9a0d 30%, transparent 40%),
-    linear-gradient(135deg, #80cbc4 0%, #4db6ac 50%, #26a69a 100%);
+  background: linear-gradient(135deg, #80cbc4 0%, #4db6ac 50%, #26a69a 100%);
   overflow: hidden;
   align-items: center;
   justify-content: center;
 }
 
-/* Enhanced floating bubble */
-.tripmacha-page-hero::before {
-  content: "";
+.hero-background-layer {
   position: absolute;
-  top: 15%;
-  left: 15%;
-  width: 70%;
-  height: 70%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 70%
-  );
-  filter: blur(80px);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.8;
-  animation: tripmachaFloatBubble 30s ease-in-out infinite alternate;
+      circle at 20% 80%,
+      rgba(254, 154, 13, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(255, 107, 53, 0.2) 0%,
+      transparent 50%
+    );
+  animation: heroBackgroundShift 20s ease-in-out infinite alternate;
 }
 
-.tripmacha-page-hero .tripmacha-parallax-bubbles {
-  pointer-events: none;
+@keyframes heroBackgroundShift {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  100% {
+    transform: translateX(50px) translateY(-30px) scale(1.05);
+  }
+}
+
+/* Small Rising Bubbles Animation */
+.small-bubbles-container {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
   z-index: 1;
 }
 
-.tripmacha-page-hero .tripmacha-bubble {
+.small-bubble {
   position: absolute;
+  bottom: -20px;
   border-radius: 50%;
-  pointer-events: auto;
-  z-index: 1;
+  opacity: 0.6;
+  will-change: transform, opacity;
+  animation: bubbleRiseSmooth linear infinite;
+  filter: blur(0.5px) drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0.2) 70%,
-    transparent 100%
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3)
   );
-  opacity: 0.6;
-  filter: blur(1px) saturate(1.2);
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1),
-    inset 0 1px 32px rgba(255, 255, 255, 0.2);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
 }
 
-.tripmacha-page-hero .tripmacha-bubble:hover {
-  transform: scale(1.1);
-  opacity: 0.8;
-  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);
+/* Different sizes for variation */
+.small-bubble:nth-child(4n + 1) {
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(199, 246, 255, 0.8),
+    rgba(199, 246, 255, 0.3)
+  );
 }
 
-/* Keep content above all layers */
-.tripmacha-page-hero > * {
-  position: relative;
-  z-index: 10;
+.small-bubble:nth-child(4n + 2) {
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 222, 235, 0.8),
+    rgba(255, 222, 235, 0.3)
+  );
+}
+
+.small-bubble:nth-child(4n + 3) {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 233, 204, 0.8),
+    rgba(255, 233, 204, 0.3)
+  );
+}
+
+.small-bubble:nth-child(4n) {
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(200, 241, 241, 0.8),
+    rgba(200, 241, 241, 0.3)
+  );
+}
+
+@keyframes bubbleRiseSmooth {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+    transform: translateY(-10vh) translateX(5px) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-50vh) translateX(-10px) scale(1.1);
+  }
+  90% {
+    opacity: 0.4;
+    transform: translateY(-90vh) translateX(15px) scale(1.2);
+  }
+  100% {
+    transform: translateY(-110vh) translateX(20px) scale(1.3);
+    opacity: 0;
+  }
 }
 
 /* Enhanced Main Content Layout */
 .tripmacha-page-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 6rem;
   align-items: center;
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 10;
+  animation: contentSlideIn 1.2s ease-out;
+}
+
+@keyframes contentSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tripmacha-page-image {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 
+/* REMOVED ALL IMAGE ANIMATIONS AND GLOW EFFECTS */
 .tripmacha-page-image img {
   max-width: 100%;
   height: auto;
   max-height: 650px;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 30px;
+  box-shadow: 0 25px 80px rgba(245, 245, 245, 0.2),
+    0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
+/* Simple hover effect without stuttering */
 .tripmacha-page-image img:hover {
-  transform: scale(1.05) rotate(2deg);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 30px 90px rgba(246, 246, 246, 0.25),
+    0 15px 50px rgba(255, 107, 53, 0.1);
 }
 
 /* Enhanced Description Section */
@@ -145,106 +225,186 @@
 }
 
 .tripmacha-page-description .tripmacha-page-logo {
-  position: static;
-  height: 60px;
-  opacity: 0.9;
-  z-index: 5;
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
-  margin-bottom: 1rem;
-  align-self: flex-start;
+  height: 70px;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 6px 25px rgba(0, 0, 0, 0.15));
+  transition: all 0.3s ease;
+  animation: logoFloat 6s ease-in-out infinite;
 }
 
-/* Title styling - handles both h1 and .tripmacha-title */
-.tripmacha-title,
-.tripmacha-page-description h1 {
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.tripmacha-page-description .tripmacha-page-logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 10px 35px rgba(255, 107, 53, 0.3));
+}
+
+.tripmacha-title {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(3.5rem, 7vw, 6rem);
   font-weight: 800;
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.5rem 0;
   color: white;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 6px 25px rgba(229, 229, 229, 0.4);
   letter-spacing: -0.03em;
   line-height: 1.1;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title-glow {
+  animation: titleGlow 2s ease-in-out;
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    text-shadow: 0 6px 25px rgba(255, 107, 53, 0.6),
+      0 0 50px rgba(255, 107, 53, 0.4);
+  }
+  100% {
+    text-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  }
 }
 
 .tripmacha-page-description p {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  margin-bottom: 2.5rem;
-  line-height: 1.7;
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  margin-bottom: 3rem;
+  line-height: 1.8;
   color: rgba(255, 255, 255, 0.95);
   font-weight: 400;
-  max-width: 600px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  max-width: 650px;
+  text-shadow: 0 2px 12px rgba(255, 253, 253, 0.3);
 }
 
-/* Enhanced Button */
+/* Enhanced Button with Micro-interactions */
 .tripmacha-page-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.2rem 2.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 50px;
+  padding: 1.5rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 60px;
   background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
   color: white;
   border: none;
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3), 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
+  cursor: pointer;
   overflow: hidden;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4),
+    0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-.tripmacha-page-btn::before {
-  content: "";
+.tripmacha-page-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-glow {
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
+    135deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1)
   );
-  transition: left 0.5s;
-}
-
-.tripmacha-page-btn:hover::before {
-  left: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
 }
 
 .tripmacha-page-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4), 0 5px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(255, 107, 53, 0.5), 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Enhanced About Section - Updated for single column layout */
+.tripmacha-page-btn:hover .btn-glow {
+  opacity: 1;
+}
+
+.tripmacha-page-btn:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Section Animations */
+.tripmacha-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tripmacha-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced About Section */
 .tripmacha-page-about {
   padding: 8rem 4rem;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  max-width: 1400px;
-  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
 
-.tripmacha-page-about-text {
-  display: flex;
-  flex-direction: column;
+.section-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 10% 20%,
+      rgba(255, 107, 53, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(128, 203, 196, 0.1) 0%,
+      transparent 50%
+    );
+  animation: sectionBackgroundFloat 15s ease-in-out infinite alternate;
+}
+
+@keyframes sectionBackgroundFloat {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(30px) rotate(2deg);
+  }
 }
 
 .tripmacha-page-about-text h2 {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   color: #2c3e50;
   line-height: 1.2;
   letter-spacing: -0.02em;
+  text-align: center;
+  position: relative;
 }
 
 .tripmacha-page-about-text h2 span {
@@ -258,119 +418,125 @@
 .tripmacha-page-about-text h2 span::after {
   content: "";
   position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 100%;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
   height: 4px;
   background: linear-gradient(135deg, #ff6b35, #f7931e);
   border-radius: 2px;
 }
 
-.tripmacha-page-about-text p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #495057;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
+.content-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* New Features Section */
+.tripmacha-page-about-text p {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #495057;
+  font-weight: 400;
+  text-align: justify;
+}
+
+/* Enhanced Features Section with Card Layout */
 .tripmacha-page-features {
   padding: 8rem 4rem;
   background: linear-gradient(135deg, #26a69a 0%, #4db6ac 50%, #80cbc4 100%);
   color: white;
-  max-width: 1400px;
-  margin: 0 auto;
   position: relative;
   overflow: hidden;
 }
 
-.tripmacha-page-features::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
-  z-index: 1;
-}
-
-.tripmacha-page-features > * {
-  position: relative;
-  z-index: 2;
-}
-
 .tripmacha-page-features h2 {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   text-align: center;
   letter-spacing: -0.02em;
 }
 
-.tripmacha-page-features ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 2rem;
-}
-
-.tripmacha-page-features li {
-  font-size: 1.1rem;
-  display: flex;
-  align-items: flex-start;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  line-height: 1.6;
-}
-
-.tripmacha-page-features li:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.tripmacha-page-features li strong {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
-}
-
-.tripmacha-page-icon {
-  margin-right: 1.5rem;
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-top: 0.2rem;
-}
-
-/* New Benefits Section */
-.tripmacha-page-benefits {
-  padding: 8rem 4rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2.5rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
+.tripmacha-feature-item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(30px);
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.tripmacha-feature-item.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tripmacha-feature-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.tripmacha-feature-item:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.feature-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: white;
+}
+
+.feature-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Enhanced Benefits Section with Numbered Cards */
+.tripmacha-page-benefits {
+  padding: 8rem 4rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+}
+
 .tripmacha-page-benefits h2 {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   color: #2c3e50;
   text-align: center;
   letter-spacing: -0.02em;
@@ -380,219 +546,243 @@
 .tripmacha-page-benefits h2::after {
   content: "";
   position: absolute;
-  bottom: -15px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
+  width: 120px;
   height: 4px;
   background: linear-gradient(135deg, #ff6b35, #f7931e);
   border-radius: 2px;
 }
 
-.tripmacha-page-benefits ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.benefits-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.tripmacha-page-benefits li {
-  font-size: 1.1rem;
-  padding: 1.5rem;
+.tripmacha-benefit-item {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border-left: 4px solid #26a69a;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  color: #495057;
-  line-height: 1.7;
+  border-left: 5px solid #26a69a;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  opacity: 0;
+  transform: translateX(-30px);
 }
 
-.tripmacha-page-benefits li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+.tripmacha-benefit-item.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.tripmacha-benefit-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
   border-left-color: #ff6b35;
 }
 
-.tripmacha-page-benefits li::before {
-  content: "✓";
-  position: absolute;
-  left: -12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background: #26a69a;
-  color: white;
-  border-radius: 50%;
+.benefit-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #26a69a;
+  background: linear-gradient(135deg, #e8f5f3, #d1f2ed);
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-.tripmacha-page-benefits li:hover::before {
-  background: #ff6b35;
+.tripmacha-benefit-item:hover .benefit-number {
+  color: #ff6b35;
+  background: linear-gradient(135deg, #fff4f1, #ffe9e1);
+  transform: scale(1.1);
 }
 
-/* New Additional Advantages Section */
+.tripmacha-benefit-item p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #495057;
+  margin: 0;
+}
+
+/* Enhanced Advantages Section */
 .tripmacha-page-advantages {
   padding: 8rem 4rem;
   background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb74d 100%);
   color: white;
-  max-width: 1400px;
-  margin: 0 auto;
   position: relative;
   overflow: hidden;
 }
 
-.tripmacha-page-advantages::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
-  z-index: 1;
-}
-
-.tripmacha-page-advantages > * {
-  position: relative;
-  z-index: 2;
-}
-
 .tripmacha-page-advantages h2 {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   text-align: center;
   letter-spacing: -0.02em;
 }
 
-.tripmacha-page-advantages ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.advantages-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.tripmacha-page-advantages li {
-  font-size: 1.1rem;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  backdrop-filter: blur(20px);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  line-height: 1.7;
-  position: relative;
-}
-
-.tripmacha-page-advantages li:hover {
+.advantage-card {
   background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.tripmacha-page-advantages li::before {
-  content: "★";
-  position: absolute;
-  left: -12px;
-  top: 2rem;
-  width: 24px;
-  height: 24px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #ff6b35;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  font-weight: bold;
+.advantage-card:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
-/* New Why Choose Section */
+.advantage-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.2));
+}
+
+.advantage-card p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Enhanced Why Choose Section */
 .tripmacha-page-why-choose {
   padding: 8rem 4rem;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  max-width: 1400px;
-  margin: 0 auto;
-  text-align: center;
+  position: relative;
 }
 
 .tripmacha-page-why-choose h2 {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   color: #2c3e50;
   letter-spacing: -0.02em;
+  text-align: center;
   position: relative;
 }
 
 .tripmacha-page-why-choose h2::after {
   content: "";
   position: absolute;
-  bottom: -15px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
+  width: 120px;
   height: 4px;
   background: linear-gradient(135deg, #ff6b35, #f7931e);
   border-radius: 2px;
 }
 
-.tripmacha-page-why-choose ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 3rem 0;
+.why-choose-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  text-align: left;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto 4rem auto;
 }
 
-.tripmacha-page-why-choose li {
-  font-size: 1.1rem;
-  padding: 2rem;
+.why-choose-card {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  color: #495057;
-  line-height: 1.7;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 5px solid #26a69a;
   position: relative;
-  border-top: 4px solid #26a69a;
+  overflow: hidden;
 }
 
-.tripmacha-page-why-choose li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+.why-choose-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   border-top-color: #ff6b35;
 }
 
-.tripmacha-page-why-choose p {
-  font-size: 1.2rem;
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-icon {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e8f5f3, #d1f2ed);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.why-choose-card:hover .card-icon {
+  background: linear-gradient(135deg, #fff4f1, #ffe9e1);
+  transform: scale(1.1);
+}
+
+.card-header h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.why-choose-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #495057;
+  margin: 0;
+}
+
+.closing-statement {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.closing-statement p {
+  font-size: 1.3rem;
   line-height: 1.8;
   color: #2c3e50;
   margin-bottom: 1.5rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.tripmacha-page-why-choose p:last-child {
+.closing-statement p:last-child {
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #ff6b35;
   font-weight: 500;
   margin-bottom: 0;
@@ -606,75 +796,79 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.tripmacha-page-how-it-works::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
-  z-index: 1;
-}
-
-.tripmacha-page-how-it-works > * {
-  position: relative;
-  z-index: 2;
 }
 
 .tripmacha-page-subheading {
   font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   margin-bottom: 1rem;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0.9;
 }
 
 .tripmacha-page-how-it-works h2 {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 700;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
   letter-spacing: -0.02em;
 }
 
 .tripmacha-page-steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  gap: 0;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 .tripmacha-page-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-content {
   background: rgba(255, 255, 255, 0.15);
-  padding: 3rem 2rem;
-  border-radius: 20px;
   backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 3rem 2rem;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+  width: 90%;
 }
 
-.tripmacha-page-step:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 0.2);
+.tripmacha-page-step:hover .step-content {
+  transform: translateY(-15px) scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
 }
 
-.tripmacha-page-step p {
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95);
+.step-connector {
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 20%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 107, 53, 0.8)
+  );
+  z-index: 1;
+  border-radius: 2px;
 }
 
-/* Step placeholder styling */
+.tripmacha-page-step:last-child .step-connector {
+  display: none;
+}
+
 .tripmacha-step-placeholder {
   width: 120px;
   height: 120px;
@@ -684,20 +878,52 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-  margin: 0 auto 2rem auto;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tripmacha-step-placeholder::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .tripmacha-page-step:hover .tripmacha-step-placeholder {
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 20px 50px rgba(255, 107, 53, 0.4);
+}
+
+.tripmacha-page-step:hover .tripmacha-step-placeholder::before {
+  opacity: 1;
 }
 
 .tripmacha-step-number {
   font-size: 3rem;
   font-weight: 800;
   color: white;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.tripmacha-page-step p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
 }
 
 /* Enhanced Pricing Section */
@@ -705,16 +931,15 @@
   padding: 8rem 4rem;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   text-align: center;
-  max-width: 1400px;
-  margin: 0 auto;
+  position: relative;
 }
 
 .tripmacha-page-pricing h2 {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 700;
   color: #2c3e50;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
   position: relative;
   letter-spacing: -0.02em;
 }
@@ -722,10 +947,10 @@
 .tripmacha-page-pricing h2::after {
   content: "";
   position: absolute;
-  bottom: -15px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
+  width: 120px;
   height: 4px;
   background: linear-gradient(135deg, #ff6b35, #f7931e);
   border-radius: 2px;
@@ -734,20 +959,20 @@
 .tripmacha-page-pricing-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
+  gap: 2.5rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .tripmacha-page-card {
   background: white;
+  border-radius: 25px;
   padding: 3rem 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
 }
 
 .tripmacha-page-card:hover {
@@ -759,11 +984,31 @@
 .tripmacha-page-card.tripmacha-highlight {
   background: linear-gradient(135deg, #26a69a 0%, #4db6ac 50%, #80cbc4 100%);
   color: white;
-  transform: scale(1.05);
+  transform: scale(1.08);
+  border-color: #ff6b35;
 }
 
 .tripmacha-page-card.tripmacha-highlight:hover {
-  transform: scale(1.05) translateY(-15px);
+  transform: scale(1.08) translateY(-15px);
+  box-shadow: 0 30px 70px rgba(38, 166, 154, 0.3);
+}
+
+.card-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.popular-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ff6b35;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 /* Enhanced Final CTA Section */
@@ -774,95 +1019,24 @@
   color: white;
   position: relative;
   overflow: hidden;
-  max-width: 1400px;
-  margin: 0 auto;
 }
 
-.tripmacha-page-final-cta::before {
-  content: "";
+.cta-background-animation {
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
   background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 70%
-  );
-  animation: tripmachaRotate 20s linear infinite;
+      circle,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  animation: ctaBackgroundRotate 25s linear infinite;
 }
 
-.tripmacha-page-cta-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 2;
-}
-
-.tripmacha-page-cta-content h2 {
-  font-family: "Poppins", sans-serif;
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.tripmacha-page-cta-content .tripmacha-faint {
-  opacity: 0.7;
-  font-weight: 400;
-}
-
-/* CTA placeholder styling */
-.tripmacha-cta-placeholder {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
-  animation: tripmachaFloat 3s ease-in-out infinite;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.tripmacha-cta-emoji {
-  font-size: 4rem;
-}
-
-/* TripMacha-specific animations with unique names */
-@keyframes tripmachaFloat {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes tripmachaFloatBubble {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(100px, 120px) scale(1.05);
-  }
-  100% {
-    transform: translate(-80px, 200px) scale(1);
-  }
-}
-
-@keyframes tripmachaRotate {
+@keyframes ctaBackgroundRotate {
   from {
     transform: rotate(0deg);
   }
@@ -871,125 +1045,129 @@
   }
 }
 
-@keyframes tripmachaFadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
+.tripmacha-page-cta-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.tripmacha-page-cta-content h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  line-height: 1.1;
+}
+
+.tripmacha-page-cta-content .tripmacha-faint {
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+.tripmacha-cta-placeholder {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+  animation: ctaFloat 4s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.tripmacha-cta-placeholder::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 70%
+  );
+  animation: ctaGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes ctaFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  50% {
+    transform: translateY(-25px) rotate(5deg);
   }
 }
 
-@keyframes tripmachaSlideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
+@keyframes ctaGlow {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes tripmachaSlideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+  100% {
+    opacity: 0.8;
+    transform: scale(1.1);
   }
 }
 
-/* Apply TripMacha-specific animations */
-.tripmacha-page-hero {
-  animation: tripmachaFadeInUp 1s ease-out;
+.tripmacha-cta-emoji {
+  font-size: 5rem;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
 }
 
-.tripmacha-page-about {
-  animation: tripmachaSlideInLeft 1s ease-out 0.2s both;
-}
-
-.tripmacha-page-features {
-  animation: tripmachaFadeInUp 1s ease-out 0.3s both;
-}
-
-.tripmacha-page-benefits {
-  animation: tripmachaSlideInRight 1s ease-out 0.4s both;
-}
-
-.tripmacha-page-advantages {
-  animation: tripmachaSlideInLeft 1s ease-out 0.5s both;
-}
-
-.tripmacha-page-why-choose {
-  animation: tripmachaFadeInUp 1s ease-out 0.6s both;
-}
-
-.tripmacha-page-how-it-works {
-  animation: tripmachaSlideInRight 1s ease-out 0.7s both;
-}
-
-.tripmacha-page-pricing {
-  animation: tripmachaFadeInUp 1s ease-out 0.8s both;
-}
-
-.tripmacha-page-final-cta {
-  animation: tripmachaSlideInLeft 1s ease-out 0.9s both;
-}
-
-/* Footer Integration - Ensure Footer appears correctly */
-.tripmacha-page .footer {
-  position: relative !important;
-  z-index: 1000 !important;
-  clear: both;
-  margin-top: 0 !important;
-  display: block !important;
-}
-
-/* Enhanced Responsive Design - TripMacha specific */
+/* Responsive Design */
 @media (max-width: 1024px) {
-  .tripmacha-page-hero {
-    padding: 2rem;
-  }
-
   .tripmacha-page-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 4rem;
     text-align: center;
   }
 
-  .tripmacha-page-about,
-  .tripmacha-page-features,
-  .tripmacha-page-benefits,
-  .tripmacha-page-advantages,
-  .tripmacha-page-why-choose,
-  .tripmacha-page-how-it-works,
-  .tripmacha-page-pricing,
-  .tripmacha-page-final-cta {
-    padding: 6rem 2rem;
+  .content-columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
-  .tripmacha-page-description {
-    align-items: center;
-    text-align: center;
-  }
-
-  .tripmacha-page-description .tripmacha-page-logo {
-    align-self: center;
-  }
-
-  .tripmacha-page-features ul,
-  .tripmacha-page-advantages ul {
+  .features-grid,
+  .benefits-grid,
+  .advantages-container,
+  .why-choose-grid {
     grid-template-columns: 1fr;
   }
 
-  .tripmacha-page-benefits ul,
-  .tripmacha-page-why-choose ul {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  .tripmacha-page-steps {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  .tripmacha-page-pricing-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .tripmacha-page-cta-content {
+    flex-direction: column;
+    gap: 3rem;
   }
 }
 
@@ -1003,38 +1181,44 @@
   .tripmacha-page-how-it-works,
   .tripmacha-page-pricing,
   .tripmacha-page-final-cta {
-    padding: 4rem 1rem;
+    padding: 6rem 2rem;
   }
 
-  .tripmacha-page-steps {
+  .tripmacha-page-content {
+    padding: 3rem 1rem;
+  }
+
+  .features-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  .tripmacha-page-pricing-cards {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .tripmacha-page-cta-content {
+  .tripmacha-feature-item {
     flex-direction: column;
-    gap: 2rem;
+    text-align: center;
+    padding: 2rem;
   }
 
-  .tripmacha-page-image img {
-    max-height: 400px;
-  }
-
-  .tripmacha-page-features ul,
-  .tripmacha-page-benefits ul,
-  .tripmacha-page-advantages ul,
-  .tripmacha-page-why-choose ul {
-    grid-template-columns: 1fr;
+  .tripmacha-benefit-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .tripmacha-page-description h1,
+  .tripmacha-page-hero,
+  .tripmacha-page-about,
+  .tripmacha-page-features,
+  .tripmacha-page-benefits,
+  .tripmacha-page-advantages,
+  .tripmacha-page-why-choose,
+  .tripmacha-page-how-it-works,
+  .tripmacha-page-pricing,
+  .tripmacha-page-final-cta {
+    padding: 4rem 1rem;
+  }
+
   .tripmacha-title {
     font-size: 2.5rem;
   }
@@ -1043,39 +1227,79 @@
   .tripmacha-page-features h2,
   .tripmacha-page-benefits h2,
   .tripmacha-page-advantages h2,
-  .tripmacha-page-why-choose h2 {
-    font-size: 2rem;
+  .tripmacha-page-why-choose h2,
+  .tripmacha-page-how-it-works h2,
+  .tripmacha-page-pricing h2 {
+    font-size: 2.5rem;
   }
 
-  .tripmacha-page-step {
-    padding: 2rem 1rem;
+  .tripmacha-page-description p {
+    font-size: 1.1rem;
   }
 
-  .tripmacha-page-features li,
-  .tripmacha-page-advantages li {
+  .tripmacha-feature-item,
+  .tripmacha-benefit-item,
+  .advantage-card,
+  .why-choose-card {
     padding: 1.5rem;
   }
-
-  .tripmacha-page-benefits li,
-  .tripmacha-page-why-choose li {
-    padding: 1.5rem;
-  }
-}
-
-/* TripMacha-specific scroll behavior */
-.tripmacha-page {
-  scroll-behavior: smooth;
 }
 
 /* Enhanced focus states for accessibility */
 .tripmacha-page-btn:focus,
-.tripmacha-page-card:focus {
-  outline: 3px solid rgba(38, 166, 154, 0.5);
-  outline-offset: 2px;
+.tripmacha-page-card:focus,
+.tripmacha-feature-item:focus,
+.tripmacha-benefit-item:focus,
+.advantage-card:focus,
+.why-choose-card:focus {
+  outline: 3px solid rgba(255, 107, 53, 0.6);
+  outline-offset: 3px;
 }
 
-/* Improved text selection for TripMacha page */
+/* Improved text selection */
 .tripmacha-page ::selection {
   background: rgba(255, 107, 53, 0.3);
   color: #2c3e50;
+}
+
+/* Loading animation for better UX */
+.tripmacha-page-container {
+  animation: pageLoad 1s ease-out;
+}
+
+@keyframes pageLoad {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Enhanced print styles */
+@media print {
+  .small-bubbles-container,
+  .hero-background-layer,
+  .section-background,
+  .cta-background-animation {
+    display: none !important;
+  }
+
+  .tripmacha-page {
+    background: white !important;
+  }
+}
+.card-icon .lf-player-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature-icon .lf-player-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
