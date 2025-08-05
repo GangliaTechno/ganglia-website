@@ -1,12 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../styles/OurTeam.css';
 import { ref, get } from 'firebase/database';
 import { database } from '../firebase/config';
 
+/* ───── Lazy-load base-64 images only when they scroll into view ──── */
+const LazyImage = ({ src, alt }) => {
+  const imgRef = useRef(null);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: '150px' }
+    );
+
+    if (imgRef.current) io.observe(imgRef.current);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <img
+      ref={imgRef}
+      src={show ? src : undefined}
+      alt={alt}
+      loading="lazy"
+      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+    />
+  );
+};
 
 const OurTeam = () => {
-  const location = useLocation(); 
+  const location = useLocation();
   const [foundingTeam, setFoundingTeam] = useState([]);
   const [managementTeam, setManagementTeam] = useState([]);
   const [foundingInternTeam, setFoundingInternTeam] = useState([]);
@@ -25,10 +55,10 @@ const OurTeam = () => {
           setTimeout(() => {
             const element = document.getElementById(location.hash.substring(1));
             if (element) {
-              element.scrollIntoView({ 
-                behavior: 'smooth', 
+              element.scrollIntoView({
+                behavior: 'smooth',
                 block: 'start',
-                inline: 'nearest'
+                inline: 'nearest',
               });
             }
           }, delay);
@@ -44,10 +74,10 @@ const OurTeam = () => {
       setTimeout(() => {
         const element = document.getElementById(location.hash.substring(1));
         if (element) {
-          element.scrollIntoView({ 
-            behavior: 'smooth', 
+          element.scrollIntoView({
+            behavior: 'smooth',
             block: 'start',
-            inline: 'nearest'
+            inline: 'nearest',
           });
         }
       }, 200);
@@ -73,9 +103,10 @@ const OurTeam = () => {
 
           return team.map((member) => ({
             ...member,
-            imageSrc: member.image && member.image.startsWith('data:image')
-              ? member.image
-              : member.image 
+            imageSrc:
+              member.image && member.image.startsWith('data:image')
+                ? member.image
+                : member.image
                 ? `data:image/png;base64,${member.image}`
                 : null,
           }));
@@ -86,12 +117,18 @@ const OurTeam = () => {
           managementWithImages,
           foundingInternWithImages,
           previousInternWithImages,
-          internWithImages
+          internWithImages,
         ] = await Promise.all([
           processTeamImages(data.foundingTeam || data['Founding Team'] || []),
-          processTeamImages(data.managementTeam || data['Management Team'] || []),
-          processTeamImages(data.foundingInternTeam || data['Founding Intern Team'] || []),
-          processTeamImages(data.previousInternTeam || data['Previous Interns'] || []),
+          processTeamImages(
+            data.managementTeam || data['Management Team'] || []
+          ),
+          processTeamImages(
+            data.foundingInternTeam || data['Founding Intern Team'] || []
+          ),
+          processTeamImages(
+            data.previousInternTeam || data['Previous Interns'] || []
+          ),
           processTeamImages(data.internTeam || data['Intern Team'] || []),
         ]);
 
@@ -143,10 +180,16 @@ const OurTeam = () => {
   );
 
   const TeamMember = ({ member, isIntern = false }) => (
-    <div className={`ourteam-member ${isIntern ? 'ourteam-intern-member' : ''}`}>
-      <div className={`ourteam-member-photo ${isIntern ? 'ourteam-intern-photo' : ''}`}>
+    <div
+      className={`ourteam-member ${isIntern ? 'ourteam-intern-member' : ''}`}
+    >
+      <div
+        className={`ourteam-member-photo ${
+          isIntern ? 'ourteam-intern-photo' : ''
+        }`}
+      >
         {member.imageSrc ? (
-          <img src={member.imageSrc} alt={member.alt || member.name} />
+          <LazyImage src={member.imageSrc} alt={member.alt || member.name} />
         ) : (
           <div className="ourteam-image-placeholder">
             {member.name ? member.name.charAt(0).toUpperCase() : '?'}
@@ -185,24 +228,29 @@ const OurTeam = () => {
 
   return (
     <div>
+      {/* -------------- Existing JSX below is unchanged -------------- */}
       <section className="ourteam-hero-section">
         <div className="ourteam-container">
           <h1>Our Team</h1>
           <div className="ourteam-hero-content">
             <p>
-              <strong>Innovation is driven by visionaries:</strong> Founders with engineering and
-              medical excellence, AI pioneers, global collaborators. Our culture is bold ideas,
-              openness, and relentless execution. We champion diversity because the best
-              breakthroughs thrive at intersections of different perspectives and experiences.
+              <strong>Innovation is driven by visionaries:</strong> Founders
+              with engineering and medical excellence, AI pioneers, global
+              collaborators. Our culture is bold ideas, openness, and relentless
+              execution. We champion diversity because the best breakthroughs
+              thrive at intersections of different perspectives and experiences.
             </p>
           </div>
-          <h2 className="ourteam-section-subtitle">Meet the Minds Behind Ganglia</h2>
+          <h2 className="ourteam-section-subtitle">
+            Meet the Minds Behind Ganglia
+          </h2>
         </div>
       </section>
 
-      <section 
-        id="leadership-team" 
-        className="ourteam-section" 
+      {/* Leadership Team */}
+      <section
+        id="leadership-team"
+        className="ourteam-section"
         style={{ scrollMarginTop: '120px', paddingTop: '40px' }}
       >
         <div className="ourteam-container">
@@ -219,9 +267,10 @@ const OurTeam = () => {
         </div>
       </section>
 
-      <section 
-        id="management-team" 
-        className="ourteam-section ourteam-management-section" 
+      {/* Management Team */}
+      <section
+        id="management-team"
+        className="ourteam-section ourteam-management-section"
         style={{ scrollMarginTop: '120px', paddingTop: '40px' }}
       >
         <div className="ourteam-container">
@@ -238,9 +287,10 @@ const OurTeam = () => {
         </div>
       </section>
 
-      <section 
-        id="founding-intern-team" 
-        className="ourteam-section ourteam-founding-intern-section" 
+      {/* Founding Intern Team */}
+      <section
+        id="founding-intern-team"
+        className="ourteam-section ourteam-founding-intern-section"
         style={{ scrollMarginTop: '120px', paddingTop: '40px' }}
       >
         <div className="ourteam-container">
@@ -250,7 +300,11 @@ const OurTeam = () => {
               <div className="ourteam-intern-grid">
                 {foundingInternTeam.length > 0 ? (
                   foundingInternTeam.map((member, index) => (
-                    <TeamMember key={member.id || index} member={member} isIntern={true} />
+                    <TeamMember
+                      key={member.id || index}
+                      member={member}
+                      isIntern
+                    />
                   ))
                 ) : (
                   <div className="ourteam-no-data">
@@ -263,9 +317,10 @@ const OurTeam = () => {
         </div>
       </section>
 
-      <section 
-        id="intern-team" 
-        className="ourteam-section ourteam-intern-section" 
+      {/* Intern Team */}
+      <section
+        id="intern-team"
+        className="ourteam-section ourteam-intern-section"
         style={{ scrollMarginTop: '120px', paddingTop: '40px' }}
       >
         <div className="ourteam-container">
@@ -274,7 +329,11 @@ const OurTeam = () => {
             <div className="ourteam-info ourteam-animate-on-scroll">
               <div className="ourteam-intern-grid">
                 {internTeam.map((member, index) => (
-                  <TeamMember key={member.id || index} member={member} isIntern={true} />
+                  <TeamMember
+                    key={member.id || index}
+                    member={member}
+                    isIntern
+                  />
                 ))}
               </div>
             </div>
@@ -282,9 +341,10 @@ const OurTeam = () => {
         </div>
       </section>
 
-      <section 
-        id="previous-intern-team" 
-        className="ourteam-section ourteam-previous-intern-section" 
+      {/* Previous Intern Team */}
+      <section
+        id="previous-intern-team"
+        className="ourteam-section ourteam-previous-intern-section"
         style={{ scrollMarginTop: '120px', paddingTop: '40px' }}
       >
         <div className="ourteam-container">
@@ -294,7 +354,11 @@ const OurTeam = () => {
               <div className="ourteam-intern-grid">
                 {previousInternTeam.length > 0 ? (
                   previousInternTeam.map((member, index) => (
-                    <TeamMember key={member.id || index} member={member} isIntern={true} />
+                    <TeamMember
+                      key={member.id || index}
+                      member={member}
+                      isIntern
+                    />
                   ))
                 ) : (
                   <div className="ourteam-no-data">
@@ -306,7 +370,6 @@ const OurTeam = () => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };
