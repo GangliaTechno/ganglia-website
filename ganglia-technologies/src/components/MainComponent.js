@@ -15,6 +15,12 @@ import anushtaan5 from '../assets/anushtaan/anushtaan5.json';
 import anushtaan6 from '../assets/anushtaan/anushtaan6.json';
 import anushtaan7 from '../assets/anushtaan/anushtaan7.json';
 import anushtaan8 from '../assets/anushtaan/anushtaan8.json'; 
+import img1 from '../assets/anushtaan/adminportal.png'; 
+import img2 from '../assets/anushtaan/tasksummary.png'; 
+import img3 from '../assets/anushtaan/taskdashboard.png';
+import img4 from '../assets/anushtaan/pertanalysis.png';
+import img5 from '../assets/anushtaan/calender.png';
+import img6 from '../assets/anushtaan/ganttchart.png';    
 
 function MainComponent() {
   const pricingRef = useRef(null);
@@ -198,39 +204,39 @@ function MainComponent() {
         <div className="anushtaan-glimpse-grid">
   <div className="anushtaan-glimpse-card">
     <div className="anushtaan-glimpse-art">
-      <img src={kanban1} alt="Kanban Board" className="anushtaan-glimpse-icon" />
-    </div>
-    <div className="anushtaan-glimpse-label">KANBAN Board</div>
-  </div>
-  <div className="anushtaan-glimpse-card">
-    <div className="anushtaan-glimpse-art">
-      <img src={projectAnalytics} alt="Project Analytics" className="anushtaan-glimpse-icon" />
-    </div>
-    <div className="anushtaan-glimpse-label">Project Analytics</div>
-  </div>
-  <div className="anushtaan-glimpse-card">
-    <div className="anushtaan-glimpse-art">
-      <img src={ganttChart} alt="Gantt Chart" className="anushtaan-glimpse-icon" />
-    </div>
-    <div className="anushtaan-glimpse-label">GANTT Chart</div>
-  </div>
-  <div className="anushtaan-glimpse-card">
-    <div className="anushtaan-glimpse-art">
-      <img src={adminPortal} alt="Admin Portal" className="anushtaan-glimpse-icon" />
+      <img src={img1} alt="Admin Portal" className="anushtaan-glimpse-icon" />
     </div>
     <div className="anushtaan-glimpse-label">Admin Portal</div>
   </div>
   <div className="anushtaan-glimpse-card">
     <div className="anushtaan-glimpse-art">
-      <img src={adminPortal} alt="Admin Portal" className="anushtaan-glimpse-icon" />
+      <img src={img2} alt="Task Summary" className="anushtaan-glimpse-icon" />
     </div>
-    <div className="anushtaan-glimpse-label">Admin Portal</div>
+    <div className="anushtaan-glimpse-label">Task Summary</div>
   </div>
   <div className="anushtaan-glimpse-card">
     <div className="anushtaan-glimpse-art">
-      <img src={adminPortal} alt="Admin Portal" className="anushtaan-glimpse-icon" />
+      <img src={img3} alt="Task Dashboard" className="anushtaan-glimpse-icon" />
     </div>
-    <div className="anushtaan-glimpse-label">Admin Portal</div>
+    <div className="anushtaan-glimpse-label">Task Dashboard</div>
+  </div>
+  <div className="anushtaan-glimpse-card">
+    <div className="anushtaan-glimpse-art">
+      <img src={img4} alt="PERT Analysis" className="anushtaan-glimpse-icon" />
+    </div>
+    <div className="anushtaan-glimpse-label">PERT Analysis</div>
+  </div>
+  <div className="anushtaan-glimpse-card">
+    <div className="anushtaan-glimpse-art">
+      <img src={img5} alt="Calender" className="anushtaan-glimpse-icon" />
+    </div>
+    <div className="anushtaan-glimpse-label">Calender</div>
+  </div>
+  <div className="anushtaan-glimpse-card">
+    <div className="anushtaan-glimpse-art">
+      <img src={img6} alt="Gantt Chart" className="anushtaan-glimpse-icon" />
+    </div>
+    <div className="anushtaan-glimpse-label">Gantt Chart</div>
   </div>
 
 </div>

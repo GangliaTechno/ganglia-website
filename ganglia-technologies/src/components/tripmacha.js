@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import '../styles/tripmacha.css';
 import guyOnScooter from '../assets/guy_on_scooter.png';
-import beachPhoto from '../assets/beach-Photoroom.png';
-import autoImage from '../assets/auto.png';
 import logoImage from '../assets/logo.png';
 import { Player } from '@lottiefiles/react-lottie-player';
 import trip1 from '../assets/tripmacha/trip1.json';
@@ -24,19 +22,11 @@ import trip16 from '../assets/tripmacha/trip16.json';
 import trip17 from '../assets/tripmacha/trip17.json';
 import trip18 from '../assets/tripmacha/trip18.json';
 
-
 const TripMacha = () => {
-  const [scooterImageIndex, setScooterImageIndex] = useState(0);
   const titleRef = useRef(null);
   const sectionsRef = useRef([]);
   const heroRef = useRef(null);
   
-  const images = [
-    { src: guyOnScooter, alt: 'TripMacha mascot on scooter' },
-    { src: beachPhoto, alt: 'TripMacha mascot at beach' },
-    { src: autoImage, alt: 'TripMacha mascot in auto rickshaw' }
-  ];
-
   const colors = useMemo(() => ['#c9f6ff', '#ffdeeb', '#ffe9cc', '#c8f1f1', '#feffd7'], []);
 
   // Enhanced scroll animations with Intersection Observer
@@ -131,25 +121,6 @@ const TripMacha = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleScooterClick = () => {
-    const scooterImg = document.getElementById('scooterGuy');
-    if (scooterImg) {
-      scooterImg.style.transform = 'scale(0.8) rotate(10deg)';
-      scooterImg.style.opacity = '0';
-      
-      setTimeout(() => {
-        setScooterImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        scooterImg.onload = () => {
-          scooterImg.style.transform = 'scale(1.1) rotate(-5deg)';
-          scooterImg.style.opacity = '1';
-          setTimeout(() => {
-            scooterImg.style.transform = 'scale(1) rotate(0deg)';
-          }, 200);
-        };
-      }, 400);
-    }
-  };
-
   const handleDiscoverClick = (e) => {
     e.preventDefault();
     
@@ -196,9 +167,8 @@ const TripMacha = () => {
             <div className="tripmacha-page-image">
               <img 
                 id="scooterGuy" 
-                src={images[scooterImageIndex].src} 
-                alt={images[scooterImageIndex].alt}
-                onClick={handleScooterClick}
+                src={guyOnScooter} 
+                alt="TripMacha mascot on scooter"
               />
             </div>
             <div className="tripmacha-page-description">
@@ -219,7 +189,6 @@ const TripMacha = () => {
           </div>
         </section>
 
-        {/* All other sections remain the same... */}
         {/* Enhanced About Section */}
         <section className="tripmacha-page-about tripmacha-section">
           <div className="section-background"></div>

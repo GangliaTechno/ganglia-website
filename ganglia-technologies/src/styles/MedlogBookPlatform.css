@@ -990,7 +990,6 @@ body {
 
   .gallery-cards-grid2 {
     grid-template-columns: 1fr;
-    height: 300px;
   }
 
   .benefits-grid2 {
