@@ -1,9 +1,4 @@
-import React, {
-  Suspense,
-  lazy,
-  useState,
-  useEffect
-} from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -32,20 +27,20 @@ import './styles/App.css';
 /* ─────────────────────────────
    Lazy-loaded pages & big widgets
    ───────────────────────────── */
-const ParticleBackground   = lazy(() => import('./components/ParticleBackground'));
-const CareersPage          = lazy(() => import('./components/CareersPage'));
-const ApplicationForm      = lazy(() => import('./components/Applicationform'));
-const ContactUs            = lazy(() => import('./components/ContactUs'));
-const OurStory             = lazy(() => import('./components/OurStory'));
-const OurTeam              = lazy(() => import('./components/OurTeam'));
-const TripMacha            = lazy(() => import('./components/tripmacha'));
-const Laryngoscope         = lazy(() => import('./components/laryngoscope'));
-const MainComponent        = lazy(() => import('./components/MainComponent'));
-const MedlogBookPlatform   = lazy(() => import('./components/MedlogBookPlatform'));
-const ServicesPage         = lazy(() => import('./components/servicespage'));
-const AwardsResearchPage   = lazy(() => import('./components/AwardsResearch'));
-const GetStartedForm       = lazy(() => import('./components/getstarted'));
-const InternshipForm       = lazy(() => import('./components/InternshipForm'));
+const ParticleBackground = lazy(() => import('./components/ParticleBackground'));
+const CareersPage = lazy(() => import('./components/CareersPage'));
+const ApplicationForm = lazy(() => import('./components/Applicationform'));
+const ContactUs = lazy(() => import('./components/ContactUs'));
+const OurStory = lazy(() => import('./components/OurStory'));
+const OurTeam = lazy(() => import('./components/OurTeam'));
+const TripMacha = lazy(() => import('./components/tripmacha'));
+const Laryngoscope = lazy(() => import('./components/laryngoscope'));
+const MainComponent = lazy(() => import('./components/MainComponent'));
+const MedlogBookPlatform = lazy(() => import('./components/MedlogBookPlatform'));
+const ServicesPage = lazy(() => import('./components/servicespage'));
+const AwardsResearchPage = lazy(() => import('./components/AwardsResearch'));
+const GetStartedForm = lazy(() => import('./components/getstarted'));
+const InternshipForm = lazy(() => import('./components/InternshipForm'));
 
 /* ───────── Home page ───────── */
 const HomePage = () => {
@@ -138,11 +133,17 @@ const FooterController = () => {
 /* ───────── App routes ──────── */
 const AppContent = () => {
   const { isLoading } = useRouteLoader();
+  const location = useLocation();
+
+  // Regex to detect Application Form pages: /apply or /apply/:anything
+  const isApplicationFormPage = /^\/apply(\/|$)/.test(location.pathname);
 
   return (
     <>
       <RoutePreloader isVisible={isLoading} />
-      <Navbar />
+      
+      {/* Conditionally render Navbar only if NOT on Application Form page */}
+      {!isApplicationFormPage && <Navbar />}
 
       <Suspense fallback={<RoutePreloader isVisible />}>
         <Routes>

@@ -422,7 +422,6 @@ a {
 }
 .modal-content {
   padding: 24px 26px;
-
 }
 .job-overview {
   margin-bottom: 23px;
@@ -1120,5 +1119,195 @@ a {
   .table-apply-btn {
     padding: 3px 6px;
     font-size: 0.65rem;
+  }
+}
+/* Carousel wrapper */
+.careers-image-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 auto 52px;
+  max-width: 1200px;
+  padding: 0 40px;
+}
+
+/* Carousel container - horizontal scroll */
+.careers-image-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+/* Scrollbar for WebKit */
+.careers-image-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+.careers-image-carousel::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 10px;
+}
+
+/* Image card */
+.carousel-image-card {
+  flex: 0 0 auto;
+  width: 260px;
+  height: 170px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.carousel-image-card:hover,
+.carousel-image-card:focus-visible {
+  transform: scale(1.06);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Optional: Overlayed title */
+.carousel-image-title {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1rem;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Nav buttons */
+.carousel-nav-btn {
+  background: var(--primary);
+  border: none;
+  color: var(--white);
+  font-size: 2.2rem;
+  padding: 8px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.25s ease;
+  z-index: 10;
+  box-shadow: 0 0 6px rgba(3, 126, 229, 0.8);
+}
+
+.carousel-nav-btn:hover,
+.carousel-nav-btn:focus-visible {
+  background: var(--secondary);
+  outline: none;
+}
+
+.carousel-nav-btn.left {
+  margin-right: 10px;
+}
+
+.carousel-nav-btn.right {
+  margin-left: 10px;
+}
+
+/* Modal overlay */
+.image-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
+  padding: 20px;
+}
+
+/* Modal content */
+.image-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-image {
+  width: auto;
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 12px;
+}
+
+.modal-image-title {
+  margin: 12px 20px 18px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+/* Close button */
+.modal-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 2.6rem;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0 8px;
+  transition: color 0.3s ease;
+  z-index: 10;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus-visible {
+  color: var(--primary);
+  outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .careers-image-carousel-wrapper {
+    padding: 0 20px;
+  }
+  .carousel-image-card {
+    width: 200px;
+    height: 130px;
+  }
+  .carousel-image-title {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .carousel-image-card {
+    width: 150px;
+    height: 100px;
+  }
+  .carousel-nav-btn {
+    font-size: 1.8rem;
+    padding: 6px 10px;
   }
 }
