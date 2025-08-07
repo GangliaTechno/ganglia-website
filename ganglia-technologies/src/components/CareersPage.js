@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import '../styles/CareersPage.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logob.png';
@@ -18,19 +17,21 @@ import launch from '../assets/Firecracker.json';
 import teach from '../assets/Classroom.json';
 import globe from '../assets/globe.json';
 
+
 const CareersPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [expandedCard, setExpandedCard] = useState(null);
   const [expandedJobCard, setExpandedJobCard] = useState(null);
-  const [showApplicationModal, setShowApplicationModal] = useState(false);
-  const [selectedJob, setSelectedJob] = useState(null);
+  // Removed modal state: showApplicationModal & selectedJob
   const [jobData, setJobData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   // Responsive: detect mobile - if you need this later, remove the eslint-disable comment
   // eslint-disable-next-line no-unused-vars
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 900);
@@ -38,7 +39,9 @@ const CareersPage = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+
   const navigate = useNavigate();
+
 
   const parseJobDescription = (description) => {
     if (!description) return null;
@@ -49,6 +52,7 @@ const CareersPage = () => {
       return { "Job Description": description };
     }
   };
+
 
   const renderJobDescription = (job) => {
     const parsedDescription = parseJobDescription(job.description);
@@ -71,9 +75,11 @@ const CareersPage = () => {
     );
   };
 
+
   useEffect(() => {
     fetchJobsFromFirebase();
   }, []);
+
 
   const fetchJobsFromFirebase = async () => {
     try {
@@ -96,6 +102,7 @@ const CareersPage = () => {
     }
   };
 
+
   const handleFilterChange = (filter) => setActiveFilter(filter);
   const handleCardClick = (cardIndex) => setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
   
@@ -103,54 +110,45 @@ const CareersPage = () => {
   // eslint-disable-next-line no-unused-vars
   const handleJobCardClick = (jobId) => setExpandedJobCard(expandedJobCard === jobId ? null : jobId);
 
-  const imageCardsData = [
-    {
-      image: developmentTeamImg
-    },
-    {
-      image: researchLabImg
-    },
-    {
-      image: designStudioImg
-    },
-    {
-      image: collaborationSpacesImg
-    }
-  ];
 
   const totalJobCount = jobData.length;
   const filteredJobs = activeFilter === 'all'
     ? jobData
     : jobData.filter(job => job.category === activeFilter);
 
+
+  // Removed application modal handling, direct navigation instead
   const handleApplyClick = (jobId) => {
     const job = jobData.find(j => j.id === jobId);
-    setSelectedJob(job);
-    setShowApplicationModal(true);
+    if (!job) return;
+    navigate(`/apply/${job.id}`, {
+      state: {
+        jobTitle: job.title,
+        jobDescription: parseJobDescription(job.description),
+      },
+      replace: false,
+    });
   };
 
-  const closeModal = () => {
-    setShowApplicationModal(false);
-    setSelectedJob(null);
-  };
+
+  // Removed closeModal as no modal now
+
 
   const handleInternshipApply = useCallback((path) => {
-  try {
-    if (typeof path !== 'string') {
-      console.error('Invalid path provided to handleInternshipApply:', path);
-      return;
+    try {
+      if (typeof path !== 'string') {
+        console.error('Invalid path provided to handleInternshipApply:', path);
+        return;
+      }
+      
+      window.scrollTo(0, 0);
+      navigate(path, { replace: true });
+      
+    } catch (error) {
+      console.error('Navigation error:', error);
     }
-    
-    // Clear any existing timeouts or intervals that might interfere
-    window.scrollTo(0, 0);
-    
-    // Navigate with replace to ensure clean navigation
-    navigate(path, { replace: true });
-    
-  } catch (error) {
-    console.error('Navigation error:', error);
-  }
-}, [navigate]);
+  }, [navigate]);
+
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -160,6 +158,7 @@ const CareersPage = () => {
       day: 'numeric'
     });
   };
+
 
   const renderDetailedInfo = (job) => {
     if (!job.detailedInfo) return null;
@@ -206,6 +205,114 @@ const CareersPage = () => {
     );
   };
 
+
+  // Images for carousel, you can add more images here
+  const carouselImages = [
+    { src: developmentTeamImg, alt: 'Development Team', title: 'Development Team' },
+    { src: researchLabImg, alt: 'Research Lab', title: 'Research Lab' },
+    { src: designStudioImg, alt: 'Design Studio', title: 'Design Studio' },
+    { src: collaborationSpacesImg, alt: 'Collaboration Spaces', title: 'Collaboration Spaces' },
+    // Add more image objects here if needed
+  ];
+
+
+  // === New Carousel + Modal Component for Internship Section ===
+  const ImageCarousel = ({ images }) => {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const carouselRef = useRef(null);
+
+
+    const openModal = (index) => {
+      setActiveIndex(index);
+      setModalOpen(true);
+    };
+
+
+    const closeModal = () => {
+      setModalOpen(false);
+    };
+
+
+    const scroll = (direction) => {
+      if (!carouselRef.current) return;
+      const scrollAmount = carouselRef.current.offsetWidth * 0.8;
+      carouselRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    };
+
+
+    return (
+      <>
+        <div className="careers-image-carousel-wrapper">
+          <button
+            className="carousel-nav-btn left"
+            onClick={() => scroll('left')}
+            aria-label="Scroll left"
+            type="button"
+          >
+            ‹
+          </button>
+          <div className="careers-image-carousel" ref={carouselRef}>
+            {images.map((img, idx) => (
+              <div
+                key={idx}
+                className="carousel-image-card"
+                role="button"
+                tabIndex={0}
+                onClick={() => openModal(idx)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' || e.key === ' ') openModal(idx);
+                }}
+                aria-label={`View image: ${img.title || 'image #' + (idx + 1)}`}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt || `Image ${idx + 1}`}
+                  loading="lazy"
+                  className="carousel-image"
+                />
+                {img.title && <div className="carousel-image-title">{img.title}</div>}
+              </div>
+            ))}
+          </div>
+          <button
+            className="carousel-nav-btn right"
+            onClick={() => scroll('right')}
+            aria-label="Scroll right"
+            type="button"
+          >
+            ›
+          </button>
+        </div>
+
+
+        {modalOpen && (
+          <div className="image-modal-overlay" onClick={closeModal} role="dialog" aria-modal="true">
+            <div className="image-modal-content" onClick={e => e.stopPropagation()}>
+              <button
+                className="modal-close-btn"
+                aria-label="Close image modal"
+                onClick={closeModal}
+                type="button"
+              >
+                ×
+              </button>
+              <img
+                src={images[activeIndex].src}
+                alt={images[activeIndex].alt || `Image ${activeIndex + 1}`}
+                className="modal-image"
+              />
+              {images[activeIndex].title && (
+                <div className="modal-image-title">{images[activeIndex].title}</div>
+              )}
+            </div>
+          </div>
+        )}
+      </>
+    );
+  };
+
+
   if (loading) {
     return (
       <div className="careers-page">
@@ -216,6 +323,7 @@ const CareersPage = () => {
       </div>
     );
   }
+
 
   if (error) {
     return (
@@ -230,50 +338,10 @@ const CareersPage = () => {
     );
   }
 
+
   return (
     <div className="careers-page">
-      {/* Application Modal */}
-      {showApplicationModal && selectedJob && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="application-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header">
-              <h2>Apply for {selectedJob.title}</h2>
-              <button className="close-modal" onClick={closeModal}>×</button>
-            </div>
-            <div className="modal-content">
-              <div className="job-overview">
-                <div className="job-meta-info">
-                  <span className="job-type">{selectedJob.type}</span>
-                  <span className="job-location">{selectedJob.location}</span>
-                  <span className="job-level">{selectedJob.level}</span>
-                </div>
-                {renderJobDescription(selectedJob)}
-              </div>
-              {renderDetailedInfo(selectedJob)}
-              <div className="modal-actions">
-                <button className="cancel-btn" onClick={closeModal}>
-                  Cancel
-                </button>
-                <button
-                  className="submit-application-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate(`/apply/${selectedJob.id}`, {
-                      state: {
-                        jobTitle: selectedJob.title,
-                        jobDescription: parseJobDescription(selectedJob.description)
-                      }
-                    });
-                    closeModal();
-                  }}
-                >
-                  Apply for this role
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Removed Application Modal - no longer used */}
 
       {/* Hero Section */}
       <section className="careers-hero">
@@ -285,10 +353,7 @@ const CareersPage = () => {
             <a href="#openings" className="careers-apply-btn primary">Explore Opportunities</a>
           </div>
           <div className="careers-hero-stats">
-            <div className="careers-stat">
-              <span className="careers-stat-number">50+</span>
-              <span className="careers-stat-label">Team Members</span>
-            </div>
+           
             <div className="careers-stat">
               <span className="careers-stat-number">{totalJobCount}+</span>
               <span className="careers-stat-label">Open Positions</span>
@@ -300,6 +365,7 @@ const CareersPage = () => {
           <div className="careers-scroll-indicator"></div>
         </div>
       </section>
+
 
       {/* Why Join Us Section */}
       <section className="careers-why-join-section">
@@ -327,6 +393,7 @@ const CareersPage = () => {
           </div>
         </div>
       </section>
+
 
       {/* Openings Section */}
       <section className="careers-section" id="openings">
@@ -431,6 +498,7 @@ const CareersPage = () => {
         </div>
       </section>
 
+
       {/* Application Timeline Table Section */}
       <section className="careers-timeline-section">
         <div className="careers-container">
@@ -488,6 +556,7 @@ const CareersPage = () => {
         </div>
       </section>
 
+
       {/* Internship Section */}
       <section className="careers-internship-section" id="internships">
         <div className="careers-internship-header">
@@ -515,81 +584,31 @@ const CareersPage = () => {
               <p>Kickstart your career with a company that's revolutionizing healthcare.</p>
             </div>
           </div>
-          <div className="careers-image-cards-container">
-            {imageCardsData.map((card, index) => (
-              <div
-                key={index}
-                className={`careers-image-card ${expandedCard === index ? 'expanded' : 'collapsed'}`}
-                onClick={() => handleCardClick(index)}
-              >
-                <div
-                  className="careers-image-card-content"
-                  style={{
-                    background: card.gradient,
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'relative'
-                  }}
-                >
-                  {/* Display the image */}
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    style={{
-                      width: '90%',
-                      height: '90%',
-                      objectFit: 'cover',
-                      borderRadius: '10px',
-                      boxShadow: '0 1.5px 9px rgba(0,0,0,0.15)',
-                      position: 'relative',
-                      zIndex: 1
-                    }}
-                  />
-                  {/* Title overlay (above the image) */}
-                  <div
-                    className="careers-image-card-title"
-                    style={{
-                      position: 'absolute',
-                      bottom: '20px',
-                      color: 'white',
-                      fontWeight: '600',
-                      fontSize: '1.1rem',
-                      textShadow: '0 0 5px rgba(0,0,0,0.7)',
-                      zIndex: 2
-                    }}
-                  >
-                    {card.title}
-                  </div>
-                </div>
-                <div className="careers-image-overlay">
-                  <h4>{card.title}</h4>
-                  <p>{card.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+
+
+          {/* REPLACE THE STATIC IMAGE CARDS WITH THE NEW CAROUSEL COMPONENT */}
+          <ImageCarousel images={carouselImages} />
+
+
           <div className="careers-call-to-action">
-  <div className="careers-cta-content">
-    <h3><span className="careers-highlight">Opportunities</span> like this don't wait</h3>
-    <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
-    <div className="careers-application-info">
-      <button
-        className="careers-date-button"
-        onClick={() => handleInternshipApply('/internship-form')} // ✅ Fixed
-      >
-        Apply for Internship
-      </button>
-    </div>
-  </div>
-</div>
+            <div className="careers-cta-content">
+              <h3><span className="careers-highlight">Opportunities</span> like this don't wait</h3>
+              <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
+              <div className="careers-application-info">
+                <button
+                  className="careers-date-button"
+                  onClick={() => handleInternshipApply('/internship-form')}
+                >
+                  Apply for Internship
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-
     </div>
   );
 };
+
 
 export default CareersPage;
