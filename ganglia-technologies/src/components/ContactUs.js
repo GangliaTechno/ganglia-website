@@ -111,7 +111,7 @@ const ContactUs = () => {
             <div className="ganglia-contact-info">
               <h3>Connect with us</h3>
               <p>director@ganglia.in</p>
-              <p>(+91) 81097 82903</p>
+              <p>(+91) 77600 42810</p>
               
               <h3>Address</h3>
               <p>
