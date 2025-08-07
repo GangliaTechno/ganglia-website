@@ -69,15 +69,17 @@ const ContactUs = () => {
     `;
 
     try {
-      // Create FormData for the request
-      const emailFormData = new FormData();
-      emailFormData.append('recipient', 'director@ganglia.in');
-      emailFormData.append('subject', emailSubject);
-      emailFormData.append('body', emailBody);
-
-      const response = await fetch('https://tmmail.onrender.com/send-email-with-pdf/', {
+      const response = await fetch('https://tmmail.onrender.com/send-email/', {
         method: 'POST',
-        body: emailFormData
+        headers: {
+          'accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          recipient: 'director@ganglia.in',
+          subject: emailSubject,
+          body: emailBody
+        })
       });
 
       if (response.ok) {
