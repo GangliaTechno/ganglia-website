@@ -569,7 +569,7 @@ const Navbar = () => {
             className="get-started-btn"
             onClick={handleGetStartedClick}
           >
-            Get Started
+            Get Started With Us
           </button>
         </div>
       )}
