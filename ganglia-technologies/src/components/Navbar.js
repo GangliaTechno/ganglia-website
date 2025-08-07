@@ -536,7 +536,10 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          <button className="get-started-btn" onClick={handleGetStartedClick}>
+          <button 
+            className="get-started-btn"
+            onClick={handleGetStartedClick}
+          >
             Get Started With Us
           </button>
         </div>
