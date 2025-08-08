@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import '../styles/CareersPage.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logob.png';
+import { useRouteLoader } from '../hooks/useRouteLoader';
 // Removed Firebase imports since we use hardcoded data instead
 
 import { Player } from '@lottiefiles/react-lottie-player';
@@ -15,6 +16,18 @@ import collaborationSpacesImg from '../assets/collaborationspaces.jpg';
 import launch from '../assets/Firecracker.json';
 import teach from '../assets/Classroom.json';
 import globe from '../assets/globe.json';
+// ADD this debounce utility BEFORE the jobData array
+const debounce = (func, wait) => {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
 
 // Hardcoded Jobs Array as per your provided data format
 const jobData = [
@@ -273,48 +286,8 @@ const jobData = [
 // Add other jobs here in same format if needed
 
 ];
-  
 
-
-const CareersPage = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [expandedCard, setExpandedCard] = useState(null);
-  const [expandedJobCard, setExpandedJobCard] = useState(null);
-
-  // Responsive: detect mobile
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 900);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const navigate = useNavigate();
-
-  const handleFilterChange = (filter) => setActiveFilter(filter);
-  const handleCardClick = (cardIndex) => setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
-
-  // Filtered jobs for display
-  const filteredJobs = activeFilter === 'all'
-    ? jobData
-    : jobData.filter(job => job.category === activeFilter);
-
-  const totalJobCount = jobData.length;
-
-  // Navigate with full detail object passed as "jobDescription"
-  const handleApplyClick = (jobId) => {
-    const job = jobData.find(j => j.id === jobId);
-    if (!job) return;
-    navigate(`/apply/${job.id}`, {
-      state: {
-        jobTitle: job.title,
-        jobDescription: job.details, // pass full details for application form
-      },
-      replace: false,
-    });
-  };
-
-  // Images for carousel, you can add more images here
+ // Images for carousel, you can add more images here
   const carouselImages = [
     { src: developmentTeamImg, alt: 'Development Team', title: 'Development Team' },
     { src: researchLabImg, alt: 'Research Lab', title: 'Research Lab' },
@@ -322,6 +295,73 @@ const CareersPage = () => {
     { src: collaborationSpacesImg, alt: 'Collaboration Spaces', title: 'Collaboration Spaces' },
     // Add more image objects here if needed
   ];
+  
+
+
+const CareersPage = () => {
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [expandedCard, setExpandedCard] = useState(null);
+  const [expandedJobCard, setExpandedJobCard] = useState(null);
+  const [animationsLoaded, setAnimationsLoaded] = useState(false);
+  const { isLoading } = useRouteLoader(); // ADD THIS LINE
+  
+  // Responsive: detect mobile
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+  const debouncedHandleResize = useCallback(
+  debounce(() => setIsMobile(window.innerWidth < 900), 100),
+  []
+);
+
+useEffect(() => {
+  debouncedHandleResize(); // Set initial value
+  window.addEventListener('resize', debouncedHandleResize);
+  return () => window.removeEventListener('resize', debouncedHandleResize);
+}, [debouncedHandleResize]);
+
+  const navigate = useNavigate();
+
+  const handleFilterChange = useCallback((filter) => {
+  setActiveFilter(filter);
+}, []);
+useEffect(() => {
+  const timer = setTimeout(() => setAnimationsLoaded(true), 100);
+  return () => clearTimeout(timer);
+}, []);
+  const handleCardClick = useCallback((cardIndex) => {
+  setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
+}, [expandedCard]);
+
+  // Filtered jobs for display
+  const filteredJobs = useMemo(() => {
+  return activeFilter === 'all'
+    ? jobData
+    : jobData.filter(job => job.category === activeFilter);
+}, [activeFilter]);
+
+const totalJobCount = useMemo(() => jobData.length, []);
+  // Navigate with full detail object passed as "jobDescription"
+  const handleApplyClick = useCallback((jobId) => {
+  const job = jobData.find(j => j.id === jobId);
+  if (!job) return;
+  navigate(`/apply/${job.id}`, {
+    state: {
+      jobTitle: job.title,
+      jobDescription: job.details,
+    },
+    replace: false,
+  });
+}, [navigate]);
+
+ if (isLoading) {
+    return (
+      <div className="careers-page-loader">
+        <div className="loader-container">
+          <div className="spinner"></div>
+          <p>Loading careers page...</p>
+        </div>
+      </div>
+    );
+  }
 
   // === New Carousel + Modal Component for Internship Section ===
   const ImageCarousel = ({ images }) => {
@@ -343,7 +383,7 @@ const CareersPage = () => {
       const scrollAmount = carouselRef.current.offsetWidth * 0.8;
       carouselRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
     };
-
+    
     return (
       <>
         <div className="careers-image-carousel-wrapper">

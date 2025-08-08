@@ -320,7 +320,7 @@ const Navbar = () => {
     return classes;
   };
 
-  // Dropdown menu data (same as before)
+  // Dropdown menu data (updated)
   const aboutDropdownItems = [
     {
       category: 'Our Story',
@@ -349,19 +349,19 @@ const Navbar = () => {
       category: 'Health Tech',
       isHeader: true,
       items: [
-        { label: 'Smart Video Laryngoscope', link: '/smart-video-laryngoscope' },
-        { label: 'Mobile ICU', link: '', className: 'special-button' },
-        { label: 'Medical Thermal-Imaging System', link: '', className: 'special-button' },
-        { label: 'Medical Drone', link: '', className: 'special-button' },
+        { label: 'Smart Video Laryngoscope', link: '/smart-video-laryngoscope', clickable: true },
+        { label: 'Mobile ICU', link: '', clickable: false, className: 'special-button' },
+        { label: 'Medical Thermal-Imaging System', link: '', clickable: false, className: 'special-button' },
+        { label: 'Medical Drone', link: '', clickable: false, className: 'special-button' },
       ],
     },
     {
       category: 'AI-Powered Tools',
       isHeader: true,
       items: [
-        { label: 'TripMacha AI – Short Trip Planner', link: '/tripmacha' },
-        { label: 'Anushtaan – Project Management Tool', link: '/main-component' },
-        { label: 'Medical Logbook', link: '/medical-logbook' },
+        { label: 'TripMacha AI – Short Trip Planner', link: '/tripmacha', clickable: true },
+        { label: 'Anushtaan – Project Management Tool', link: '/main-component', clickable: true },
+        { label: 'Medical Logbook', link: '/medical-logbook', clickable: true },
       ],
     },
   ];
@@ -381,7 +381,7 @@ const Navbar = () => {
   ];
 
   const renderDropdownMenu = (items, isOpen) => (
-    <div className={`dropdown-menu ${isOpen ? 'active' : ''}`}>
+    <div className={`dropdown-menu ${isOpen ? 'active' : ''}`} style={{ animation: 'none' }}>
       <div className="dropdown-section">
         {items.map((section, index) => (
           <div key={index} className="dropdown-category">
@@ -398,21 +398,41 @@ const Navbar = () => {
               {section.category}
             </a>
             <div className="dropdown-subsection">
-              {section.items.map((item, itemIndex) => (
-                <a
-                  key={itemIndex}
-                  href={item.link}
-                  className={`dropdown-item ${item.highlighted ? 'highlighted' : ''}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleServiceNavigation(item.link);
-                    setIsMobileMenuOpen(false);
-                    setDropdownStates({ about: false, products: false, services: false });
-                  }}
-                >
-                  {item.label}
-                </a>
-              ))}
+              {section.items.map((item, itemIndex) => {
+                const isClickable = item.clickable !== false;
+                
+                if (isClickable) {
+                  return (
+                    <a
+                      key={itemIndex}
+                      href={item.link}
+                      className={`dropdown-item ${item.highlighted ? 'highlighted' : ''} ${item.className || ''}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleServiceNavigation(item.link);
+                        setIsMobileMenuOpen(false);
+                        setDropdownStates({ about: false, products: false, services: false });
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                } else {
+                  return (
+                    <span
+                      key={itemIndex}
+                      className={`dropdown-item non-clickable ${item.highlighted ? 'highlighted' : ''} ${item.className || ''}`}
+                      style={{ 
+                        cursor: 'default', 
+                        opacity: 0.6,
+                        pointerEvents: 'none'
+                      }}
+                    >
+                      {item.label}
+                    </span>
+                  );
+                }
+              })}
             </div>
           </div>
         ))}
@@ -437,21 +457,41 @@ const Navbar = () => {
             {section.category}
           </a>
           <div className="mobile-dropdown-subsection">
-            {section.items.map((item, itemIndex) => (
-              <a
-                key={itemIndex}
-                href={item.link}
-                className={`mobile-dropdown-item ${item.highlighted ? 'highlighted' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleServiceNavigation(item.link);
-                  setIsMobileMenuOpen(false);
-                  setMobileDropdownStates({ about: false, products: false, services: false });
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
+            {section.items.map((item, itemIndex) => {
+              const isClickable = item.clickable !== false;
+              
+              if (isClickable) {
+                return (
+                  <a
+                    key={itemIndex}
+                    href={item.link}
+                    className={`mobile-dropdown-item ${item.highlighted ? 'highlighted' : ''} ${item.className || ''}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleServiceNavigation(item.link);
+                      setIsMobileMenuOpen(false);
+                      setMobileDropdownStates({ about: false, products: false, services: false });
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                );
+              } else {
+                return (
+                  <span
+                    key={itemIndex}
+                    className={`mobile-dropdown-item non-clickable ${item.highlighted ? 'highlighted' : ''} ${item.className || ''}`}
+                    style={{ 
+                      cursor: 'default', 
+                      opacity: 0.6,
+                      pointerEvents: 'none'
+                    }}
+                  >
+                    {item.label}
+                  </span>
+                );
+              }
+            })}
           </div>
         </div>
       ))}
