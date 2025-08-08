@@ -542,3 +542,75 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #4169e1, #87ceeb);
 }
+@media (max-width: 480px) {
+  html,
+  body {
+    overflow-x: hidden !important;
+  }
+
+  .awrd-awards-container,
+  .awrd-news-container {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 0;
+  }
+
+  .awrd-hero-content,
+  .awrd-award-content,
+  .awrd-news-content {
+    padding: 15px 8px;
+  }
+
+  .awrd-awards-wrapper,
+  .awrd-news-wrapper {
+    padding: 60px 4px;
+  }
+
+  .awrd-main-heading {
+    font-size: 2rem;
+    line-height: 1.05;
+  }
+
+  .awrd-section-heading {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .awrd-awards-grid,
+  .awrd-news-grid {
+    gap: 20px;
+    padding: 0 2px;
+    grid-template-columns: 1fr;
+  }
+
+  .awrd-award-card,
+  .awrd-news-card {
+    min-width: 0;
+    max-width: 99vw;
+    word-break: break-word;
+    margin: 0 2px;
+  }
+
+  .awrd-award-title,
+  .awrd-news-title {
+    font-size: 1.08rem;
+  }
+
+  .awrd-award-image-container,
+  .awrd-news-card .awrd-award-image-container {
+    height: 140px;
+    min-height: 110px;
+  }
+
+  .awrd-read-more-btn,
+  .awrd-news-read-more-btn,
+  .awrd-news-source-btn {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+    box-sizing: border-box;
+  }
+}
