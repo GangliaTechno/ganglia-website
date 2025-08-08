@@ -599,7 +599,7 @@ const CareersPage = () => {
                   className="careers-date-button"
                   onClick={() => handleInternshipApply('/internship-form')}
                 >
-                  Apply for Internship
+                  Apply for Summer Internship Program 2026
                 </button>
               </div>
             </div>
