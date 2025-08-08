@@ -54,9 +54,9 @@ const jobData = [
     posted: ' ',
     skills: ['Node.js', 'Python', 'Java', 'SQL', 'MongoDB', 'APIs', 'Git'],
     applicationTimeline: {
-      applicationsOpen: '2025-12-01',
-      finalDeadline: '2026-01-10',
-      programStarts: '2026-02-01'
+      applicationsOpen: '2025-08-08',
+      finalDeadline: '2025-08-23',
+      programStarts: '2025-09-15'
     }
   },
    {
@@ -93,9 +93,9 @@ const jobData = [
     posted: ' ',
     skills: ['Recruitment', 'Communication', 'Time Management', 'HR Documentation', 'Event Planning'],
     applicationTimeline: {
-      applicationsOpen: '2025-01-01',  // Placeholder dates, adjust as needed
-      finalDeadline: 'Year-round',
-      programStarts: 'Immediate'
+      applicationsOpen: '2025-08-08',  // Placeholder dates, adjust as needed
+      finalDeadline: '2025-08-23',
+      programStarts: '2025-09-01'
     }
   },
   {
@@ -135,9 +135,9 @@ const jobData = [
     posted: ' ',
     skills: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'Git', 'REST APIs'],
     applicationTimeline: {
-      applicationsOpen: '2025-01-01', // Placeholder, adjust if needed
-      finalDeadline: 'Year-round',
-      programStarts: 'Project dependent'
+      applicationsOpen: '2025-08-08', // Placeholder, adjust if needed
+      finalDeadline: '2025-08-23',
+      programStarts: '2025-09-15'
     }
   },
     {
@@ -177,9 +177,9 @@ const jobData = [
     posted: ' ',
     skills: ['Python', 'Machine Learning', 'TensorFlow', 'PyTorch', 'Research', 'Data Science', 'Academic Writing'],
     applicationTimeline: {
-      applicationsOpen: '2025-01-01',
-      finalDeadline: 'Year-round',
-      programStarts: 'Project dependent'
+      applicationsOpen: '2025-08-08',
+      finalDeadline: '2025-08-23',
+      programStarts: '2025-09-15'
     }
   },
   {
@@ -220,9 +220,9 @@ const jobData = [
   posted: ' ',
   skills: ['CAD', 'SolidWorks', 'Fusion 360', 'AutoCAD', 'CATIA', '3D Modelling', 'DFM'],
   applicationTimeline: {
-    applicationsOpen: '2025-01-01',
-    finalDeadline: 'Year-round',
-    programStarts: 'Project dependent'
+    applicationsOpen: '2025-08-08',
+    finalDeadline: '2025-08-23',
+    programStarts: '2025-09-01'
   }
 },
 {
@@ -265,15 +265,15 @@ const jobData = [
   posted: ' ',
   skills: ['Branding', 'Graphic Design', 'Marketing Strategy', 'Figma', 'Adobe Creative Suite', 'Social Media', 'Packaging Design'],
   applicationTimeline: {
-    applicationsOpen: '2025-01-01',
-    finalDeadline: 'Year-round',
-    programStarts: 'Project dependent'
+    applicationsOpen: '2025-08-08',
+    finalDeadline: '2025-08-23',
+    programStarts: '2025-09-01'
   }
 }
+// Add other jobs here in same format if needed
 
 ];
-  // Add other jobs here in same format if needed
-
+  
 
 
 const CareersPage = () => {

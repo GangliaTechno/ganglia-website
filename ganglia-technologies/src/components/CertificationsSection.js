@@ -78,7 +78,7 @@ const CertificationsSection = () => {
 
   const patentsCount = useCounter(17, 2000);
   const projectsCount = useCounter(15, 2200);
-  const teamSizeCount = useCounter(50, 2500);
+  const awardsreceivedCount = useCounter(4, 2500);
 
   const certifications = [
     {
@@ -110,8 +110,8 @@ const CertificationsSection = () => {
       id: 2
     },
     {
-      number: `${teamSizeCount}+`,
-      label: 'Team Size',
+      number: `${awardsreceivedCount}+`,
+      label: 'Awards Received',
       id: 3
     }
   ];
