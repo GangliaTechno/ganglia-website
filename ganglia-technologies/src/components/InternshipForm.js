@@ -399,7 +399,8 @@ function InternshipForm() {
         >
           <div className="form-container-modern">
             <div className="form-card">
-              <h2 className="form-title-modern">Internship Application Form</h2>
+              <h2 className="form-title-modern">Ganglia's Summer Internship Program - 2026</h2>
+              <h2 className="form-title-modern">Application Form</h2>
               <p className="form-subtitle-modern">
                 Join our team and gain valuable experience in your field of interest. 
                 Please fill out all sections to complete your application.

@@ -652,7 +652,7 @@ const CareersPage = () => {
                     navigate('/internship-form', { replace: true });
                   }}
                 >
-                  Apply for Internship
+                  Apply for Summer Internship Program 2026
                 </button>
               </div>
             </div>
