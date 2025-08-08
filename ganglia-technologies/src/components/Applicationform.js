@@ -306,7 +306,7 @@ export default function ApplicationForm() {
 
   try {
     const formData = new FormData();
-    formData.append("recipient", "mallikarjunm.ganglia@gmail.com");
+    formData.append("recipient", "director@ganglia.in");
     formData.append("subject", `New Application: ${(state?.jobTitle ?? form.roleAppliedFor) || "Position"} (ID: ${jobId})`);
     formData.append("body", composeEmailBody());
 
