@@ -24,7 +24,7 @@ const jobData = [
     category: 'engineering',
     type: 'Internship',
     location: 'Manipal, Karnataka (In-Person)',
-    level: 'Junior',
+    level: 'Entry Level',
     shortDescription:
       "Join Ganglia Technologies as a Back-end Developer Intern and get hands-on experience building the infrastructure behind our advanced biomedical and AI systems. You’ll be solving real-world problems, working on scalable server-side logic, and collaborating with a high-performance team in a fast-growing tech environment.",
     details: {
@@ -51,7 +51,7 @@ const jobData = [
         "Familiarity with Git, Postman, and Docker is a plus."
       ]
     },
-    posted: 'Applications open year-round',
+    posted: ' ',
     skills: ['Node.js', 'Python', 'Java', 'SQL', 'MongoDB', 'APIs', 'Git'],
     applicationTimeline: {
       applicationsOpen: '2025-12-01',
@@ -65,7 +65,7 @@ const jobData = [
     category: 'management', // or 'operations' if you want a custom category and filter for it
     type: 'Full-Time',
     location: 'Manipal, Karnataka',
-    level: 'Junior',
+    level: 'Entry Level',
     shortDescription:
       "Join Ganglia Technologies as an HR/Operations Executive and play a vital role in shaping our people and processes. From recruitment and documentation to supporting daily operations and maintaining company culture, this role is perfect for dynamic individuals who thrive in fast-paced, innovation-driven environments. Ideal for fresh graduates or early professionals ready to grow with a leading biomedical and AI company based in Manipal.",
     details: {
@@ -90,7 +90,7 @@ const jobData = [
         "Candidates must demonstrate discretion, reliability, and an interest in working in a fast-paced tech and biomedical R&D environment."
       ]
     },
-    posted: 'Applications open year-round',
+    posted: ' ',
     skills: ['Recruitment', 'Communication', 'Time Management', 'HR Documentation', 'Event Planning'],
     applicationTimeline: {
       applicationsOpen: '2025-01-01',  // Placeholder dates, adjust as needed
@@ -104,7 +104,7 @@ const jobData = [
     category: 'engineering',
     type: 'Internship',
     location: 'Manipal, Karnataka (Hybrid Options)',
-    level: 'Junior',
+    level: 'Entry Level',
     shortDescription:
       "Kickstart your career in web development with a hands-on Front-end Developer Internship at Ganglia Technologies. You'll work alongside a dynamic tech team on real-world projects that power cutting-edge biomedical and AI applications. Learn, build, and innovate in an environment designed to accelerate your growth.",
     details: {
@@ -132,7 +132,7 @@ const jobData = [
         "Bonus: Experience with Figma, TailwindCSS, Next.js, or TypeScript"
       ]
     },
-    posted: 'Applications open year-round',
+    posted: ' ',
     skills: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'Git', 'REST APIs'],
     applicationTimeline: {
       applicationsOpen: '2025-01-01', // Placeholder, adjust if needed
@@ -146,7 +146,7 @@ const jobData = [
     category: 'engineering',
     type: 'Internship',
     location: 'Manipal, Karnataka (Hybrid Options)',
-    level: 'Junior',
+    level: 'Entry Level',
     shortDescription:
       "Ganglia Technologies is looking for passionate AI/ML Research Interns to join our R&D team. If you're excited about real-world applications of AI and want to contribute to impactful research in healthcare and technology, this internship offers a chance to collaborate on academic publications, cutting-edge experiments, and applied AI innovation.",
     details: {
@@ -174,7 +174,7 @@ const jobData = [
         "Bonus: Familiarity with LaTeX, research publication formats, or tools like Jupyter Notebooks, Kaggle, Zotero/Mendeley."
       ]
     },
-    posted: 'Applications open year-round',
+    posted: ' ',
     skills: ['Python', 'Machine Learning', 'TensorFlow', 'PyTorch', 'Research', 'Data Science', 'Academic Writing'],
     applicationTimeline: {
       applicationsOpen: '2025-01-01',
@@ -188,7 +188,7 @@ const jobData = [
   category: 'engineering',
   type: 'Internship',
   location: 'Manipal, Karnataka (On-site)',
-  level: 'Junior',
+  level: 'Entry Level',
   shortDescription:
     "Join Ganglia Technologies as a CAD Engineering Intern and take your design skills from concept to creation. Work alongside engineers and researchers on real hardware products in the biomedical and AI space. Gain hands-on experience in CAD modelling, prototyping, and product development in a fast-paced R&D environment.",
   details: {
@@ -217,7 +217,7 @@ const jobData = [
       "Bonus: Experience with simulation tools, sheet metal design, or medical device components."
     ]
   },
-  posted: 'Applications open year-round',
+  posted: ' ',
   skills: ['CAD', 'SolidWorks', 'Fusion 360', 'AutoCAD', 'CATIA', '3D Modelling', 'DFM'],
   applicationTimeline: {
     applicationsOpen: '2025-01-01',
@@ -262,7 +262,7 @@ const jobData = [
       "Bonus: Familiarity with content calendars, digital ads, and consumer psychology."
     ]
   },
-  posted: 'Applications open year-round',
+  posted: ' ',
   skills: ['Branding', 'Graphic Design', 'Marketing Strategy', 'Figma', 'Adobe Creative Suite', 'Social Media', 'Packaging Design'],
   applicationTimeline: {
     applicationsOpen: '2025-01-01',
