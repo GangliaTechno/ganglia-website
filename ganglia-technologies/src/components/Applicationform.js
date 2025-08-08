@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-import '../styles/Applicationform.css';
+import "react-toastify/dist/ReactToastify.css";
+import "../styles/Applicationform.css";
 
 export default function ApplicationForm() {
   const { jobId } = useParams();
@@ -10,150 +10,394 @@ export default function ApplicationForm() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    currentLocation: '',
-    linkedin: '',
-    experience: '',
-    skills: '',
-    tools: '',
-    resume: null
+    // Section 1
+    fullName: "",
+    email: "",
+    phone: "",
+    currentCityCountry: "",
+    preferredLocation: "",
+    nationality: "",
+    linkedin: "",
+    portfolio: "",
+    relevantLinks: "",
+
+    // Section 2
+    roleAppliedFor: "",
+    department: "",
+    employmentType: {
+      fullTime: false,
+      partTime: false,
+      freelanceContract: false,
+      internship: false,
+    },
+    availableDate: "",
+    expectedCTC: "",
+    noticePeriod: "",
+    authorizedWork: null,
+    sponsorshipNeeded: null,
+
+    // Section 3
+    education: [{ degree: "", institution: "", yearCompleted: "", grade: "" }],
+
+    // Section 4
+    experience: [
+      { companyName: "", jobTitle: "", duration: "", responsibilities: "", reasonLeaving: "" },
+    ],
+    totalExperienceYears: "",
+    currentlyEmployed: null,
+    ledTeams: "",
+
+    // Section 5
+    programmingLanguages: "",
+    toolsTechnologies: "",
+    certifications: "",
+    projectSamples: "",
+    comfortableWithTeams: null,
+    agileExperience: null,
+
+    // Section 6
+    whyJoin: "",
+    careerGoals: "",
+    feedbackHandling: "",
+    complexProblem: "",
+    idealWorkEnvironment: "",
+    openToRelocation: null,
+    remoteWorkExperience: null,
+
+    // Section 7
+    references: [
+      { name: "", designation: "", company: "", email: "", phone: "", relationship: "" },
+      { name: "", designation: "", company: "", email: "", phone: "", relationship: "" },
+    ],
+
+    // Section 8
+    resume: null,
+    coverLetter: null,
+    supportingDocs: null,
+    videoIntro: null,
+
+    // Section 9
+    declareTrue: false,
+    agree: false,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const parse = (description) => {
-    if (!description) return null;
-    try {
-      if (typeof description === 'object') return description;
-      return JSON.parse(description);
-    } catch {
-      return { "Job Description": description };
-    }
-  };
+  // Generic change handler
+  const handleChange = (e) => {
+  const { name, value, type, checked, files } = e.target;
 
-  const jobDetails = parse(state?.jobDescription);
-
-  const handleChange = e => {
-    const { name, value, files } = e.target;
-    setForm(prev => ({
+  if (name.startsWith("employmentType.")) {
+    const key = name.split(".")[1];
+    setForm((prev) => ({
       ...prev,
-      [name]: files ? files[0] : value
+      employmentType: { ...prev.employmentType, [key]: checked },
     }));
-  };
+  } else if (name === "declareTrue" || name === "agree") {
+    setForm((prev) => ({ ...prev, [name]: checked }));
+  } else if (type === "radio") {
+    setForm((prev) => ({ ...prev, [name]: value === "true" }));
+  } else if (files) {
+    const file = files[0];
+    
+    // **NEW: Real-time file size validation**
+    if (file) {
+      const MAX_FILE_SIZES = {
+        resume: 5 * 1024 * 1024,        // 5 MB
+        coverLetter: 5 * 1024 * 1024,   // 5 MB
+        supportingDocs: 10 * 1024 * 1024, // 10 MB
+        videoIntro: 50 * 1024 * 1024     // 50 MB
+      };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    if (!form.resume) {
-      toast.error("Please upload your resume");
-      setIsSubmitting(false);
-      return;
+      const maxSize = MAX_FILE_SIZES[name];
+      if (maxSize && file.size > maxSize) {
+        const maxSizeMB = (maxSize / (1024 * 1024)).toFixed(1);
+        const fileSizeMB = (file.size / (1024 * 1024)).toFixed(1);
+        toast.error(`File size (${fileSizeMB} MB) exceeds the ${maxSizeMB} MB limit for ${name}.`);
+        e.target.value = ""; // Clear the file input
+        return;
+      }
     }
+    
+    setForm((prev) => ({ ...prev, [name]: file || null }));
+  } else {
+    setForm((prev) => ({ ...prev, [name]: value }));
+  }
+};
 
-    if (form.resume.type !== 'application/pdf') {
-      toast.error("Please upload a PDF file");
-      setIsSubmitting(false);
-      return;
-    }
 
-    const emailSubject = `New Job Application - ${state?.jobTitle || 'Position'} (Job ID: ${jobId})`;
+  // Fixed requirement check for declarations
+  const checkDeclarations = () => form.declareTrue && form.agree;
 
-    const emailBody = `
+  // Update email body to match new field names
+  const composeEmailBody = () => {
+    return `
       <div style="font-family: Arial, sans-serif; max-width: 600px;">
         <h2 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">
-          🎯 NEW JOB APPLICATION RECEIVED
+          🎯 NEW APPLICATION RECEIVED
         </h2>
-        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
-          <h3 style="color: #2c3e50; margin-top: 0;">📋 POSITION DETAILS</h3>
-          <p><strong>Position:</strong> ${state?.jobTitle || 'Position'}</p>
-          <p><strong>Job ID:</strong> ${jobId}</p>
+        <h3>Position Applied For</h3>
+        <p>${(state?.jobTitle ?? form.roleAppliedFor) || "N/A"}</p>
+
+        <h3>Section 1: Basic Information</h3>
+        <p><strong>Full Name:</strong> ${form.fullName}</p>
+        <p><strong>Email:</strong> ${form.email}</p>
+        <p><strong>Phone:</strong> ${form.phone}</p>
+        <p><strong>Current City & Country:</strong> ${form.currentCityCountry}</p>
+        <p><strong>Preferred Location:</strong> ${form.preferredLocation || "N/A"}</p>
+        <p><strong>Nationality:</strong> ${form.nationality}</p>
+        <p><strong>LinkedIn:</strong> ${form.linkedin || "N/A"}</p>
+        <p><strong>Portfolio:</strong> ${form.portfolio || "N/A"}</p>
+        <p><strong>Other Links:</strong> ${form.relevantLinks || "N/A"}</p>
+
+        <h3>Section 2: Position Details</h3>
+        <p><strong>Department:</strong> ${form.department}</p>
+        <p><strong>Employment Type:</strong> ${
+          Object.entries(form.employmentType)
+            .filter(([, v]) => v)
+            .map(([key]) => key.replace(/([A-Z])/g, " $1").trim())
+            .join(", ") || "N/A"
+        }</p>
+        <p><strong>Available Date:</strong> ${form.availableDate || "N/A"}</p>
+        <p><strong>Expected CTC:</strong> ${form.expectedCTC || "N/A"}</p>
+        <p><strong>Notice Period:</strong> ${form.noticePeriod || "N/A"}</p>
+        <p><strong>Authorized Work:</strong> ${
+          form.authorizedWork === true ? "Yes" : form.authorizedWork === false ? "No" : "N/A"
+        }</p>
+        <p><strong>Sponsorship Needed:</strong> ${
+          form.sponsorshipNeeded === true ? "Yes" : form.sponsorshipNeeded === false ? "No" : "N/A"
+        }</p>
+
+        <h3>Section 3: Education</h3>
+        ${form.education
+          .map(
+            (edu, i) => `
+        <div>
+          <p><strong>Degree #${i + 1}:</strong> ${edu.degree || "N/A"}</p>
+          <p><strong>Institution:</strong> ${edu.institution || "N/A"}</p>
+          <p><strong>Year Completed:</strong> ${edu.yearCompleted || "N/A"}</p>
+          <p><strong>Grade:</strong> ${edu.grade || "N/A"}</p>
         </div>
-        <div style="background-color: #e8f4fd; padding: 15px; border-radius: 5px; margin: 20px 0;">
-          <h3 style="color: #2c3e50; margin-top: 0;">👤 APPLICANT INFORMATION</h3>
-          <p><strong>Name:</strong> ${form.name}</p>
-          <p><strong>Email:</strong> ${form.email}</p>
-          <p><strong>Phone:</strong> ${form.phone}</p>
-          <p><strong>Location:</strong> ${form.currentLocation}</p>
-          <p><strong>LinkedIn:</strong> ${form.linkedin || 'Not provided'}</p>
-          <p><strong>Experience:</strong> ${form.experience} years</p>
+      `,
+          )
+          .join("")}
+
+        <h3>Section 4: Work Experience</h3>
+        ${form.experience
+          .map(
+            (exp, i) => `
+        <div>
+          <p><strong>Company #${i + 1}:</strong> ${exp.companyName || "N/A"}</p>
+          <p><strong>Job Title:</strong> ${exp.jobTitle || "N/A"}</p>
+          <p><strong>Duration:</strong> ${exp.duration || "N/A"}</p>
+          <p><strong>Responsibilities:</strong> ${exp.responsibilities || "N/A"}</p>
+          <p><strong>Reason Leaving:</strong> ${exp.reasonLeaving || "N/A"}</p>
         </div>
-        <div style="background-color: #f0fff4; padding: 15px; border-radius: 5px; margin: 20px 0;">
-          <h3 style="color: #2c3e50; margin-top: 0;">💼 SKILLS & QUALIFICATIONS</h3>
-          <p><strong>Key Skills:</strong></p>
-          <p style="white-space: pre-line;">${form.skills}</p>
-          ${form.tools ? `
-            <p><strong>Tools & Technologies:</strong></p>
-            <p style="white-space: pre-line;">${form.tools}</p>
-          ` : ''}
+      `,
+          )
+          .join("")}
+        <p><strong>Total Experience (years):</strong> ${form.totalExperienceYears || "N/A"}</p>
+        <p><strong>Currently Employed:</strong> ${
+          form.currentlyEmployed === true ? "Yes" : form.currentlyEmployed === false ? "No" : "N/A"
+        }</p>
+        <p><strong>Teams Led:</strong> ${form.ledTeams || "N/A"}</p>
+
+        <h3>Section 5: Skills</h3>
+        <p><strong>Programming Languages:</strong> ${form.programmingLanguages || "N/A"}</p>
+        <p><strong>Tools / Technologies:</strong> ${form.toolsTechnologies || "N/A"}</p>
+        <p><strong>Certifications:</strong> ${form.certifications || "N/A"}</p>
+        <p><strong>Project Samples:</strong> ${form.projectSamples || "N/A"}</p>
+        <p><strong>Comfortable with Teams:</strong> ${
+          form.comfortableWithTeams === true ? "Yes" : form.comfortableWithTeams === false ? "No" : "N/A"
+        }</p>
+        <p><strong>Agile Experience:</strong> ${
+          form.agileExperience === true ? "Yes" : form.agileExperience === false ? "No" : "N/A"
+        }</p>
+
+        <h3>Section 6: Cultural Fit</h3>
+        <p><strong>Why Join:</strong> ${form.whyJoin || "N/A"}</p>
+        <p><strong>Career Goals:</strong> ${form.careerGoals || "N/A"}</p>
+        <p><strong>Feedback Handling:</strong> ${form.feedbackHandling || "N/A"}</p>
+        <p><strong>Complex Problem:</strong> ${form.complexProblem || "N/A"}</p>
+        <p><strong>Ideal Work Environment:</strong> ${form.idealWorkEnvironment || "N/A"}</p>
+        <p><strong>Open to Relocation:</strong> ${
+          form.openToRelocation === true ? "Yes" : form.openToRelocation === false ? "No" : "N/A"
+        }</p>
+        <p><strong>Remote Work Experience:</strong> ${
+          form.remoteWorkExperience === true ? "Yes" : form.remoteWorkExperience === false ? "No" : "N/A"
+        }</p>
+
+        <h3>Section 7: References</h3>
+        ${form.references
+          .map(
+            (ref, i) => `
+        <div>
+          <p><strong>Name #${i + 1}:</strong> ${ref.name || "N/A"}</p>
+          <p><strong>Designation:</strong> ${ref.designation || "N/A"}</p>
+          <p><strong>Company:</strong> ${ref.company || "N/A"}</p>
+          <p><strong>Email:</strong> ${ref.email || "N/A"}</p>
+          <p><strong>Phone:</strong> ${ref.phone || "N/A"}</p>
+          <p><strong>Relationship:</strong> ${ref.relationship || "N/A"}</p>
         </div>
-        <div style="background-color: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0;">
-          <h3 style="color: #2c3e50; margin-top: 0;">📄 RESUME</h3>
-          <p><strong>File Name:</strong> ${form.resume.name}</p>
-          <p><strong>File Size:</strong> ${(form.resume.size / 1024 / 1024).toFixed(2)} MB</p>
-          <p style="color: #28a745;"><strong>✅ Resume attached</strong></p>
-        </div>
-        <hr style="border: none; border-top: 1px solid #dee2e6; margin: 30px 0;">
-        <p style="color: #6c757d; font-size: 14px;">
-          This application was submitted through the website's career portal.<br/>
-          Please review and contact the candidate if suitable.
-        </p>
-        <p style="color: #6c757d; font-size: 14px;">
-          <strong>Best regards,</strong><br/>
-          Career Portal System
-        </p>
+      `,
+          )
+          .join("")}
+
+        <h3>Section 8: Attachments</h3>
+        <p><strong>Resume:</strong> ${form.resume ? form.resume.name : "N/A"}</p>
+        <p><strong>Cover Letter:</strong> ${form.coverLetter ? form.coverLetter.name : "N/A"}</p>
+        <p><strong>Supporting Documents:</strong> ${form.supportingDocs ? form.supportingDocs.name : "N/A"}</p>
+        <p><strong>Video Introduction:</strong> ${form.videoIntro ? form.videoIntro.name : "N/A"}</p>
+
+        <h3>Section 9: Declarations</h3>
+        <p><strong>Declaration Confirmed:</strong> ${form.declareTrue ? "Yes" : "No"}</p>
+        <p><strong>Agreed to Background Check:</strong> ${form.agree ? "Yes" : "No"}</p>
       </div>
     `;
+  };
 
-    try {
-      const formData = new FormData();
-      formData.append('recipient', 'director@ganglia.in');
-      formData.append('subject', emailSubject);
-      formData.append('body', emailBody);
-      formData.append('pdf_file', form.resume);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-      const response = await fetch('https://tmmail.onrender.com/send-email-with-pdf/', {
-        method: 'POST',
-        body: formData
+  if (!checkDeclarations()) {
+    toast.error("Please accept all required declarations.");
+    return;
+  }
+  if (!form.resume) {
+    toast.error("Resume is required and must be a PDF.");
+    return;
+  }
+  if (form.resume.type !== "application/pdf") {
+    toast.error("Only PDF resumes are accepted.");
+    return;
+  }
+
+ // File size validation code remains the same...
+  const MAX_FILE_SIZES = {
+    resume: 5 * 1024 * 1024,
+    coverLetter: 5 * 1024 * 1024,
+    supportingDocs: 10 * 1024 * 1024,
+    videoIntro: 50 * 1024 * 1024
+  };
+
+
+  // **NEW: File size validation**
+ const filesToCheck = [
+    { file: form.resume, name: 'Resume', maxSize: MAX_FILE_SIZES.resume },
+    { file: form.coverLetter, name: 'Cover Letter', maxSize: MAX_FILE_SIZES.coverLetter },
+    { file: form.supportingDocs, name: 'Supporting Documents', maxSize: MAX_FILE_SIZES.supportingDocs },
+    { file: form.videoIntro, name: 'Video Introduction', maxSize: MAX_FILE_SIZES.videoIntro }
+  ];
+
+  for (const { file, name, maxSize } of filesToCheck) {
+    if (file && file.size > maxSize) {
+      const maxSizeMB = (maxSize / (1024 * 1024)).toFixed(1);
+      const fileSizeMB = (file.size / (1024 * 1024)).toFixed(1);
+      toast.error(`${name} file size (${fileSizeMB} MB) exceeds the ${maxSizeMB} MB limit.`);
+      return;
+    }
+  }
+
+  setIsSubmitting(true);
+
+  try {
+    const formData = new FormData();
+    formData.append("recipient", "mallikarjunm.ganglia@gmail.com");
+    formData.append("subject", `New Application: ${(state?.jobTitle ?? form.roleAppliedFor) || "Position"} (ID: ${jobId})`);
+    formData.append("body", composeEmailBody());
+
+    // **CHANGED**: Use "files" parameter name for all attachments
+    if (form.resume) formData.append("files", form.resume);
+    if (form.coverLetter) formData.append("files", form.coverLetter);
+    if (form.supportingDocs) formData.append("files", form.supportingDocs);
+    if (form.videoIntro) formData.append("files", form.videoIntro);
+
+    // **CHANGED**: Updated endpoint URL
+    const res = await fetch("https://tmmail.onrender.com/send-email-with-multiple-files/", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (res.ok) {
+      toast.success("Application submitted successfully!");
+      // Reset form logic...
+      setForm({
+        fullName: "",
+        email: "",
+        phone: "",
+        currentCityCountry: "",
+        preferredLocation: "",
+        nationality: "",
+        linkedin: "",
+        portfolio: "",
+        relevantLinks: "",
+        roleAppliedFor: "",
+        department: "",
+        employmentType: {
+          fullTime: false,
+          partTime: false,
+          freelanceContract: false,
+          internship: false,
+        },
+        availableDate: "",
+        expectedCTC: "",
+        noticePeriod: "",
+        authorizedWork: null,
+        sponsorshipNeeded: null,
+        education: [{ degree: "", institution: "", yearCompleted: "", grade: "" }],
+        experience: [
+          { companyName: "", jobTitle: "", duration: "", responsibilities: "", reasonLeaving: "" },
+        ],
+        totalExperienceYears: "",
+        currentlyEmployed: null,
+        ledTeams: "",
+        programmingLanguages: "",
+        toolsTechnologies: "",
+        certifications: "",
+        projectSamples: "",
+        comfortableWithTeams: null,
+        agileExperience: null,
+        whyJoin: "",
+        careerGoals: "",
+        feedbackHandling: "",
+        complexProblem: "",
+        idealWorkEnvironment: "",
+        openToRelocation: null,
+        remoteWorkExperience: null,
+        references: [
+          { name: "", designation: "", company: "", email: "", phone: "", relationship: "" },
+          { name: "", designation: "", company: "", email: "", phone: "", relationship: "" },
+        ],
+        resume: null,
+        coverLetter: null,
+        supportingDocs: null,
+        videoIntro: null,
+        declareTrue: false,
+        agree: false,
       });
 
-      if (response.ok) {
-        setForm({
-          name: '',
-          email: '',
-          phone: '',
-          currentLocation: '',
-          linkedin: '',
-          experience: '',
-          skills: '',
-          tools: '',
-          resume: null
-        });
-        const fileInput = document.getElementById('resume-upload');
-        if (fileInput) fileInput.value = '';
+      ["resume-upload", "cover-letter-upload", "supporting-docs-upload", "video-intro-upload"].forEach(
+        (id) => {
+          const input = document.getElementById(id);
+          if (input) input.value = "";
+        }
+      );
 
-        toast.success("Application submitted successfully! Resume sent.");
-
-        setTimeout(() => {
-          setIsSubmitting(false);
-          navigate('/careers');
-        }, 2000);
-      } else {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.detail || `HTTP error! status: ${response.status}`);
-      }
-    } catch (error) {
-      console.error('Error submitting:', error);
-      toast.error(`Submit failed: ${error.message}`);
-      setIsSubmitting(false);
+      setTimeout(() => navigate("/careers"), 2000);
+    } else {
+      const errorData = await res.json();
+      throw new Error(errorData.detail || `Failed with status ${res.status}`);
     }
-  };
+  } catch (err) {
+    toast.error(`Submission failed: ${err.message}`);
+    setIsSubmitting(false);
+  }
+};
+
 
   return (
     <div className="application-form-wrapper">
@@ -161,7 +405,7 @@ export default function ApplicationForm() {
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
-        newestOnTop={false}
+        newestOnTop
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
@@ -169,19 +413,23 @@ export default function ApplicationForm() {
         pauseOnHover
         theme="light"
         className="p-4"
-        toastClassName={() => "relative flex p-6 rounded-md justify-between cursor-pointer bg-white text-black"}
+        toastClassName={() =>
+          "relative flex p-6 rounded-md justify-between cursor-pointer bg-white text-black"
+        }
       />
 
-      {/* LEFT HALF: job details */}
-      {jobDetails && (
+      {/* Left panel: Job details */}
+      {state?.jobDescription && (
         <div className="job-details-section">
           <h2>Job Details</h2>
           <div className="job-details-content">
-            {Object.entries(jobDetails).map(([key, value]) => (
-              <div key={key} className="job-detail-item">
-                <h3 className="job-detail-title">{key}</h3>
+            {Object.entries(state.jobDescription).map(([section, items]) => (
+              <div key={section} className="job-detail-item">
+                <h3 className="job-detail-title">{section}</h3>
                 <ul className="job-detail-list">
-                  {value.split('\n').map((line, i) => line.trim() ? <li key={i}>{line}</li> : null)}
+                  {(Array.isArray(items) ? items : items.split("\n")).map(
+                    (item, i) => (item.trim() ? <li key={i}>{item}</li> : null)
+                  )}
                 </ul>
               </div>
             ))}
@@ -189,148 +437,759 @@ export default function ApplicationForm() {
         </div>
       )}
 
-      {/* RIGHT HALF: form container */}
+      {/* Right panel: Application form */}
       <div className="form-container">
-        {/* Back Button */}
         <button
           type="button"
-          className="btn btn-back btn-secondary"
-          style={{ marginBottom: '1rem' }}
+          className="btn-back"
           onClick={() => navigate(-1)}
           disabled={isSubmitting}
         >
           ← Back
         </button>
-
         <div className="form-header">
-          <h1>Apply for {state?.jobTitle ?? 'Position'}</h1>
+          <h1>
+            Apply for {(state?.jobTitle ?? form.roleAppliedFor) || "Position"}
+          </h1>
           <p>Please fill in your details below</p>
         </div>
 
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="form-grid">
-            <div className="form-group">
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Full Name *"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Email *"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                placeholder="Phone *"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                name="currentLocation"
-                value={form.currentLocation}
-                onChange={handleChange}
-                placeholder="Current Location *"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="url"
-                name="linkedin"
-                value={form.linkedin}
-                onChange={handleChange}
-                placeholder="LinkedIn Profile"
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="number"
-                name="experience"
-                value={form.experience}
-                onChange={handleChange}
-                placeholder="Years of Experience *"
-                required
-                min="0"
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="form-group full-width">
-              <textarea
-                name="skills"
-                value={form.skills}
-                onChange={handleChange}
-                placeholder="Key Skills *"
-                rows="3"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="form-group full-width">
-              <textarea
-                name="tools"
-                value={form.tools}
-                onChange={handleChange}
-                placeholder="Tools & Technologies"
-                rows="3"
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="form-group full-width">
-              <div className="file-input-wrapper">
-                <input
-                  type="file"
-                  name="resume"
-                  accept="application/pdf"
-                  onChange={handleChange}
-                  required
-                  disabled={isSubmitting}
-                  id="resume-upload"
-                />
-                <label htmlFor="resume-upload" className="file-input-label" tabIndex={0}>
-                  <span role="img" aria-label="document">📄</span> {form.resume ? form.resume.name : 'Upload Resume (PDF) *'}
-                </label>
-              </div>
-            </div>
-          </div>
-          <div className="form-actions">
-            <button
-              type="button"
-              className="btn-secondary"
-              onClick={() => navigate(-1)}
-              disabled={isSubmitting}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="btn-primary"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Submitting...' : 'Submit'}
-            </button>
-          </div>
-        </form>
+        {/* SINGLE FORM TAG - Remove the duplicate */}
+       <form onSubmit={handleSubmit}>
+  {/* Section 1: Basic Information */}
+  <fieldset>
+    <legend><h2>Section 1: Basic Information</h2></legend>
+
+    <input
+      type="text"
+      name="fullName"
+      value={form.fullName}
+      onChange={handleChange}
+      placeholder="Full Name (as per official ID) *"
+      required
+      disabled={isSubmitting}
+    />
+    <input
+      type="email"
+      name="email"
+      value={form.email}
+      onChange={handleChange}
+      placeholder="Email Address *"
+      required
+      disabled={isSubmitting}
+    />
+    <input
+      type="tel"
+      name="phone"
+      value={form.phone}
+      onChange={handleChange}
+      placeholder="Phone Number *"
+      required
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="currentCityCountry"
+      value={form.currentCityCountry}
+      onChange={handleChange}
+      placeholder="Current City & Country *"
+      required
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="preferredLocation"
+      value={form.preferredLocation}
+      onChange={handleChange}
+      placeholder='Preferred Location (if remote, write "Remote")'
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="nationality"
+      value={form.nationality}
+      onChange={handleChange}
+      placeholder="Nationality *"
+      required
+      disabled={isSubmitting}
+    />
+    <input
+      type="url"
+      name="linkedin"
+      value={form.linkedin}
+      onChange={handleChange}
+      placeholder="LinkedIn Profile URL"
+      disabled={isSubmitting}
+    />
+    <input
+      type="url"
+      name="portfolio"
+      value={form.portfolio}
+      onChange={handleChange}
+      placeholder="Portfolio/Website (if applicable)"
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="relevantLinks"
+      value={form.relevantLinks}
+      onChange={handleChange}
+      placeholder="GitHub / Behance / Other relevant links"
+      disabled={isSubmitting}
+    />
+  </fieldset>
+
+  {/* Section 2: Position Details */}
+  <fieldset>
+    <legend><h2>Section 2: Position Details</h2></legend>
+
+    <input
+      type="text"
+      name="roleAppliedFor"
+      value={form.roleAppliedFor}
+      onChange={handleChange}
+      placeholder="Role Applied For *"
+      required
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="department"
+      value={form.department}
+      onChange={handleChange}
+      placeholder="Department (e.g., Tech / Marketing / HR) *"
+      required
+      disabled={isSubmitting}
+    />
+
+    <div>
+      <span>Employment Type *</span><br />
+      <label>
+        <input
+          type="checkbox"
+          name="employmentType.fullTime"
+          checked={form.employmentType.fullTime}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Full-time
+      </label><br />
+      <label>
+        <input
+          type="checkbox"
+          name="employmentType.partTime"
+          checked={form.employmentType.partTime}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Part-time
+      </label><br />
+      <label>
+        <input
+          type="checkbox"
+          name="employmentType.freelanceContract"
+          checked={form.employmentType.freelanceContract}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Freelance / Contract
+      </label><br />
+      <label>
+        <input
+          type="checkbox"
+          name="employmentType.internship"
+          checked={form.employmentType.internship}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Internship
+      </label>
+    </div>
+
+    <input
+      type="date"
+      name="availableDate"
+      value={form.availableDate}
+      onChange={handleChange}
+      placeholder="Available Start Date"
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="expectedCTC"
+      value={form.expectedCTC}
+      onChange={handleChange}
+      placeholder="Expected CTC"
+      disabled={isSubmitting}
+    />
+    <input
+      type="number"
+      name="noticePeriod"
+      value={form.noticePeriod}
+      onChange={handleChange}
+      placeholder="Notice Period (days)"
+      min="0"
+      disabled={isSubmitting}
+    />
+
+    <div>
+      <span>Authorized to work?</span><br />
+      <label>
+        <input
+          type="radio"
+          name="authorizedWork"
+          value="true"
+          checked={form.authorizedWork === true}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Yes
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="authorizedWork"
+          value="false"
+          checked={form.authorizedWork === false}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> No
+      </label>
+    </div>
+
+    <div>
+      <span>Require sponsorship?</span><br />
+      <label>
+        <input
+          type="radio"
+          name="sponsorshipNeeded"
+          value="true"
+          checked={form.sponsorshipNeeded === true}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Yes
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="sponsorshipNeeded"
+          value="false"
+          checked={form.sponsorshipNeeded === false}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> No
+      </label>
+    </div>
+  </fieldset>
+
+  {/* Section 3: Education Background */}
+  <fieldset>
+    <legend><h2>Section 3: Education Background</h2></legend>
+    <p>Provide details of your highest qualification:</p>
+    
+    <input
+      type="text"
+      name="education[0].degree"
+      value={form.education[0]?.degree || ''}
+      onChange={e => {
+        const newEdu = [...form.education];
+        newEdu[0] = {...newEdu[0], degree: e.target.value };
+        setForm({...form, education: newEdu });
+      }}
+      placeholder="Degree / Certification"
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="education[0].institution"
+      value={form.education[0]?.institution || ''}
+      onChange={e => {
+        const newEdu = [...form.education];
+        newEdu[0] = {...newEdu[0], institution: e.target.value };
+        setForm({...form, education: newEdu });
+      }}
+      placeholder="Institution Name"
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="education[0].yearCompleted"
+      value={form.education[0]?.yearCompleted || ''}
+      onChange={e => {
+        const newEdu = [...form.education];
+        newEdu[0] = {...newEdu[0], yearCompleted: e.target.value };
+        setForm({...form, education: newEdu });
+      }}
+      placeholder="Year of Completion"
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="education[0].grade"
+      value={form.education[0]?.grade || ''}
+      onChange={e => {
+        const newEdu = [...form.education];
+        newEdu[0] = {...newEdu[0], grade: e.target.value };
+        setForm({...form, education: newEdu });
+      }}
+      placeholder="Grade / Percentage / CGPA"
+      disabled={isSubmitting}
+    />
+  </fieldset>
+
+  {/* Section 4: Work Experience */}
+  <fieldset>
+    <legend><h2>Section 4: Work Experience</h2></legend>
+    <p>Details of your latest experience:</p>
+    
+    <input
+      type="text"
+      name="experience[0].companyName"
+      value={form.experience[0]?.companyName || ''}
+      onChange={e => {
+        const newExp = [...form.experience];
+        newExp[0] = {...newExp[0], companyName: e.target.value };
+        setForm({...form, experience: newExp });
+      }}
+      placeholder="Company Name"
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="experience[0].jobTitle"
+      value={form.experience[0]?.jobTitle || ''}
+      onChange={e => {
+        const newExp = [...form.experience];
+        newExp[0] = {...newExp[0], jobTitle: e.target.value };
+        setForm({...form, experience: newExp });
+      }}
+      placeholder="Job Title"
+      disabled={isSubmitting}
+    />
+    <input
+      type="text"
+      name="experience[0].duration"
+      value={form.experience[0]?.duration || ''}
+      onChange={e => {
+        const newExp = [...form.experience];
+        newExp[0] = {...newExp[0], duration: e.target.value };
+        setForm({...form, experience: newExp });
+      }}
+      placeholder="Duration (From – To)"
+      disabled={isSubmitting}
+    />
+    <textarea
+      name="experience[0].responsibilities"
+      value={form.experience[0]?.responsibilities || ''}
+      onChange={e => {
+        const newExp = [...form.experience];
+        newExp[0] = {...newExp[0], responsibilities: e.target.value };
+        setForm({...form, experience: newExp });
+      }}
+      placeholder="Key Responsibilities and Achievements"
+      disabled={isSubmitting}
+      rows={4}
+    />
+    <input
+      type="text"
+      name="experience[0].reasonLeaving"
+      value={form.experience[0]?.reasonLeaving || ''}
+      onChange={e => {
+        const newExp = [...form.experience];
+        newExp[0] = {...newExp[0], reasonLeaving: e.target.value };
+        setForm({...form, experience: newExp });
+      }}
+      placeholder="Reason for Leaving"
+      disabled={isSubmitting}
+    />
+    
+    <input
+      type="number"
+      name="totalExperienceYears"
+      value={form.totalExperienceYears}
+      onChange={handleChange}
+      placeholder="Total Years of Experience"
+      min="0"
+      disabled={isSubmitting}
+    />
+    
+    <div>
+      <span>Currently employed?</span><br />
+      <label>
+        <input
+          type="radio"
+          name="currentlyEmployed"
+          value="true"
+          checked={form.currentlyEmployed === true}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Yes
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="currentlyEmployed"
+          value="false"
+          checked={form.currentlyEmployed === false}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> No
+      </label>
+    </div>
+    
+    <input
+      type="number"
+      name="ledTeams"
+      value={form.ledTeams}
+      onChange={handleChange}
+      placeholder="Have you led teams? How many members?"
+      min="0"
+      disabled={isSubmitting}
+    />
+  </fieldset>
+
+  {/* Section 5: Skills Assessment */}
+  <fieldset>
+    <legend><h2>Section 5: Skills Assessment</h2></legend>
+
+    <textarea
+      name="programmingLanguages"
+      value={form.programmingLanguages}
+      onChange={handleChange}
+      placeholder="Programming languages known (rate proficiency 1–5)"
+      disabled={isSubmitting}
+      rows={3}
+    />
+    <textarea
+      name="toolsTechnologies"
+      value={form.toolsTechnologies}
+      onChange={handleChange}
+      placeholder="Tools & Technologies proficient in"
+      disabled={isSubmitting}
+      rows={3}
+    />
+    <textarea
+      name="certifications"
+      value={form.certifications}
+      onChange={handleChange}
+      placeholder="Certifications (issuer and year)"
+      disabled={isSubmitting}
+      rows={2}
+    />
+    <textarea
+      name="projectSamples"
+      value={form.projectSamples}
+      onChange={handleChange}
+      placeholder="Project/code sample links or attachments"
+      disabled={isSubmitting}
+      rows={2}
+    />
+    
+    <div>
+      <span>Comfortable with cross-functional teams?</span><br />
+      <label>
+        <input
+          type="radio"
+          name="comfortableWithTeams"
+          value="true"
+          checked={form.comfortableWithTeams === true}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Yes
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="comfortableWithTeams"
+          value="false"
+          checked={form.comfortableWithTeams === false}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> No
+      </label>
+    </div>
+    
+    <div>
+      <span>Experience with Agile/Scrum methodologies?</span><br />
+      <label>
+        <input
+          type="radio"
+          name="agileExperience"
+          value="true"
+          checked={form.agileExperience === true}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Yes
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="agileExperience"
+          value="false"
+          checked={form.agileExperience === false}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> No
+      </label>
+    </div>
+  </fieldset>
+
+  {/* Section 6: Cultural and Behavioral Fit */}
+  <fieldset>
+    <legend><h2>Section 6: Cultural & Behavioral Fit</h2></legend>
+
+    <textarea
+      name="whyJoin"
+      value={form.whyJoin}
+      onChange={handleChange}
+      placeholder="Why do you want to join us?"
+      disabled={isSubmitting}
+      rows={3}
+    />
+    <textarea
+      name="careerGoals"
+      value={form.careerGoals}
+      onChange={handleChange}
+      placeholder="Career goals for next 3 years"
+      disabled={isSubmitting}
+      rows={3}
+    />
+    <textarea
+      name="feedbackHandling"
+      value={form.feedbackHandling}
+      onChange={handleChange}
+      placeholder="How do you handle feedback?"
+      disabled={isSubmitting}
+      rows={3}
+    />
+    <textarea
+      name="complexProblem"
+      value={form.complexProblem}
+      onChange={handleChange}
+      placeholder="Describe a time you solved a complex problem"
+      disabled={isSubmitting}
+      rows={4}
+    />
+    <textarea
+      name="idealWorkEnvironment"
+      value={form.idealWorkEnvironment}
+      onChange={handleChange}
+      placeholder="Describe your ideal work environment"
+      disabled={isSubmitting}
+      rows={3}
+    />
+    
+    <div>
+      <span>Open to relocation?</span><br />
+      <label>
+        <input
+          type="radio"
+          name="openToRelocation"
+          value="true"
+          checked={form.openToRelocation === true}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Yes
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="openToRelocation"
+          value="false"
+          checked={form.openToRelocation === false}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> No
+      </label>
+    </div>
+    
+    <div>
+      <span>Have you worked remote/hybrid?</span><br />
+      <label>
+        <input
+          type="radio"
+          name="remoteWorkExperience"
+          value="true"
+          checked={form.remoteWorkExperience === true}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> Yes
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="remoteWorkExperience"
+          value="false"
+          checked={form.remoteWorkExperience === false}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        /> No
+      </label>
+    </div>
+  </fieldset>
+
+  {/* Section 7: References */}
+  <fieldset>
+    <legend><h2>Section 7: References</h2></legend>
+
+    {form.references.map((refItem, idx) => (
+      <div key={idx} style={{ marginBottom: "1.5rem" }}>
+        <h4>Reference #{idx + 1}</h4>
+        <input
+          placeholder="Name"
+          type="text"
+          value={refItem.name}
+          onChange={e => {
+            const newRefs = [...form.references];
+            newRefs[idx] = { ...newRefs[idx], name: e.target.value };
+            setForm({...form, references: newRefs });
+          }}
+          disabled={isSubmitting}
+        />
+        <input
+          placeholder="Designation"
+          type="text"
+          value={refItem.designation}
+          onChange={e => {
+            const newRefs = [...form.references];
+            newRefs[idx] = { ...newRefs[idx], designation: e.target.value };
+            setForm({...form, references: newRefs });
+          }}
+          disabled={isSubmitting}
+        />
+        <input
+          placeholder="Company"
+          type="text"
+          value={refItem.company}
+          onChange={e => {
+            const newRefs = [...form.references];
+            newRefs[idx] = { ...newRefs[idx], company: e.target.value };
+            setForm({...form, references: newRefs });
+          }}
+          disabled={isSubmitting}
+        />
+        <input
+          placeholder="Email"
+          type="email"
+          value={refItem.email}
+          onChange={e => {
+            const newRefs = [...form.references];
+            newRefs[idx] = { ...newRefs[idx], email: e.target.value };
+            setForm({...form, references: newRefs });
+          }}
+          disabled={isSubmitting}
+        />
+        <input
+          placeholder="Phone"
+          type="tel"
+          value={refItem.phone}
+          onChange={e => {
+            const newRefs = [...form.references];
+            newRefs[idx] = { ...newRefs[idx], phone: e.target.value };
+            setForm({...form, references: newRefs });
+          }}
+          disabled={isSubmitting}
+        />
+        <input
+          placeholder="Relationship"
+          type="text"
+          value={refItem.relationship}
+          onChange={e => {
+            const newRefs = [...form.references];
+            newRefs[idx] = { ...newRefs[idx], relationship: e.target.value };
+            setForm({...form, references: newRefs });
+          }}
+          disabled={isSubmitting}
+        />
+      </div>
+    ))}
+  </fieldset>
+
+  {/* Section 8: Attachments */}
+  <fieldset>
+    <legend><h2>Section 8: Attachments</h2></legend>
+
+    <div className="file-input-wrapper">
+      <input
+        type="file"
+        name="resume"
+        id="resume-upload"
+        accept=".pdf"
+        onChange={handleChange}
+        required
+        disabled={isSubmitting}
+      />
+      <label htmlFor="resume-upload" className="file-input-label" tabIndex={0}>
+        📄 {form.resume ? form.resume.name : "Upload Resume (PDF, Max 5MB) *"}
+      </label>
+    </div>
+
+    <div className="file-input-wrapper" style={{ marginTop: "1rem" }}>
+      <input
+        type="file"
+        name="coverLetter"
+        id="cover-letter-upload"
+        accept=".pdf,.doc,.docx"
+        onChange={handleChange}
+        disabled={isSubmitting}
+      />
+      <label htmlFor="cover-letter-upload" className="file-input-label" tabIndex={0}>
+        📄 {form.coverLetter ? form.coverLetter.name : "Upload Cover Letter (PDF/DOC, Max 5MB) - Optional"}
+      </label>
+    </div>
+
+    <div className="file-input-wrapper" style={{ marginTop: "1rem" }}>
+      <input
+        type="file"
+        name="supportingDocs"
+        id="supporting-docs-upload"
+        accept=".pdf,.doc,.docx,.jpg,.png"
+        onChange={handleChange}
+        disabled={isSubmitting}
+      />
+      <label htmlFor="supporting-docs-upload" className="file-input-label" tabIndex={0}>
+        📎 {form.supportingDocs ? form.supportingDocs.name : "Upload Supporting Documents (PDF/DOC/Images, Max 10MB) - Optional"}
+      </label>
+    </div>
+
+  
+  </fieldset>
+
+  {/* Section 9: Declarations */}
+  <fieldset>
+    <legend><h2>Section 9: Declarations</h2></legend>
+
+    <label>
+      <input
+        type="checkbox"
+        name="declareTrue"
+        checked={form.declareTrue}
+        onChange={handleChange}
+        disabled={isSubmitting}
+        required
+      />
+      I hereby declare that the information provided is true and correct.
+    </label>
+
+    <label style={{ display: "block", marginTop: "0.5rem" }}>
+      <input
+        type="checkbox"
+        name="agree"
+        checked={form.agree}
+        onChange={handleChange}
+        disabled={isSubmitting}
+        required
+      />
+      I agree to allow the company to verify my background and references.
+    </label>
+  </fieldset>
+
+  {/* Form Actions */}
+  <div className="form-actions">
+    <button type="button" className="btn-secondary" disabled={isSubmitting} onClick={() => navigate(-1)}>
+      Cancel
+    </button>
+    <button type="submit" className="btn-primary" disabled={isSubmitting || !checkDeclarations()}>
+      {isSubmitting ? "Submitting..." : "Submit"}
+    </button>
+  </div>
+</form>
+
       </div>
     </div>
   );
