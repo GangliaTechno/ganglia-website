@@ -24,7 +24,7 @@ const jobData = [
     category: 'engineering',
     type: 'Internship',
     location: 'Manipal, Karnataka (In-Person)',
-    level: 'Student',
+    level: 'Junior',
     shortDescription:
       "Join Ganglia Technologies as a Back-end Developer Intern and get hands-on experience building the infrastructure behind our advanced biomedical and AI systems. You’ll be solving real-world problems, working on scalable server-side logic, and collaborating with a high-performance team in a fast-growing tech environment.",
     details: {
@@ -65,7 +65,7 @@ const jobData = [
     category: 'management', // or 'operations' if you want a custom category and filter for it
     type: 'Full-Time',
     location: 'Manipal, Karnataka',
-    level: 'Entry Level',
+    level: 'Junior',
     shortDescription:
       "Join Ganglia Technologies as an HR/Operations Executive and play a vital role in shaping our people and processes. From recruitment and documentation to supporting daily operations and maintaining company culture, this role is perfect for dynamic individuals who thrive in fast-paced, innovation-driven environments. Ideal for fresh graduates or early professionals ready to grow with a leading biomedical and AI company based in Manipal.",
     details: {
@@ -104,7 +104,7 @@ const jobData = [
     category: 'engineering',
     type: 'Internship',
     location: 'Manipal, Karnataka (Hybrid Options)',
-    level: 'Student',
+    level: 'Junior',
     shortDescription:
       "Kickstart your career in web development with a hands-on Front-end Developer Internship at Ganglia Technologies. You'll work alongside a dynamic tech team on real-world projects that power cutting-edge biomedical and AI applications. Learn, build, and innovate in an environment designed to accelerate your growth.",
     details: {
@@ -146,7 +146,7 @@ const jobData = [
     category: 'engineering',
     type: 'Internship',
     location: 'Manipal, Karnataka (Hybrid Options)',
-    level: 'Student',
+    level: 'Junior',
     shortDescription:
       "Ganglia Technologies is looking for passionate AI/ML Research Interns to join our R&D team. If you're excited about real-world applications of AI and want to contribute to impactful research in healthcare and technology, this internship offers a chance to collaborate on academic publications, cutting-edge experiments, and applied AI innovation.",
     details: {
@@ -188,7 +188,7 @@ const jobData = [
   category: 'engineering',
   type: 'Internship',
   location: 'Manipal, Karnataka (On-site)',
-  level: 'Student',
+  level: 'Junior',
   shortDescription:
     "Join Ganglia Technologies as a CAD Engineering Intern and take your design skills from concept to creation. Work alongside engineers and researchers on real hardware products in the biomedical and AI space. Gain hands-on experience in CAD modelling, prototyping, and product development in a fast-paced R&D environment.",
   details: {
@@ -231,7 +231,7 @@ const jobData = [
   category: 'design', // Could also be 'marketing' if you add that filter
   type: 'Internship',
   location: 'Manipal, Karnataka (Hybrid Options)',
-  level: 'Student',
+  level: 'Mid',
   shortDescription:
     "Looking to build a brand from the ground up? Join Ganglia Technologies as a mid-level Marketing Intern and work directly with company leadership to create a luxury brand—from logo to packaging to market entry strategy. Ideal for strategic, design-savvy individuals who want to leave their creative fingerprint on a bold, future-forward product line.",
   details: {
