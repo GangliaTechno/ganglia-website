@@ -12,7 +12,7 @@ const RoutePreloader = ({ isVisible }) => {
           alt="Loading..." 
           className="route-preloader-gif"
         />
-        <div className="route-loading-text">Loading page...</div>
+        <div className="route-loading-text"></div>
       </div>
     </div>
   );
