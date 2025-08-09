@@ -64,7 +64,7 @@ const TeamSection = () => {
     },
     {
       id: 8,
-      name: "Dr Jayaraj Mymbilly Balakrishnan",
+      name: "Dr Jayaraj M B",
       role: "Former Director",
       duration: "July 2022 - March 2025",
       image: team1,
