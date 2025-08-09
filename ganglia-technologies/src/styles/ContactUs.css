@@ -223,6 +223,30 @@
   margin-bottom: 0.5rem;
 }
 
+/* Contact Link Styles */
+.ganglia-contact-info a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: -2px -4px;
+}
+
+.ganglia-contact-info a:hover {
+  color: #3796ea;
+  background-color: rgba(55, 150, 234, 0.1);
+  text-decoration: underline;
+  transform: translateY(-1px);
+}
+
+.ganglia-contact-info a:active {
+  transform: translateY(0);
+  background-color: rgba(55, 150, 234, 0.2);
+}
+
 /* Working Hours Table */
 .ganglia-working-hours {
   border-collapse: collapse;
@@ -340,5 +364,16 @@
 
   .ganglia-contact-info h3 {
     font-size: 1.2rem;
+  }
+
+  /* Mobile-specific contact link styles */
+  .ganglia-contact-info a {
+    padding: 4px 6px;
+    margin: -4px -6px;
+    border-radius: 6px;
+  }
+
+  .ganglia-contact-info a:hover {
+    transform: none; /* Remove transform on mobile for better touch experience */
   }
 }

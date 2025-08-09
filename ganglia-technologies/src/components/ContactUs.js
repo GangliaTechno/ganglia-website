@@ -3,6 +3,7 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/ContactUs.css';
 
+
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -12,7 +13,9 @@ const ContactUs = () => {
     message: ''
   });
 
+
   const [isSubmitting, setIsSubmitting] = useState(false);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,9 +25,11 @@ const ContactUs = () => {
     }));
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
 
     // Prepare email content
     const emailSubject = `New Contact Form Submission - ${formData.subject}`;
@@ -43,16 +48,19 @@ const ContactUs = () => {
           <p><strong>How they heard about Ganglia:</strong> ${formData.howDidYouHear}</p>
         </div>
 
+
         <div style="background-color: #f0fff4; padding: 15px; border-radius: 5px; margin: 20px 0;">
           <h3 style="color: #2c3e50; margin-top: 0;">💬 MESSAGE</h3>
           <p style="white-space: pre-line; line-height: 1.6;">${formData.message}</p>
         </div>
+
 
         <div style="background-color: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0;">
           <h3 style="color: #2c3e50; margin-top: 0;">📞 NEXT STEPS</h3>
           <p>Please respond to <strong>${formData.email}</strong> to continue the conversation.</p>
           <p>Subject: Re: ${formData.subject}</p>
         </div>
+
 
         <hr style="border: none; border-top: 1px solid #dee2e6; margin: 30px 0;">
         
@@ -68,6 +76,7 @@ const ContactUs = () => {
       </div>
     `;
 
+
     try {
       const response = await fetch('https://tmmail.onrender.com/send-email/', {
         method: 'POST',
@@ -82,6 +91,7 @@ const ContactUs = () => {
         })
       });
 
+
       if (response.ok) {
         // Reset form
         setFormData({
@@ -92,12 +102,14 @@ const ContactUs = () => {
           message: ''
         });
 
+
         toast.success("Message sent successfully! We will get back to you soon.");
         
       } else {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
       }
+
 
     } catch (error) {
       console.error('Error sending message:', error);
@@ -106,6 +118,7 @@ const ContactUs = () => {
       setIsSubmitting(false);
     }
   };
+
 
   return (
     <>
@@ -123,6 +136,7 @@ const ContactUs = () => {
         className={'p-4'}
         toastClassName={() => "relative flex p-6 rounded-md justify-between cursor-pointer bg-white text-black"}
       />
+
 
       {/* Fixed background wrapper */}
       <div className="ganglia-contact-page-wrapper"></div>
@@ -205,8 +219,16 @@ const ContactUs = () => {
             
             <div className="ganglia-contact-info">
               <h3>Connect with us</h3>
-              <p>director@ganglia.in</p>
-              <p>(+91) 77600 42810</p>
+              <p>
+                <a href="mailto:director@ganglia.in" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  director@ganglia.in
+                </a>
+              </p>
+              <p>
+                <a href="tel:+917760042810" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  (+91) 77600 42810
+                </a>
+              </p>
               
               <h3>Address</h3>
               <p>
@@ -234,5 +256,6 @@ const ContactUs = () => {
     </>
   );
 };
+
 
 export default ContactUs;
