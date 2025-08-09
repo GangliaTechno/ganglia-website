@@ -15,59 +15,60 @@ const TeamSection = () => {
   const teamMembers = [
     {
       id: 1,
-      name: "Dr Jayaraj Mymbilly Balakrishnan",
-      role: "Co-founder",
-      image: team1,
-      linkedin: "https://www.linkedin.com/in/dr-jayaraj-mymbilly-balakrishnan-71a15b6/"
-    },
-    {
-      id: 2,
       name: "Dr Dasharathraj K Shetty",
       role: "Co-founder",
       image: team2,
       linkedin: "https://www.linkedin.com/in/dasharathraj/"
     },
     {
-      id: 3,
+      id: 2,
       name: "Dr Balakrishna S Maddodi",
       role: "Co-founder",
       image: team3,
       linkedin: "https://www.linkedin.com/in/dr-balakrishna-srinivas-maddodi-68874218/"
     },
     {
-      id: 4,
+      id: 3,
       name: "Dr Sandeep S Shenoy",
       role: "Director",
       image: team4,
       linkedin: null // Not available
     },
     {
-      id: 5,
+      id: 4,
       name: "Namesh Malarout",
       role: "CEO",
       image: team5,
       linkedin: "https://www.linkedin.com/in/namesh-malarout-97375697/"
     },
     {
-      id: 6,
+      id: 5,
       name: "Shreepathy Ranga Bhatta",
       role: "Director",
       image: team6,
       linkedin: "https://www.linkedin.com/in/shreepathy-ranga-bhatta-862a2b24a/"
     },
     {
-      id: 7,
+      id: 6,
       name: "Anusha Pai",
       role: "Director",
       image: team7,
       linkedin: "https://www.linkedin.com/in/anusha-pai-013b0213/"
     },
     {
-      id: 8,
+      id: 7,
       name: "Dr Manu Sudhi",
       role: "Director",
       image: team8,
       linkedin: "https://www.linkedin.com/in/dr-manu-sudhi-609296167/"
+    },
+    {
+      id: 8,
+      name: "Dr Jayaraj Mymbilly Balakrishnan",
+      role: "Former Director",
+      duration: "July 2022 - March 2025",
+      image: team1,
+      linkedin: "https://www.linkedin.com/in/dr-jayaraj-mymbilly-balakrishnan-71a15b6/"
     }
   ];
 
@@ -91,13 +92,11 @@ const TeamSection = () => {
               <div key={member.id} className="team-card">
                 <div className="team-image-container">
                   <div className="team-image-placeholder">
-                    {/* Replace placeholder with actual image */}
                     <img 
                       src={member.image} 
                       alt={member.name}
                       className="team-member-image"
                       onError={(e) => {
-                        // Fallback if image fails to load
                         e.target.style.display = 'none';
                         e.target.nextSibling.style.display = 'flex';
                       }}
@@ -120,6 +119,9 @@ const TeamSection = () => {
                 <div className="team-info">
                   <h3 className="team-name">{member.name}</h3>
                   <p className="team-role">{member.role}</p>
+                  {member.duration && (
+                    <p className="team-duration">{member.duration}</p>
+                  )}
                 </div>
               </div>
             ))}
