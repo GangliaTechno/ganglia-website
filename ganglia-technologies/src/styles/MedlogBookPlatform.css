@@ -683,6 +683,10 @@ body {
   transition: var(--transition-smooth);
   animation: slideInUp2 0.8s ease-out;
   animation-fill-mode: both;
+  height: 400px; /* Desktop height */
+  display: flex;
+  flex-direction: column;
+  padding: 0; /* Remove any default padding */
 }
 
 .premium-gallery-card2:nth-child(1) {
@@ -707,10 +711,13 @@ body {
 
 .gallery-card-img2 {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  height: 400px;
+  object-fit: contain; /* Changed from 'cover' to 'contain' */
+  object-position: center; /* Center the image properly */
   transition: var(--transition-smooth);
   background: var(--primary-gradient);
+  flex-shrink: 0;
+  padding: 10px; /* Add padding to ensure full image visibility */
 }
 
 .card-overlay2 {
@@ -1020,6 +1027,15 @@ body {
     font-size: 1.4rem;
     letter-spacing: 1px;
   }
+
+  .premium-gallery-card2 {
+    height: 280px; /* Match the image height */
+    padding: 0; /* Remove any internal padding */
+  }
+
+  .gallery-card-img2 {
+    height: 280px; /* Fill the entire card */
+  }
 }
 
 @media (max-width: 480px) {
@@ -1058,6 +1074,15 @@ body {
   .tagline-text2 {
     font-size: 1.2rem;
     letter-spacing: 0.5px;
+  }
+
+  .premium-gallery-card2 {
+    height: 250px; /* Match the image height */
+    padding: 0; /* Remove any internal padding */
+  }
+
+  .gallery-card-img2 {
+    height: 250px; /* Fill the entire card */
   }
 }
 
@@ -1113,4 +1138,94 @@ html {
   width: 100%;
   height: 100%;
   padding-top: 9px;
+}
+/* Enhanced Mobile Responsive Design */
+@media (max-width: 768px) {
+  .hero-content-container2 {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem; /* Reduced from 3rem */
+    padding: 1rem; /* Reduced padding */
+  }
+
+  .main-brand-title2 {
+    font-size: 2.2rem; /* Reduced from 3rem */
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .hero-description-text2 {
+    font-size: 1rem; /* Reduced font size */
+    margin-bottom: 1.5rem; /* Reduced margin */
+    line-height: 1.6;
+  }
+
+  .premium-discover-btn2 {
+    padding: 1rem 2.5rem; /* Smaller button */
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+
+  .avatar-glow-effect2 {
+    padding: 1rem; /* Reduced padding around image */
+    margin-bottom: 1rem;
+  }
+
+  .hero-showcase-zone2 {
+    min-height: 100vh; /* Ensure it fits in viewport */
+    padding: 1rem 0; /* Reduce top/bottom padding */
+  }
+
+  .brand-title-wrapper2 {
+    margin-bottom: 1rem; /* Reduced margin */
+  }
+
+  .title-underline2 {
+    width: 80px; /* Smaller underline */
+    margin-top: 0.5rem;
+  }
+
+  /* Make image container more compact */
+  .doctor-avatar-section2 {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-showcase-zone2 {
+    padding: 0.5rem 0; /* Even less padding on very small screens */
+  }
+
+  .hero-content-container2 {
+    gap: 1.5rem; /* Even smaller gap */
+    padding: 0.5rem;
+  }
+
+  .main-brand-title2 {
+    font-size: 1.8rem; /* Even smaller for very small screens */
+    line-height: 1.1;
+  }
+
+  .hero-description-text2 {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .premium-discover-btn2 {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .avatar-glow-effect2 {
+    padding: 0.8rem;
+  }
+
+  /* Ensure everything fits in single viewport */
+  .hero-showcase-zone2 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

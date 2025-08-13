@@ -12,6 +12,9 @@ import med8 from '../assets/medlog/med8.json';
 import med9 from '../assets/medlog/med9.json';
 import med10 from '../assets/medlog/med10.json';
 import med11  from '../assets/medlog/med11.json';
+import image1 from '../assets/medlog/medlogin.jpeg'
+import image2 from '../assets/medlog/medadmin.jpeg'
+import image3 from '../assets/medlog/medtask.jpeg'
 
 let medlog;
 try {
@@ -223,7 +226,7 @@ const MedlogBookPlatform = () => {
         <div className="gallery-cards-grid2">
           <div className="premium-gallery-card2 card-dashboard2">
             <div className="card-image-container2">
-              <img src="/api/placeholder/320/220" alt="Dashboard Preview" className="gallery-card-img2" />
+              <img src={image2} alt="Dashboard Preview" className="gallery-card-img2" />
               <div className="card-overlay2">
                 <div className="overlay-content2">
                   <h3 className="overlay-title2">Multi-User Dashboard</h3>
@@ -234,7 +237,7 @@ const MedlogBookPlatform = () => {
           </div>
           <div className="premium-gallery-card2 card-reporting2">
             <div className="card-image-container2">
-              <img src="/api/placeholder/320/220" alt="Voice Interface" className="gallery-card-img2" />
+              <img src={image3} alt="Voice Interface" className="gallery-card-img2" />
               <div className="card-overlay2">
                 <div className="overlay-content2">
                   <h3 className="overlay-title2">Voice-Enabled Entry</h3>
@@ -245,11 +248,11 @@ const MedlogBookPlatform = () => {
           </div>
           <div className="premium-gallery-card2 card-analytics2">
             <div className="card-image-container2">
-              <img src="/api/placeholder/320/220" alt="Analytics View" className="gallery-card-img2" />
+              <img src= {image1} alt="Analytics View" className="gallery-card-img2" />
               <div className="card-overlay2">
                 <div className="overlay-content2">
-                  <h3 className="overlay-title2">Performance Analytics</h3>
-                  <p className="overlay-description2">KPI tracking and learning insights</p>
+                  <h3 className="overlay-title2">Login Interface</h3>
+                  <p className="overlay-description2">Seemless Login and security</p>
                 </div>
               </div>
             </div>
