@@ -43,20 +43,11 @@
   right: 0;
   bottom: 0;
   background: radial-gradient(
-      circle at 20% 80%,
-      rgba(254, 154, 13, 0.3) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 40%,
-      rgba(255, 107, 53, 0.2) 0%,
-      transparent 50%
-    );
+    circle at 80% 20%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%
+  );
+  /* Removed all orange gradients completely */
   animation: heroBackgroundShift 20s ease-in-out infinite alternate;
 }
 
@@ -366,15 +357,11 @@
   right: 0;
   bottom: 0;
   background: radial-gradient(
-      circle at 10% 20%,
-      rgba(255, 107, 53, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      rgba(128, 203, 196, 0.1) 0%,
-      transparent 50%
-    );
+    circle at 90% 80%,
+    rgba(128, 203, 196, 0.1) 0%,
+    /* Keep teal */ transparent 50%
+  );
+  /* Removed orange gradient */
   animation: sectionBackgroundFloat 15s ease-in-out infinite alternate;
 }
 
@@ -1296,4 +1283,130 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+/* Enhanced Mobile Responsive Design for Trip Macha */
+@media (max-width: 768px) {
+  .tripmacha-page-hero {
+    min-height: 100vh;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tripmacha-page-content {
+    grid-template-columns: 1fr;
+    gap: 2rem; /* Reduced from 4rem */
+    text-align: center;
+    padding: 1.5rem 1rem; /* Reduced padding */
+  }
+
+  .tripmacha-title {
+    font-size: 2.5rem !important; /* Override clamp for mobile */
+    line-height: 1.1;
+    margin-bottom: 1rem; /* Reduced margin */
+  }
+
+  .tripmacha-page-description p {
+    font-size: 1rem !important; /* Override clamp for mobile */
+    margin-bottom: 1.5rem; /* Reduced margin */
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .tripmacha-page-btn {
+    padding: 1rem 2.5rem; /* Smaller button */
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .tripmacha-page-description .tripmacha-page-logo {
+    height: 50px; /* Smaller logo */
+    margin-bottom: 1rem; /* Reduced margin */
+  }
+
+  /* Make image container more compact */
+  .tripmacha-page-image {
+    order: -1; /* Move image above text on mobile */
+    margin-bottom: 1rem;
+  }
+
+  .tripmacha-page-image img {
+    max-height: 300px; /* Limit image height on mobile */
+    width: 90%;
+    max-width: 350px;
+  }
+
+  /* Reduce section padding for mobile */
+  .tripmacha-page-about,
+  .tripmacha-page-features,
+  .tripmacha-page-benefits,
+  .tripmacha-page-advantages,
+  .tripmacha-page-why-choose,
+  .tripmacha-page-how-it-works,
+  .tripmacha-page-pricing,
+  .tripmacha-page-final-cta {
+    padding: 4rem 2rem; /* Reduced from 6rem 2rem */
+  }
+}
+
+@media (max-width: 480px) {
+  .tripmacha-page-hero {
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .tripmacha-page-content {
+    gap: 1.5rem; /* Even smaller gap */
+    padding: 1rem 0.5rem; /* Minimal padding */
+  }
+
+  .tripmacha-title {
+    font-size: 2rem !important; /* Even smaller on very small screens */
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+  }
+
+  .tripmacha-page-description p {
+    font-size: 0.95rem !important;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .tripmacha-page-btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .tripmacha-page-description .tripmacha-page-logo {
+    height: 45px;
+    margin-bottom: 0.8rem;
+  }
+
+  .tripmacha-page-image img {
+    max-height: 250px; /* Even smaller image */
+    width: 95%;
+    max-width: 300px;
+  }
+
+  /* Further reduce section padding */
+  .tripmacha-page-about,
+  .tripmacha-page-features,
+  .tripmacha-page-benefits,
+  .tripmacha-page-advantages,
+  .tripmacha-page-why-choose,
+  .tripmacha-page-how-it-works,
+  .tripmacha-page-pricing,
+  .tripmacha-page-final-cta {
+    padding: 3rem 1rem; /* Further reduced */
+  }
+
+  /* Ensure hero section fits in viewport */
+  .tripmacha-page-hero {
+    min-height: 100vh;
+    max-height: 100vh; /* Prevent overflow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
