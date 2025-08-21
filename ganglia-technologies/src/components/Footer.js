@@ -157,8 +157,8 @@ const Footer = () => {
               <li><a href="#products" onClick={(e) => handleNavClick(e, 'products')}>Products</a></li>
               <li><a href="#services" onClick={(e) => handleNavClick(e, 'services')}>Services</a></li>
               <li><a href="#research" onClick={(e) => handleNavClick(e, 'research')}>Research</a></li>
-              <li><a href="#blog" onClick={(e) => handleNavClick(e, 'blog')}>Blog</a></li>
-              <li><a href="#awards" onClick={(e) => handleNavClick(e, 'awards')}>Awards & News</a></li>
+              {/* <li><a href="#blog" onClick={(e) => handleNavClick(e, 'blog')}>Blog</a></li> */}
+              {/* <li><a href="#awards" onClick={(e) => handleNavClick(e, 'awards')}>Awards & News</a></li> */}
             </ul>
           </div>
 

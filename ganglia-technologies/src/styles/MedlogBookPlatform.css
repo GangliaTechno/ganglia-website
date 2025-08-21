@@ -185,7 +185,7 @@ body {
 .main-brand-title2 {
   font-size: 4.5rem;
   font-weight: 800;
-  color: white;
+  color: rgba(255, 255, 255, 0.891);
   line-height: 1.1;
   letter-spacing: -0.02em;
   animation: typewriter2 2s steps(20) 0.5s both;
@@ -201,20 +201,20 @@ body {
 }
 
 .title-highlight2 {
-  background: linear-gradient(45deg, #fff, #e3f2fd);
+  background: linear-gradient(45deg, #ffffffec, #e3f2fd);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-  animation: glow2 2s ease-in-out infinite alternate;
+  text-shadow: 0 0 30px rgba(222, 222, 222, 0);
+  animation: glow1 2s ease-in-out infinite alternate;
 }
 
-@keyframes glow2 {
+@keyframes glow1 {
   from {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 10px rgba(191, 191, 191, 0.5);
   }
   to {
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 20px rgba(225, 225, 225, 0);
   }
 }
 
@@ -816,6 +816,8 @@ body {
   color: white;
   line-height: 1.1;
   animation: fadeInUp2 1s ease-out;
+  text-align: center;
+  margin-right: -50px;
 }
 
 .title-accent2 {
@@ -1227,5 +1229,38 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+/* Mobile View - Smaller text to keep "accountability" on same line */
+@media (max-width: 768px) {
+  .contact-main-title2 {
+    font-size: 1.8rem !important;
+    line-height: 1.1;
+    margin-right: 0 !important;
+    padding: 0 1rem;
+    white-space: nowrap; /* Prevent line breaks */
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-main-title2 {
+    font-size: 1.2rem !important; /* Much smaller for small phones */
+    line-height: 1.1;
+    white-space: nowrap;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .contact-main-title2 {
+    font-size: 1.2rem !important;
+    padding: 0 0.25rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .contact-main-title2 {
+    font-size: 1rem !important; /* Very small for older phones */
+    padding: 0;
   }
 }

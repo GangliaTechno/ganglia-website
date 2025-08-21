@@ -321,28 +321,26 @@ const Navbar = () => {
   };
 
   // Dropdown menu data (updated)
-  const aboutDropdownItems = [
-    {
-      category: 'Our Story',
-      link: '/our-story',
-      isHeader: true,
-      items: [
-        { label: 'Philosophy', link: 'our-story#philosophy-header' },
-        { label: 'Milestone', link: '/our-story#TechMilestonesTimeline' },
-        { label: 'Social Responsibility', link: '/our-story#social-responsibility-section' },
-      ],
-    },
-    {
-      category: 'Our Team',
-      link: '/our-team',
-      isHeader: true,
-      items: [
-        { label: 'Leadership Team', link: '/our-team#leadership-team', highlighted: true },
-        { label: 'Management Team', link: '/our-team#management-team', highlighted: true },
-        { label: 'Intern Team', link: '/our-team#founding-intern-team', highlighted: true },
-      ],
-    },
-  ];
+  // Dropdown menu data (updated - Our Team as direct link)
+const aboutDropdownItems = [
+  {
+    category: 'Our Story',
+    link: '/our-story',
+    isHeader: true,
+    items: [
+      { label: 'Philosophy', link: 'our-story#philosophy-header' },
+      { label: 'Milestone', link: '/our-story#TechMilestonesTimeline' },
+      { label: 'Social Responsibility', link: '/our-story#social-responsibility-section' },
+    ],
+  },
+  {
+    category: 'Our Team',
+    link: '/our-team',
+    isHeader: true,
+    items: [], // Empty items array - will just show the header as a clickable link
+  },
+];
+
 
   const productsDropdownItems = [
     {
