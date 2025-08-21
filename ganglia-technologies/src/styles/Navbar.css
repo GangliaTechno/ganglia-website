@@ -89,8 +89,6 @@
   transform: rotate(180deg);
 }
 
-
-
 /* Updated dropdown menu with better spacing and separators */
 .dropdown-menu {
   position: absolute;
@@ -601,4 +599,51 @@
   .navbar-blur-scrolled .logo-image {
     height: 55px;
   }
+}
+
+/* Quick fix to remove extra space in dropdown */
+/* Remove extra space when dropdown sections have empty items */
+.dropdown-section {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+/* When a dropdown category has no items, remove its bottom spacing */
+.dropdown-category:has(.dropdown-subsection:empty) {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.dropdown-category:has(.dropdown-subsection:empty)::after {
+  display: none;
+}
+
+/* For better browser compatibility, target last child specifically */
+.dropdown-category:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.dropdown-category:last-child::after {
+  display: none;
+}
+
+/* Hide empty subsections completely */
+.dropdown-subsection:empty {
+  display: none;
+}
+
+/* Adjust dropdown menu padding to reduce overall height */
+.dropdown-menu {
+  padding: 20px 20px 15px 20px; /* Reduced bottom padding */
+}
+
+/* Remove gap from dropdown section when last category is empty */
+.dropdown-section:has(
+    .dropdown-category:last-child .dropdown-subsection:empty
+  ) {
+  gap: 20px; /* Reduced gap */
 }

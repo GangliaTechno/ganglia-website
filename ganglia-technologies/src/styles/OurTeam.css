@@ -17,12 +17,20 @@ body {
   padding: 0 20px;
 }
 
+.ourteam-hero-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2c5282;
+  padding-top: 50px;
+}
+
 /* Hero Section */
 .ourteam-hero-section {
   background-color: #000426;
   color: white;
   padding: 80px 0 60px;
   text-align: center;
+  margin-top: -50px;
 }
 
 .ourteam-hero-section h1 {
@@ -37,7 +45,7 @@ body {
 
 .ourteam-hero-content {
   max-width: 900px;
-  margin: 0 auto 60px;
+  margin: 0 auto 10px;
 }
 
 .ourteam-hero-content p {
@@ -77,7 +85,7 @@ body {
   font-size: 2.5rem;
   font-weight: 600;
   color: #2c5282;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 /* Founding Team Grid */
@@ -558,4 +566,132 @@ body {
 /* Previous Intern Team Section */
 .ourteam-previous-intern-section {
   background-color: #f3f4f7;
+}
+
+/* Load More Button Styles */
+.ourteam-load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  padding: 20px 0;
+}
+
+.ourteam-load-more-btn {
+  background: linear-gradient(90deg, #64b5f6, #81e4f9);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(100, 181, 246, 0.3);
+}
+
+.ourteam-load-more-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(100, 181, 246, 0.4);
+  background: linear-gradient(90deg, #64b5f6, #81e4f9);
+}
+
+.ourteam-load-more-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ourteam-mini-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: ourteam-spin 1s linear infinite;
+}
+
+/* Responsive adjustments for the button */
+@media (max-width: 768px) {
+  .ourteam-load-more-btn {
+    padding: 14px 28px;
+    font-size: 1rem;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ourteam-load-more-btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    min-width: 160px;
+  }
+}
+/* Hero Section - Adjusted spacing */
+.ourteam-hero-section {
+  background-color: #000426;
+  color: white;
+  padding: 80px 0 20px; /* Reduced bottom padding from 60px to 20px */
+  text-align: center;
+  margin-top: -50px;
+}
+
+.ourteam-hero-section h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-top: 50px;
+  margin-bottom: 0px; /* Reduced from 40px to 20px */
+  color: transparent;
+  background: linear-gradient(90deg, #64b5f6, #81e4f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ourteam-hero-content {
+  max-width: 900px;
+  margin: 0 auto 10px; /* Increased from 10px to 30px for better spacing with subtitle */
+}
+
+.ourteam-section-subtitle {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #64b5f6;
+  margin-bottom: 10px;
+  margin-top: 10px; /* Added small top margin for better spacing */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ourteam-hero-section {
+    padding: 60px 0 30px; /* Reduced bottom padding on mobile */
+  }
+
+  .ourteam-hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px; /* Reduced margin on mobile */
+  }
+
+  .ourteam-hero-content {
+    margin: 0 auto 25px; /* Adjusted margin for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .ourteam-hero-section {
+    padding: 50px 0 25px; /* Further reduced padding on small screens */
+  }
+
+  .ourteam-hero-section h1 {
+    font-size: 2rem;
+    margin-bottom: 12px; /* Further reduced margin on small screens */
+  }
+
+  .ourteam-hero-content {
+    margin: 0 auto 20px; /* Adjusted margin for small screens */
+  }
 }

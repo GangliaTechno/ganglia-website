@@ -277,13 +277,13 @@ const MedlogBookPlatform = () => {
             </p>
             <div className="contact-title-section2">
               <h2 className="contact-main-title2">
-                <span className="title-accent2"> Innovation.Accountability.<br/>Security.</span>Delivered.
+                <span className="title-accent2"> Security.Innovation.Accountability.</span><br/>Delivered.
               </h2>
             </div>
-            <button className="ultra-premium-submit-btn2">
-              <span className="submit-btn-text2">Get Started</span>
+            {/* <button className="ultra-premium-submit-btn2">
+              <span className="submit-btn-text2">Let's Talk</span>
               <div className="submit-btn-ripple2"></div>
-            </button>
+            </button> */}
           </div>
         </div>
       </section>

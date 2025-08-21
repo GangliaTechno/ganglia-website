@@ -126,7 +126,7 @@
 }
 .anushtaan-hero-left {
   width: 60%;
-  text-align: right;
+  text-align: center;
   padding-right: 2px;
 }
 .anushtaan-hero-left h1 {
@@ -330,11 +330,13 @@
   font-size: 40px;
   font-weight: 700;
   margin-bottom: 24px;
+  text-align: center;
 }
 .anushtaan-about-left p {
   font-size: 18px;
   line-height: 1.75;
   margin-bottom: 24px;
+  text-align: center;
 }
 .anushtaan-about-features {
   width: 45%;
