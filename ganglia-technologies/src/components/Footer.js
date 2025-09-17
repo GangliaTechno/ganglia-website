@@ -111,9 +111,9 @@ const Footer = () => {
         <div className="footer-center">
           <div className="footer-section headquarters">
             <h3>Headquarters</h3>
-            <p>Manipal Government of Karnataka Bioincubator,</p>
-            <p>III Floor MAHE Advanced Research Centre Behind MMMC,</p>
-            <p>Manipal, Karnataka 576104</p>
+            <p>IS/CWI/008, Manipal GoK Bio-incubator,</p>
+            <p>3rd Floor, Advanced Research Centre, Madhav Nagar, </p>
+            <p>Manipal, Udupi, Karnataka, India - 576104</p>
           </div>
 
           <div className="footer-contact">
