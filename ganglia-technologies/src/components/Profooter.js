@@ -92,9 +92,9 @@ const Profooter = () => {
         <div className="profooter-center">
           <div className="profooter-section headquarters">
             <h3>Headquarters</h3>
-            <p>Manipal Government of Karnataka Bioincubator,</p>
-            <p>III Floor MAHE Advanced Research Centre Behind MMMC,</p>
-            <p>Manipal, Karnataka 576104</p>
+            <p>IS/CWI/008, Manipal GoK Bio-incubator,</p>
+            <p>3rd Floor, Advanced Research Centre, Madhav Nagar,</p>
+            <p>Manipal, Udupi, Karnataka, India - 576104</p>
           </div>
           <div className="profooter-contact footer-contact">
             <div className="contact-item">
