@@ -234,8 +234,7 @@ const ContactUs = () => {
               <p>
                 IS/CWI/008, Manipal GoK Bio-incubator,<br />
                 3rd Floor, Advanced Research Centre, Madhav Nagar, <br />
-                Manipal, Udupi,<br />
-                Karnataka, India - 576104
+                Manipal, Udupi, Karnataka, India - 576104<br />
               </p>
               
               <h3>Working Hours</h3>
