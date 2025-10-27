@@ -68,8 +68,8 @@ const jobData = [
     skills: ['Node.js', 'Python', 'Java', 'SQL', 'MongoDB', 'APIs', 'Git'],
     applicationTimeline: {
       applicationsOpen: '2025-08-08',
-      finalDeadline: '2025-10-27',
-      programStarts: '2025-11-15'
+      finalDeadline: '2025-11-27',
+      programStarts: '2025-12-15'
     }
   },
    {
@@ -107,8 +107,8 @@ const jobData = [
     skills: ['Recruitment', 'Communication', 'Time Management', 'HR Documentation', 'Event Planning'],
     applicationTimeline: {
       applicationsOpen: '2025-08-08',  // Placeholder dates, adjust as needed
-      finalDeadline: '2025-10-27',
-      programStarts: '2025-11-01'
+      finalDeadline: '2025-11-27',
+      programStarts: '2025-12-01'
     }
   },
   {
@@ -149,8 +149,8 @@ const jobData = [
     skills: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'Git', 'REST APIs'],
     applicationTimeline: {
       applicationsOpen: '2025-08-08', // Placeholder, adjust if needed
-      finalDeadline: '2025-10-27',
-      programStarts: '2025-11-15'
+      finalDeadline: '2025-11-27',
+      programStarts: '2025-12-15'
     }
   },
     {
@@ -191,8 +191,8 @@ const jobData = [
     skills: ['Python', 'Machine Learning', 'TensorFlow', 'PyTorch', 'Research', 'Data Science', 'Academic Writing'],
     applicationTimeline: {
       applicationsOpen: '2025-08-08',
-      finalDeadline: '2025-10-27',
-      programStarts: '2025-11-15'
+      finalDeadline: '2025-11-27',
+      programStarts: '2025-12-15'
     }
   },
   {
@@ -234,8 +234,8 @@ const jobData = [
   skills: ['CAD', 'SolidWorks', 'Fusion 360', 'AutoCAD', 'CATIA', '3D Modelling', 'DFM'],
   applicationTimeline: {
     applicationsOpen: '2025-08-08',
-    finalDeadline: '2025-10-27',
-    programStarts: '2025-11-01'
+    finalDeadline: '2025-11-27',
+    programStarts: '2025-12-01'
   }
 },
 {
@@ -279,8 +279,8 @@ const jobData = [
   skills: ['Branding', 'Graphic Design', 'Marketing Strategy', 'Figma', 'Adobe Creative Suite', 'Social Media', 'Packaging Design'],
   applicationTimeline: {
     applicationsOpen: '2025-08-08',
-    finalDeadline: '2025-10-27',
-    programStarts: '2025-11-01'
+    finalDeadline: '2025-11-27',
+    programStarts: '2025-12-01'
   }
 }
 // Add other jobs here in same format if needed
