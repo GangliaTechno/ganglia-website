@@ -78,7 +78,7 @@ const ContactUs = () => {
 
 
     try {
-      const response = await fetch('https://tmmail-ma7w.onrender.com/send-email/', {
+      const response = await fetch('https://tmmail.ganglia.in:8000/send-email/', {
         method: 'POST',
         headers: {
           'accept': 'application/json',

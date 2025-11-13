@@ -352,7 +352,7 @@ export default function ApplicationForm() {
 
 
     // **CHANGED**: Updated endpoint URL
-    const res = await fetch("https://tmmail-ma7w.onrender.com/send-email-with-multiple-files/", {
+    const res = await fetch("https://tmmail.ganglia.in:8000/send-email-with-multiple-files/", {
       method: "POST",
       body: formData,
     });

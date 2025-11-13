@@ -332,7 +332,7 @@ function InternshipForm() {
         emailFormData.append('files', videoFile);
       }
 
-      const response = await fetch('https://tmmail-ma7w.onrender.com/send-email-with-multiple-files/', {
+      const response = await fetch('https://tmmail.ganglia.in:8000/send-email-with-multiple-files/', {
         method: 'POST',
         body: emailFormData
       });
