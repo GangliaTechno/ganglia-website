@@ -11,7 +11,7 @@ import team3 from '../assets/founders/team3.jpeg';
 import team4 from '../assets/founders/team4.jpeg';
 import team5 from '../assets/founders/team5.jpeg';
 import team6 from '../assets/founders/team6.jpeg';
-import team7 from '../assets/founders/team7.jpeg';
+import team7 from '../assets/founders/team7.jpg';
 import team8 from '../assets/founders/team8.jpeg';
 
 /* ───── Lazy-load base-64 images only when they scroll into view ──── */
