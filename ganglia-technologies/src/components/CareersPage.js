@@ -69,13 +69,13 @@ const jobData = [
     applicationTimeline: {
       applicationsOpen: '2025-08-08',
       finalDeadline: '2025-11-28',
-      programStarts: '2026-12-15'
+      programStarts: '2026-01-02'
     }
   },
    {
     id: 'hr-operations-executive',
     title: 'HR/Operations Executive',
-    category: 'management', // or 'operations' if you want a custom category and filter for it
+    category: 'management', 
     type: 'Full-Time',
     location: 'Manipal, Karnataka',
     level: 'Entry Level',
@@ -106,9 +106,9 @@ const jobData = [
     posted: ' ',
     skills: ['Recruitment', 'Communication', 'Time Management', 'HR Documentation', 'Event Planning'],
     applicationTimeline: {
-      applicationsOpen: '2025-08-08',  // Placeholder dates, adjust as needed
+      applicationsOpen: '2025-08-08',  
       finalDeadline: '2025-11-28',
-      programStarts: '2025-12-01'
+      programStarts: '2026-01-02'
     }
   },
   {
@@ -148,9 +148,9 @@ const jobData = [
     posted: ' ',
     skills: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'Git', 'REST APIs'],
     applicationTimeline: {
-      applicationsOpen: '2025-08-08', // Placeholder, adjust if needed
+      applicationsOpen: '2025-08-08', 
       finalDeadline: '2025-11-28',
-      programStarts: '2025-12-15'
+      programStarts: '2026-01-02'
     }
   },
     {
@@ -192,7 +192,7 @@ const jobData = [
     applicationTimeline: {
       applicationsOpen: '2025-08-08',
       finalDeadline: '2025-11-28',
-      programStarts: '2025-12-15'
+      programStarts: '2026-01-02'
     }
   },
   {
@@ -235,7 +235,7 @@ const jobData = [
   applicationTimeline: {
     applicationsOpen: '2025-08-08',
     finalDeadline: '2025-11-28',
-    programStarts: '2025-12-01'
+    programStarts: '2026-01-02'
   }
 },
 {
@@ -280,7 +280,7 @@ const jobData = [
   applicationTimeline: {
     applicationsOpen: '2025-08-08',
     finalDeadline: '2025-11-28',
-    programStarts: '2025-12-01'
+    programStarts: '2026-01-02'
   }
 }
 // Add other jobs here in same format if needed
