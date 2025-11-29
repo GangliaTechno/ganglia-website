@@ -3,8 +3,6 @@ import '../styles/CareersPage.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logob.png';
 import { useRouteLoader } from '../hooks/useRouteLoader';
-// Removed Firebase imports since we use hardcoded data instead
-
 import { Player } from '@lottiefiles/react-lottie-player';
 import innovation from '../assets/innovation.json';
 import learning from '../assets/learning.json';
@@ -16,7 +14,8 @@ import collaborationSpacesImg from '../assets/collaborationspaces.jpg';
 import launch from '../assets/Firecracker.json';
 import teach from '../assets/Classroom.json';
 import globe from '../assets/globe.json';
-// ADD this debounce utility BEFORE the jobData array
+
+// debounce
 const debounce = (func, wait) => {
   let timeout;
   return function executedFunction(...args) {
@@ -29,7 +28,7 @@ const debounce = (func, wait) => {
   };
 };
 
-// Hardcoded Jobs Array as per your provided data format
+// Hardcoded Jobs Array (still used by timeline)
 const jobData = [
   {
     id: 'backend-intern-2026',
@@ -72,10 +71,10 @@ const jobData = [
       programStarts: '2026-01-02'
     }
   },
-   {
+  {
     id: 'hr-operations-executive',
     title: 'HR/Operations Executive',
-    category: 'management', 
+    category: 'management',
     type: 'Full-Time',
     location: 'Manipal, Karnataka',
     level: 'Entry Level',
@@ -106,7 +105,7 @@ const jobData = [
     posted: ' ',
     skills: ['Recruitment', 'Communication', 'Time Management', 'HR Documentation', 'Event Planning'],
     applicationTimeline: {
-      applicationsOpen: '2025-08-08',  
+      applicationsOpen: '2025-08-08',
       finalDeadline: '2025-11-28',
       programStarts: '2026-01-02'
     }
@@ -148,12 +147,12 @@ const jobData = [
     posted: ' ',
     skills: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'Git', 'REST APIs'],
     applicationTimeline: {
-      applicationsOpen: '2025-08-08', 
+      applicationsOpen: '2025-08-08',
       finalDeadline: '2025-11-28',
       programStarts: '2026-01-02'
     }
   },
-    {
+  {
     id: 'aiml-intern-rd-2026',
     title: 'AI/ML Engineering Intern - R&D',
     category: 'engineering',
@@ -196,163 +195,133 @@ const jobData = [
     }
   },
   {
-  id: 'cad-engineering-intern',
-  title: 'CAD Engineering Intern',
-  category: 'engineering',
-  type: 'Internship',
-  location: 'Manipal, Karnataka (On-site)',
-  level: 'Entry Level',
-  shortDescription:
-    "Join Ganglia Technologies as a CAD Engineering Intern and take your design skills from concept to creation. Work alongside engineers and researchers on real hardware products in the biomedical and AI space. Gain hands-on experience in CAD modelling, prototyping, and product development in a fast-paced R&D environment.",
-  details: {
-    "Eligibility Conditions & Duration": [
-      "Open to UG/PG students in Mechanical Engineering, Mechatronics, Product Design, or related fields.",
-      "Applicants must have prior exposure to 3D CAD modelling and technical drawings.",
-      "Internship duration: Minimum 60 days, extendable based on performance and design cycles.",
-      "Candidates must be comfortable working on-site in a lab-based hardware environment at Manipal, Karnataka."
-    ],
-    "Project Responsibilities": [
-      "Design, modify, and review 3D CAD models for biomedical and R&D hardware products.",
-      "Create technical drawings, assembly diagrams, and exploded views for prototyping and production.",
-      "Collaborate with the engineering and R&D team to convert concepts into manufacturable components.",
-      "Participate in hardware prototyping, testing, and iterative improvements.",
-      "Maintain version control of CAD files and assist with BOM (Bill of Materials) documentation."
-    ],
-    "General Information": [
-      "Only Indian nationals are eligible for this internship.",
-      "Internship is on-site at Ganglia Technologies, Manipal.",
-      "Interns must bring their own laptops (with design software installed if applicable) and be available for at least 5 hours/day."
-    ],
-    "Skills Required": [
-      "Proficiency in at least one CAD tool: SolidWorks, Fusion 360, AutoCAD, or CATIA.",
-      "Understanding of design for manufacturing (DFM) principles and tolerance analysis.",
-      "Familiarity with 3D printing, CNC machining, or hardware prototyping workflows is a strong plus.",
-      "Bonus: Experience with simulation tools, sheet metal design, or medical device components."
-    ]
+    id: 'cad-engineering-intern',
+    title: 'CAD Engineering Intern',
+    category: 'engineering',
+    type: 'Internship',
+    location: 'Manipal, Karnataka (On-site)',
+    level: 'Entry Level',
+    shortDescription:
+      "Join Ganglia Technologies as a CAD Engineering Intern and take your design skills from concept to creation. Work alongside engineers and researchers on real hardware products in the biomedical and AI space. Gain hands-on experience in CAD modelling, prototyping, and product development in a fast-paced R&D environment.",
+    details: {
+      "Eligibility Conditions & Duration": [
+        "Open to UG/PG students in Mechanical Engineering, Mechatronics, Product Design, or related fields.",
+        "Applicants must have prior exposure to 3D CAD modelling and technical drawings.",
+        "Internship duration: Minimum 60 days, extendable based on performance and design cycles.",
+        "Candidates must be comfortable working on-site in a lab-based hardware environment at Manipal, Karnataka."
+      ],
+      "Project Responsibilities": [
+        "Design, modify, and review 3D CAD models for biomedical and R&D hardware products.",
+        "Create technical drawings, assembly diagrams, and exploded views for prototyping and production.",
+        "Collaborate with the engineering and R&D team to convert concepts into manufacturable components.",
+        "Participate in hardware prototyping, testing, and iterative improvements.",
+        "Maintain version control of CAD files and assist with BOM (Bill of Materials) documentation."
+      ],
+      "General Information": [
+        "Only Indian nationals are eligible for this internship.",
+        "Internship is on-site at Ganglia Technologies, Manipal.",
+        "Interns must bring their own laptops (with design software installed if applicable) and be available for at least 5 hours/day."
+      ],
+      "Skills Required": [
+        "Proficiency in at least one CAD tool: SolidWorks, Fusion 360, AutoCAD, or CATIA.",
+        "Understanding of design for manufacturing (DFM) principles and tolerance analysis.",
+        "Familiarity with 3D printing, CNC machining, or hardware prototyping workflows is a strong plus.",
+        "Bonus: Experience with simulation tools, sheet metal design, or medical device components."
+      ]
+    },
+    posted: ' ',
+    skills: ['CAD', 'SolidWorks', 'Fusion 360', 'AutoCAD', 'CATIA', '3D Modelling', 'DFM'],
+    applicationTimeline: {
+      applicationsOpen: '2025-08-08',
+      finalDeadline: '2025-11-28',
+      programStarts: '2026-01-02'
+    }
   },
-  posted: ' ',
-  skills: ['CAD', 'SolidWorks', 'Fusion 360', 'AutoCAD', 'CATIA', '3D Modelling', 'DFM'],
-  applicationTimeline: {
-    applicationsOpen: '2025-08-08',
-    finalDeadline: '2025-11-28',
-    programStarts: '2026-01-02'
+  {
+    id: 'marketing-branding-intern',
+    title: 'Marketing/Branding Intern',
+    category: 'design',
+    type: 'Internship',
+    location: 'Manipal, Karnataka (Hybrid Options)',
+    level: 'Mid',
+    shortDescription:
+      "Looking to build a brand from the ground up? Join Ganglia Technologies as a mid-level Marketing Intern and work directly with company leadership to create a luxury brand—from logo to packaging to market entry strategy. Ideal for strategic, design-savvy individuals who want to leave their creative fingerprint on a bold, future-forward product line.",
+    details: {
+      "Eligibility Conditions & Duration": [
+        "Open to students or recent graduates from Design, Marketing, Branding, Mass Communication, or Business Strategy backgrounds.",
+        "Must have portfolio or prior experience in branding, product design, or marketing campaigns (academic or freelance).",
+        "Duration: Minimum 90 days, with high-performance interns eligible for extended projects and leadership grooming.",
+        "Must be able to dedicate at least 25 hours/week and work closely with the board members and creative leads."
+      ],
+      "Key Responsibilities": [
+        "Assist in developing luxury product brands from scratch – including brand identity, brand story, logo, logo-marks, and brand guidelines.",
+        "Work on product and packaging design for high-end product segments in healthcare, wellness, and tech-enabled goods.",
+        "Co-develop the Market Entry Strategy, including competitor analysis, brand positioning, and go-to-market plans.",
+        "Design and implement Social Media Strategy across platforms (Instagram, LinkedIn, Substack, X, etc.) – covering both organic and paid initiatives.",
+        "Collaborate with stakeholders across design, R&D, and marketing to ensure brand consistency and quality.",
+        "Contribute to the preparation of marketing pitches, investor decks, and campaign rollout calendars."
+      ],
+      "General Information": [
+        "Only Indian nationals are eligible for this internship.",
+        "Hybrid format available: Internship can be pursued remotely with regular online meetings, or from the Ganglia HQ in Manipal, Karnataka.",
+        "Interns must maintain high-quality, timely communication and provide weekly progress updates.",
+        "Certificate of Internship, Letter of Recommendation, and strong portfolio projects upon completion. PPO opportunity available."
+      ],
+      "Skills Required": [
+        "Proficiency in branding, graphic design, or marketing strategy.",
+        "Hands-on experience with tools such as Figma, Adobe Creative Suite, Canva, or similar.",
+        "Understanding of luxury branding, visual storytelling, and packaging trends.",
+        "Bonus: Familiarity with content calendars, digital ads, and consumer psychology."
+      ]
+    },
+    posted: ' ',
+    skills: ['Branding', 'Graphic Design', 'Marketing Strategy', 'Figma', 'Adobe Creative Suite', 'Social Media', 'Packaging Design'],
+    applicationTimeline: {
+      applicationsOpen: '2025-08-08',
+      finalDeadline: '2025-11-28',
+      programStarts: '2026-01-02'
+    }
   }
-},
-{
-  id: 'marketing-branding-intern',
-  title: 'Marketing/Branding Intern',
-  category: 'design', // Could also be 'marketing' if you add that filter
-  type: 'Internship',
-  location: 'Manipal, Karnataka (Hybrid Options)',
-  level: 'Mid',
-  shortDescription:
-    "Looking to build a brand from the ground up? Join Ganglia Technologies as a mid-level Marketing Intern and work directly with company leadership to create a luxury brand—from logo to packaging to market entry strategy. Ideal for strategic, design-savvy individuals who want to leave their creative fingerprint on a bold, future-forward product line.",
-  details: {
-    "Eligibility Conditions & Duration": [
-      "Open to students or recent graduates from Design, Marketing, Branding, Mass Communication, or Business Strategy backgrounds.",
-      "Must have portfolio or prior experience in branding, product design, or marketing campaigns (academic or freelance).",
-      "Duration: Minimum 90 days, with high-performance interns eligible for extended projects and leadership grooming.",
-      "Must be able to dedicate at least 25 hours/week and work closely with the board members and creative leads."
-    ],
-    "Key Responsibilities": [
-      "Assist in developing luxury product brands from scratch – including brand identity, brand story, logo, logo-marks, and brand guidelines.",
-      "Work on product and packaging design for high-end product segments in healthcare, wellness, and tech-enabled goods.",
-      "Co-develop the Market Entry Strategy, including competitor analysis, brand positioning, and go-to-market plans.",
-      "Design and implement Social Media Strategy across platforms (Instagram, LinkedIn, Substack, X, etc.) – covering both organic and paid initiatives.",
-      "Collaborate with stakeholders across design, R&D, and marketing to ensure brand consistency and quality.",
-      "Contribute to the preparation of marketing pitches, investor decks, and campaign rollout calendars."
-    ],
-    "General Information": [
-      "Only Indian nationals are eligible for this internship.",
-      "Hybrid format available: Internship can be pursued remotely with regular online meetings, or from the Ganglia HQ in Manipal, Karnataka.",
-      "Interns must maintain high-quality, timely communication and provide weekly progress updates.",
-      "Certificate of Internship, Letter of Recommendation, and strong portfolio projects upon completion. PPO opportunity available."
-    ],
-    "Skills Required": [
-      "Proficiency in branding, graphic design, or marketing strategy.",
-      "Hands-on experience with tools such as Figma, Adobe Creative Suite, Canva, or similar.",
-      "Understanding of luxury branding, visual storytelling, and packaging trends.",
-      "Bonus: Familiarity with content calendars, digital ads, and consumer psychology."
-    ]
-  },
-  posted: ' ',
-  skills: ['Branding', 'Graphic Design', 'Marketing Strategy', 'Figma', 'Adobe Creative Suite', 'Social Media', 'Packaging Design'],
-  applicationTimeline: {
-    applicationsOpen: '2025-08-08',
-    finalDeadline: '2025-11-28',
-    programStarts: '2026-01-02'
-  }
-}
-// Add other jobs here in same format if needed
-
 ];
 
- // Images for carousel, you can add more images here
-  const carouselImages = [
-    { src: developmentTeamImg, alt: 'Development Team', title: 'Development Team' },
-    { src: researchLabImg, alt: 'Research Lab', title: 'Research Lab' },
-    { src: designStudioImg, alt: 'Design Studio', title: 'Design Studio' },
-    { src: collaborationSpacesImg, alt: 'Collaboration Spaces', title: 'Collaboration Spaces' },
-    // Add more image objects here if needed
-  ];
-  
-
+// Carousel images
+const carouselImages = [
+  { src: developmentTeamImg, alt: 'Development Team', title: 'Development Team' },
+  { src: researchLabImg, alt: 'Research Lab', title: 'Research Lab' },
+  { src: designStudioImg, alt: 'Design Studio', title: 'Design Studio' },
+  { src: collaborationSpacesImg, alt: 'Collaboration Spaces', title: 'Collaboration Spaces' }
+];
 
 const CareersPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [expandedCard, setExpandedCard] = useState(null);
-  const [expandedJobCard, setExpandedJobCard] = useState(null);
   const [animationsLoaded, setAnimationsLoaded] = useState(false);
-  const { isLoading } = useRouteLoader(); // ADD THIS LINE
-  
-  // Responsive: detect mobile
+  const { isLoading } = useRouteLoader();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const debouncedHandleResize = useCallback(
-  debounce(() => setIsMobile(window.innerWidth < 900), 100),
-  []
-);
+    debounce(() => setIsMobile(window.innerWidth < 900), 100),
+    []
+  );
 
-useEffect(() => {
-  debouncedHandleResize(); // Set initial value
-  window.addEventListener('resize', debouncedHandleResize);
-  return () => window.removeEventListener('resize', debouncedHandleResize);
-}, [debouncedHandleResize]);
+  useEffect(() => {
+    debouncedHandleResize();
+    window.addEventListener('resize', debouncedHandleResize);
+    return () => window.removeEventListener('resize', debouncedHandleResize);
+  }, [debouncedHandleResize]);
 
   const navigate = useNavigate();
 
   const handleFilterChange = useCallback((filter) => {
-  setActiveFilter(filter);
-}, []);
-useEffect(() => {
-  const timer = setTimeout(() => setAnimationsLoaded(true), 100);
-  return () => clearTimeout(timer);
-}, []);
-  const handleCardClick = useCallback((cardIndex) => {
-  setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
-}, [expandedCard]);
+    setActiveFilter(filter);
+  }, []);
 
-  // Filtered jobs for display
-  const filteredJobs = useMemo(() => {
-  return activeFilter === 'all'
-    ? jobData
-    : jobData.filter(job => job.category === activeFilter);
-}, [activeFilter]);
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimationsLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
-const totalJobCount = useMemo(() => jobData.length, []);
-  // Navigate with full detail object passed as "jobDescription"
-  const handleApplyClick = useCallback((jobId) => {
-  const job = jobData.find(j => j.id === jobId);
-  if (!job) return;
-  navigate(`/apply/${job.id}`, {
-    state: {
-      jobTitle: job.title,
-      jobDescription: job.details,
-    },
-    replace: false,
-  });
-}, [navigate]);
+  const totalJobCount = useMemo(() => jobData.length, []);
 
- if (isLoading) {
+  if (isLoading) {
     return (
       <div className="careers-page-loader">
         <div className="loader-container">
@@ -363,7 +332,6 @@ const totalJobCount = useMemo(() => jobData.length, []);
     );
   }
 
-  // === New Carousel + Modal Component for Internship Section ===
   const ImageCarousel = ({ images }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -381,9 +349,12 @@ const totalJobCount = useMemo(() => jobData.length, []);
     const scroll = (direction) => {
       if (!carouselRef.current) return;
       const scrollAmount = carouselRef.current.offsetWidth * 0.8;
-      carouselRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+      carouselRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
     };
-    
+
     return (
       <>
         <div className="careers-image-carousel-wrapper">
@@ -460,15 +431,22 @@ const totalJobCount = useMemo(() => jobData.length, []);
       <section className="careers-hero">
         <div className="careers-hero-overlay"></div>
         <div className="careers-hero-content">
-          <h1>Shape the Future with <span className="careers-gradient-text">Innovation</span></h1>
-          <p>If you're inspired by challenging problems and passionate about meaningful change, Ganglia is where visionaries thrive and breakthrough ideas come to life.</p>
+          <h1>
+            Shape the Future with <span className="careers-gradient-text">Innovation</span>
+          </h1>
+          <p>
+            If you're inspired by challenging problems and passionate about meaningful change,
+            Ganglia is where visionaries thrive and breakthrough ideas come to life.
+          </p>
           <div className="careers-hero-buttons">
-            <a href="#openings" className="careers-apply-btn primary">Explore Opportunities</a>
+            <a href="#timeline" className="careers-apply-btn primary">
+              View Application Timeline
+            </a>
           </div>
           <div className="careers-hero-stats">
             <div className="careers-stat">
               <span className="careers-stat-number">{totalJobCount}+</span>
-              <span className="careers-stat-label">Open Positions</span>
+              <span className="careers-stat-label">Programs & Roles</span>
             </div>
           </div>
         </div>
@@ -482,22 +460,30 @@ const totalJobCount = useMemo(() => jobData.length, []);
       <section className="careers-why-join-section">
         <div className="careers-container">
           <div className="careers-section-header">
-            <h2>Why Choose <span className="careers-ganglia-highlight">Ganglia ?</span></h2>
+            <h2>
+              Why Choose <span className="careers-ganglia-highlight">Ganglia ?</span>
+            </h2>
             <p>We're not just building technology—we're shaping the future</p>
           </div>
           <div className="careers-benefits-grid">
             <div className="careers-benefit-card">
-              <div className="careers-benefit-icon"><Player autoplay loop src={innovation} style={{ height: 55, width: 55 }} /></div>
+              <div className="careers-benefit-icon">
+                <Player autoplay loop src={innovation} style={{ height: 55, width: 55 }} />
+              </div>
               <h3>Innovation First</h3>
               <p>Work on cutting-edge projects that push the boundaries of what's possible in healthcare technology.</p>
             </div>
             <div className="careers-benefit-card">
-              <div className="careers-benefit-icon"><Player autoplay loop src={learning} style={{ height: 55, width: 55 }} /></div>
+              <div className="careers-benefit-icon">
+                <Player autoplay loop src={learning} style={{ height: 55, width: 55 }} />
+              </div>
               <h3>Growth & Learning</h3>
               <p>Continuous learning opportunities with mentorship from industry experts and access to latest technologies.</p>
             </div>
             <div className="careers-benefit-card">
-              <div className="careers-benefit-icon"><Player autoplay loop src={collaboration} style={{ height: 55, width: 55 }} /></div>
+              <div className="careers-benefit-icon">
+                <Player autoplay loop src={collaboration} style={{ height: 55, width: 55 }} />
+              </div>
               <h3>Collaborative Culture</h3>
               <p>Join a diverse team where every voice matters and breakthrough ideas emerge from collaboration.</p>
             </div>
@@ -505,99 +491,14 @@ const totalJobCount = useMemo(() => jobData.length, []);
         </div>
       </section>
 
-      {/* Openings Section */}
-      <section className="careers-section" id="openings">
-        <div className="careers-container">
-          <div className="careers-section-header">
-            <h2>Current Openings</h2>
-            <p>Join our mission to revolutionize healthcare technology</p>
-          </div>
-
-          <div className="careers-filter-tabs">
-            <button
-              className={`careers-filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
-              onClick={() => handleFilterChange('all')}
-            >
-              All Positions
-            </button>
-            <button
-              className={`careers-filter-btn ${activeFilter === 'engineering' ? 'active' : ''}`}
-              onClick={() => handleFilterChange('engineering')}
-            >
-              Engineering
-            </button>
-            <button
-              className={`careers-filter-btn ${activeFilter === 'design' ? 'active' : ''}`}
-              onClick={() => handleFilterChange('design')}
-            >
-              Design
-            </button>
-            <button
-              className={`careers-filter-btn ${activeFilter === 'management' ? 'active' : ''}`}
-              onClick={() => handleFilterChange('management')}
-            >
-              Management
-            </button>
-          </div>
-
-          <div className="careers-opening-cards">
-            {filteredJobs.length > 0 ? (
-              filteredJobs.map(job => (
-                <div
-                  key={job.id}
-                  className="careers-job-card expanded"
-                  data-category={job.category}
-                >
-                  <div className="careers-job-card-full-content">
-                    <div className="careers-job-header">
-                      <div className="careers-job-title-section">
-                        <h3>{job.title}</h3>
-                        <div className="careers-job-meta">
-                          <span className="careers-job-type">{job.type}</span>
-                          <span className="careers-job-location">{job.location}</span>
-                          <span className="careers-job-level">{job.level}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="careers-job-description-container">
-                      {/* Show only shortDescription on job card */}
-                      <p className="careers-job-description">{job.shortDescription}</p>
-                    </div>
-                    <div className="careers-job-skills">
-                      {job.skills && job.skills.map((skill, index) => (
-                        <span key={index} className="careers-skill-tag">{skill}</span>
-                      ))}
-                    </div>
-                    <div className="careers-job-footer">
-                      <div className="careers-job-posted">{job.posted}</div>
-                      <button
-                        className="careers-job-apply-btn"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleApplyClick(job.id);
-                        }}
-                      >
-                        Apply Now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="no-jobs-message">
-                <p>No job openings available at the moment. Please check back later!</p>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
       {/* Application Timeline Table Section */}
-      <section className="careers-timeline-section">
+      <section className="careers-timeline-section" id="timeline">
         <div className="careers-container">
           <div className="careers-section-header">
-            <h2>Application <span className="careers-ganglia-highlight">Timeline</span></h2>
-            <p>Important dates for all current job openings</p>
+            <h2>
+              Application <span className="careers-ganglia-highlight">Timeline</span>
+            </h2>
+            <p>Important dates for all current and upcoming programs</p>
           </div>
           <div className="careers-timeline-table-container">
             <table className="careers-timeline-table">
@@ -617,7 +518,9 @@ const totalJobCount = useMemo(() => jobData.length, []);
                       <td className="position-cell">
                         <div className="position-info">
                           <span className="position-title">{job.title}</span>
-                          <span className="position-details">{job.type} • {job.location}</span>
+                          <span className="position-details">
+                            {job.type} • {job.location}
+                          </span>
                         </div>
                       </td>
                       <td>
@@ -626,13 +529,37 @@ const totalJobCount = useMemo(() => jobData.length, []);
                         </span>
                       </td>
                       <td className="date-cell">
-                        {job.applicationTimeline ? new Date(job.applicationTimeline.applicationsOpen).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'TBD'}
+                        {job.applicationTimeline
+                          ? new Date(
+                              job.applicationTimeline.applicationsOpen
+                            ).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric'
+                            })
+                          : 'TBD'}
                       </td>
                       <td className="date-cell deadline-cell">
-                        {job.applicationTimeline ? new Date(job.applicationTimeline.finalDeadline).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'TBD'}
+                        {job.applicationTimeline
+                          ? new Date(
+                              job.applicationTimeline.finalDeadline
+                            ).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric'
+                            })
+                          : 'TBD'}
                       </td>
                       <td className="date-cell">
-                        {job.applicationTimeline ? new Date(job.applicationTimeline.programStarts).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'TBD'}
+                        {job.applicationTimeline
+                          ? new Date(
+                              job.applicationTimeline.programStarts
+                            ).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric'
+                            })
+                          : 'TBD'}
                       </td>
                     </tr>
                   ))
@@ -652,7 +579,9 @@ const totalJobCount = useMemo(() => jobData.length, []);
       {/* Internship Section */}
       <section className="careers-internship-section" id="internships">
         <div className="careers-internship-header">
-          <p className="careers-header-text">We also offer roles in Technical and Management fields with internships and mentorships that foster growth.</p>
+          <p className="careers-header-text">
+            We also offer roles in Technical and Management fields with internships and mentorships that foster growth.
+          </p>
           <div className="careers-internship-title-container">
             <img src={logo} alt="Ganglia Logo" className="careers-logo" />
             <h1 className="careers-internship-title">SUMMER INTERNSHIP PROGRAM 2026</h1>
@@ -661,28 +590,35 @@ const totalJobCount = useMemo(() => jobData.length, []);
         <div className="careers-internship-content">
           <div className="careers-program-highlights">
             <div className="careers-highlight-card">
-              <div className="careers-highlight-icon"><Player autoplay loop src={teach} style={{ height: 55, width: 55 }} /></div>
+              <div className="careers-highlight-icon">
+                <Player autoplay loop src={teach} style={{ height: 55, width: 55 }} />
+              </div>
               <h3>Learn from Experts</h3>
               <p>Work directly with senior engineers, designers, and product managers who are leaders in healthcare technology.</p>
             </div>
             <div className="careers-highlight-card">
-              <div className="careers-highlight-icon"><Player autoplay loop src={globe} style={{ height: 55, width: 55 }} /></div>
+              <div className="careers-highlight-icon">
+                <Player autoplay loop src={globe} style={{ height: 55, width: 55 }} />
+              </div>
               <h3>Real-World Projects</h3>
               <p>Contribute to actual product features and research initiatives that impact thousands of healthcare professionals.</p>
             </div>
             <div className="careers-highlight-card">
-              <div className="careers-highlight-icon"><Player autoplay loop src={launch} style={{ height: 55, width: 55 }} /></div>
+              <div className="careers-highlight-icon">
+                <Player autoplay loop src={launch} style={{ height: 55, width: 55 }} />
+              </div>
               <h3>Career Launch</h3>
               <p>Kickstart your career with a company that's revolutionizing healthcare.</p>
             </div>
           </div>
 
-          {/* REPLACE THE STATIC IMAGE CARDS WITH THE NEW CAROUSEL COMPONENT */}
           <ImageCarousel images={carouselImages} />
 
           <div className="careers-call-to-action">
             <div className="careers-cta-content">
-              <h3><span className="careers-highlight">Opportunities</span> like this don't wait</h3>
+              <h3>
+                <span className="careers-highlight">Opportunities</span> like this don't wait
+              </h3>
               <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
               <div className="careers-application-info">
                 <button
