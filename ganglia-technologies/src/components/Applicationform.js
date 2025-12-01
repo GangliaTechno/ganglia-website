@@ -334,7 +334,7 @@ export default function ApplicationForm() {
       const timestamp = formatTimestamp();
 
       const formData = new FormData();
-      formData.append("recipient", "director@ganglia.in");
+      formData.append("recipient", "hr@ganglia.in");
       
       // Updated subject with name and timestamp
       formData.append(
