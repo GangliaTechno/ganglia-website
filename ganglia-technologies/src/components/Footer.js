@@ -10,6 +10,9 @@ const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Check if current page is careers page
+  const isCareersPage = location.pathname === '/careers' || location.pathname.includes('/careers');
+
   // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
@@ -134,6 +137,26 @@ const Footer = () => {
               </a>
             </div>
 
+            {/* Conditionally render HR email only on careers page */}
+            {isCareersPage && (
+              <div className="contact-item">
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=hr@ganglia.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-link"
+                >
+                  <div className="contact-icon">
+                    <Lottie animationData={emailIcon} loop autoplay style={{ height: 40, width: 40 }} />
+                  </div>
+                  <div className="contact-details">
+                    <h4>HR Email</h4>
+                    <p>hr@ganglia.in</p>
+                  </div>
+                </a>
+              </div>
+            )}
+
             <div className="contact-item">
               <a href="tel:+7760042810" className="contact-link">
                 <div className="contact-icon">
@@ -209,8 +232,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-copyright">
-  © 2025 Ganglia Technologies. All rights reserved.
-</div>
+        © 2025 Ganglia Technologies. All rights reserved.
+      </div>
     </footer>
   );
 };
