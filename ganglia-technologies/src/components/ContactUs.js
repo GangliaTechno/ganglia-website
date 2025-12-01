@@ -85,7 +85,7 @@ const ContactUs = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          recipient: 'director@ganglia.in',
+          recipient: 'hr@ganglia.in',
           subject: emailSubject,
           body: emailBody
         })
