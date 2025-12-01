@@ -319,7 +319,7 @@ const CareersPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const totalJobCount = useMemo(() => jobData.length, []);
+  // const totalJobCount = useMemo(() => jobData.length, []);
 
   if (isLoading) {
     return (
@@ -443,12 +443,7 @@ const CareersPage = () => {
               View Application Timeline
             </a>
           </div>
-          // <div className="careers-hero-stats">
-          //   <div className="careers-stat">
-          //     <span className="careers-stat-number">{totalJobCount}+</span>
-          //     <span className="careers-stat-label">Programs & Roles</span>
-          //   </div>
-          // </div>
+         
         </div>
         <div className="careers-hero-scroll">
           <span>Scroll to explore</span>
