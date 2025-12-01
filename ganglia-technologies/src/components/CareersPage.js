@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import '../styles/CareersPage.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logob.png';
@@ -38,7 +38,7 @@ const jobData = [
     location: 'Manipal, Karnataka (In-Person)',
     level: 'Entry Level',
     shortDescription:
-      "Join Ganglia Technologies as a Back-end Developer Intern and get hands-on experience building the infrastructure behind our advanced biomedical and AI systems. You’ll be solving real-world problems, working on scalable server-side logic, and collaborating with a high-performance team in a fast-growing tech environment.",
+      "Join Ganglia Technologies as a Back-end Developer Intern and get hands-on experience building the infrastructure behind our advanced biomedical and AI systems. You'll be solving real-world problems, working on scalable server-side logic, and collaborating with a high-performance team in a fast-growing tech environment.",
     details: {
       "Eligibility Conditions & Duration": [
         "Open to students currently pursuing UG/PG in Computer Science, Information Technology, Software Engineering, or related fields.",
@@ -46,7 +46,7 @@ const jobData = [
         "Internship duration: Minimum 60 days, extendable based on performance and ongoing project requirements."
       ],
       "Project Responsibilities": [
-        "Develop and maintain scalable back-end logic, APIs, and server infrastructure for Ganglia’s biomedical and AI platforms.",
+        "Develop and maintain scalable back-end logic, APIs, and server infrastructure for Ganglia's biomedical and AI platforms.",
         "Work with databases (SQL/MongoDB) to structure and manage data efficiently.",
         "Integrate third-party APIs and services, and ensure system security and data protection.",
         "Collaborate with front-end developers and DevOps engineers to deliver full-stack features.",
@@ -82,7 +82,7 @@ const jobData = [
       "Join Ganglia Technologies as an HR/Operations Executive and play a vital role in shaping our people and processes. From recruitment and documentation to supporting daily operations and maintaining company culture, this role is perfect for dynamic individuals who thrive in fast-paced, innovation-driven environments. Ideal for fresh graduates or early professionals ready to grow with a leading biomedical and AI company based in Manipal.",
     details: {
       "Eligibility Conditions & Duration": [
-        "Open to individuals with a Bachelor’s or Master’s degree in Human Resources / Business Administration / Management / Commerce / Psychology or related fields.",
+        "Open to individuals with a Bachelor's or Master's degree in Human Resources / Business Administration / Management / Commerce / Psychology or related fields.",
         "Candidate must have strong communication skills, time management, and a proactive attitude.",
         "Minimum commitment period: 6 months (probation), extendable based on performance.",
         "Preference will be given to candidates currently residing in or willing to relocate to Manipal, Karnataka."
@@ -319,8 +319,6 @@ const CareersPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // const totalJobCount = useMemo(() => jobData.length, []);
-
   if (isLoading) {
     return (
       <div className="careers-page-loader">
@@ -443,7 +441,6 @@ const CareersPage = () => {
               View Application Timeline
             </a>
           </div>
-         
         </div>
         <div className="careers-hero-scroll">
           <span>Scroll to explore</span>
