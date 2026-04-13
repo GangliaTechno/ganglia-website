@@ -31,251 +31,116 @@ const debounce = (func, wait) => {
 // Hardcoded Jobs Array (still used by timeline)
 const jobData = [
   {
-    id: 'backend-intern-2026',
-    title: 'Back-end Developer Intern',
-    category: 'engineering',
-    type: 'Internship',
-    location: 'Manipal, Karnataka (In-Person)',
-    level: 'Entry Level',
-    shortDescription:
-      "Join Ganglia Technologies as a Back-end Developer Intern and get hands-on experience building the infrastructure behind our advanced biomedical and AI systems. You'll be solving real-world problems, working on scalable server-side logic, and collaborating with a high-performance team in a fast-growing tech environment.",
-    details: {
-      "Eligibility Conditions & Duration": [
-        "Open to students currently pursuing UG/PG in Computer Science, Information Technology, Software Engineering, or related fields.",
-        "Must have completed at least one academic project involving server-side development.",
-        "Internship duration: Minimum 60 days, extendable based on performance and ongoing project requirements."
-      ],
-      "Project Responsibilities": [
-        "Develop and maintain scalable back-end logic, APIs, and server infrastructure for Ganglia's biomedical and AI platforms.",
-        "Work with databases (SQL/MongoDB) to structure and manage data efficiently.",
-        "Integrate third-party APIs and services, and ensure system security and data protection.",
-        "Collaborate with front-end developers and DevOps engineers to deliver full-stack features.",
-        "Write clean, efficient, and well-documented code, and contribute to version control repositories."
-      ],
-      "General Information": [
-        "Only Indian nationals are eligible for this internship.",
-        "Internship will be based out of Manipal, Karnataka, in an in-person mode.",
-        "Interns must bring their own devices and be available for a minimum of 5 hours/day."
-      ],
-      "Skills Required": [
-        "Proficiency in at least one back-end language: Node.js, Python (Django/Flask), or Java (Spring Boot)",
-        "Strong understanding of REST APIs, Databases (MySQL, MongoDB), and Authentication Protocols (JWT, OAuth).",
-        "Familiarity with Git, Postman, and Docker is a plus."
-      ]
-    },
-    posted: ' ',
-    skills: ['Node.js', 'Python', 'Java', 'SQL', 'MongoDB', 'APIs', 'Git'],
-    applicationTimeline: {
-      applicationsOpen: '2025-08-08',
-      finalDeadline: '2025-11-28',
-      programStarts: '2026-01-02'
-    }
-  },
-  {
-    id: 'hr-operations-executive',
-    title: 'HR/Operations Executive',
-    category: 'management',
-    type: 'Full-Time',
-    location: 'Manipal, Karnataka',
-    level: 'Entry Level',
-    shortDescription:
-      "Join Ganglia Technologies as an HR/Operations Executive and play a vital role in shaping our people and processes. From recruitment and documentation to supporting daily operations and maintaining company culture, this role is perfect for dynamic individuals who thrive in fast-paced, innovation-driven environments. Ideal for fresh graduates or early professionals ready to grow with a leading biomedical and AI company based in Manipal.",
-    details: {
-      "Eligibility Conditions & Duration": [
-        "Open to individuals with a Bachelor's or Master's degree in Human Resources / Business Administration / Management / Commerce / Psychology or related fields.",
-        "Candidate must have strong communication skills, time management, and a proactive attitude.",
-        "Minimum commitment period: 6 months (probation), extendable based on performance.",
-        "Preference will be given to candidates currently residing in or willing to relocate to Manipal, Karnataka."
-      ],
-      "Core Responsibilities": [
-        "Support end-to-end recruitment cycle including job postings, screening, and scheduling interviews.",
-        "Maintain employee records, HR databases, and internal documentation (leaves, attendance, onboarding/offboarding).",
-        "Assist in the planning and execution of internal events, team-building activities, and training programs.",
-        "Liaise with various departments to support daily operations and resolve administrative bottlenecks.",
-        "Monitor internship programs, manage documentation, and coordinate evaluations.",
-        "Uphold company culture and ensure adherence to policies and operational protocols."
-      ],
-      "General Information": [
-        "Only Indian nationals are eligible for this role.",
-        "Selected candidates will undergo a short induction and training phase.",
-        "Performance reviews will be conducted every 6 months with scope for permanent placement and leadership roles.",
-        "Candidates must demonstrate discretion, reliability, and an interest in working in a fast-paced tech and biomedical R&D environment."
-      ]
-    },
-    posted: ' ',
-    skills: ['Recruitment', 'Communication', 'Time Management', 'HR Documentation', 'Event Planning'],
-    applicationTimeline: {
-      applicationsOpen: '2025-08-08',
-      finalDeadline: '2025-11-28',
-      programStarts: '2026-01-02'
-    }
-  },
-  {
-    id: 'frontend-intern-2026',
-    title: 'Front-End Developer Intern',
-    category: 'engineering',
-    type: 'Internship',
-    location: 'Manipal, Karnataka (Hybrid Options)',
-    level: 'Entry Level',
-    shortDescription:
-      "Kickstart your career in web development with a hands-on Front-end Developer Internship at Ganglia Technologies. You'll work alongside a dynamic tech team on real-world projects that power cutting-edge biomedical and AI applications. Learn, build, and innovate in an environment designed to accelerate your growth.",
-    details: {
-      "Eligibility Conditions & Duration": [
-        "Open to students currently pursuing UG/PG in Computer Science, Information Technology, Web Development, or related fields from a recognized university/institution in India.",
-        "Must have completed at least 1 major academic project involving web technologies (HTML, CSS, JS, React/Angular).",
-        "Internship duration: Minimum 60 days with possibility of extension based on performance and project needs."
-      ],
-      "Project Responsibilities": [
-        "Assist in developing responsive and user-friendly web interfaces using modern front-end frameworks like React.js or Vue.js.",
-        "Collaborate with UI/UX designers to translate design wireframes into high-quality code.",
-        "Integrate front-end components with back-end APIs.",
-        "Debug, test, and optimize code for performance and scalability.",
-        "Participate in daily team stand-ups, sprint reviews, and documentation."
-      ],
-      "General Information": [
-        "Only Indian nationals are eligible for this internship.",
-        "Based in Manipal, Karnataka. Hybrid options may be available depending on project and mentor availability.",
-        "Interns must carry their own laptops and be available for minimum 5 hours/day."
-      ],
-      "Skills Required": [
-        "Proficiency in HTML5, CSS3, JavaScript",
-        "Familiarity with React.js, Git, REST APIs",
-        "Knowledge of version control, responsive design, and cross-browser compatibility",
-        "Bonus: Experience with Figma, TailwindCSS, Next.js, or TypeScript"
-      ]
-    },
-    posted: ' ',
-    skills: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'Git', 'REST APIs'],
-    applicationTimeline: {
-      applicationsOpen: '2025-08-08',
-      finalDeadline: '2025-11-28',
-      programStarts: '2026-01-02'
-    }
-  },
-  {
-    id: 'aiml-intern-rd-2026',
-    title: 'AI/ML Engineering Intern - R&D',
-    category: 'engineering',
-    type: 'Internship',
-    location: 'Manipal, Karnataka (Hybrid Options)',
-    level: 'Entry Level',
-    shortDescription:
-      "Ganglia Technologies is looking for passionate AI/ML Research Interns to join our R&D team. If you're excited about real-world applications of AI and want to contribute to impactful research in healthcare and technology, this internship offers a chance to collaborate on academic publications, cutting-edge experiments, and applied AI innovation.",
-    details: {
-      "Eligibility Conditions & Duration": [
-        "Open to UG/PG/PhD students pursuing studies in Artificial Intelligence, Machine Learning, Data Science, Computer Science, or related fields from recognized institutions in India.",
-        "Candidates should have academic writing skills and a proven interest in AI/ML research (coursework, minor thesis, or publications).",
-        "Duration: Minimum 90 days (extendable based on performance and research requirements)."
-      ],
-      "Research Responsibilities": [
-        "Collaborate with R&D team members on AI/ML research projects in biomedical, healthcare, and industrial applications.",
-        "Assist in literature reviews, model development, experimentation, and result interpretation.",
-        "Work on drafting, editing, and formatting research papers for journal/conference submissions (IEEE, Springer, Elsevier, etc.).",
-        "Contribute to data collection, preprocessing, feature engineering, and model evaluation using real-world datasets.",
-        "Participate in research presentations, documentation, and internal reviews."
-      ],
-      "General Information": [
-        "Only Indian nationals are eligible for this research internship.",
-        "Based at Ganglia Technologies – Manipal, Karnataka. Hybrid mode may be offered to eligible candidates.",
-        "Interns must bring their own laptop and dedicate at least 20 hours/week."
-      ],
-      "Skills Required": [
-        "Proficiency in Python, with libraries such as NumPy, Pandas, scikit-learn, TensorFlow, or PyTorch.",
-        "Understanding of AI/ML concepts, including supervised/unsupervised learning, evaluation metrics, and statistical techniques.",
-        "Ability to conduct academic research, write formal documentation, and summarize technical content.",
-        "Bonus: Familiarity with LaTeX, research publication formats, or tools like Jupyter Notebooks, Kaggle, Zotero/Mendeley."
-      ]
-    },
-    posted: ' ',
-    skills: ['Python', 'Machine Learning', 'TensorFlow', 'PyTorch', 'Research', 'Data Science', 'Academic Writing'],
-    applicationTimeline: {
-      applicationsOpen: '2025-08-08',
-      finalDeadline: '2025-11-28',
-      programStarts: '2026-01-02'
-    }
-  },
-  {
-    id: 'cad-engineering-intern',
-    title: 'CAD Engineering Intern',
-    category: 'engineering',
-    type: 'Internship',
-    location: 'Manipal, Karnataka (On-site)',
-    level: 'Entry Level',
-    shortDescription:
-      "Join Ganglia Technologies as a CAD Engineering Intern and take your design skills from concept to creation. Work alongside engineers and researchers on real hardware products in the biomedical and AI space. Gain hands-on experience in CAD modelling, prototyping, and product development in a fast-paced R&D environment.",
-    details: {
-      "Eligibility Conditions & Duration": [
-        "Open to UG/PG students in Mechanical Engineering, Mechatronics, Product Design, or related fields.",
-        "Applicants must have prior exposure to 3D CAD modelling and technical drawings.",
-        "Internship duration: Minimum 60 days, extendable based on performance and design cycles.",
-        "Candidates must be comfortable working on-site in a lab-based hardware environment at Manipal, Karnataka."
-      ],
-      "Project Responsibilities": [
-        "Design, modify, and review 3D CAD models for biomedical and R&D hardware products.",
-        "Create technical drawings, assembly diagrams, and exploded views for prototyping and production.",
-        "Collaborate with the engineering and R&D team to convert concepts into manufacturable components.",
-        "Participate in hardware prototyping, testing, and iterative improvements.",
-        "Maintain version control of CAD files and assist with BOM (Bill of Materials) documentation."
-      ],
-      "General Information": [
-        "Only Indian nationals are eligible for this internship.",
-        "Internship is on-site at Ganglia Technologies, Manipal.",
-        "Interns must bring their own laptops (with design software installed if applicable) and be available for at least 5 hours/day."
-      ],
-      "Skills Required": [
-        "Proficiency in at least one CAD tool: SolidWorks, Fusion 360, AutoCAD, or CATIA.",
-        "Understanding of design for manufacturing (DFM) principles and tolerance analysis.",
-        "Familiarity with 3D printing, CNC machining, or hardware prototyping workflows is a strong plus.",
-        "Bonus: Experience with simulation tools, sheet metal design, or medical device components."
-      ]
-    },
-    posted: ' ',
-    skills: ['CAD', 'SolidWorks', 'Fusion 360', 'AutoCAD', 'CATIA', '3D Modelling', 'DFM'],
-    applicationTimeline: {
-      applicationsOpen: '2025-08-08',
-      finalDeadline: '2025-11-28',
-      programStarts: '2026-01-02'
-    }
-  },
-  {
-    id: 'marketing-branding-intern',
-    title: 'Marketing/Branding Intern',
+    id: 'ui-ux-design-intern',
+    title: 'UI/UX Design intern',
     category: 'design',
     type: 'Internship',
-    location: 'Manipal, Karnataka (Hybrid Options)',
-    level: 'Mid',
+    location: 'Remote/In-Person',
+    level: 'Entry Level',
     shortDescription:
-      "Looking to build a brand from the ground up? Join Ganglia Technologies as a mid-level Marketing Intern and work directly with company leadership to create a luxury brand—from logo to packaging to market entry strategy. Ideal for strategic, design-savvy individuals who want to leave their creative fingerprint on a bold, future-forward product line.",
+      "Design interfaces people actually enjoy using. You'll help design how our product looks and feels — across web and mobile. Think of it as the bridge between the product team and the people using it. If you love making things look clean, logical, and easy to use, this role is for you.",
     details: {
-      "Eligibility Conditions & Duration": [
-        "Open to students or recent graduates from Design, Marketing, Branding, Mass Communication, or Business Strategy backgrounds.",
-        "Must have portfolio or prior experience in branding, product design, or marketing campaigns (academic or freelance).",
-        "Duration: Minimum 90 days, with high-performance interns eligible for extended projects and leadership grooming.",
-        "Must be able to dedicate at least 25 hours/week and work closely with the board members and creative leads."
+      "What You'll Do": [
+        "Sketch out wireframes and user flows.",
+        "Build interactive prototypes in Figma.",
+        "Work closely with developers to bring designs to life.",
+        "Iterate based on user feedback.",
+        "You won't be thrown into the deep end alone — there's a team to guide you."
       ],
-      "Key Responsibilities": [
-        "Assist in developing luxury product brands from scratch – including brand identity, brand story, logo, logo-marks, and brand guidelines.",
-        "Work on product and packaging design for high-end product segments in healthcare, wellness, and tech-enabled goods.",
-        "Co-develop the Market Entry Strategy, including competitor analysis, brand positioning, and go-to-market plans.",
-        "Design and implement Social Media Strategy across platforms (Instagram, LinkedIn, Substack, X, etc.) – covering both organic and paid initiatives.",
-        "Collaborate with stakeholders across design, R&D, and marketing to ensure brand consistency and quality.",
-        "Contribute to the preparation of marketing pitches, investor decks, and campaign rollout calendars."
-      ],
-      "General Information": [
-        "Only Indian nationals are eligible for this internship.",
-        "Hybrid format available: Internship can be pursued remotely with regular online meetings, or from the Ganglia HQ in Manipal, Karnataka.",
-        "Interns must maintain high-quality, timely communication and provide weekly progress updates.",
-        "Certificate of Internship, Letter of Recommendation, and strong portfolio projects upon completion. PPO opportunity available."
-      ],
-      "Skills Required": [
-        "Proficiency in branding, graphic design, or marketing strategy.",
-        "Hands-on experience with tools such as Figma, Adobe Creative Suite, Canva, or similar.",
-        "Understanding of luxury branding, visual storytelling, and packaging trends.",
-        "Bonus: Familiarity with content calendars, digital ads, and consumer psychology."
+      "Note for Newcomers": [
+        "If you've built anything in Figma — a personal project, a college assignment, even a mock app for fun — that counts. We care more about your design thinking than your resume."
       ]
     },
     posted: ' ',
-    skills: ['Branding', 'Graphic Design', 'Marketing Strategy', 'Figma', 'Adobe Creative Suite', 'Social Media', 'Packaging Design'],
+    skills: ['Figma', 'Framer', 'Sketch', 'Adobe XD', 'Wireframing basics', 'Typography', 'AI tools'],
+    applicationTimeline: {
+      applicationsOpen: '2025-08-08',
+      finalDeadline: '2025-11-28',
+      programStarts: '2026-01-02'
+    }
+  },
+  {
+    id: 'marketing-intern',
+    title: 'Marketing intern',
+    category: 'marketing',
+    type: 'Internship',
+    location: 'Remote/In-Person',
+    level: 'Entry Level',
+    shortDescription:
+      "Help us grow our online presence. You'll help us show up in the right places — on social media, in search results, and in people's inboxes. This is a great role if you like writing, storytelling, and figuring out what makes people click.",
+    details: {
+      "What You'll Do": [
+        "Write and schedule posts across social platforms.",
+        "Draft copy for emails, blogs, and landing pages.",
+        "Help run digital marketing campaigns.",
+        "Do basic keyword research for SEO.",
+        "Track how content is performing.",
+        "Collaborate with the design and product teams on launches."
+      ],
+      "Note for Newcomers": [
+        "If you've managed a club's Instagram, written for a college newsletter, or run any kind of online page — that experience is relevant. Bring samples of anything you've written or created."
+      ]
+    },
+    posted: ' ',
+    skills: ['Writing', 'Social Media', 'SEO', 'Data Curiosity', 'AI writing tools'],
+    applicationTimeline: {
+      applicationsOpen: '2025-08-08',
+      finalDeadline: '2025-11-28',
+      programStarts: '2026-01-02'
+    }
+  },
+  {
+    id: 'mobile-app-developer-intern',
+    title: 'Mobile app developer intern',
+    category: 'engineering',
+    type: 'Internship',
+    location: 'Remote/In-Person',
+    level: 'Entry Level',
+    shortDescription:
+      "Build Android apps from scratch. You'll work on building real features inside our Android app. This means writing code, connecting to our backend, handling user logins, and making sure things don't break. You'll learn a ton by doing real work — not just watching tutorials.",
+    details: {
+      "What You'll Do": [
+        "Build and test app features using Kotlin.",
+        "Integrate Firebase for login and data storage.",
+        "Connect the app to our backend via APIs.",
+        "Debug issues when things go wrong.",
+        "Commit code to GitHub and review it with the team."
+      ],
+      "Note for Newcomers": [
+        "If you've built a simple Android app in college or on your own — even if it's just a to-do list — that's a great start. Kotlin is a plus but not a blocker; we're happy to help you pick it up."
+      ]
+    },
+    posted: ' ',
+    skills: ['Android Studio', 'Firebase', 'REST APIs', 'Git', 'GitHub', 'Kotlin', 'AI debugging tools'],
+    applicationTimeline: {
+      applicationsOpen: '2025-08-08',
+      finalDeadline: '2025-11-28',
+      programStarts: '2026-01-02'
+    }
+  },
+  {
+    id: 'full-stack-developer-intern',
+    title: 'Full stack developer intern',
+    category: 'engineering',
+    type: 'Internship',
+    location: 'Remote/In-Person',
+    level: 'Entry Level',
+    shortDescription:
+      "Build web apps end-to-end. You'll work across the full product — building features users see on screen (frontend) and the logic that powers them behind the scenes (backend). It's a great role if you like knowing how the whole system fits together.",
+    details: {
+      "What You'll Do": [
+        "Build UI components in React.",
+        "Write backend logic in Python.",
+        "Store and retrieve data from MongoDB.",
+        "Connect everything through REST APIs.",
+        "Write clean code, use Git for version control, and pair with teammates to review and ship features."
+      ],
+      "Note for Newcomers": [
+        "College projects, personal portfolios, or open-source contributions all count. Python is a bonus — knowing any backend language shows you can think server-side, and Python is easy to pick up if you don't know it yet."
+      ]
+    },
+    posted: ' ',
+    skills: ['React.js', 'MongoDB', 'Git', 'GitHub', 'REST APIs', 'Python', 'Clean code', 'AI coding tools'],
     applicationTimeline: {
       applicationsOpen: '2025-08-08',
       finalDeadline: '2025-11-28',
