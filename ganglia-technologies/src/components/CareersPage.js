@@ -29,92 +29,125 @@ const debounce = (func, wait) => {
 };
 
 // Hardcoded Jobs Array (still used by timeline)
-{
-  "ui_ux_design_intern": {
-    "applicationTimeline": {
-      "applicationsOpen": "2026-04-13",
-      "finalDeadline": null,
-      "programStarts": "2026-06-01"
+const jobData = [
+  {
+    id: 'ui-ux-design-intern',
+    title: 'UI/UX Design intern',
+    category: 'design',
+    type: 'Internship',
+    location: 'Remote/In-Person',
+    level: 'Entry Level',
+    shortDescription:
+      "Design interfaces people actually enjoy using. You'll help design how our product looks and feels — across web and mobile. Think of it as the bridge between the product team and the people using it. If you love making things look clean, logical, and easy to use, this role is for you.",
+    details: {
+      "What You'll Do": [
+        "Sketch out wireframes and user flows.",
+        "Build interactive prototypes in Figma.",
+        "Work closely with developers to bring designs to life.",
+        "Iterate based on user feedback.",
+        "You won't be thrown into the deep end alone — there's a team to guide you."
+      ],
+      "Note for Newcomers": [
+        "If you've built anything in Figma — a personal project, a college assignment, even a mock app for fun — that counts. We care more about your design thinking than your resume."
+      ]
     },
-    "category": "design",
-    "description": "{\n  \"Job Description\": \"You’ll help design how our product looks and feels — across web and mobile. Think of it as the bridge between the product team and the people using it. If you love making things look clean, logical, and easy to use, this role is for you.\",\n  \n  \"What You'll Do\": \"Sketch out wireframes and user flows, build interactive prototypes in Figma, work closely with developers to bring designs to life, and iterate based on user feedback. You won’t be thrown into the deep end alone — there’s a team to guide you.\",\n  \n  \"Skills We're Looking For\": \"Figma; Any of: Framer / Sketch / Adobe XD; Wireframing basics; Eye for typography; Good communication; AI tools (ChatGPT, etc.). New to this? If you've built anything in Figma — a personal project, a college assignment, even a mock app for fun — that counts. We care more about your design thinking than your resume.\"\n}\n",
-    "id": 101001,
-    "level": "Junior",
-    "location": "On-site",
-    "skills": [
-      "Figma",
-      "Wireframing",
-      "Typography",
-      "UI/UX Design",
-      "Prototyping"
-    ],
-    "title": "UI/UX Design intern",
-    "type": "Internship"
+    posted: ' ',
+    skills: ['Figma', 'Framer', 'Sketch', 'Adobe XD', 'Wireframing basics', 'Typography', 'AI tools'],
+    applicationTimeline: {
+      applicationsOpen: '2026-04-01',
+      finalDeadline: '2026-05-13',
+      programStarts: '2026-06-01'
+    }
   },
-  "marketing_intern": {
-    "applicationTimeline": {
-      "applicationsOpen": "2026-04-13",
-      "finalDeadline": null,
-      "programStarts": "2026-06-01"
+  {
+    id: 'marketing-intern',
+    title: 'Marketing intern',
+    category: 'marketing',
+    type: 'Internship',
+    location: 'Remote/In-Person',
+    level: 'Entry Level',
+    shortDescription:
+      "Help us grow our online presence. You'll help us show up in the right places — on social media, in search results, and in people's inboxes. This is a great role if you like writing, storytelling, and figuring out what makes people click.",
+    details: {
+      "What You'll Do": [
+        "Write and schedule posts across social platforms.",
+        "Draft copy for emails, blogs, and landing pages.",
+        "Help run digital marketing campaigns.",
+        "Do basic keyword research for SEO.",
+        "Track how content is performing.",
+        "Collaborate with the design and product teams on launches."
+      ],
+      "Note for Newcomers": [
+        "If you've managed a club's Instagram, written for a college newsletter, or run any kind of online page — that experience is relevant. Bring samples of anything you've written or created."
+      ]
     },
-    "category": "marketing",
-    "description": "{\n  \"Job Description\": \"You’ll help us show up in the right places — on social media, in search results, and in people’s inboxes. This is a great role if you like writing, storytelling, and figuring out what makes people click.\",\n  \n  \"What You'll Do\": \"Write and schedule posts across social platforms, draft copy for emails, blogs, and landing pages, help run digital marketing campaigns, do basic keyword research for SEO, and track how content is performing. You’ll collaborate with the design and product teams on launches.\",\n  \n  \"Skills We're Looking For\": \"Clear, engaging writing; Social media familiarity; Basic SEO concepts; Attention to detail; Curiosity about data; AI writing tools. New to this? If you’ve managed a club’s Instagram, written for a college newsletter, or run any kind of online page — that experience is relevant.\"\n}\n",
-    "id": 101002,
-    "level": "Junior",
-    "location": "On-site",
-    "skills": [
-      "Content Writing",
-      "SEO",
-      "Social Media Marketing",
-      "Copywriting",
-      "Data Analytics"
-    ],
-    "title": "Marketing intern",
-    "type": "Internship"
+    posted: ' ',
+    skills: ['Writing', 'Social Media', 'SEO', 'Data Curiosity', 'AI writing tools'],
+    applicationTimeline: {
+      applicationsOpen: '2026-04-01',
+      finalDeadline: '2026-05-13',
+      programStarts: '2026-06-01'
+    }
   },
-  "mobile_app_developer_intern": {
-    "applicationTimeline": {
-      "applicationsOpen": "2026-04-13",
-      "finalDeadline": null,
-      "programStarts": "2026-06-01"
+  {
+    id: 'mobile-app-developer-intern',
+    title: 'Mobile app developer intern',
+    category: 'engineering',
+    type: 'Internship',
+    location: 'Remote/In-Person',
+    level: 'Entry Level',
+    shortDescription:
+      "Build Android apps from scratch. You'll work on building real features inside our Android app. This means writing code, connecting to our backend, handling user logins, and making sure things don't break. You'll learn a ton by doing real work — not just watching tutorials.",
+    details: {
+      "What You'll Do": [
+        "Build and test app features using Kotlin.",
+        "Integrate Firebase for login and data storage.",
+        "Connect the app to our backend via APIs.",
+        "Debug issues when things go wrong.",
+        "Commit code to GitHub and review it with the team."
+      ],
+      "Note for Newcomers": [
+        "If you've built a simple Android app in college or on your own — even if it's just a to-do list — that's a great start. Kotlin is a plus but not a blocker; we're happy to help you pick it up."
+      ]
     },
-    "category": "engineering",
-    "description": "{\n  \"Job Description\": \"You’ll work on building real features inside our Android app. This means writing code, connecting to our backend, handling user logins, and making sure things don’t break. You’ll learn a ton by doing real work — not just watching tutorials.\",\n  \n  \"What You'll Do\": \"Build and test app features using Kotlin, integrate Firebase for login and data storage, connect the app to our backend via APIs, and debug issues when things go wrong. You’ll commit code to GitHub and review it with the team.\",\n  \n  \"Skills We're Looking For\": \"Android Studio; Firebase basics; REST APIs; Git & GitHub; Kotlin; Problem-solving mindset; AI tools for debugging. New to this? If you’ve built a simple Android app in college or on your own — even if it’s just a to-do list — that’s a great start.\"\n}\n",
-    "id": 101003,
-    "level": "Junior",
-    "location": "On-site",
-    "skills": [
-      "Android Studio",
-      "Kotlin",
-      "Firebase",
-      "REST APIs",
-      "Git"
-    ],
-    "title": "Mobile app developer intern",
-    "type": "Internship"
+    posted: ' ',
+    skills: ['Android Studio', 'Firebase', 'REST APIs', 'Git', 'GitHub', 'Kotlin', 'AI debugging tools'],
+    applicationTimeline: {
+      applicationsOpen: '2026-04-01',
+      finalDeadline: '2026-05-13',
+      programStarts: '2026-06-01'
+    }
   },
-  "full_stack_developer_intern": {
-    "applicationTimeline": {
-      "applicationsOpen": "2026-04-13",
-      "finalDeadline": null,
-      "programStarts": "2026-06-01"
+  {
+    id: 'full-stack-developer-intern',
+    title: 'Full stack developer intern',
+    category: 'engineering',
+    type: 'Internship',
+    location: 'Remote/In-Person',
+    level: 'Entry Level',
+    shortDescription:
+      "Build web apps end-to-end. You'll work across the full product — building features users see on screen (frontend) and the logic that powers them behind the scenes (backend). It's a great role if you like knowing how the whole system fits together.",
+    details: {
+      "What You'll Do": [
+        "Build UI components in React.",
+        "Write backend logic in Python.",
+        "Store and retrieve data from MongoDB.",
+        "Connect everything through REST APIs.",
+        "Write clean code, use Git for version control, and pair with teammates to review and ship features."
+      ],
+      "Note for Newcomers": [
+        "College projects, personal portfolios, or open-source contributions all count. Python is a bonus — knowing any backend language shows you can think server-side, and Python is easy to pick up if you don't know it yet."
+      ]
     },
-    "category": "engineering",
-    "description": "{\n  \"Job Description\": \"You’ll work across the full product — building features users see on screen (frontend) and the logic that powers them behind the scenes (backend). It’s a great role if you like knowing how the whole system fits together.\",\n  \n  \"What You'll Do\": \"Build UI components in React, write backend logic in Python, store and retrieve data from MongoDB, and connect everything through REST APIs. You’ll write clean code, use Git for version control, and pair with teammates to review and ship features.\",\n  \n  \"Skills We're Looking For\": \"React.js; MongoDB basics; Git & GitHub; REST API concepts; Python; Clean code habits; AI coding tools. New to this? College projects, personal portfolios, or open-source contributions all count. Python is a bonus — knowing any backend language shows you can think server-side.\"\n}\n",
-    "id": 101004,
-    "level": "Junior",
-    "location": "On-site",
-    "skills": [
-      "React.js",
-      "Python",
-      "MongoDB",
-      "REST APIs",
-      "Git"
-    ],
-    "title": "Full stack developer intern",
-    "type": "Internship"
+    posted: ' ',
+    skills: ['React.js', 'MongoDB', 'Git', 'GitHub', 'REST APIs', 'Python', 'Clean code', 'AI coding tools'],
+    applicationTimeline: {
+      applicationsOpen: '2026-04-01',
+      finalDeadline: '2026-05-13',
+      programStarts: '2026-06-01'
+    }
   }
-}
+];
 
 
 // Carousel images
