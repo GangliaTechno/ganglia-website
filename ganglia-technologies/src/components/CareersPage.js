@@ -55,7 +55,7 @@ const jobData = [
     skills: ['Figma', 'Framer', 'Sketch', 'Adobe XD', 'Wireframing basics', 'Typography', 'AI tools'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
-      finalDeadline: '2026-05-13',
+      finalDeadline: '2026-04-20',
       programStarts: '2026-06-01'
     }
   },
@@ -85,7 +85,7 @@ const jobData = [
     skills: ['Writing', 'Social Media', 'SEO', 'Data Curiosity', 'AI writing tools'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
-      finalDeadline: '2026-05-13',
+      finalDeadline: '2026-04-20',
       programStarts: '2026-06-01'
     }
   },
@@ -114,7 +114,7 @@ const jobData = [
     skills: ['Android Studio', 'Firebase', 'REST APIs', 'Git', 'GitHub', 'Kotlin', 'AI debugging tools'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
-      finalDeadline: '2026-05-13',
+     finalDeadline: '2026-04-20',
       programStarts: '2026-06-01'
     }
   },
@@ -143,7 +143,7 @@ const jobData = [
     skills: ['React.js', 'MongoDB', 'Git', 'GitHub', 'REST APIs', 'Python', 'Clean code', 'AI coding tools'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
-      finalDeadline: '2026-05-13',
+     finalDeadline: '2026-04-20',
       programStarts: '2026-06-01'
     }
   }
