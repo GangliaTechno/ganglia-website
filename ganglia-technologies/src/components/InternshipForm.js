@@ -300,7 +300,7 @@ function InternshipForm() {
       `;
 
       // Set up the email data
-      emailFormData.append('recipient', 'eniyan2001@gmail.com');
+      emailFormData.append('recipient', 'hr@ganglia.in');
       emailFormData.append('subject', emailSubject);
       emailFormData.append('body', emailBody);
 
