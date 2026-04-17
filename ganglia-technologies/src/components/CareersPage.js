@@ -319,7 +319,7 @@ const CareersPage = () => {
         </div>
       </section>
 
-      {/* Why Join Us Section */}
+      {/* Why Join Us - Bento Grid Section */}
       <section className="careers-why-join-section">
         <div className="careers-container">
           <div className="careers-section-header">
@@ -328,28 +328,98 @@ const CareersPage = () => {
             </h2>
             <p>We're not just building technology—we're shaping the future</p>
           </div>
-          <div className="careers-benefits-grid">
-            <div className="careers-benefit-card">
+          
+          <div className="bento-grid">
+            <div className="bento-card bento-wide bento-feature-primary">
               <div className="careers-benefit-icon">
-                <Player autoplay loop src={innovation} style={{ height: 55, width: 55 }} />
+                <Player autoplay loop src={innovation} style={{ height: 65, width: 65 }} />
               </div>
               <h3>Innovation First</h3>
-              <p>Work on cutting-edge projects that push the boundaries of what's possible in healthcare technology.</p>
+              <p>Work on cutting-edge projects that push the boundaries of what's possible in healthcare technology. We actively encourage experimentation and novel approaches to complex problems.</p>
             </div>
-            <div className="careers-benefit-card">
+            
+            <div className="bento-card bento-feature-secondary">
               <div className="careers-benefit-icon">
                 <Player autoplay loop src={learning} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Growth & Learning</h3>
-              <p>Continuous learning opportunities with mentorship from industry experts and access to latest technologies.</p>
+              <p>Continuous learning opportunities with mentorship from industry experts.</p>
             </div>
-            <div className="careers-benefit-card">
+            
+            <div className="bento-card bento-feature-tertiary">
               <div className="careers-benefit-icon">
                 <Player autoplay loop src={collaboration} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Collaborative Culture</h3>
-              <p>Join a diverse team where every voice matters and breakthrough ideas emerge from collaboration.</p>
+              <p>Join a diverse team where breakthrough ideas emerge from collaboration.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Application Timeline Table Section (Restored) */}
+      <section className="careers-timeline-section" id="timeline">
+        <div className="careers-container">
+          <div className="careers-section-header">
+            <h2>
+              Application <span className="careers-ganglia-highlight">Timeline</span>
+            </h2>
+            <p>Important dates for all current and upcoming programs</p>
+          </div>
+          <div className="careers-timeline-table-container">
+            <table className="careers-timeline-table">
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Category</th>
+                  <th>Applications Open</th>
+                  <th>Final Deadline</th>
+                  <th>Start Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {jobData.length > 0 ? (
+                  jobData.map(job => (
+                    <tr key={`table-${job.id}`}>
+                      <td className="position-cell">
+                        <div className="position-info">
+                          <span className="position-title">{job.title}</span>
+                          <span className="position-details">
+                            {job.type} • {job.location}
+                          </span>
+                        </div>
+                      </td>
+                      <td>
+                        <span className={`category-badge ${job.category}`}>
+                          {job.category.charAt(0).toUpperCase() + job.category.slice(1)}
+                        </span>
+                      </td>
+                      <td className="date-cell">
+                        {job.applicationTimeline
+                          ? new Date(job.applicationTimeline.applicationsOpen).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                          : 'TBD'}
+                      </td>
+                      <td className="date-cell deadline-cell">
+                        {job.applicationTimeline
+                          ? new Date(job.applicationTimeline.finalDeadline).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                          : 'TBD'}
+                      </td>
+                      <td className="date-cell">
+                        {job.applicationTimeline
+                          ? new Date(job.applicationTimeline.programStarts).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                          : 'TBD'}
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="5" className="no-data-message">
+                      No timeline data available
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -361,7 +431,7 @@ const CareersPage = () => {
             <h2>
               Open <span className="careers-ganglia-highlight">Roles</span>
             </h2>
-            <p>Important dates and positions for all current and upcoming programs</p>
+            <p>Find your next big opportunity with us</p>
           </div>
 
           {/* Filter Buttons */}
@@ -403,29 +473,8 @@ const CareersPage = () => {
                     )}
                   </div>
 
-                  <div className="job-timeline-info">
-                    <div className="timeline-item">
-                      <span className="timeline-label">Open:</span>
-                      <span className="timeline-date">
-                        {new Date(job.applicationTimeline.applicationsOpen).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      </span>
-                    </div>
-                    <div className="timeline-item deadline">
-                      <span className="timeline-label">Deadline:</span>
-                      <span className="timeline-date">
-                        {new Date(job.applicationTimeline.finalDeadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      </span>
-                    </div>
-                    <div className="timeline-item">
-                      <span className="timeline-label">Starts:</span>
-                      <span className="timeline-date">
-                        {new Date(job.applicationTimeline.programStarts).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      </span>
-                    </div>
-                  </div>
-
                   <button 
-                    className="job-card-apply-btn"
+                    className="job-card-apply-btn primary"
                     onClick={() => {
                       window.scrollTo(0, 0);
                       navigate('/internship-form', { replace: true });
@@ -444,60 +493,66 @@ const CareersPage = () => {
         </div>
       </section>
 
-      {/* Internship Section */}
+      {/* Internship & Programs - Bento Grid Section */}
       <section className="careers-internship-section" id="internships">
-        <div className="careers-internship-header">
-          <p className="careers-header-text">
-            We also offer roles in Technical and Management fields with internships and mentorships that foster growth.
-          </p>
-          <div className="careers-internship-title-container">
-            <img src={logo} alt="Ganglia Logo" className="careers-logo" />
-            <h1 className="careers-internship-title">SUMMER INTERNSHIP PROGRAM 2026</h1>
+        <div className="careers-container">
+          <div className="careers-internship-header">
+            <p className="careers-header-text">
+              We also offer roles in Technical and Management fields with internships and mentorships that foster growth.
+            </p>
+            <div className="careers-internship-title-container">
+              <img src={logo} alt="Ganglia Logo" className="careers-logo" />
+              <h1 className="careers-internship-title">SUMMER INTERNSHIP PROGRAM 2026</h1>
+            </div>
           </div>
-        </div>
-        <div className="careers-internship-content">
-          <div className="careers-program-highlights">
-            <div className="careers-highlight-card">
+          
+          <div className="bento-grid internship-bento">
+            <div className="bento-card">
               <div className="careers-highlight-icon">
                 <Player autoplay loop src={teach} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Learn from Experts</h3>
-              <p>Work directly with senior engineers, designers, and product managers who are leaders in healthcare technology.</p>
+              <p>Work directly with senior engineers, designers, and product managers.</p>
             </div>
-            <div className="careers-highlight-card">
+            
+            <div className="bento-card">
               <div className="careers-highlight-icon">
                 <Player autoplay loop src={globe} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Real-World Projects</h3>
-              <p>Contribute to actual product features and research initiatives that impact thousands of healthcare professionals.</p>
+              <p>Contribute to actual product features and research initiatives.</p>
             </div>
-            <div className="careers-highlight-card">
+            
+            <div className="bento-card">
               <div className="careers-highlight-icon">
                 <Player autoplay loop src={launch} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Career Launch</h3>
               <p>Kickstart your career with a company that's revolutionizing healthcare.</p>
             </div>
-          </div>
 
-          <ImageCarousel images={carouselImages} />
+            {/* Carousel spans across multiple columns in the bento grid */}
+            <div className="bento-card bento-span-full bento-carousel-wrapper">
+              <ImageCarousel images={carouselImages} />
+            </div>
 
-          <div className="careers-call-to-action">
-            <div className="careers-cta-content">
-              <h3>
-                <span className="careers-highlight">Opportunities</span> like this don't wait
-              </h3>
-              <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
-              <div className="careers-application-info">
-                <button
-                  className="careers-date-button"
-                  onClick={() => {
-                    window.scrollTo(0, 0);
-                    navigate('/internship-form', { replace: true });
-                  }}
-                >
-                  Apply for Summer Internship Program 2026
-                </button>
+            <div className="bento-card bento-span-full bento-cta-card">
+              <div className="careers-cta-content">
+                <h3>
+                  <span className="careers-highlight">Opportunities</span> like this don't wait
+                </h3>
+                <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
+                <div className="careers-application-info">
+                  <button
+                    className="careers-date-button primary-glow"
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                      navigate('/internship-form', { replace: true });
+                    }}
+                  >
+                    Apply for Summer Internship Program 2026
+                  </button>
+                </div>
               </div>
             </div>
           </div>
