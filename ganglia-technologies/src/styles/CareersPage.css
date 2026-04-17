@@ -1150,7 +1150,36 @@ a {
   background-color: var(--accent);
   border-radius: 10px;
 }
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
 
+.bento-card {
+  background: var(--card-bg-color, #ffffff);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Span classes for desktop screens */
+@media (min-width: 900px) {
+  .bento-wide {
+    grid-column: span 2;
+  }
+  .bento-span-full {
+    grid-column: 1 / -1;
+  }
+}
 /* Image card */
 .carousel-image-card {
   flex: 0 0 auto;
