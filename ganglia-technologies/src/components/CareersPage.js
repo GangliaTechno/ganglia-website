@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../styles/CareersPage.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logob.png';
@@ -14,19 +14,6 @@ import collaborationSpacesImg from '../assets/collaborationspaces.jpg';
 import launch from '../assets/Firecracker.json';
 import teach from '../assets/Classroom.json';
 import globe from '../assets/globe.json';
-
-// debounce
-const debounce = (func, wait) => {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-};
 
 // Hardcoded Jobs Array
 const jobData = [
@@ -157,38 +144,104 @@ const carouselImages = [
   { src: collaborationSpacesImg, alt: 'Collaboration Spaces', title: 'Collaboration Spaces' }
 ];
 
+// Extracted Component
+const ImageCarousel = ({ images }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const carouselRef = useRef(null);
+
+  const openModal = (index) => {
+    setActiveIndex(index);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const scroll = (direction) => {
+    if (!carouselRef.current) return;
+    const scrollAmount = carouselRef.current.offsetWidth * 0.8;
+    carouselRef.current.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+
+  return (
+    <>
+      <div className="careers-image-carousel-wrapper">
+        <button
+          className="carousel-nav-btn left"
+          onClick={() => scroll('left')}
+          aria-label="Scroll left"
+          type="button"
+        >
+          ‹
+        </button>
+        <div className="careers-image-carousel" ref={carouselRef}>
+          {images.map((img, idx) => (
+            <div
+              key={idx}
+              className="carousel-image-card"
+              role="button"
+              tabIndex={0}
+              onClick={() => openModal(idx)}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') openModal(idx);
+              }}
+              aria-label={`View image: ${img.title || 'image #' + (idx + 1)}`}
+            >
+              <img
+                src={img.src}
+                alt={img.alt || `Image ${idx + 1}`}
+                loading="lazy"
+                className="carousel-image"
+              />
+              {img.title && <div className="carousel-image-title">{img.title}</div>}
+            </div>
+          ))}
+        </div>
+        <button
+          className="carousel-nav-btn right"
+          onClick={() => scroll('right')}
+          aria-label="Scroll right"
+          type="button"
+        >
+          ›
+        </button>
+      </div>
+
+      {modalOpen && (
+        <div className="image-modal-overlay" onClick={closeModal} role="dialog" aria-modal="true">
+          <div className="image-modal-content" onClick={e => e.stopPropagation()}>
+            <button
+              className="modal-close-btn"
+              aria-label="Close image modal"
+              onClick={closeModal}
+              type="button"
+            >
+              ×
+            </button>
+            <img
+              src={images[activeIndex].src}
+              alt={images[activeIndex].alt || `Image ${activeIndex + 1}`}
+              className="modal-image"
+            />
+            {images[activeIndex].title && (
+              <div className="modal-image-title">{images[activeIndex].title}</div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+
 const CareersPage = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [animationsLoaded, setAnimationsLoaded] = useState(false);
   const { isLoading } = useRouteLoader();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
-  
-  const debouncedHandleResize = useCallback(
-    debounce(() => setIsMobile(window.innerWidth < 900), 100),
-    []
-  );
-
-  useEffect(() => {
-    debouncedHandleResize();
-    window.addEventListener('resize', debouncedHandleResize);
-    return () => window.removeEventListener('resize', debouncedHandleResize);
-  }, [debouncedHandleResize]);
-
   const navigate = useNavigate();
-
-  const handleFilterChange = useCallback((filter) => {
-    setActiveFilter(filter);
-  }, []);
-
-  // Filter jobs based on selected category
-  const filteredJobs = jobData.filter(job => 
-    activeFilter === 'all' ? true : job.category === activeFilter
-  );
-
-  useEffect(() => {
-    const timer = setTimeout(() => setAnimationsLoaded(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
 
   if (isLoading) {
     return (
@@ -200,99 +253,6 @@ const CareersPage = () => {
       </div>
     );
   }
-
-  const ImageCarousel = ({ images }) => {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [activeIndex, setActiveIndex] = useState(0);
-    const carouselRef = useRef(null);
-
-    const openModal = (index) => {
-      setActiveIndex(index);
-      setModalOpen(true);
-    };
-
-    const closeModal = () => {
-      setModalOpen(false);
-    };
-
-    const scroll = (direction) => {
-      if (!carouselRef.current) return;
-      const scrollAmount = carouselRef.current.offsetWidth * 0.8;
-      carouselRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-    };
-
-    return (
-      <>
-        <div className="careers-image-carousel-wrapper">
-          <button
-            className="carousel-nav-btn left"
-            onClick={() => scroll('left')}
-            aria-label="Scroll left"
-            type="button"
-          >
-            ‹
-          </button>
-          <div className="careers-image-carousel" ref={carouselRef}>
-            {images.map((img, idx) => (
-              <div
-                key={idx}
-                className="carousel-image-card"
-                role="button"
-                tabIndex={0}
-                onClick={() => openModal(idx)}
-                onKeyDown={e => {
-                  if (e.key === 'Enter' || e.key === ' ') openModal(idx);
-                }}
-                aria-label={`View image: ${img.title || 'image #' + (idx + 1)}`}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt || `Image ${idx + 1}`}
-                  loading="lazy"
-                  className="carousel-image"
-                />
-                {img.title && <div className="carousel-image-title">{img.title}</div>}
-              </div>
-            ))}
-          </div>
-          <button
-            className="carousel-nav-btn right"
-            onClick={() => scroll('right')}
-            aria-label="Scroll right"
-            type="button"
-          >
-            ›
-          </button>
-        </div>
-
-        {modalOpen && (
-          <div className="image-modal-overlay" onClick={closeModal} role="dialog" aria-modal="true">
-            <div className="image-modal-content" onClick={e => e.stopPropagation()}>
-              <button
-                className="modal-close-btn"
-                aria-label="Close image modal"
-                onClick={closeModal}
-                type="button"
-              >
-                ×
-              </button>
-              <img
-                src={images[activeIndex].src}
-                alt={images[activeIndex].alt || `Image ${activeIndex + 1}`}
-                className="modal-image"
-              />
-              {images[activeIndex].title && (
-                <div className="modal-image-title">{images[activeIndex].title}</div>
-              )}
-            </div>
-          </div>
-        )}
-      </>
-    );
-  };
 
   return (
     <div className="careers-page">
@@ -308,8 +268,8 @@ const CareersPage = () => {
             Ganglia is where visionaries thrive and breakthrough ideas come to life.
           </p>
           <div className="careers-hero-buttons">
-            <a href="#open-roles" className="careers-apply-btn primary">
-              Apply Now
+            <a href="#timeline" className="careers-apply-btn primary">
+              View Application Timeline
             </a>
           </div>
         </div>
@@ -319,7 +279,7 @@ const CareersPage = () => {
         </div>
       </section>
 
-      {/* Why Join Us - Bento Grid Section */}
+      {/* Why Join Us Section */}
       <section className="careers-why-join-section">
         <div className="careers-container">
           <div className="careers-section-header">
@@ -328,36 +288,33 @@ const CareersPage = () => {
             </h2>
             <p>We're not just building technology—we're shaping the future</p>
           </div>
-          
-          <div className="bento-grid">
-            <div className="bento-card bento-wide bento-feature-primary">
+          <div className="careers-benefits-grid">
+            <div className="careers-benefit-card">
               <div className="careers-benefit-icon">
-                <Player autoplay loop src={innovation} style={{ height: 65, width: 65 }} />
+                <Player autoplay loop src={innovation} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Innovation First</h3>
-              <p>Work on cutting-edge projects that push the boundaries of what's possible in healthcare technology. We actively encourage experimentation and novel approaches to complex problems.</p>
+              <p>Work on cutting-edge projects that push the boundaries of what's possible in healthcare technology.</p>
             </div>
-            
-            <div className="bento-card bento-feature-secondary">
+            <div className="careers-benefit-card">
               <div className="careers-benefit-icon">
                 <Player autoplay loop src={learning} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Growth & Learning</h3>
-              <p>Continuous learning opportunities with mentorship from industry experts.</p>
+              <p>Continuous learning opportunities with mentorship from industry experts and access to latest technologies.</p>
             </div>
-            
-            <div className="bento-card bento-feature-tertiary">
+            <div className="careers-benefit-card">
               <div className="careers-benefit-icon">
                 <Player autoplay loop src={collaboration} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Collaborative Culture</h3>
-              <p>Join a diverse team where breakthrough ideas emerge from collaboration.</p>
+              <p>Join a diverse team where every voice matters and breakthrough ideas emerge from collaboration.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Application Timeline Table Section (Restored) */}
+      {/* Application Timeline Table Section */}
       <section className="careers-timeline-section" id="timeline">
         <div className="careers-container">
           <div className="careers-section-header">
@@ -380,7 +337,7 @@ const CareersPage = () => {
               <tbody>
                 {jobData.length > 0 ? (
                   jobData.map(job => (
-                    <tr key={`table-${job.id}`}>
+                    <tr key={job.id}>
                       <td className="position-cell">
                         <div className="position-info">
                           <span className="position-title">{job.title}</span>
@@ -396,17 +353,35 @@ const CareersPage = () => {
                       </td>
                       <td className="date-cell">
                         {job.applicationTimeline
-                          ? new Date(job.applicationTimeline.applicationsOpen).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                          ? new Date(
+                              job.applicationTimeline.applicationsOpen
+                            ).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric'
+                            })
                           : 'TBD'}
                       </td>
                       <td className="date-cell deadline-cell">
                         {job.applicationTimeline
-                          ? new Date(job.applicationTimeline.finalDeadline).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                          ? new Date(
+                              job.applicationTimeline.finalDeadline
+                            ).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric'
+                            })
                           : 'TBD'}
                       </td>
                       <td className="date-cell">
                         {job.applicationTimeline
-                          ? new Date(job.applicationTimeline.programStarts).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                          ? new Date(
+                              job.applicationTimeline.programStarts
+                            ).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric'
+                            })
                           : 'TBD'}
                       </td>
                     </tr>
@@ -414,7 +389,7 @@ const CareersPage = () => {
                 ) : (
                   <tr>
                     <td colSpan="5" className="no-data-message">
-                      No timeline data available
+                      No job data available
                     </td>
                   </tr>
                 )}
@@ -424,135 +399,60 @@ const CareersPage = () => {
         </div>
       </section>
 
-      {/* Open Roles Cards Section */}
-      <section className="careers-open-roles-section" id="open-roles">
-        <div className="careers-container">
-          <div className="careers-section-header">
-            <h2>
-              Open <span className="careers-ganglia-highlight">Roles</span>
-            </h2>
-            <p>Find your next big opportunity with us</p>
-          </div>
-
-          {/* Filter Buttons */}
-          <div className="careers-filters">
-            {['all', 'engineering', 'design', 'marketing'].map(filter => (
-              <button
-                key={filter}
-                className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
-                onClick={() => handleFilterChange(filter)}
-              >
-                {filter.charAt(0).toUpperCase() + filter.slice(1)}
-              </button>
-            ))}
-          </div>
-
-          {/* Job Cards Grid */}
-          <div className="careers-jobs-grid">
-            {filteredJobs.length > 0 ? (
-              filteredJobs.map(job => (
-                <div key={job.id} className="careers-job-card">
-                  <div className="job-card-header">
-                    <span className={`category-badge ${job.category}`}>
-                      {job.category.charAt(0).toUpperCase() + job.category.slice(1)}
-                    </span>
-                    <span className="job-type-location">
-                      {job.type} • {job.location}
-                    </span>
-                  </div>
-                  
-                  <h3 className="job-title">{job.title}</h3>
-                  <p className="job-description">{job.shortDescription}</p>
-
-                  <div className="job-skills-container">
-                    {job.skills.slice(0, 4).map(skill => (
-                      <span key={skill} className="job-skill-pill">{skill}</span>
-                    ))}
-                    {job.skills.length > 4 && (
-                      <span className="job-skill-pill extra">+{job.skills.length - 4}</span>
-                    )}
-                  </div>
-
-                  <button 
-                    className="job-card-apply-btn primary"
-                    onClick={() => {
-                      window.scrollTo(0, 0);
-                      navigate('/internship-form', { replace: true });
-                    }}
-                  >
-                    Apply Now
-                  </button>
-                </div>
-              ))
-            ) : (
-              <div className="no-data-message">
-                <p>No open roles available matching your criteria.</p>
-              </div>
-            )}
+      {/* Internship Section */}
+      <section className="careers-internship-section" id="internships">
+        <div className="careers-internship-header">
+          <p className="careers-header-text">
+            We also offer roles in Technical and Management fields with internships and mentorships that foster growth.
+          </p>
+          <div className="careers-internship-title-container">
+            <img src={logo} alt="Ganglia Logo" className="careers-logo" />
+            <h1 className="careers-internship-title">SUMMER INTERNSHIP PROGRAM 2026</h1>
           </div>
         </div>
-      </section>
-
-      {/* Internship & Programs - Bento Grid Section */}
-      <section className="careers-internship-section" id="internships">
-        <div className="careers-container">
-          <div className="careers-internship-header">
-            <p className="careers-header-text">
-              We also offer roles in Technical and Management fields with internships and mentorships that foster growth.
-            </p>
-            <div className="careers-internship-title-container">
-              <img src={logo} alt="Ganglia Logo" className="careers-logo" />
-              <h1 className="careers-internship-title">SUMMER INTERNSHIP PROGRAM 2026</h1>
-            </div>
-          </div>
-          
-          <div className="bento-grid internship-bento">
-            <div className="bento-card">
+        <div className="careers-internship-content">
+          <div className="careers-program-highlights">
+            <div className="careers-highlight-card">
               <div className="careers-highlight-icon">
                 <Player autoplay loop src={teach} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Learn from Experts</h3>
-              <p>Work directly with senior engineers, designers, and product managers.</p>
+              <p>Work directly with senior engineers, designers, and product managers who are leaders in healthcare technology.</p>
             </div>
-            
-            <div className="bento-card">
+            <div className="careers-highlight-card">
               <div className="careers-highlight-icon">
                 <Player autoplay loop src={globe} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Real-World Projects</h3>
-              <p>Contribute to actual product features and research initiatives.</p>
+              <p>Contribute to actual product features and research initiatives that impact thousands of healthcare professionals.</p>
             </div>
-            
-            <div className="bento-card">
+            <div className="careers-highlight-card">
               <div className="careers-highlight-icon">
                 <Player autoplay loop src={launch} style={{ height: 55, width: 55 }} />
               </div>
               <h3>Career Launch</h3>
               <p>Kickstart your career with a company that's revolutionizing healthcare.</p>
             </div>
+          </div>
 
-            {/* Carousel spans across multiple columns in the bento grid */}
-            <div className="bento-card bento-span-full bento-carousel-wrapper">
-              <ImageCarousel images={carouselImages} />
-            </div>
+          <ImageCarousel images={carouselImages} />
 
-            <div className="bento-card bento-span-full bento-cta-card">
-              <div className="careers-cta-content">
-                <h3>
-                  <span className="careers-highlight">Opportunities</span> like this don't wait
-                </h3>
-                <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
-                <div className="careers-application-info">
-                  <button
-                    className="careers-date-button primary-glow"
-                    onClick={() => {
-                      window.scrollTo(0, 0);
-                      navigate('/internship-form', { replace: true });
-                    }}
-                  >
-                    Apply for Summer Internship Program 2026
-                  </button>
-                </div>
+          <div className="careers-call-to-action">
+            <div className="careers-cta-content">
+              <h3>
+                <span className="careers-highlight">Opportunities</span> like this don't wait
+              </h3>
+              <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
+              <div className="careers-application-info">
+                <button
+                  className="careers-date-button"
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    navigate('/internship-form', { replace: true });
+                  }}
+                >
+                  Apply for Summer Internship Program 2026
+                </button>
               </div>
             </div>
           </div>
