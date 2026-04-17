@@ -28,14 +28,14 @@ const debounce = (func, wait) => {
   };
 };
 
-// Hardcoded Jobs Array (still used by timeline)
+// Hardcoded Jobs Array
 const jobData = [
   {
     id: 'ui-ux-design-intern',
     title: 'UI/UX Design intern',
     category: 'design',
     type: 'Internship',
-    location: 'Remote/In-Person',
+    location: 'In-Person',
     level: 'Entry Level',
     shortDescription:
       "Design interfaces people actually enjoy using. You'll help design how our product looks and feels — across web and mobile. Think of it as the bridge between the product team and the people using it. If you love making things look clean, logical, and easy to use, this role is for you.",
@@ -64,7 +64,7 @@ const jobData = [
     title: 'Marketing intern',
     category: 'marketing',
     type: 'Internship',
-    location: 'Remote/In-Person',
+    location: 'In-Person',
     level: 'Entry Level',
     shortDescription:
       "Help us grow our online presence. You'll help us show up in the right places — on social media, in search results, and in people's inboxes. This is a great role if you like writing, storytelling, and figuring out what makes people click.",
@@ -94,7 +94,7 @@ const jobData = [
     title: 'Mobile app developer intern',
     category: 'engineering',
     type: 'Internship',
-    location: 'Remote/In-Person',
+    location: 'In-Person',
     level: 'Entry Level',
     shortDescription:
       "Build Android apps from scratch. You'll work on building real features inside our Android app. This means writing code, connecting to our backend, handling user logins, and making sure things don't break. You'll learn a ton by doing real work — not just watching tutorials.",
@@ -114,7 +114,7 @@ const jobData = [
     skills: ['Android Studio', 'Firebase', 'REST APIs', 'Git', 'GitHub', 'Kotlin', 'AI debugging tools'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
-     finalDeadline: '2026-04-20',
+      finalDeadline: '2026-04-20',
       programStarts: '2026-06-01'
     }
   },
@@ -123,7 +123,7 @@ const jobData = [
     title: 'Full stack developer intern',
     category: 'engineering',
     type: 'Internship',
-    location: 'Remote/In-Person',
+    location: 'In-Person',
     level: 'Entry Level',
     shortDescription:
       "Build web apps end-to-end. You'll work across the full product — building features users see on screen (frontend) and the logic that powers them behind the scenes (backend). It's a great role if you like knowing how the whole system fits together.",
@@ -143,12 +143,11 @@ const jobData = [
     skills: ['React.js', 'MongoDB', 'Git', 'GitHub', 'REST APIs', 'Python', 'Clean code', 'AI coding tools'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
-     finalDeadline: '2026-04-20',
+      finalDeadline: '2026-04-20',
       programStarts: '2026-06-01'
     }
   }
 ];
-
 
 // Carousel images
 const carouselImages = [
@@ -163,6 +162,7 @@ const CareersPage = () => {
   const [animationsLoaded, setAnimationsLoaded] = useState(false);
   const { isLoading } = useRouteLoader();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+  
   const debouncedHandleResize = useCallback(
     debounce(() => setIsMobile(window.innerWidth < 900), 100),
     []
@@ -179,6 +179,11 @@ const CareersPage = () => {
   const handleFilterChange = useCallback((filter) => {
     setActiveFilter(filter);
   }, []);
+
+  // Filter jobs based on selected category
+  const filteredJobs = jobData.filter(job => 
+    activeFilter === 'all' ? true : job.category === activeFilter
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => setAnimationsLoaded(true), 100);
@@ -303,8 +308,8 @@ const CareersPage = () => {
             Ganglia is where visionaries thrive and breakthrough ideas come to life.
           </p>
           <div className="careers-hero-buttons">
-            <a href="#timeline" className="careers-apply-btn primary">
-              View Application Timeline
+            <a href="#open-roles" className="careers-apply-btn primary">
+              Apply Now
             </a>
           </div>
         </div>
@@ -349,87 +354,92 @@ const CareersPage = () => {
         </div>
       </section>
 
-      {/* Application Timeline Table Section */}
-      <section className="careers-timeline-section" id="timeline">
+      {/* Open Roles Cards Section */}
+      <section className="careers-open-roles-section" id="open-roles">
         <div className="careers-container">
           <div className="careers-section-header">
             <h2>
-              Application <span className="careers-ganglia-highlight">Timeline</span>
+              Open <span className="careers-ganglia-highlight">Roles</span>
             </h2>
-            <p>Important dates for all current and upcoming programs</p>
+            <p>Important dates and positions for all current and upcoming programs</p>
           </div>
-          <div className="careers-timeline-table-container">
-            <table className="careers-timeline-table">
-              <thead>
-                <tr>
-                  <th>Position</th>
-                  <th>Category</th>
-                  <th>Applications Open</th>
-                  <th>Final Deadline</th>
-                  <th>Start Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                {jobData.length > 0 ? (
-                  jobData.map(job => (
-                    <tr key={job.id}>
-                      <td className="position-cell">
-                        <div className="position-info">
-                          <span className="position-title">{job.title}</span>
-                          <span className="position-details">
-                            {job.type} • {job.location}
-                          </span>
-                        </div>
-                      </td>
-                      <td>
-                        <span className={`category-badge ${job.category}`}>
-                          {job.category.charAt(0).toUpperCase() + job.category.slice(1)}
-                        </span>
-                      </td>
-                      <td className="date-cell">
-                        {job.applicationTimeline
-                          ? new Date(
-                              job.applicationTimeline.applicationsOpen
-                            ).toLocaleDateString('en-US', {
-                              year: 'numeric',
-                              month: 'short',
-                              day: 'numeric'
-                            })
-                          : 'TBD'}
-                      </td>
-                      <td className="date-cell deadline-cell">
-                        {job.applicationTimeline
-                          ? new Date(
-                              job.applicationTimeline.finalDeadline
-                            ).toLocaleDateString('en-US', {
-                              year: 'numeric',
-                              month: 'short',
-                              day: 'numeric'
-                            })
-                          : 'TBD'}
-                      </td>
-                      <td className="date-cell">
-                        {job.applicationTimeline
-                          ? new Date(
-                              job.applicationTimeline.programStarts
-                            ).toLocaleDateString('en-US', {
-                              year: 'numeric',
-                              month: 'short',
-                              day: 'numeric'
-                            })
-                          : 'TBD'}
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="5" className="no-data-message">
-                      No job data available
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+
+          {/* Filter Buttons */}
+          <div className="careers-filters">
+            {['all', 'engineering', 'design', 'marketing'].map(filter => (
+              <button
+                key={filter}
+                className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
+                onClick={() => handleFilterChange(filter)}
+              >
+                {filter.charAt(0).toUpperCase() + filter.slice(1)}
+              </button>
+            ))}
+          </div>
+
+          {/* Job Cards Grid */}
+          <div className="careers-jobs-grid">
+            {filteredJobs.length > 0 ? (
+              filteredJobs.map(job => (
+                <div key={job.id} className="careers-job-card">
+                  <div className="job-card-header">
+                    <span className={`category-badge ${job.category}`}>
+                      {job.category.charAt(0).toUpperCase() + job.category.slice(1)}
+                    </span>
+                    <span className="job-type-location">
+                      {job.type} • {job.location}
+                    </span>
+                  </div>
+                  
+                  <h3 className="job-title">{job.title}</h3>
+                  <p className="job-description">{job.shortDescription}</p>
+
+                  <div className="job-skills-container">
+                    {job.skills.slice(0, 4).map(skill => (
+                      <span key={skill} className="job-skill-pill">{skill}</span>
+                    ))}
+                    {job.skills.length > 4 && (
+                      <span className="job-skill-pill extra">+{job.skills.length - 4}</span>
+                    )}
+                  </div>
+
+                  <div className="job-timeline-info">
+                    <div className="timeline-item">
+                      <span className="timeline-label">Open:</span>
+                      <span className="timeline-date">
+                        {new Date(job.applicationTimeline.applicationsOpen).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                    </div>
+                    <div className="timeline-item deadline">
+                      <span className="timeline-label">Deadline:</span>
+                      <span className="timeline-date">
+                        {new Date(job.applicationTimeline.finalDeadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                    </div>
+                    <div className="timeline-item">
+                      <span className="timeline-label">Starts:</span>
+                      <span className="timeline-date">
+                        {new Date(job.applicationTimeline.programStarts).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                    </div>
+                  </div>
+
+                  <button 
+                    className="job-card-apply-btn"
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                      navigate('/internship-form', { replace: true });
+                    }}
+                  >
+                    Apply Now
+                  </button>
+                </div>
+              ))
+            ) : (
+              <div className="no-data-message">
+                <p>No open roles available matching your criteria.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
