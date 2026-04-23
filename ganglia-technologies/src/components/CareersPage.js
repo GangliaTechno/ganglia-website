@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import '../styles/CareersPage.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logob.png';
@@ -268,8 +268,9 @@ const CareersPage = () => {
             Ganglia is where visionaries thrive and breakthrough ideas come to life.
           </p>
           <div className="careers-hero-buttons">
-            <a href="#timeline" className="careers-apply-btn primary">
-              View Application Timeline
+            {/* Changed from "View Application Timeline" to "Apply Now" */}
+            <a href="#open-roles" className="careers-apply-btn primary">
+              Apply Now
             </a>
           </div>
         </div>
@@ -310,6 +311,65 @@ const CareersPage = () => {
               <h3>Collaborative Culture</h3>
               <p>Join a diverse team where every voice matters and breakthrough ideas emerge from collaboration.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Open Roles Cards Section (Added before the table) */}
+      <section className="careers-open-roles-section" id="open-roles">
+        <div className="careers-container">
+          <div className="careers-section-header">
+            <h2>
+              Open <span className="careers-ganglia-highlight">Roles</span>
+            </h2>
+            <p>Explore our open positions and find your perfect fit</p>
+          </div>
+          
+          <div className="careers-job-cards-grid">
+            {jobData.map(job => (
+              <div key={job.id} className="careers-job-card">
+                <div className="job-card-header">
+                  <h3>{job.title}</h3>
+                  <span className={`category-badge ${job.category}`}>
+                    {job.category.charAt(0).toUpperCase() + job.category.slice(1)}
+                  </span>
+                </div>
+                
+                <div className="job-card-meta">
+                  <span className="job-type">{job.type}</span> • 
+                  <span className="job-location"> {job.location}</span> • 
+                  <span className="job-level"> {job.level}</span>
+                </div>
+                
+                <p className="job-card-description">{job.shortDescription}</p>
+                
+                <div className="job-card-duties">
+                  <h4>What You'll Do:</h4>
+                  <ul>
+                    {job.details["What You'll Do"].slice(0, 3).map((duty, idx) => (
+                      <li key={idx}>{duty}</li>
+                    ))}
+                    <li>...and more!</li>
+                  </ul>
+                </div>
+
+                <div className="job-card-skills">
+                  {job.skills.map((skill, idx) => (
+                    <span key={idx} className="skill-tag">{skill}</span>
+                  ))}
+                </div>
+                
+                <button 
+                  className="careers-apply-btn secondary"
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    navigate('/internship-form', { replace: true });
+                  }}
+                >
+                  Apply for this role
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </section>
