@@ -14,10 +14,38 @@ import collaborationSpacesImg from '../assets/collaborationspaces.jpg';
 import launch from '../assets/Firecracker.json';
 import teach from '../assets/Classroom.json';
 import globe from '../assets/globe.json';
-import hiringPoster from '../assets/hiring-poster.png'; // Ensure your uploaded image is saved with this name/path
 
-// Hardcoded Jobs Array - Deadlines updated to April 30th, 2026
+// Hardcoded Jobs Array - Added Technical Project Manager and updated deadlines
 const jobData = [
+  {
+    id: 'technical-project-manager',
+    title: 'Technical Project Manager',
+    category: 'management',
+    type: 'Full-time',
+    location: 'In-Person',
+    level: 'Mid Level',
+    shortDescription:
+      "Drive end-to-end technical projects, providing leadership, and giving strategic inputs across multiple initiatives. Bring your experience to architect solutions, mentor a team, and manage project lifecycles.",
+    details: {
+      "What You'll Do": [
+        "Manage project timelines, delivery, and lifecycle.",
+        "Provide leadership and direction to a development team.",
+        "Contribute key technical and strategic inputs to various projects.",
+        "Code, review, and architect robust solutions across the stack.",
+        "Lead client interactions, capture project requirements, and communicate them clearly to the development team for execution."
+      ],
+      "Note for Newcomers": [
+        "Pre-requisites: BTech/MCA, age below 25 years. Terms & Conditions: No accommodation provided, No allowances provided."
+      ]
+    },
+    posted: ' ',
+    skills: ['Full-Stack Experience', 'Project Management', 'Team Leadership', 'Strategic Thinking', 'Problem Solving', 'AI-writing Tools', 'Communication'],
+    applicationTimeline: {
+      applicationsOpen: '2026-04-01',
+      finalDeadline: '2026-04-30',
+      programStarts: 'Immediate'
+    }
+  },
   {
     id: 'ui-ux-design-intern',
     title: 'UI/UX Design intern',
@@ -257,7 +285,7 @@ const CareersPage = () => {
 
   return (
     <div className="careers-page">
-      {/* Dynamic CSS injected for the job cards to implement Glassmorphism and Poster styling */}
+      {/* Dynamic CSS injected for the job cards to implement Glassmorphism and specialized Full-time styling */}
       <style>{`
         .careers-job-cards-grid {
           display: grid;
@@ -265,43 +293,38 @@ const CareersPage = () => {
           gap: 24px;
           margin-top: 30px;
         }
-        
-        .featured-poster-container {
-          width: 100%;
-          max-width: 800px;
-          margin: 0 auto 50px auto;
-          text-align: center;
-        }
 
-        .featured-poster-img {
-          width: 100%;
-          height: auto;
-          border-radius: 16px;
-          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          transition: transform 0.3s ease;
-        }
-
-        .featured-poster-img:hover {
-          transform: translateY(-4px);
-        }
-
-        /* Glassmorphism Styles */
+        /* Glassmorphism Styles - Base */
         .careers-job-card-dark {
           position: relative;
-          background: rgba(17, 21, 38, 0.45); /* Semi-transparent dark background */
-          backdrop-filter: blur(12px); /* Blur effect on background */
+          background: rgba(17, 21, 38, 0.45); 
+          backdrop-filter: blur(12px); 
           -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.08); /* Soft translucent border */
-          border-radius: 16px; /* Smoother edges for glass look */
+          border: 1px solid rgba(255, 255, 255, 0.08); 
+          border-radius: 16px; 
           padding: 24px;
           display: flex;
           flex-direction: column;
           color: #e2e8f0;
           text-align: left;
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Deep floating shadow */
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); 
           transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
           overflow: hidden;
+        }
+
+        /* Full-Time Specific Styling */
+        .careers-job-card-dark.full-time-card {
+          border: 1px solid rgba(252, 235, 79, 0.3); /* Gold/Yellow border */
+          background: rgba(25, 22, 10, 0.45); /* Slightly warmer background */
+        }
+        
+        .careers-job-card-dark.full-time-card:hover {
+          border-color: rgba(252, 235, 79, 0.8);
+          box-shadow: 0 12px 40px 0 rgba(252, 235, 79, 0.15);
+        }
+
+        .job-card-title-dark.full-time-title {
+          color: #fceb4f; /* Highlighted title for full time */
         }
 
         /* Subtle top highlight for depth */
@@ -315,11 +338,19 @@ const CareersPage = () => {
           background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
           z-index: 1;
         }
+        
+        .careers-job-card-dark.full-time-card::before {
+           background: linear-gradient(90deg, rgba(252, 235, 79, 0) 0%, rgba(252, 235, 79, 0.4) 50%, rgba(252, 235, 79, 0) 100%);
+        }
 
-        .careers-job-card-dark:hover {
+        .careers-job-card-dark:hover:not(.full-time-card) {
           transform: translateY(-6px);
           border-color: rgba(255, 255, 255, 0.15);
           box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+        }
+        
+        .careers-job-card-dark.full-time-card:hover {
+            transform: translateY(-6px);
         }
 
         .job-card-title-dark {
@@ -345,6 +376,7 @@ const CareersPage = () => {
         .job-card-badge-dark.design { background-color: rgba(59, 33, 79, 0.8); color: #d8b4e2; }
         .job-card-badge-dark.marketing { background-color: rgba(26, 42, 79, 0.8); color: #9bb7ed; }
         .job-card-badge-dark.engineering { background-color: rgba(30, 58, 41, 0.8); color: #a3d9b4; }
+        .job-card-badge-dark.management { background-color: rgba(133, 90, 20, 0.8); color: #fceb4f; }
         
         .job-card-meta-dark {
           font-size: 0.85rem;
@@ -558,59 +590,53 @@ const CareersPage = () => {
             <p>Explore our open positions and find your perfect fit</p>
           </div>
 
-          {/* ADDED: Technical Project Manager Hiring Poster */}
-          <div className="featured-poster-container">
-            <img 
-              src={hiringPoster} 
-              alt="We're Hiring Technical Project Manager" 
-              className="featured-poster-img"
-            />
-          </div>
-          
           <div className="careers-job-cards-grid">
-            {jobData.map(job => (
-              <div key={job.id} className="careers-job-card-dark">
-                <h3 className="job-card-title-dark">{job.title}</h3>
-                
-                <div>
-                  <span className={`job-card-badge-dark ${job.category}`}>
-                    {job.category.charAt(0).toUpperCase() + job.category.slice(1)}
-                  </span>
-                </div>
-                
-                <div className="job-card-meta-dark">
-                  {job.type} • {job.location} • {job.level}
-                </div>
-                
-                <p className="job-card-desc-dark">{job.shortDescription}</p>
-                
-                <div className="job-card-duties-dark">
-                  <h4>What You'll Do:</h4>
-                  <ul>
-                    {job.details["What You'll Do"].slice(0, 4).map((duty, idx) => (
-                      <li key={idx}>{duty}</li>
-                    ))}
-                    <li>...and more!</li>
-                  </ul>
-                </div>
+            {jobData.map(job => {
+              const isFullTime = job.type === 'Full-time';
+              return (
+                <div key={job.id} className={`careers-job-card-dark ${isFullTime ? 'full-time-card' : ''}`}>
+                  <h3 className={`job-card-title-dark ${isFullTime ? 'full-time-title' : ''}`}>{job.title}</h3>
+                  
+                  <div>
+                    <span className={`job-card-badge-dark ${job.category}`}>
+                      {job.category.charAt(0).toUpperCase() + job.category.slice(1)}
+                    </span>
+                  </div>
+                  
+                  <div className="job-card-meta-dark">
+                    {job.type} • {job.location} • {job.level}
+                  </div>
+                  
+                  <p className="job-card-desc-dark">{job.shortDescription}</p>
+                  
+                  <div className="job-card-duties-dark">
+                    <h4>What You'll Do:</h4>
+                    <ul>
+                      {job.details["What You'll Do"].slice(0, 4).map((duty, idx) => (
+                        <li key={idx}>{duty}</li>
+                      ))}
+                      {job.details["What You'll Do"].length > 4 && <li>...and more!</li>}
+                    </ul>
+                  </div>
 
-                <div className="job-card-skills-dark">
-                  {job.skills.map((skill, idx) => (
-                    <span key={idx} className="skill-tag-dark">{skill}</span>
-                  ))}
+                  <div className="job-card-skills-dark">
+                    {job.skills.map((skill, idx) => (
+                      <span key={idx} className="skill-tag-dark">{skill}</span>
+                    ))}
+                  </div>
+                  
+                  <button 
+                    className="apply-btn-yellow"
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                      navigate(`/apply/${job.id}`, { replace: true });
+                    }}
+                  >
+                    Apply Now
+                  </button>
                 </div>
-                
-                <button 
-                  className="apply-btn-yellow"
-                  onClick={() => {
-                    window.scrollTo(0, 0);
-                    navigate(`/apply/${job.id}`, { replace: true });
-                  }}
-                >
-                  Apply Now
-                </button>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -675,7 +701,7 @@ const CareersPage = () => {
                           : 'TBD'}
                       </td>
                       <td className="date-cell">
-                        {job.applicationTimeline
+                        {job.applicationTimeline && job.applicationTimeline.programStarts !== 'Immediate'
                           ? new Date(
                               job.applicationTimeline.programStarts
                             ).toLocaleDateString('en-US', {
@@ -683,7 +709,7 @@ const CareersPage = () => {
                               month: 'short',
                               day: 'numeric'
                             })
-                          : 'TBD'}
+                          : job.applicationTimeline ? job.applicationTimeline.programStarts : 'TBD'}
                       </td>
                     </tr>
                   ))
