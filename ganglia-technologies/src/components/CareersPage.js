@@ -18,6 +18,35 @@ import globe from '../assets/globe.json';
 // Hardcoded Jobs Array - Deadlines updated to April 30th, 2026
 const jobData = [
   {
+    id: 'technical-project-manager',
+    title: 'Technical Project Manager',
+    category: 'management',
+    type: 'Full time',
+    location: 'In-Person',
+    level: 'Mid Level',
+    shortDescription:
+      "Drive end-to-end technical projects, providing leadership, and giving strategic inputs across multiple initiatives. Bring your experience to architect solutions, mentor a team, and manage project lifecycles.",
+    details: {
+      "What You'll Do": [
+        "Manage project timelines, delivery, and lifecycle.",
+        "Provide leadership and direction to a development team.",
+        "Contribute key technical and strategic inputs to various projects.",
+        "Code, review, and architect robust solutions across the stack.",
+        "Lead client interactions, capture project requirements, and communicate them clearly."
+      ],
+      "Note for Newcomers": [
+        "Pre-requisites: BTech/MCA, age below 25 years. Terms: No accommodation or allowances provided."
+      ]
+    },
+    posted: ' ',
+    skills: ['Full-Stack Experience', 'Project Management', 'Team Leadership', 'Strategic Thinking', 'Problem Solving', 'AI-writing Tools', 'Communication'],
+    applicationTimeline: {
+      applicationsOpen: '2026-04-01',
+      finalDeadline: '2026-04-30',
+      programStarts: '2026-06-01'
+    }
+  },
+  {
     id: 'ui-ux-design-intern',
     title: 'UI/UX Design intern',
     category: 'design',
@@ -324,6 +353,7 @@ const CareersPage = () => {
         .job-card-badge-dark.design { background-color: rgba(59, 33, 79, 0.8); color: #d8b4e2; }
         .job-card-badge-dark.marketing { background-color: rgba(26, 42, 79, 0.8); color: #9bb7ed; }
         .job-card-badge-dark.engineering { background-color: rgba(30, 58, 41, 0.8); color: #a3d9b4; }
+        .job-card-badge-dark.management { background-color: rgba(144, 98, 43, 0.6); color: #f5d098; }
         
         .job-card-meta-dark {
           font-size: 0.85rem;
@@ -407,6 +437,21 @@ const CareersPage = () => {
           background-color: #e5d444;
           transform: scale(1.02);
         }
+
+        .careers-hero-sub-link {
+          display: inline-block;
+          margin-top: 15px;
+          color: #cbd5e1;
+          font-size: 0.95rem;
+          text-decoration: none;
+          border-bottom: 1px dashed #cbd5e1;
+          transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        
+        .careers-hero-sub-link:hover {
+          color: #fceb4f;
+          border-bottom: 1px solid #fceb4f;
+        }
       `}</style>
 
       {/* Hero Section */}
@@ -420,9 +465,12 @@ const CareersPage = () => {
             If you're inspired by challenging problems and passionate about meaningful change,
             Ganglia is where visionaries thrive and breakthrough ideas come to life.
           </p>
-          <div className="careers-hero-buttons">
+          <div className="careers-hero-buttons" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <a href="#open-roles" className="careers-apply-btn primary">
               Apply Now
+            </a>
+            <a href="#internships" className="careers-hero-sub-link">
+              Explore Summer Internship Program 2026
             </a>
           </div>
         </div>
