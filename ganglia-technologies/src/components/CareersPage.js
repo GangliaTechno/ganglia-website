@@ -256,7 +256,7 @@ const CareersPage = () => {
 
   return (
     <div className="careers-page">
-      {/* Dynamic CSS injected for the job cards to match the screenshot provided */}
+      {/* Dynamic CSS injected for the job cards to implement Glassmorphism */}
       <style>{`
         .careers-job-cards-grid {
           display: grid;
@@ -264,28 +264,52 @@ const CareersPage = () => {
           gap: 24px;
           margin-top: 30px;
         }
+        
+        /* Glassmorphism Styles */
         .careers-job-card-dark {
-          background-color: #0b0d17;
-          border: 1px solid #23253a;
-          border-radius: 12px;
+          position: relative;
+          background: rgba(17, 21, 38, 0.45); /* Semi-transparent dark background */
+          backdrop-filter: blur(12px); /* Blur effect on background */
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.08); /* Soft translucent border */
+          border-radius: 16px; /* Smoother edges for glass look */
           padding: 24px;
           display: flex;
           flex-direction: column;
           color: #e2e8f0;
           text-align: left;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-          transition: transform 0.2s ease, border-color 0.2s ease;
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Deep floating shadow */
+          transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+          overflow: hidden;
         }
+
+        /* Subtle top highlight for depth */
+        .careers-job-card-dark::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
+          z-index: 1;
+        }
+
         .careers-job-card-dark:hover {
-          transform: translateY(-4px);
-          border-color: #3b3f61;
+          transform: translateY(-6px);
+          border-color: rgba(255, 255, 255, 0.15);
+          box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
         }
+
         .job-card-title-dark {
           font-size: 1.4rem;
           font-weight: 700;
           color: #ffffff;
           margin: 0 0 8px 0;
+          position: relative;
+          z-index: 2;
         }
+
         .job-card-badge-dark {
           display: inline-block;
           padding: 4px 10px;
@@ -293,53 +317,75 @@ const CareersPage = () => {
           font-size: 0.75rem;
           font-weight: 600;
           margin-bottom: 12px;
+          position: relative;
+          z-index: 2;
         }
-        .job-card-badge-dark.design { background-color: #3b214f; color: #d8b4e2; }
-        .job-card-badge-dark.marketing { background-color: #1a2a4f; color: #9bb7ed; }
-        .job-card-badge-dark.engineering { background-color: #1e3a29; color: #a3d9b4; }
+        
+        .job-card-badge-dark.design { background-color: rgba(59, 33, 79, 0.8); color: #d8b4e2; }
+        .job-card-badge-dark.marketing { background-color: rgba(26, 42, 79, 0.8); color: #9bb7ed; }
+        .job-card-badge-dark.engineering { background-color: rgba(30, 58, 41, 0.8); color: #a3d9b4; }
         
         .job-card-meta-dark {
           font-size: 0.85rem;
           color: #94a3b8;
           margin-bottom: 16px;
+          position: relative;
+          z-index: 2;
         }
+
         .job-card-desc-dark {
           font-size: 0.95rem;
           line-height: 1.5;
           margin-bottom: 20px;
           color: #cbd5e1;
+          position: relative;
+          z-index: 2;
         }
+
+        .job-card-duties-dark {
+          position: relative;
+          z-index: 2;
+        }
+
         .job-card-duties-dark h4 {
           font-size: 1rem;
           color: #ffffff;
           margin: 0 0 10px 0;
         }
+
         .job-card-duties-dark ul {
           padding-left: 20px;
           margin-bottom: 20px;
           color: #cbd5e1;
         }
+
         .job-card-duties-dark li {
           font-size: 0.9rem;
           margin-bottom: 6px;
           line-height: 1.4;
         }
+
         .job-card-skills-dark {
           display: flex;
           flex-wrap: wrap;
           gap: 8px;
           margin-bottom: 24px;
+          position: relative;
+          z-index: 2;
         }
+
         .skill-tag-dark {
           background-color: transparent;
           color: #94a3b8;
           font-size: 0.85rem;
         }
+
         .skill-tag-dark:not(:last-child)::after {
           content: ' • ';
           color: #475569;
           margin-left: 8px;
         }
+
         .apply-btn-yellow {
           background-color: #fceb4f;
           color: #000000;
@@ -352,10 +398,14 @@ const CareersPage = () => {
           width: 100%;
           text-align: center;
           margin-top: auto;
-          transition: background-color 0.2s ease;
+          transition: background-color 0.2s ease, transform 0.2s ease;
+          position: relative;
+          z-index: 2;
         }
+
         .apply-btn-yellow:hover {
           background-color: #e5d444;
+          transform: scale(1.02);
         }
       `}</style>
 
@@ -464,10 +514,10 @@ const CareersPage = () => {
                   className="apply-btn-yellow"
                   onClick={() => {
                     window.scrollTo(0, 0);
-                    navigate('/internship-form', { replace: true });
+                    navigate(`/apply/${job.id}`, { replace: true });
                   }}
                 >
-                  Apply for this role
+                  Apply Now
                 </button>
               </div>
             ))}
