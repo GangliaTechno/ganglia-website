@@ -14,38 +14,10 @@ import collaborationSpacesImg from '../assets/collaborationspaces.jpg';
 import launch from '../assets/Firecracker.json';
 import teach from '../assets/Classroom.json';
 import globe from '../assets/globe.json';
+import hiringPoster from '../assets/hiring-poster.png'; // Ensure your uploaded image is saved with this name/path
 
 // Hardcoded Jobs Array - Deadlines updated to April 30th, 2026
 const jobData = [
-  {
-    id: 'technical-project-manager',
-    title: 'Technical Project Manager',
-    category: 'management',
-    type: 'Full time',
-    location: 'In-Person',
-    level: 'Mid Level',
-    shortDescription:
-      "Drive end-to-end technical projects, providing leadership, and giving strategic inputs across multiple initiatives. Bring your experience to architect solutions, mentor a team, and manage project lifecycles.",
-    details: {
-      "What You'll Do": [
-        "Manage project timelines, delivery, and lifecycle.",
-        "Provide leadership and direction to a development team.",
-        "Contribute key technical and strategic inputs to various projects.",
-        "Code, review, and architect robust solutions across the stack.",
-        "Lead client interactions, capture project requirements, and communicate them clearly."
-      ],
-      "Note for Newcomers": [
-        "Pre-requisites: BTech/MCA, age below 25 years. Terms: No accommodation or allowances provided."
-      ]
-    },
-    posted: ' ',
-    skills: ['Full-Stack Experience', 'Project Management', 'Team Leadership', 'Strategic Thinking', 'Problem Solving', 'AI-writing Tools', 'Communication'],
-    applicationTimeline: {
-      applicationsOpen: '2026-04-01',
-      finalDeadline: '2026-04-30',
-      programStarts: '2026-06-01'
-    }
-  },
   {
     id: 'ui-ux-design-intern',
     title: 'UI/UX Design intern',
@@ -285,7 +257,7 @@ const CareersPage = () => {
 
   return (
     <div className="careers-page">
-      {/* Dynamic CSS injected for the job cards to implement Glassmorphism */}
+      {/* Dynamic CSS injected for the job cards to implement Glassmorphism and Poster styling */}
       <style>{`
         .careers-job-cards-grid {
           display: grid;
@@ -294,6 +266,26 @@ const CareersPage = () => {
           margin-top: 30px;
         }
         
+        .featured-poster-container {
+          width: 100%;
+          max-width: 800px;
+          margin: 0 auto 50px auto;
+          text-align: center;
+        }
+
+        .featured-poster-img {
+          width: 100%;
+          height: auto;
+          border-radius: 16px;
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          transition: transform 0.3s ease;
+        }
+
+        .featured-poster-img:hover {
+          transform: translateY(-4px);
+        }
+
         /* Glassmorphism Styles */
         .careers-job-card-dark {
           position: relative;
@@ -353,7 +345,6 @@ const CareersPage = () => {
         .job-card-badge-dark.design { background-color: rgba(59, 33, 79, 0.8); color: #d8b4e2; }
         .job-card-badge-dark.marketing { background-color: rgba(26, 42, 79, 0.8); color: #9bb7ed; }
         .job-card-badge-dark.engineering { background-color: rgba(30, 58, 41, 0.8); color: #a3d9b4; }
-        .job-card-badge-dark.management { background-color: rgba(144, 98, 43, 0.6); color: #f5d098; }
         
         .job-card-meta-dark {
           font-size: 0.85rem;
@@ -437,21 +428,6 @@ const CareersPage = () => {
           background-color: #e5d444;
           transform: scale(1.02);
         }
-
-        .careers-hero-sub-link {
-          display: inline-block;
-          margin-top: 15px;
-          color: #cbd5e1;
-          font-size: 0.95rem;
-          text-decoration: none;
-          border-bottom: 1px dashed #cbd5e1;
-          transition: color 0.2s ease, border-color 0.2s ease;
-        }
-        
-        .careers-hero-sub-link:hover {
-          color: #fceb4f;
-          border-bottom: 1px solid #fceb4f;
-        }
       `}</style>
 
       {/* Hero Section */}
@@ -465,18 +441,75 @@ const CareersPage = () => {
             If you're inspired by challenging problems and passionate about meaningful change,
             Ganglia is where visionaries thrive and breakthrough ideas come to life.
           </p>
-          <div className="careers-hero-buttons" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="careers-hero-buttons">
             <a href="#open-roles" className="careers-apply-btn primary">
               Apply Now
-            </a>
-            <a href="#internships" className="careers-hero-sub-link">
-              Explore Summer Internship Program 2026
             </a>
           </div>
         </div>
         <div className="careers-hero-scroll">
           <span>Scroll to explore</span>
           <div className="careers-scroll-indicator"></div>
+        </div>
+      </section>
+
+      {/* Internship Section (Moved below Apply Now / Hero Section) */}
+      <section className="careers-internship-section" id="internships">
+        <div className="careers-internship-header">
+          <p className="careers-header-text">
+            We also offer roles in Technical and Management fields with internships and mentorships that foster growth.
+          </p>
+          <div className="careers-internship-title-container">
+            <img src={logo} alt="Ganglia Logo" className="careers-logo" />
+            <h1 className="careers-internship-title">SUMMER INTERNSHIP PROGRAM 2026</h1>
+          </div>
+        </div>
+        <div className="careers-internship-content">
+          <div className="careers-program-highlights">
+            <div className="careers-highlight-card">
+              <div className="careers-highlight-icon">
+                <Player autoplay loop src={teach} style={{ height: 55, width: 55 }} />
+              </div>
+              <h3>Learn from Experts</h3>
+              <p>Work directly with senior engineers, designers, and product managers who are leaders in healthcare technology.</p>
+            </div>
+            <div className="careers-highlight-card">
+              <div className="careers-highlight-icon">
+                <Player autoplay loop src={globe} style={{ height: 55, width: 55 }} />
+              </div>
+              <h3>Real-World Projects</h3>
+              <p>Contribute to actual product features and research initiatives that impact thousands of healthcare professionals.</p>
+            </div>
+            <div className="careers-highlight-card">
+              <div className="careers-highlight-icon">
+                <Player autoplay loop src={launch} style={{ height: 55, width: 55 }} />
+              </div>
+              <h3>Career Launch</h3>
+              <p>Kickstart your career with a company that's revolutionizing healthcare.</p>
+            </div>
+          </div>
+
+          <ImageCarousel images={carouselImages} />
+
+          <div className="careers-call-to-action">
+            <div className="careers-cta-content">
+              <h3>
+                <span className="careers-highlight">Opportunities</span> like this don't wait
+              </h3>
+              <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
+              <div className="careers-application-info">
+                <button
+                  className="careers-date-button"
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    navigate('/internship-form', { replace: true });
+                  }}
+                >
+                  Apply for Summer Internship Program 2026
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -523,6 +556,15 @@ const CareersPage = () => {
               Open <span className="careers-ganglia-highlight">Roles</span>
             </h2>
             <p>Explore our open positions and find your perfect fit</p>
+          </div>
+
+          {/* ADDED: Technical Project Manager Hiring Poster */}
+          <div className="featured-poster-container">
+            <img 
+              src={hiringPoster} 
+              alt="We're Hiring Technical Project Manager" 
+              className="featured-poster-img"
+            />
           </div>
           
           <div className="careers-job-cards-grid">
@@ -654,66 +696,6 @@ const CareersPage = () => {
                 )}
               </tbody>
             </table>
-          </div>
-        </div>
-      </section>
-
-      {/* Internship Section */}
-      <section className="careers-internship-section" id="internships">
-        <div className="careers-internship-header">
-          <p className="careers-header-text">
-            We also offer roles in Technical and Management fields with internships and mentorships that foster growth.
-          </p>
-          <div className="careers-internship-title-container">
-            <img src={logo} alt="Ganglia Logo" className="careers-logo" />
-            <h1 className="careers-internship-title">SUMMER INTERNSHIP PROGRAM 2026</h1>
-          </div>
-        </div>
-        <div className="careers-internship-content">
-          <div className="careers-program-highlights">
-            <div className="careers-highlight-card">
-              <div className="careers-highlight-icon">
-                <Player autoplay loop src={teach} style={{ height: 55, width: 55 }} />
-              </div>
-              <h3>Learn from Experts</h3>
-              <p>Work directly with senior engineers, designers, and product managers who are leaders in healthcare technology.</p>
-            </div>
-            <div className="careers-highlight-card">
-              <div className="careers-highlight-icon">
-                <Player autoplay loop src={globe} style={{ height: 55, width: 55 }} />
-              </div>
-              <h3>Real-World Projects</h3>
-              <p>Contribute to actual product features and research initiatives that impact thousands of healthcare professionals.</p>
-            </div>
-            <div className="careers-highlight-card">
-              <div className="careers-highlight-icon">
-                <Player autoplay loop src={launch} style={{ height: 55, width: 55 }} />
-              </div>
-              <h3>Career Launch</h3>
-              <p>Kickstart your career with a company that's revolutionizing healthcare.</p>
-            </div>
-          </div>
-
-          <ImageCarousel images={carouselImages} />
-
-          <div className="careers-call-to-action">
-            <div className="careers-cta-content">
-              <h3>
-                <span className="careers-highlight">Opportunities</span> like this don't wait
-              </h3>
-              <p className="careers-cta-subtitle">Join the next generation of healthcare innovators</p>
-              <div className="careers-application-info">
-                <button
-                  className="careers-date-button"
-                  onClick={() => {
-                    window.scrollTo(0, 0);
-                    navigate('/internship-form', { replace: true });
-                  }}
-                >
-                  Apply for Summer Internship Program 2026
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </section>
