@@ -15,7 +15,7 @@ import launch from '../assets/Firecracker.json';
 import teach from '../assets/Classroom.json';
 import globe from '../assets/globe.json';
 
-// Hardcoded Jobs Array
+// Hardcoded Jobs Array - Deadlines updated to April 30th, 2026
 const jobData = [
   {
     id: 'ui-ux-design-intern',
@@ -42,7 +42,7 @@ const jobData = [
     skills: ['Figma', 'Framer', 'Sketch', 'Adobe XD', 'Wireframing basics', 'Typography', 'AI tools'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
-      finalDeadline: '2026-04-20',
+      finalDeadline: '2026-04-30',
       programStarts: '2026-06-01'
     }
   },
@@ -72,7 +72,7 @@ const jobData = [
     skills: ['Writing', 'Social Media', 'SEO', 'Data Curiosity', 'AI writing tools'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
-      finalDeadline: '2026-04-20',
+      finalDeadline: '2026-04-30',
       programStarts: '2026-06-01'
     }
   },
@@ -101,7 +101,7 @@ const jobData = [
     skills: ['Android Studio', 'Firebase', 'REST APIs', 'Git', 'GitHub', 'Kotlin', 'AI debugging tools'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
-      finalDeadline: '2026-04-20',
+      finalDeadline: '2026-04-30',
       programStarts: '2026-06-01'
     }
   },
@@ -130,7 +130,7 @@ const jobData = [
     skills: ['React.js', 'MongoDB', 'Git', 'GitHub', 'REST APIs', 'Python', 'Clean code', 'AI coding tools'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
-      finalDeadline: '2026-04-20',
+      finalDeadline: '2026-04-30',
       programStarts: '2026-06-01'
     }
   }
@@ -256,6 +256,109 @@ const CareersPage = () => {
 
   return (
     <div className="careers-page">
+      {/* Dynamic CSS injected for the job cards to match the screenshot provided */}
+      <style>{`
+        .careers-job-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 24px;
+          margin-top: 30px;
+        }
+        .careers-job-card-dark {
+          background-color: #0b0d17;
+          border: 1px solid #23253a;
+          border-radius: 12px;
+          padding: 24px;
+          display: flex;
+          flex-direction: column;
+          color: #e2e8f0;
+          text-align: left;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+          transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .careers-job-card-dark:hover {
+          transform: translateY(-4px);
+          border-color: #3b3f61;
+        }
+        .job-card-title-dark {
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: #ffffff;
+          margin: 0 0 8px 0;
+        }
+        .job-card-badge-dark {
+          display: inline-block;
+          padding: 4px 10px;
+          border-radius: 12px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          margin-bottom: 12px;
+        }
+        .job-card-badge-dark.design { background-color: #3b214f; color: #d8b4e2; }
+        .job-card-badge-dark.marketing { background-color: #1a2a4f; color: #9bb7ed; }
+        .job-card-badge-dark.engineering { background-color: #1e3a29; color: #a3d9b4; }
+        
+        .job-card-meta-dark {
+          font-size: 0.85rem;
+          color: #94a3b8;
+          margin-bottom: 16px;
+        }
+        .job-card-desc-dark {
+          font-size: 0.95rem;
+          line-height: 1.5;
+          margin-bottom: 20px;
+          color: #cbd5e1;
+        }
+        .job-card-duties-dark h4 {
+          font-size: 1rem;
+          color: #ffffff;
+          margin: 0 0 10px 0;
+        }
+        .job-card-duties-dark ul {
+          padding-left: 20px;
+          margin-bottom: 20px;
+          color: #cbd5e1;
+        }
+        .job-card-duties-dark li {
+          font-size: 0.9rem;
+          margin-bottom: 6px;
+          line-height: 1.4;
+        }
+        .job-card-skills-dark {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 24px;
+        }
+        .skill-tag-dark {
+          background-color: transparent;
+          color: #94a3b8;
+          font-size: 0.85rem;
+        }
+        .skill-tag-dark:not(:last-child)::after {
+          content: ' • ';
+          color: #475569;
+          margin-left: 8px;
+        }
+        .apply-btn-yellow {
+          background-color: #fceb4f;
+          color: #000000;
+          border: none;
+          border-radius: 6px;
+          padding: 14px;
+          font-size: 1rem;
+          font-weight: 700;
+          cursor: pointer;
+          width: 100%;
+          text-align: center;
+          margin-top: auto;
+          transition: background-color 0.2s ease;
+        }
+        .apply-btn-yellow:hover {
+          background-color: #e5d444;
+        }
+      `}</style>
+
       {/* Hero Section */}
       <section className="careers-hero">
         <div className="careers-hero-overlay"></div>
@@ -268,7 +371,6 @@ const CareersPage = () => {
             Ganglia is where visionaries thrive and breakthrough ideas come to life.
           </p>
           <div className="careers-hero-buttons">
-            {/* Changed from "View Application Timeline" to "Apply Now" */}
             <a href="#open-roles" className="careers-apply-btn primary">
               Apply Now
             </a>
@@ -315,7 +417,7 @@ const CareersPage = () => {
         </div>
       </section>
 
-      {/* Open Roles Cards Section (Added before the table) */}
+      {/* Open Roles Cards Section */}
       <section className="careers-open-roles-section" id="open-roles">
         <div className="careers-container">
           <div className="careers-section-header">
@@ -327,40 +429,39 @@ const CareersPage = () => {
           
           <div className="careers-job-cards-grid">
             {jobData.map(job => (
-              <div key={job.id} className="careers-job-card">
-                <div className="job-card-header">
-                  <h3>{job.title}</h3>
-                  <span className={`category-badge ${job.category}`}>
+              <div key={job.id} className="careers-job-card-dark">
+                <h3 className="job-card-title-dark">{job.title}</h3>
+                
+                <div>
+                  <span className={`job-card-badge-dark ${job.category}`}>
                     {job.category.charAt(0).toUpperCase() + job.category.slice(1)}
                   </span>
                 </div>
                 
-                <div className="job-card-meta">
-                  <span className="job-type">{job.type}</span> • 
-                  <span className="job-location"> {job.location}</span> • 
-                  <span className="job-level"> {job.level}</span>
+                <div className="job-card-meta-dark">
+                  {job.type} • {job.location} • {job.level}
                 </div>
                 
-                <p className="job-card-description">{job.shortDescription}</p>
+                <p className="job-card-desc-dark">{job.shortDescription}</p>
                 
-                <div className="job-card-duties">
+                <div className="job-card-duties-dark">
                   <h4>What You'll Do:</h4>
                   <ul>
-                    {job.details["What You'll Do"].slice(0, 3).map((duty, idx) => (
+                    {job.details["What You'll Do"].slice(0, 4).map((duty, idx) => (
                       <li key={idx}>{duty}</li>
                     ))}
                     <li>...and more!</li>
                   </ul>
                 </div>
 
-                <div className="job-card-skills">
+                <div className="job-card-skills-dark">
                   {job.skills.map((skill, idx) => (
-                    <span key={idx} className="skill-tag">{skill}</span>
+                    <span key={idx} className="skill-tag-dark">{skill}</span>
                   ))}
                 </div>
                 
                 <button 
-                  className="careers-apply-btn secondary"
+                  className="apply-btn-yellow"
                   onClick={() => {
                     window.scrollTo(0, 0);
                     navigate('/internship-form', { replace: true });
