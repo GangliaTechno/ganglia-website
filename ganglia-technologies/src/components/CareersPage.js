@@ -6,6 +6,12 @@ import innovation from '../assets/innovation.json';
 import learning from '../assets/learning.json';
 import collaboration from '../assets/collaboration.json';
 
+// Carousel Image Imports
+import developmentTeamImg from '../assets/developmentteam.jpeg';
+import researchLabImg from '../assets/researchlab.jpeg';
+import designStudioImg from '../assets/designstudio.jpeg';
+import collaborationSpacesImg from '../assets/collaborationspaces.jpg';
+
 // Hardcoded Jobs Array
 const jobData = [
   {
@@ -75,7 +81,7 @@ const jobData = [
       programStarts: '2026-06-01'
     }
   },
- {
+  {
     id: 'android-developer-intern',
     title: 'Android Developer Intern',
     category: 'engineering',
@@ -121,6 +127,109 @@ const jobData = [
   }
 ];
 
+// Carousel images array
+const carouselImages = [
+  { src: developmentTeamImg, alt: 'Development Team', title: 'Development Team' },
+  { src: researchLabImg, alt: 'Research Lab', title: 'Research Lab' },
+  { src: designStudioImg, alt: 'Design Studio', title: 'Design Studio' },
+  { src: collaborationSpacesImg, alt: 'Collaboration Spaces', title: 'Collaboration Spaces' }
+];
+
+// Image Carousel Component
+const ImageCarousel = ({ images }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const carouselRef = useRef(null);
+
+  const openModal = (index) => {
+    setActiveIndex(index);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const scroll = (direction) => {
+    if (!carouselRef.current) return;
+    const scrollAmount = carouselRef.current.offsetWidth * 0.8;
+    carouselRef.current.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+
+  return (
+    <>
+      <div className="careers-image-carousel-wrapper">
+        <button
+          className="carousel-nav-btn left"
+          onClick={() => scroll('left')}
+          aria-label="Scroll left"
+          type="button"
+        >
+          ‹
+        </button>
+        <div className="careers-image-carousel" ref={carouselRef}>
+          {images.map((img, idx) => (
+            <div
+              key={idx}
+              className="carousel-image-card"
+              role="button"
+              tabIndex={0}
+              onClick={() => openModal(idx)}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') openModal(idx);
+              }}
+              aria-label={`View image: ${img.title || 'image #' + (idx + 1)}`}
+            >
+              <img
+                src={img.src}
+                alt={img.alt || `Image ${idx + 1}`}
+                loading="lazy"
+                className="carousel-image"
+              />
+              {img.title && <div className="carousel-image-title">{img.title}</div>}
+            </div>
+          ))}
+        </div>
+        <button
+          className="carousel-nav-btn right"
+          onClick={() => scroll('right')}
+          aria-label="Scroll right"
+          type="button"
+        >
+          ›
+        </button>
+      </div>
+
+      {modalOpen && (
+        <div className="image-modal-overlay" onClick={closeModal} role="dialog" aria-modal="true">
+          <div className="image-modal-content" onClick={e => e.stopPropagation()}>
+            <button
+              className="modal-close-btn"
+              aria-label="Close image modal"
+              onClick={closeModal}
+              type="button"
+            >
+              ×
+            </button>
+            <img
+              src={images[activeIndex].src}
+              alt={images[activeIndex].alt || `Image ${activeIndex + 1}`}
+              className="modal-image"
+            />
+            {images[activeIndex].title && (
+              <div className="modal-image-title">{images[activeIndex].title}</div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+
 const CareersPage = () => {
   const { isLoading } = useRouteLoader();
 
@@ -154,7 +263,7 @@ const CareersPage = () => {
           -webkit-backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.08); 
           border-radius: 16px; 
-          padding: 40px; /* Increased padding */
+          padding: 40px;
           display: flex;
           flex-direction: column;
           color: #e2e8f0;
@@ -314,6 +423,12 @@ const CareersPage = () => {
           opacity: 0.8;
         }
 
+        /* Added some bottom margin for the carousel container to space it properly */
+        .careers-carousel-container {
+          margin-top: 60px;
+          margin-bottom: 40px;
+        }
+
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
           .careers-job-cards-grid {
@@ -387,6 +502,11 @@ const CareersPage = () => {
               <p>Join a diverse team where every voice matters and breakthrough ideas emerge from collaboration.</p>
             </div>
           </div>
+          
+          {/* Re-added Image Carousel right after Why Join Us benefits */}
+          <div className="careers-carousel-container">
+            <ImageCarousel images={carouselImages} />
+          </div>
         </div>
       </section>
 
@@ -402,7 +522,6 @@ const CareersPage = () => {
 
           <div className="careers-job-cards-grid">
             {jobData.map(job => {
-              // Ensure we check for 'Full time' instead of 'Full-time' due to the hyphen removal
               const isFullTime = job.type === 'Full time';
               const isClosed = job.status === 'closed';
 
