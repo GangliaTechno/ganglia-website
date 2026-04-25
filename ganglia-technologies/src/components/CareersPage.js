@@ -12,19 +12,19 @@ const jobData = [
     id: 'technical-project-manager',
     title: 'Technical Project Manager',
     category: 'management',
-    type: 'Full-time',
-    location: 'In-Person',
+    type: 'Full time',
+    location: 'In Person',
     level: 'Mid Level',
     status: 'closed', // Mark as closed
     shortDescription:
-      "Drive end-to-end technical projects, providing leadership, and giving strategic inputs across multiple initiatives. Bring your experience to architect solutions, mentor a team, and manage project lifecycles.",
+      "Drive end to end technical projects, providing leadership, and giving strategic inputs across multiple initiatives. Bring your experience to architect solutions, mentor a team, and manage project lifecycles.",
     details: {
       "Note for Newcomers": [
-        "Pre-requisites: BTech/MCA, age below 25 years. Terms & Conditions: No accommodation provided, No allowances provided."
+        "Prerequisites: BTech/MCA, age below 25 years. Terms & Conditions: No accommodation provided, No allowances provided."
       ]
     },
     posted: ' ',
-    skills: ['Full-Stack Experience', 'Project Management', 'Team Leadership', 'Strategic Thinking', 'Problem Solving', 'AI-writing Tools', 'Communication'],
+    skills: ['Full Stack Experience', 'Project Management', 'Team Leadership', 'Strategic Thinking', 'Problem Solving', 'AI writing Tools', 'Communication'],
     applicationTimeline: {
       applicationsOpen: '2026-04-01',
       finalDeadline: '2026-04-30',
@@ -36,10 +36,10 @@ const jobData = [
     title: 'UI/UX Design intern',
     category: 'design',
     type: 'Internship',
-    location: 'In-Person',
+    location: 'In Person',
     level: 'Entry Level',
     shortDescription:
-      "Design interfaces people actually enjoy using. You'll help design how our product looks and feels — across web and mobile. Think of it as the bridge between the product team and the people using it. If you love making things look clean, logical, and easy to use, this role is for you.",
+      "Design interfaces people actually enjoy using. You'll help design how our product looks and feels across web and mobile. Think of it as the bridge between the product team and the people using it. If you love making things look clean, logical, and easy to use, this role is for you.",
     details: {
       "Note for Newcomers": [
         "If you've built anything in Figma — a personal project, a college assignment, even a mock app for fun — that counts. We care more about your design thinking than your resume."
@@ -58,10 +58,10 @@ const jobData = [
     title: 'Marketing intern',
     category: 'marketing',
     type: 'Internship',
-    location: 'In-Person',
+    location: 'In Person',
     level: 'Entry Level',
     shortDescription:
-      "Help us grow our online presence. You'll help us show up in the right places — on social media, in search results, and in people's inboxes. This is a great role if you like writing, storytelling, and figuring out what makes people click.",
+      "Help us grow our online presence. You'll help us show up in the right places on social media, in search results, and in people's inboxes. This is a great role if you like writing, storytelling, and figuring out what makes people click.",
     details: {
       "Note for Newcomers": [
         "If you've managed a club's Instagram, written for a college newsletter, or run any kind of online page — that experience is relevant. Bring samples of anything you've written or created."
@@ -75,18 +75,18 @@ const jobData = [
       programStarts: '2026-06-01'
     }
   },
-  {
-    id: 'android-developer',
-    title: 'Android Developer',
+ {
+    id: 'android-developer-intern',
+    title: 'Android Developer Intern',
     category: 'engineering',
     type: 'Internship',
-    location: 'In-Person',
+    location: 'In Person',
     level: 'Entry Level',
     shortDescription:
       "Build Android apps from scratch. You'll work on building real features inside our Android app. This means writing code, connecting to our backend, handling user logins, and making sure things don't break. Proficiency in Android Studio is highly important for this role.",
     details: {
       "Note for Newcomers": [
-        "If you've built a simple Android app in college or on your own — even if it's just a to-do list — that's a great start. Kotlin is a plus but not a blocker; we're happy to help you pick it up."
+        "If you've built a simple Android app in college or on your own — even if it's just a to do list — that's a great start. Kotlin is a plus but not a blocker; we're happy to help you pick it up."
       ]
     },
     posted: ' ',
@@ -102,13 +102,13 @@ const jobData = [
     title: 'Full stack developer intern',
     category: 'engineering',
     type: 'Internship',
-    location: 'In-Person',
+    location: 'In Person',
     level: 'Entry Level',
     shortDescription:
-      "Build web apps end-to-end. You'll work across the full product — building features users see on screen (frontend) and the logic that powers them behind the scenes (backend). It's a great role if you like knowing how the whole system fits together.",
+      "Build web apps end to end. You'll work across the full product building features users see on screen (frontend) and the logic that powers them behind the scenes (backend). It's a great role if you like knowing how the whole system fits together.",
     details: {
       "Note for Newcomers": [
-        "College projects, personal portfolios, or open-source contributions all count. Python is a bonus — knowing any backend language shows you can think server-side, and Python is easy to pick up if you don't know it yet."
+        "College projects, personal portfolios, or open source contributions all count. Python is a bonus — knowing any backend language shows you can think server side, and Python is easy to pick up if you don't know it yet."
       ]
     },
     posted: ' ',
@@ -154,7 +154,7 @@ const CareersPage = () => {
           -webkit-backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.08); 
           border-radius: 16px; 
-          padding: 32px;
+          padding: 40px; /* Increased padding */
           display: flex;
           flex-direction: column;
           color: #e2e8f0;
@@ -402,7 +402,8 @@ const CareersPage = () => {
 
           <div className="careers-job-cards-grid">
             {jobData.map(job => {
-              const isFullTime = job.type === 'Full-time';
+              // Ensure we check for 'Full time' instead of 'Full-time' due to the hyphen removal
+              const isFullTime = job.type === 'Full time';
               const isClosed = job.status === 'closed';
 
               return (
