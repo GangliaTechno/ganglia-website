@@ -1,14 +1,12 @@
 import React, { useState, useRef } from 'react';
 import '../styles/CareersPage.css';
-import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logob.png';
 import { useRouteLoader } from '../hooks/useRouteLoader';
 import { Player } from '@lottiefiles/react-lottie-player';
 import innovation from '../assets/innovation.json';
 import learning from '../assets/learning.json';
 import collaboration from '../assets/collaboration.json';
 
-// Hardcoded Jobs Array - Updated to reflect requested changes
+// Hardcoded Jobs Array
 const jobData = [
   {
     id: 'technical-project-manager',
@@ -125,7 +123,6 @@ const jobData = [
 
 const CareersPage = () => {
   const { isLoading } = useRouteLoader();
-  const navigate = useNavigate();
 
   if (isLoading) {
     return (
@@ -140,7 +137,6 @@ const CareersPage = () => {
 
   return (
     <div className="careers-page">
-      {/* Dynamic CSS injected for the job cards to implement Glassmorphism, specific stylings, and responsiveness */}
       <style>{`
         /* Responsive 3-column Grid */
         .careers-job-cards-grid {
@@ -158,7 +154,7 @@ const CareersPage = () => {
           -webkit-backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.08); 
           border-radius: 16px; 
-          padding: 32px; /* Increased padding */
+          padding: 32px;
           display: flex;
           flex-direction: column;
           color: #e2e8f0;
@@ -166,7 +162,7 @@ const CareersPage = () => {
           box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); 
           transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
           overflow: hidden;
-          aspect-ratio: 1 / 1; /* Force square shape */
+          aspect-ratio: 1 / 1; 
         }
 
         /* Full-Time Specific Styling */
@@ -250,9 +246,9 @@ const CareersPage = () => {
           color: #cbd5e1;
           position: relative;
           z-index: 2;
-          flex-grow: 1; /* Pushes the button and skills to the bottom */
-          overflow-y: auto; /* Handles text overflow gracefully */
-          padding-right: 8px; /* Room for potential scrollbar */
+          flex-grow: 1; 
+          overflow-y: auto; 
+          padding-right: 8px; 
         }
 
         /* Custom scrollbar for description */
@@ -330,7 +326,7 @@ const CareersPage = () => {
             grid-template-columns: 1fr;
           }
           .careers-job-card-dark {
-             aspect-ratio: auto; /* Disable square strictly on mobile to prevent clipping */
+             aspect-ratio: auto; 
              min-height: 400px;
           }
         }
@@ -436,8 +432,8 @@ const CareersPage = () => {
                     disabled={isClosed}
                     onClick={() => {
                       if (!isClosed) {
-                        window.scrollTo(0, 0);
-                        navigate(`/apply/${job.id}`, { replace: true });
+                        // Open the Google Form URL in a new tab
+                        window.open('https://forms.gle/xdpG7HGdxQmsh2796', '_blank', 'noopener,noreferrer');
                       }
                     }}
                   >
